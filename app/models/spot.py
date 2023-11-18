@@ -20,12 +20,14 @@ class Spot(db.Model):
     price_range = db.Column(db.Integer, nullable=False)
     created_at = db.column(db.DateTime, nullable=False, default=datetime.now())
     updated_at = db.column(db.DateTime, nullable=False, default=datetime.now())
-    
+
     # foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("user.id")), nullable=False)
-    
+
     # relationship => 1 spot can have 1 user
     user = db.relationship("User", back_populates="spots")
+    spot_img = db.relationship("SpotImages", back_populates="spot" )
+    review = db.relationship("Review", back_populates="spot")
 
     def to_dict(self):
         return {
