@@ -18,8 +18,8 @@ class Spot(db.Model):
     close_hours = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String, nullable=False)
     price_range = db.Column(db.Integer, nullable=False)
-    created_at = db.column(db.DateTime, nullable=False, default=datetime.now())
-    updated_at = db.column(db.DateTime, nullable=False, default=datetime.now())
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
     # foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("user.id")), nullable=False)
