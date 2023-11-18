@@ -21,8 +21,12 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_users()
         undo_spots()
+        undo_reviews()
+        undo_spot_images()
     seed_users()
     seed_spots()
+    seed_reviews()
+    seed_spot_images()
     # Add other seed functions here
 
 
@@ -31,4 +35,6 @@ def seed():
 def undo():
     undo_users()
     undo_spots()
+    undo_reviews()
+    undo_spot_images()
     # Add other undo functions here
