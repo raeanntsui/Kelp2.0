@@ -16,45 +16,45 @@ def seed_users():
     user_1 = User(
         email='spongebob@bb.io',
         password='password',
-        first_name = "Sponge",
-        last_name = "Bob",
-        business_owner = "True"
+        first_name="Spongebob",
+        last_name="Squarepants",
+        business_owner=True
         )
     db.session.add(user_1)
 
     user_2 = User(
         email='patrick@bb.io',
         password='password',
-        first_name = "Patrick",
-        last_name = "Star",
-        business_owner = "False"
+        first_name="Patrick",
+        last_name="Star",
+        business_owner=False
         )
     db.session.add(user_2)
 
     user_3 = User(
         email='sandy@bb.io',
         password='password',
-        first_name = "Sandy",
-        last_name = "Cheek",
-        business_owner = "False"
+        first_name="Sandy",
+        last_name="Cheeks",
+        business_owner=False
         )
     db.session.add(user_3)
 
     user_4 = User(
         email='mrkrabs@bb.io',
         password='password',
-        first_name = "Eugene",
-        last_name = "Krabs",
-        business_owner = "True"
+        first_name="Eugene",
+        last_name="Krabs",
+        business_owner=True
         )
     db.session.add(user_4)
 
     user_5 = User(
         email='plankton@bb.io',
         password='password',
-        first_name = "Sheldon",
-        last_name = "Plankton",
-        business_owner = "True"
+        first_name="Sheldon",
+        last_name="Plankton",
+        business_owner=True
         )
     users_list = [user_1, user_2, user_3, user_4, user_5]
     [db.session.add(user) for user in user_list]

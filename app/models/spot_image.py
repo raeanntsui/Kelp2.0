@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from .spot import Spot
+# from .spot import Spot
 
 class SpotImage(db.Model):
     __tablename__ = 'spot_images'
@@ -12,10 +12,10 @@ class SpotImage(db.Model):
     preview = db.Column(db.Boolean)
 
     #foreignkey
-    spotId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spot.id')), primary_key=True)
+    spotId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spots.id')))
 
     #relationship
-    spot = db.relationship('Spot', back_populates="spot_images")
+    spot = db.relationship('Spot', back_populates="spot_image")
 
     def to_dict(self):
         return {

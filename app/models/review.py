@@ -16,12 +16,12 @@ class Review(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
     #foreign keys
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("user.id")), nullable=False)
-    spot_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("spot.id")), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    spot_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("spots.id")), nullable=False)
 
    #relationships
-    user = db.relationship("User", back_populates="reviews")
-    spot = db.relationship("Spot", back_populates="reviews")
+    user = db.relationship("User", back_populates="review")
+    spot = db.relationship("Spot", back_populates="review")
 
 
     def to_dict(self):

@@ -17,8 +17,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    #relationship
-    review = db.relationship("Review", back_populates="User")
+    #relationships
+    review = db.relationship("Review", back_populates="user")
+    spot = db.relationship("Spot", back_populates="user")
 
     @property
     def password(self):
@@ -40,5 +41,3 @@ class User(db.Model, UserMixin):
             'email': self.email
         }
 
-    # relationship => 1 user can have many spots
-    spots = db.relationship("Spot", back_populates="users")

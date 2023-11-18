@@ -22,11 +22,11 @@ class Spot(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
     # foreign keys
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("user.id")), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
 
-    # relationship => 1 spot can have 1 user
-    user = db.relationship("User", back_populates="spots")
-    spot_img = db.relationship("SpotImages", back_populates="spot" )
+    # relationship
+    user = db.relationship("User", back_populates="spot")
+    spot_image = db.relationship("SpotImage", back_populates="spot" )
     review = db.relationship("Review", back_populates="spot")
 
     def to_dict(self):
@@ -42,7 +42,7 @@ class Spot(db.Model):
             'close_hours': self.close_hours,
             'description': self.description,
             'price_range': self.price_range,
-            'createdAt': self.created_at,
-            'updatedAt': self.updated_at,
-            'userId': self.user_id,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            'user_id': self.user_id,
         }
