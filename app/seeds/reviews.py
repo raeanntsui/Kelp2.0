@@ -9,17 +9,16 @@
 #     spot_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("spot.id")), nullable=False)
 
 from ..models import user, spot, spot_image, review, db, environment, SCHEMA
-from faker import Faker
 from random import randint
 
-fake = Faker()
+
 
 
 
 def seed_reviews():
     review_1 = Review(
         rating = randint(1,5),
-        description = fake.text(),
+        description = "THIS PLACE IS OK1",
         created_at = date.today(),
         updated_at = date.today(),
         user_id=1,
@@ -29,7 +28,7 @@ def seed_reviews():
 
     review_2 = Review(
         rating = randint(1,5),
-        description = fake.text(),
+        description = "THIS PLACE IS OK2",
         created_at = date.today(),
         updated_at = date.today(),
         user_id=1,
@@ -39,7 +38,7 @@ def seed_reviews():
 
     review_3 = Review(
         rating = randint(1,5),
-        description = fake.text(),
+        description = "THIS PLACE IS OK3",
         created_at = date.today(),
         updated_at = date.today(),
         user_id=2,
@@ -49,7 +48,7 @@ def seed_reviews():
 
     review_4 = Review(
         rating = randint(1,5),
-        description = fake.text(),
+        description = "THIS PLACE IS OK4",
         created_at = date.today(),
         updated_at = date.today(),
         user_id=2,
@@ -59,7 +58,7 @@ def seed_reviews():
 
     review_5 = Review(
         rating = randint(1,5),
-        description = fake.text(),
+        description = "THIS PLACE IS OK5",
         created_at = date.today(),
         updated_at = date.today(),
         user_id=3,
@@ -69,7 +68,7 @@ def seed_reviews():
 
     review_6 = Review(
         rating = randint(1,5),
-        description = fake.text(),
+        description = "THIS PLACE IS OK6",
         created_at = date.today(),
         updated_at = date.today(),
         user_id=3,

@@ -12,8 +12,8 @@ class Review(db.Model):
     rating = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String(2000), nullable=False)
     user_img = db.Column(db.String(250))
-    created_at = db.column(db.DateTime, nullable=False, default=datetime.now())
-    updated_at = db.column(db.DateTime, nullable=False, default=datetime.now())
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
     #foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("user.id")), nullable=False)
