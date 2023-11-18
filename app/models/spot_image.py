@@ -13,3 +13,11 @@ class SpotImage(db.Model):
     preview = db.Column(db.Boolean)
 
     spot = db.relationship('Spot', back_populates="spot_image")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'spotId': self.spotId,
+            'url': self.url,
+            'preview': self.preview
+        }
