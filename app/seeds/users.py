@@ -19,7 +19,7 @@ def seed_users():
         password='password',
         first_name = "Sponge",
         last_name = "Bob",
-        business_owner = "False"
+        business_owner = "True"
         )
     db.session.add(user_1)
 
@@ -57,8 +57,8 @@ def seed_users():
         last_name = "Plankton",
         business_owner = "True"
         )
-    db.session.add(user_5)
-    
+    users_list = [user_1, user_2, user_3, user_4, user_5]
+    [db.session.add(user) for user in user_list]
     db.session.commit()
 
 

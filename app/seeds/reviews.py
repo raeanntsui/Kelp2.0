@@ -19,7 +19,7 @@ fake = Faker()
 def seed_reviews():
     review_1 = Review(
         rating = randint(1,5),
-        body = fake.text(),
+        description = fake.text(),
         created_at = date.today(),
         updated_at = date.today(),
         user_id=1,
@@ -29,7 +29,7 @@ def seed_reviews():
 
     review_2 = Review(
         rating = randint(1,5),
-        body = fake.text(),
+        description = fake.text(),
         created_at = date.today(),
         updated_at = date.today(),
         user_id=1,
@@ -39,7 +39,7 @@ def seed_reviews():
 
     review_3 = Review(
         rating = randint(1,5),
-        body = fake.text(),
+        description = fake.text(),
         created_at = date.today(),
         updated_at = date.today(),
         user_id=2,
@@ -49,7 +49,7 @@ def seed_reviews():
 
     review_4 = Review(
         rating = randint(1,5),
-        body = fake.text(),
+        description = fake.text(),
         created_at = date.today(),
         updated_at = date.today(),
         user_id=2,
@@ -59,7 +59,7 @@ def seed_reviews():
 
     review_5 = Review(
         rating = randint(1,5),
-        body = fake.text(),
+        description = fake.text(),
         created_at = date.today(),
         updated_at = date.today(),
         user_id=3,
@@ -69,7 +69,7 @@ def seed_reviews():
 
     review_6 = Review(
         rating = randint(1,5),
-        body = fake.text(),
+        description = fake.text(),
         created_at = date.today(),
         updated_at = date.today(),
         user_id=3,

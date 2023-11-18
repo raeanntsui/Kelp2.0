@@ -10,7 +10,8 @@ class Review(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     rating = db.Column(db.Integer, nullable=False)
-    body = db.Column(db.String(2000), nullable=False)
+    description = db.Column(db.String(2000), nullable=False)
+    user_img = db.Column(db.String(250))
     created_at = db.column(db.DateTime, nullable=False, default=datetime.now())
     updated_at = db.column(db.DateTime, nullable=False, default=datetime.now())
 
@@ -27,7 +28,8 @@ class Review(db.Model):
         return {
             'id': self.id,
             'rating': self.rating,
-            'body': self.body,
+            'description': self.description,
+            'user_img':self.user_img,
             'createdAt': self.created_at,
             'updatedAt': self.updated_at,
             'userId': self.user_id,
