@@ -12,7 +12,7 @@ class SpotImage(db.Model):
     preview = db.Column(db.Boolean)
 
     #foreignkey
-    spotId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spots.id')))
+    spot_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spots.id')))
 
     #relationship
     spot = db.relationship('Spot', back_populates="spot_image")
@@ -20,7 +20,7 @@ class SpotImage(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'spotId': self.spotId,
+            'spot_id': self.spot_id,
             'url': self.url,
             'preview': self.preview
         }
