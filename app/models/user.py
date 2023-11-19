@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     business_owner = db.Column(db.Boolean)
     first_name = db.Column(db.String, nullable=False)
     last_name = db.Column(db.String, nullable=False)
-    # username = db.Column(db.String(40), nullable=False, unique=True)
+    username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
@@ -38,6 +38,7 @@ class User(db.Model, UserMixin):
             'business_owner': self.business_owner,
             'first_name': self.first_name,
             'last_name': self.last_name,
-            'email': self.email
+            'email': self.email,
+            'username': self.username
         }
 
