@@ -21,7 +21,7 @@ class SpotImage(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'spotId': self.spotId,
+            'spot_id': self.spot_id,
             'url': self.url,
             'preview': self.preview
         }

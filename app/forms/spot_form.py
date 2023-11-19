@@ -14,5 +14,4 @@ class SpotForm(FlaskForm):
     close_hours = IntegerField("Close Hours", validators=[DataRequired()])
     description = StringField("Description", validators=[DataRequired()])
     price_range = IntegerField("Price Range", validators=[DataRequired()])
-    description = StringField("Description", validators=[DataRequired()])
     submit = SubmitField("Submit")
