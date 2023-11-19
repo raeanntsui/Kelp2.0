@@ -57,7 +57,7 @@ def seed_users():
         business_owner=True
         )
     users_list = [user_1, user_2, user_3, user_4, user_5]
-    [db.session.add(user) for user in user_list]
+    [db.session.add(user) for user in users_list]
     db.session.commit()
 
 
