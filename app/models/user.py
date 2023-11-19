@@ -10,15 +10,16 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    business_owner = db.Column(db.Boolean, nullable=False)
+    business_owner = db.Column(db.Boolean)
     first_name = db.Column(db.String, nullable=False)
     last_name = db.Column(db.String, nullable=False)
     # username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    #relationship
-    review = db.relationship("Review", back_populates="User")
+    #relationships
+    review = db.relationship("Review", back_populates="user")
+    spot = db.relationship("Spot", back_populates="user")
 
     @property
     def password(self):
@@ -40,5 +41,3 @@ class User(db.Model, UserMixin):
             'email': self.email
         }
 
-    # relationship => 1 user can have many spots
-    spots = db.relationship("Spot", back_populates="users")

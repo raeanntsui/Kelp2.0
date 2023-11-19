@@ -8,9 +8,9 @@
 #     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("user.id")), nullable=False)
 #     spot_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("spot.id")), nullable=False)
 
-from ..models import user, spot, spot_image, review, db, environment, SCHEMA
+from ..models import user, Review, spot, spot_image, review, db, environment, SCHEMA
 from random import randint
-
+from datetime import date
 
 
 
