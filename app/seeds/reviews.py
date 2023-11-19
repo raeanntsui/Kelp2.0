@@ -11,7 +11,7 @@
 from ..models import user, Review, spot, spot_image, review, db, environment, SCHEMA
 from random import randint
 from datetime import date
-
+from sqlalchemy import text
 
 
 
