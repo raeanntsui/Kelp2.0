@@ -14,11 +14,6 @@ class SpotImage(db.Model):
     url = db.Column(db.String(255), nullable=False)
     preview = db.Column(db.Boolean)
 
-<<<<<<< HEAD
-    #foreignkey
-    spot_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spots.id')))
-=======
->>>>>>> main
 
     #relationship
     spot = db.relationship('Spot', back_populates="spot_image")
