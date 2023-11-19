@@ -11,12 +11,7 @@
 from ..models import user, Review, spot, spot_image, review, db, environment, SCHEMA
 from random import randint
 from datetime import date
-<<<<<<< HEAD
-from sqlalchemy import text
-
-=======
 from sqlalchemy.sql import text
->>>>>>> main
 
 
 def seed_reviews():
