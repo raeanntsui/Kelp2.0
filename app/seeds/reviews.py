@@ -11,8 +11,7 @@
 from ..models import user, Review, spot, spot_image, review, db, environment, SCHEMA
 from random import randint
 from datetime import date
-
-
+from sqlalchemy.sql import text
 
 
 def seed_reviews():
@@ -81,7 +80,7 @@ def seed_reviews():
 
 def undo_reviews():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.reviews RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM reviews"))
 

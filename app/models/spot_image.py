@@ -8,11 +8,12 @@ class SpotImage(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    #foreignkey
+    spotId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spots.id')))
+
     url = db.Column(db.String(255), nullable=False)
     preview = db.Column(db.Boolean)
 
-    #foreignkey
-    spotId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spots.id')))
 
     #relationship
     spot = db.relationship('Spot', back_populates="spot_image")
