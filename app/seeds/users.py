@@ -1,19 +1,67 @@
+# business_owner = db.Column(db.Boolean, nullable=False)
+#     first_name = db.Column(db.String, nullable=False)
+#     last_name = db.Column(db.String, nullable=False)
+#     # username = db.Column(db.String(40), nullable=False, unique=True)
+#     email = db.Column(db.String(255), nullable=False, unique=True)
+#     hashed_password = db.Column(db.String(255), nullable=False)
+
+
 from app.models import db, User, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
+
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    spongebob = User(
-        email='spongebob@bb.io', password='password')
-    patrick = User(
-        email='patrick@bb.io', password='password')
-    sandy = User(
-        email='sandy@bb.io', password='password')
+    user_1 = User(
+        email='spongebob@bb.io',
+        password='password',
+        first_name="Spongebob",
+        last_name="Squarepants",
+        business_owner=True,
+        username="spongebob"
+        )
+    db.session.add(user_1)
 
-    db.session.add(spongebob)
-    db.session.add(patrick)
-    db.session.add(sandy)
+    user_2 = User(
+        email='patrick@bb.io',
+        password='password',
+        first_name="Patrick",
+        last_name="Star",
+        business_owner=False,
+        username="patrick"
+        )
+    db.session.add(user_2)
+
+    user_3 = User(
+        email='sandy@bb.io',
+        password='password',
+        first_name="Sandy",
+        last_name="Cheeks",
+        business_owner=False,
+        username="sandy"
+        )
+    db.session.add(user_3)
+
+    user_4 = User(
+        email='mrkrabs@bb.io',
+        password='password',
+        first_name="Eugene",
+        last_name="Krabs",
+        business_owner=True,
+        username="mrkrabs"
+        )
+    db.session.add(user_4)
+
+    user_5 = User(
+        email='plankton@bb.io',
+        password='password',
+        first_name="Sheldon",
+        last_name="Plankton",
+        business_owner=True,
+        username="plankton"
+        )
+    db.session.add(user_5)
     db.session.commit()
 
 
@@ -28,5 +76,5 @@ def undo_users():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM users"))
-        
+
     db.session.commit()

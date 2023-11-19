@@ -18,14 +18,20 @@ class Spot(db.Model):
     close_hours = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String, nullable=False)
     price_range = db.Column(db.Integer, nullable=False)
-    created_at = db.column(db.DateTime, nullable=False, default=datetime.now())
-    updated_at = db.column(db.DateTime, nullable=False, default=datetime.now())
-    
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
+
     # foreign keys
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("user.id")), nullable=False)
-    
-    # relationship => 1 spot can have 1 user
-    user = db.relationship("User", back_populates="spots")
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+
+    # relationship
+    # spot can only belong to a user
+    user = db.relationship("User", back_populates="spot")
+
+    # spot can have many images
+    spot_image = db.relationship("SpotImage", back_populates="spot" )
+
+    review = db.relationship("Review", back_populates="spot")
 
     def to_dict(self):
         return {
@@ -40,7 +46,7 @@ class Spot(db.Model):
             'close_hours': self.close_hours,
             'description': self.description,
             'price_range': self.price_range,
-            'createdAt': self.created_at,
-            'updatedAt': self.updated_at,
-            'userId': self.user_id,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            'user_id': self.user_id,
         }
