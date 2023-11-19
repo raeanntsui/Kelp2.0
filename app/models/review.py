@@ -30,8 +30,8 @@ class Review(db.Model):
             'rating': self.rating,
             'description': self.description,
             'user_img':self.user_img,
-            'createdAt': self.created_at,
-            'updatedAt': self.updated_at,
-            'userId': self.user_id,
-            'spotId': self.spot_id
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            'user_id': self.user_id,
+            'spot_id': self.spot_id
         }

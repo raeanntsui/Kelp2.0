@@ -18,7 +18,8 @@ def seed_users():
         password='password',
         first_name="Spongebob",
         last_name="Squarepants",
-        business_owner=True
+        business_owner=True,
+        username="spongebob"
         )
     db.session.add(user_1)
 
@@ -27,7 +28,8 @@ def seed_users():
         password='password',
         first_name="Patrick",
         last_name="Star",
-        business_owner=False
+        business_owner=False,
+        username="patrick"
         )
     db.session.add(user_2)
 
@@ -36,7 +38,8 @@ def seed_users():
         password='password',
         first_name="Sandy",
         last_name="Cheeks",
-        business_owner=False
+        business_owner=False,
+        username="sandy"
         )
     db.session.add(user_3)
 
@@ -45,7 +48,8 @@ def seed_users():
         password='password',
         first_name="Eugene",
         last_name="Krabs",
-        business_owner=True
+        business_owner=True,
+        username="mrkrabs"
         )
     db.session.add(user_4)
 
@@ -54,10 +58,10 @@ def seed_users():
         password='password',
         first_name="Sheldon",
         last_name="Plankton",
-        business_owner=True
+        business_owner=True,
+        username="plankton"
         )
-    users_list = [user_1, user_2, user_3, user_4, user_5]
-    [db.session.add(user) for user in users_list]
+    db.session.add(user_5)
     db.session.commit()
 
 

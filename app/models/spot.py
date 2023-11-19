@@ -25,8 +25,12 @@ class Spot(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
 
     # relationship
+    # spot can only belong to a user
     user = db.relationship("User", back_populates="spot")
+
+    # spot can have many images
     spot_image = db.relationship("SpotImage", back_populates="spot" )
+
     review = db.relationship("Review", back_populates="spot")
 
     def to_dict(self):
