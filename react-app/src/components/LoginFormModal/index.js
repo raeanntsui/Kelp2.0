@@ -17,8 +17,22 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      closeModal();
     }
+  };
+
+  const handleLogInDemo = (e) => {
+    e.preventDefault();
+    const demoAcc = "spongebob@bb.io";
+    const demoPassword = "password";
+    return dispatch(login(demoAcc, demoPassword))
+      .then(closeModal)
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
   };
 
   return (
@@ -49,6 +63,9 @@ function LoginFormModal() {
           />
         </label>
         <button type="submit">Log In</button>
+        <button className="demo-button" onClick={handleLogInDemo}>
+          Log in as Demo User
+        </button>
       </form>
     </>
   );
