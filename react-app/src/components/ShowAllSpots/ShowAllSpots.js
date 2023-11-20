@@ -1,5 +1,5 @@
 import React from "react";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllSpotsThunk } from "../../store/spots";
@@ -11,6 +11,7 @@ function ShowAllSpots() {
   console.log("🚀🚀🚀🚀🚀🚀 ~ spots:", spots);
   const allSpots = Object.values(spots);
 
+  const reviews = useSelector((state) => state.reviews.Reviews);
   useEffect(() => {
     dispatch(getAllSpotsThunk());
   }, [dispatch]);
@@ -24,7 +25,8 @@ function ShowAllSpots() {
       <h1>GET ALL SPOTS</h1>
       <div className="spots-grid">
         {allSpots.map((spot) => (
-          <div key={spot.id}>
+          <NavLink key={spot.id} to={`/spots/${spot.id}`}>
+            {/* <img src={spot.spot_image} /> */}
             <h2>{spot.business_name}</h2>
             <p>Spot rating here</p>
             <p>Category: {spot.categories}</p>
@@ -32,7 +34,7 @@ function ShowAllSpots() {
               Hours: {spot.open_hours}AM to {spot.close_hours - 12}PM
             </p>
             <p>{spot.description}</p>
-          </div>
+          </NavLink>
         ))}
       </div>
     </>
