@@ -22,6 +22,14 @@ function ShowAllSpots() {
   return (
     <>
       <h1>Hello this is the get all spots component</h1>
+      <div className="spots-grid">
+        {allSpots.map((spot) => (
+          <div key={spot.id}>
+            <h2>{spot.name}</h2>
+            <p>{spot.description}</p>
+          </div>
+        ))}
+      </div>
     </>
   );
 }
