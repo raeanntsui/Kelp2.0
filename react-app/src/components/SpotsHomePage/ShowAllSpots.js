@@ -18,7 +18,7 @@ function ShowAllSpots() {
   if (!allSpots || !allSpots.length) {
     return null;
   }
-
+  //poo
   return (
     <>
       <h1>Hello this is the get all spots component</h1>

@@ -60,7 +60,7 @@ const initialState = {
   oneSpot: {},
 };
 
-// reducer
+// reducer hi
 const spotsReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
