@@ -3,9 +3,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllSpotsThunk } from "../../store/spots";
-import "./ShowAllSpots.css";
+import "./Homepage.css";
 
-function ShowAllSpots() {
+function Homepage() {
   const dispatch = useDispatch();
   const spots = useSelector((state) => state.spots.allSpots);
   console.log("🚀🚀🚀🚀🚀🚀 ~ spots:", spots);
@@ -18,15 +18,16 @@ function ShowAllSpots() {
   if (!allSpots || !allSpots.length) {
     return null;
   }
-
+  //poo
   return (
     <>
-      <h1>Hello this is the get all spots component</h1>
+      <h1>HOMEPAGE</h1>
       <div className="spots-grid">
         {allSpots.map((spot) => (
           <div key={spot.id}>
-            <h2>{spot.name}</h2>
-            <p>{spot.description}</p>
+            <h2>{spot.business_name}</h2>
+            <p>user name here</p>
+            <p>user review here</p>
           </div>
         ))}
       </div>
@@ -34,4 +35,4 @@ function ShowAllSpots() {
   );
 }
 
-export default ShowAllSpots;
+export default Homepage;

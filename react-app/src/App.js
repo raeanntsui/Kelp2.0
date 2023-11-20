@@ -5,8 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import ShowAllSpots from "./components/SpotsHomePage/ShowAllSpots";
-import ReviewForm from "./components/Reviews/form";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +21,9 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
+            <Homepage />
+          </Route>
+          <Route exact path="/spots">
             <ShowAllSpots />
           </Route>
           <Route path="/login">
