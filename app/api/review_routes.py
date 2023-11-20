@@ -1,6 +1,8 @@
 from flask import Blueprint, jsonify, request
 # from flask_login import login_required
 from app.models import db, Review
+from ..forms import ReviewForm
+
 
 
 reviews_routes = Blueprint("reviews", __name__)
@@ -26,22 +28,44 @@ def create_review(spot_id):
     '''
     create a new review for a specific spot
     '''
-    data = request.get_json()
+    form = ReviewForm(request.form)
 
-    description = data.get("description")
-    rating = data.get("rating")
+    if form.validate_on_submit():
 
-    if not all([description, rating]):
-        return jsonify({"error": "Review text and star rating are required"}), 400
+        description = form.description.data
+        rating = form.rating.data
 
-    if not 1 <= rating <= 5:
-        return jsonify({"error": "Star rating must be between 1 and 5"}), 400
+        new_review = Review(spot_id=spot_id, description=description, rating=rating)
 
-    new_review = Review(spot_id=spot_id, description=description, rating=rating)
+        db.session.add(new_review)
+        db.session.commit()
 
-    db.session.add(new_review)
-    db.session.commit()
+        return jsonify({"message": "Review created successfully"})
+    else:
 
-    return jsonify({"message": "Review created successfully"})
+        errors = form.errors
+        return jsonify({"message": "Invalid form submission", "errors": errors}), 400
 
+# @reviews_routes.route("/<int:review_id>", methods=["PUT"])
+# def update_review(review_id):
+#     '''
+#     update an existing review
+#     '''
+#     form = ReviewForm(request.form)
 
+#     if form.validate_on_submit():
+#         review = Review.query.get(review_id)
+
+#         if not review:
+#             return jsonify({"error": "Review not found"}), 404
+
+#         review.description = form.description.data
+
+#         if form.rating.data is not None:
+#             review.rating = form.rating.data
+
+#         db.session.commit()
+
+#         return jsonify({"message": "Review updated successfully"})
+#     else:
+#         return jsonify({"error": "Invalid form data"}), 400
