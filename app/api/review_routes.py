@@ -5,13 +5,13 @@ from app.models import db, Review
 
 reviews_routes = Blueprint("reviews", __name__)
 
-@reviews_routes.route("/")
-def spot_reviews():
-    '''
-    get all reviews for a spot
-    '''
-    reviews = Review.query.all()
-    return jsonify([review.to_dict() for review in reviews])
+# @reviews_routes.route("/")
+# def spot_reviews():
+#     '''
+#     get all reviews for a spot
+#     '''
+#     reviews = Review.query.all()
+#     return jsonify([review.to_dict() for review in reviews])
 
 @reviews_routes.route("/<int:spot_id>")
 def spot_reviews(spot_id):
@@ -37,7 +37,7 @@ def create_review(spot_id):
     if not 1 <= rating <= 5:
         return jsonify({"error": "Star rating must be between 1 and 5"}), 400
 
-    new_review = Review(spot_id=spot_id, text=description, star_rating=rating)
+    new_review = Review(spot_id=spot_id, description=description, rating=rating)
 
     db.session.add(new_review)
     db.session.commit()
