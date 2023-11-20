@@ -5,7 +5,9 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-
+import ShowAllSpots from "./components/ShowAllSpots/ShowAllSpots";
+import Homepage from "./components/Homepage/Homepage";
+import ReviewForm from "./components/Reviews/form";
 
 function App() {
   const dispatch = useDispatch();
