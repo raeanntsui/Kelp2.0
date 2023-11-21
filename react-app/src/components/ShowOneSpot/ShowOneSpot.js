@@ -36,15 +36,16 @@ function ShowOneSpot() {
         <h1>GET SINGLE SPOT</h1>
         {/* <p>Business Owner: {spot.user_id}</p> */}
         <p>{spot.business_name}</p>
-        <p>Store rating here</p>
-        <p>{spot.categories}</p>
+        <p>Spot owner id: {spot.user_id}</p>
+        <p>AVERAGE RATING HERE</p>
+        <p>Business category: {spot.categories}</p>
         <p>{spot.address}</p>
         <p>About the Business: {spot.description}</p>
       </div>
       <div>
         <h2>Reviews</h2>
-        {/* {sessionUser ? { sessionUser } : <p>No session user</p>} */}
-        <ReviewModal spot={spot} />
+        <p>Get all reviews component here</p>
+        {/* {sessionUser ? <ReviewModal spot={spot} /> : <p>No session user</p>} */}
       </div>
     </>
   );
