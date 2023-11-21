@@ -19,7 +19,7 @@ export const getReviewsThunk = (spotId) => async (dispatch) => {
     if (res.ok) {
       const reviews = await res.json();
       dispatch(getReviews(reviews));
-      console.log("🚀 >>>>>>>>>> ~ reviews:", reviews);
+      // console.log("🚀 >>>>>>>>>> ~ reviews:", reviews);
       return reviews;
     }
   } catch (e) {
