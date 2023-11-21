@@ -5,12 +5,15 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import ShowAllSpots from "./components/SpotsHomePage/ShowAllSpots";
+import ShowAllSpots from "./components/ShowAllSpots/ShowAllSpots";
+import Homepage from "./components/Homepage/Homepage";
+import ReviewForm from "./components/Reviews/form";
+import ShowOneSpot from "./components/ShowOneSpot/ShowOneSpot";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  
+
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -21,7 +24,13 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
+            <Homepage />
+          </Route>
+          <Route exact path="/spots">
             <ShowAllSpots />
+          </Route>
+          <Route exact path="/spots/:spotId">
+            <ShowOneSpot />
           </Route>
           <Route path="/login">
             <LoginFormPage />
@@ -29,6 +38,9 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          {/* <Route path="/reviews">
+            <ReviewForm />
+          </Route> */}
         </Switch>
       )}
     </>

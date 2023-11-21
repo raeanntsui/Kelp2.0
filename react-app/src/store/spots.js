@@ -13,10 +13,10 @@ const getAllSpots = (spots) => {
   };
 };
 
-const getOneSpot = (spot) => {
+const getOneSpot = (spotId) => {
   return {
     type: GET_ONE_SPOT,
-    spot,
+    spotId,
   };
 };
 
@@ -43,7 +43,7 @@ const deleteSpot = (spot) => {
 
 // thunk
 export const getAllSpotsThunk = () => async (dispatch) => {
-  const res = await fetch("/api/spots");
+  const res = await fetch("/api/spots/");
   if (res.ok) {
     const spots = await res.json();
     dispatch(getAllSpots(spots));
@@ -54,13 +54,22 @@ export const getAllSpotsThunk = () => async (dispatch) => {
   }
 };
 
+export const getOneSpotThunk = (spotId) => async (dispatch) => {
+  const res = await fetch(`/api/spots/${spotId}`);
+  if (res.ok) {
+    const spot = await res.json();
+    dispatch(getOneSpot(spot));
+    return spot;
+  }
+};
+
 // initial state
 const initialState = {
   allSpots: {},
   oneSpot: {},
 };
 
-// reducer
+// reducer hi
 const spotsReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
@@ -70,21 +79,12 @@ const spotsReducer = (state = initialState, action) => {
         newState.allSpots[spot.id] = spot;
       });
       return newState;
+    case GET_ONE_SPOT:
+      newState = { ...state, oneSpot: action.spotId };
+      return newState;
     default:
       return state;
   }
 };
-
-// const spotsReducer = (state = initialState, action) => {
-//   let newState = {};
-//   switch (action.type) {
-//     case GET_ALL_SPOTS:
-//       newState = { ...state };
-//       newState.allSpots = action.spots;
-//       return newState;
-//     default:
-//       return state;
-//   }
-// };
 
 export default spotsReducer;
