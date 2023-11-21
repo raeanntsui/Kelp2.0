@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { getAllSpotsThunk } from "../../store/spots";
 import "./ShowAllSpots.css";
 
+import Fuse from 'fuse.js'
+
 function ShowAllSpots() {
   const dispatch = useDispatch();
   const spots = useSelector((state) => state.spots.allSpots);
@@ -22,6 +24,19 @@ function ShowAllSpots() {
     return null;
   }
   //poo
+
+  const fuse = new Fuse(getAllSpotsThunk, {
+    keys: [
+      'business_name',
+      'categories',
+      'price_range'
+    ]
+  })
+
+  const results = fuse.search('Krusty Krab')
+
+  console.log()
+
   return (
     <>
       <h1>GET ALL SPOTS</h1>
