@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllSpotsThunk } from "../../store/spots";
 import "./ShowAllSpots.css";
+import DeleteSpot from "../DeleteSpot/DeleteSpot";
 
 function ShowAllSpots() {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ function ShowAllSpots() {
             <p>{spot.description}</p>
           </NavLink>
         ))}
+      </div>
+      <div>
+        <DeleteSpot />
       </div>
     </>
   );
