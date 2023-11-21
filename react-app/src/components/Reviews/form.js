@@ -60,7 +60,6 @@ function ReviewForm({ spot }) {
       <p>{submit && errors.description}</p>
 
       <button
-        className="submit-review redButton"
         type="submit"
         onClick={handleSubmit}
         disabled={!checkValidation()}

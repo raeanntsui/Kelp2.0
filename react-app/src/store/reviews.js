@@ -15,11 +15,12 @@ const createReview = (newReview) => ({
 //THUNK
 export const getReviewsThunk = (spotId) => async (dispatch) => {
   try {
-    const res = await fetch(`/api/spots/${spotId}/reviews`);
+    const res = await fetch(`/api/reviews/${spotId}`);
     if (res.ok) {
       const reviews = await res.json();
       dispatch(getReviews(reviews));
-      return res;
+      console.log("🚀 >>>>>>>>>> ~ reviews:", reviews);
+      return reviews;
     }
   } catch (e) {
     return await e.json();
@@ -29,7 +30,7 @@ export const getReviewsThunk = (spotId) => async (dispatch) => {
 export const createReviewThunk = (review, spotId) => async (dispatch) => {
   let res;
   try {
-    res = await fetch(`/api/reviews/new-review/`, {
+    res = await fetch(`/api/reviews/new/${spotId}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(review),
