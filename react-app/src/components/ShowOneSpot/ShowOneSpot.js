@@ -44,7 +44,7 @@ function ShowOneSpot() {
       <div>
         <h2>Reviews</h2>
         {/* {sessionUser ? { sessionUser } : <p>No session user</p>} */}
-        <ReviewModal spot={spot} />
+        {/* <ReviewModal spot={spot} /> */}
       </div>
     </>
   );

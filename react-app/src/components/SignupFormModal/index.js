@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
 import "./SignupForm.css";
-
+// i shat on the screen
 function SignupFormModal() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");

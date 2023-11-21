@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 # from flask_login import login_required
 from app.models import db, Review
 from ..forms import ReviewForm
+from flask_login import login_required
 
 
 
@@ -10,7 +11,7 @@ reviews_routes = Blueprint("reviews", __name__)
 # @reviews_routes.route("/")
 # def get_all_reviews():
 #     '''
-#     get all reviews 
+#     get all reviews
 #     '''
 #     reviews = Review.query.all()
 #     return jsonify([review.to_dict() for review in reviews])
@@ -24,6 +25,7 @@ def spot_reviews(spot_id):
     return jsonify([review.to_dict() for review in reviews])
 
 @reviews_routes.route("/new", methods=["POST"])
+@login_required
 def create_review(spot_id):
     '''
     create a new review for a specific spot
