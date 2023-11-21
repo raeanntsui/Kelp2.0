@@ -8,10 +8,12 @@ import "./ShowAllSpots.css";
 function ShowAllSpots() {
   const dispatch = useDispatch();
   const spots = useSelector((state) => state.spots.allSpots);
-  console.log("🚀🚀🚀🚀🚀🚀 ~ spots:", spots);
+  // console.log("🚀🚀🚀🚀🚀🚀 ~ spots:", spots);
   const allSpots = Object.values(spots);
 
   const reviews = useSelector((state) => state.reviews.Reviews);
+  console.log("🚀🚀🚀🚀🚀🚀 ~ reviews:", reviews);
+
   useEffect(() => {
     dispatch(getAllSpotsThunk());
   }, [dispatch]);

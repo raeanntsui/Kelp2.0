@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import ShowAllSpots from "./components/ShowAllSpots/ShowAllSpots";
 import Homepage from "./components/Homepage/Homepage";
 import ReviewForm from "./components/Reviews/form";
+import ShowOneSpot from "./components/ShowOneSpot/ShowOneSpot";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,15 +29,18 @@ function App() {
           <Route exact path="/spots">
             <ShowAllSpots />
           </Route>
+          <Route exact path="/spots/:spotId">
+            <ShowOneSpot />
+          </Route>
           <Route path="/login">
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/reviews">
+          {/* <Route path="/reviews">
             <ReviewForm />
-          </Route>
+          </Route> */}
         </Switch>
       )}
     </>
