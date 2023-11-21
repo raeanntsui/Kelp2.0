@@ -10,11 +10,11 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    business_owner = db.Column(db.Boolean)
+    email = db.Column(db.String(255), nullable=False, unique=True)
+    username = db.Column(db.String(40), nullable=False, unique=True)
     first_name = db.Column(db.String, nullable=False)
     last_name = db.Column(db.String, nullable=False)
-    username = db.Column(db.String(40), nullable=False, unique=True)
-    email = db.Column(db.String(255), nullable=False, unique=True)
+    business_owner = db.Column(db.Boolean)
     hashed_password = db.Column(db.String(255), nullable=False)
 
     #relationships
@@ -35,10 +35,9 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'business_owner': self.business_owner,
+            'email': self.email,
+            'username': self.username,
             'first_name': self.first_name,
             'last_name': self.last_name,
-            'email': self.email,
-            'username': self.username
+            'business_owner': self.business_owner,
         }
-
