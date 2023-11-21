@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { getReviewsThunk } from "../../store/reviews";
-import ReviewForm from "./form";
-import OpenModalButton from "../OpenModalButton";
+// import ReviewForm from "./ReviewForm";
+// import OpenModalButton from "../OpenModalButton";
 // import DeleteReview from "../DeleteReview";
 
 export default function ReviewModal({ spot }) {
   const dispatch = useDispatch();
-  const { setModalContent, setOnModalClose } = useModal();
+  const { setModalContent, setonModalClose } = useModal();
 
   const user = useSelector((state) => state.session.user);
 
@@ -33,14 +33,7 @@ export default function ReviewModal({ spot }) {
     <>
       <div>
         Post Your Review
-        <button
-          className="postReview"
-          type="submit"
-          onClick={() => {
-            setModalContent(<ReviewForm spot={spot} />);
-          }}>
-          Post Your Review
-        </button>
+        <button type="submit"> Post Your Review</button>
       </div>
     </>
   );
