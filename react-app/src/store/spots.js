@@ -63,6 +63,22 @@ export const getOneSpotThunk = (spotId) => async (dispatch) => {
   }
 };
 
+export const createSpotThunk = (form) => async (dispatch) => {
+  const res = await fetch("/api/spots/new", {
+    method: "POST",
+    body: form,
+  });
+
+  if (res.ok) {
+    const { resSpot } = await res.json();
+    dispatch(createSpot(resSpot));
+    return resSpot;
+  } else {
+    const data = await res.json();
+    return data;
+  }
+};
+
 // initial state
 const initialState = {
   allSpots: {},
@@ -79,9 +95,16 @@ const spotsReducer = (state = initialState, action) => {
         newState.allSpots[spot.id] = spot;
       });
       return newState;
+
     case GET_ONE_SPOT:
       newState = { ...state, oneSpot: action.spotId };
       return newState;
+
+    case CREATE_SPOT:
+      newState = { ...state, allSpots: { ...state.allSpots } };
+      newState.allSpots[action.spot.id] = action.spot;
+      return newState;
+
     default:
       return state;
   }
