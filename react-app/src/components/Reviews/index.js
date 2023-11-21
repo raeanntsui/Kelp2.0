@@ -13,7 +13,7 @@ export default function ReviewModal({ spot }) {
   const user = useSelector((state) => state.session.user);
 
   const spotReviews = useSelector((state) => state.reviews.Reviews);
-  //   console.log("spotReviews>>>>>>>:   ", spotReviews);
+  console.log("spotReviews>>>>>>>:   ", spotReviews);
 
   const currentSpotReviews = Object.values(spotReviews);
 
@@ -31,10 +31,8 @@ export default function ReviewModal({ spot }) {
   }
   return (
     <>
-      <div>
-        Post Your Review
-        <button type="submit"> Post Your Review</button>
-      </div>
+      Post Your Review
+      <button type="submit"> Post Your Review</button>
     </>
   );
 }

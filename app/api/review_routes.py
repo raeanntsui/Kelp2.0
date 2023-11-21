@@ -8,14 +8,14 @@ from ..forms import ReviewForm
 reviews_routes = Blueprint("reviews", __name__)
 
 # @reviews_routes.route("/")
-# def spot_reviews():
+# def get_all_reviews():
 #     '''
-#     get all reviews for a spot
+#     get all reviews 
 #     '''
 #     reviews = Review.query.all()
 #     return jsonify([review.to_dict() for review in reviews])
 
-@reviews_routes.route("/<int:spot_id>/reviews")
+@reviews_routes.route("/<int:spot_id>")
 def spot_reviews(spot_id):
     '''
     get all reviews for a specific spot
@@ -23,7 +23,7 @@ def spot_reviews(spot_id):
     reviews = Review.query.filter_by(spot_id=spot_id).all()
     return jsonify([review.to_dict() for review in reviews])
 
-@reviews_routes.route("/new-review", methods=["POST"])
+@reviews_routes.route("/new", methods=["POST"])
 def create_review(spot_id):
     '''
     create a new review for a specific spot
