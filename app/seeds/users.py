@@ -7,51 +7,51 @@ from sqlalchemy.sql import text
 def seed_users():
     user_1 = User(
         email='spongebob@bb.io',
-        password='password',
+        username="spongebob",
         first_name="Spongebob",
         last_name="Squarepants",
         business_owner=True,
-        username="spongebob"
+        password='password',
         )
     db.session.add(user_1)
 
     user_2 = User(
         email='patrick@bb.io',
-        password='password',
+        username="patrick",
         first_name="Patrick",
         last_name="Star",
         business_owner=False,
-        username="patrick"
+        password='password',
         )
     db.session.add(user_2)
 
     user_3 = User(
         email='sandy@bb.io',
-        password='password',
+        username="sandy",
         first_name="Sandy",
         last_name="Cheeks",
         business_owner=False,
-        username="sandy"
+        password='password',
         )
     db.session.add(user_3)
 
     user_4 = User(
         email='mrkrabs@bb.io',
-        password='password',
+        username="mrkrabs",
         first_name="Eugene",
         last_name="Krabs",
         business_owner=True,
-        username="mrkrabs"
+        password='password',
         )
     db.session.add(user_4)
 
     user_5 = User(
         email='plankton@bb.io',
-        password='password',
+        username="plankton",
         first_name="Sheldon",
         last_name="Plankton",
         business_owner=True,
-        username="plankton"
+        password='password',
         )
     db.session.add(user_5)
     db.session.commit()
