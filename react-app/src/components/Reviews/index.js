@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { getReviewsThunk } from "../../store/reviews";
-// import ReviewForm from "./ReviewForm";
+import ReviewForm from "./form";
 // import OpenModalButton from "../OpenModalButton";
 // import DeleteReview from "../DeleteReview";
 
@@ -31,8 +31,15 @@ export default function ReviewModal({ spot }) {
   }
   return (
     <>
-      Post Your Review
-      <button type="submit"> Post Your Review</button>
+      <button
+        className="postReview"
+        type="submit"
+        onClick={() => {
+          setModalContent(<ReviewForm spot={spot} />);
+        }}
+      >
+        Post Your Review
+      </button>
     </>
   );
 }
