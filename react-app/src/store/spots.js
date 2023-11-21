@@ -27,10 +27,10 @@ const createSpot = (newSpot) => {
   };
 };
 
-const updateSpot = (spot) => {
+const updateSpot = (spotId) => {
   return {
     type: UPDATE_SPOT,
-    spot,
+    spotId,
   };
 };
 
@@ -79,6 +79,20 @@ export const createSpotThunk = (form) => async (dispatch) => {
   }
 };
 
+export const deleteSpotThunk = (spot) => async (dispatch) => {
+  try {
+    const res = await fetch(`/api/spots/${spot}`, {
+      method: "DELETE",
+    });
+
+    if (res.ok) {
+      dispatch(deleteSpot(spot));
+    }
+  } catch (e) {
+    return await e.json();
+  }
+};
+
 // initial state
 const initialState = {
   allSpots: {},
@@ -104,7 +118,8 @@ const spotsReducer = (state = initialState, action) => {
       newState = { ...state, allSpots: { ...state.allSpots } };
       newState.allSpots[action.spot.id] = action.spot;
       return newState;
-
+    case DELETE_SPOT:
+      newState = { ...state, allSpots: { ...state.allSpots } };
     default:
       return state;
   }

@@ -62,5 +62,5 @@ def delete_spot():
     currentSpot = Spot.query.get(id)
     db.session.delete(currentSpot)
     db.session.commit()
-    return "Spot successfully deleted? idk"
+    return "Spot successfully deleted"
     
