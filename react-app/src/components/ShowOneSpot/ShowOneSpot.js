@@ -9,14 +9,14 @@ import "./ShowOneSpot.css";
 function ShowOneSpot() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  console.log("🚀🚀🚀🚀🚀🚀 ~ sessionUser:", sessionUser);
-  console.log("🚀🚀🚀🚀🚀🚀 ~ sessionUser.first_name:", sessionUser.first_name);
+  // console.log("🚀🚀🚀🚀🚀🚀 ~ sessionUser:", sessionUser);
+  // console.log("🚀🚀🚀🚀🚀🚀 ~ sessionUser.first_name:", sessionUser.first_name);
 
   const spot = useSelector((state) => state.spots.oneSpot);
-  console.log("🚀🚀🚀🚀🚀🚀 ~ spot:", spot);
+  // console.log("🚀🚀🚀🚀🚀🚀 ~ spot:", spot);
 
   const { spotId } = useParams();
-  console.log("🚀🚀🚀🚀🚀🚀 ~ spotId:", spotId);
+  // console.log("🚀🚀🚀🚀🚀🚀 ~ spotId:", spotId);
   // const singleSpot = Object.values(spot);
 
   // const reviews = useSelector((state) => state.reviews.Reviews);

@@ -30,7 +30,7 @@ def get_spot(id):
 @login_required
 def create_spot():
     """
-    User must be logged in before creating a new spot
+    Create spot (while logged in)
     """
     if current_user.business_owner == False:
         return {"message":"You do not have authorize to sell on your account"}, 403
@@ -56,4 +56,17 @@ def create_spot():
             db.session.commit()
             return {"resCreateSpot": spot_params.to_dict()}
 
-        return {"error": validation_errors_to_error_messages(form.errors)}, 400
+
+    return {"error": validation_errors_to_error_messages(form.errors)}, 400
+
+@spots_routes.route("/<int:id>", methods=["DELETE"])
+@login_required
+def delete_spot():
+    """
+    Delete spot (while logged in)
+    """
+    currentSpot = Spot.query.get(id)
+    db.session.delete(currentSpot)
+    db.session.commit()
+    return "Spot successfully deleted"
+    
