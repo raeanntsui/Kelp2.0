@@ -63,19 +63,19 @@ export const getOneSpotThunk = (spotId) => async (dispatch) => {
   }
 };
 
-export const createSpotThunk = (form) => async (dispatch) => {
+// CreateThunks -- add spot to spots
+export const createSpotThunk = (newSpot) => async (dispatch) => {
   const res = await fetch("/api/spots/new", {
     method: "POST",
-    body: form,
+    body: newSpot,
   });
 
   if (res.ok) {
-    const { resSpot } = await res.json();
-    dispatch(createSpot(resSpot));
-    return resSpot;
+    const { newSpot } = await res.json();
+    dispatch(createSpot(newSpot));
+    return newSpot;
   } else {
-    const data = await res.json();
-    return data;
+    console.log("There is an error creating a new Spot");
   }
 };
 
@@ -115,8 +115,8 @@ const spotsReducer = (state = initialState, action) => {
       return newState;
 
     case CREATE_SPOT:
-      newState = { ...state, allSpots: { ...state.allSpots } };
-      newState.allSpots[action.spot.id] = action.spot;
+      newState = { ...state };
+      newState.spots[action.spots.id] = action.spot;
       return newState;
     case DELETE_SPOT:
       newState = { ...state, allSpots: { ...state.allSpots } };
