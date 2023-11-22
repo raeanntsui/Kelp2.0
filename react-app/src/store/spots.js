@@ -27,10 +27,10 @@ const createSpot = (newSpot) => {
   };
 };
 
-const updateSpot = (spot) => {
+const updateSpot = (spotId) => {
   return {
     type: UPDATE_SPOT,
-    spot,
+    spotId,
   };
 };
 
@@ -63,6 +63,36 @@ export const getOneSpotThunk = (spotId) => async (dispatch) => {
   }
 };
 
+// CreateThunks -- add spot to spots
+export const createSpotThunk = (newSpot) => async (dispatch) => {
+  const res = await fetch("/api/spots/new", {
+    method: "POST",
+    body: newSpot,
+  });
+
+  if (res.ok) {
+    const { newSpot } = await res.json();
+    dispatch(createSpot(newSpot));
+    return newSpot;
+  } else {
+    console.log("There is an error creating a new Spot");
+  }
+};
+
+export const deleteSpotThunk = (spot) => async (dispatch) => {
+  try {
+    const res = await fetch(`/api/spots/${spot}`, {
+      method: "DELETE",
+    });
+
+    if (res.ok) {
+      dispatch(deleteSpot(spot));
+    }
+  } catch (e) {
+    return await e.json();
+  }
+};
+
 // initial state
 const initialState = {
   allSpots: {},
@@ -79,9 +109,17 @@ const spotsReducer = (state = initialState, action) => {
         newState.allSpots[spot.id] = spot;
       });
       return newState;
+
     case GET_ONE_SPOT:
       newState = { ...state, oneSpot: action.spotId };
       return newState;
+
+    case CREATE_SPOT:
+      newState = { ...state };
+      newState.spots[action.spots.id] = action.spot;
+      return newState;
+    case DELETE_SPOT:
+      newState = { ...state, allSpots: { ...state.allSpots } };
     default:
       return state;
   }

@@ -9,6 +9,7 @@ import ShowAllSpots from "./components/ShowAllSpots/ShowAllSpots";
 import Homepage from "./components/Homepage/Homepage";
 import ReviewForm from "./components/Reviews/form";
 import ShowOneSpot from "./components/ShowOneSpot/ShowOneSpot";
+import CreateSpotModal from "./components/CreateSpot";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route exact path="/spots">
             <ShowAllSpots />
+          </Route>
+          <Route exact path="/spots/new">
+            <CreateSpotModal />
           </Route>
           <Route exact path="/spots/:spotId">
             <ShowOneSpot />

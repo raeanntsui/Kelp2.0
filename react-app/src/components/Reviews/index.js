@@ -37,8 +37,7 @@ export default function ReviewModal({ spot }) {
         type="submit"
         onClick={() => {
           setModalContent(<ReviewForm spot={spot} />);
-        }}
-      >
+        }}>
         Post Your Review
       </button>
     </>

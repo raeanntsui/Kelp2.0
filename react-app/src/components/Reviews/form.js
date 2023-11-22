@@ -116,8 +116,7 @@ function ReviewForm({ spot }) {
       <button
         type="submit"
         onClick={handleSubmit}
-        disabled={!checkValidation()}
-      >
+        disabled={!checkValidation()}>
         Submit Your Review
       </button>
     </form>
