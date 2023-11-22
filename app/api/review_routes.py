@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-# from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import db, Review
 from ..forms import ReviewForm
 
@@ -23,19 +23,23 @@ def spot_reviews(spot_id):
     reviews = Review.query.filter_by(spot_id=spot_id).all()
     return jsonify([review.to_dict() for review in reviews])
 
-@reviews_routes.route("/new", methods=["POST"])
+@reviews_routes.route("/new/<int:spot_id>", methods=["POST"])
+@login_required
 def create_review(spot_id):
     '''
     create a new review for a specific spot
     '''
+    # print(f"Current user: {current_user}")
+    # print(f"Current user id: {current_user.id}")
     form = ReviewForm(request.form)
-
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data)
     if form.validate_on_submit():
 
         description = form.description.data
         rating = form.rating.data
 
-        new_review = Review(spot_id=spot_id, description=description, rating=rating)
+        new_review = Review(spot_id=spot_id, description=description, rating=rating, user_id=current_user.id)
 
         db.session.add(new_review)
         db.session.commit()
@@ -46,26 +50,35 @@ def create_review(spot_id):
         errors = form.errors
         return jsonify({"message": "Invalid form submission", "errors": errors}), 400
 
-# @reviews_routes.route("/<int:review_id>", methods=["PUT"])
-# def update_review(review_id):
-#     '''
-#     update an existing review
-#     '''
-#     form = ReviewForm(request.form)
+@reviews_routes.route("/<int:review_id>", methods=["PUT"])
+def update_review(review_id):
+    '''
+    update an existing review
+    '''
+    form = ReviewForm(request.form)
 
-#     if form.validate_on_submit():
-#         review = Review.query.get(review_id)
+    if form.validate_on_submit():
+        review = Review.query.get(review_id)
 
-#         if not review:
-#             return jsonify({"error": "Review not found"}), 404
+        if not review:
+            return (jsonify({"error": "Review not found"}), 404)
 
-#         review.description = form.description.data
+        review.description = form.description.data
+        review.rating = form.rating.data
 
-#         if form.rating.data is not None:
-#             review.rating = form.rating.data
+        db.session.commit()
 
+        return jsonify({"message": "Review updated successfully"})
+    else:
+        return (jsonify({"error": "Invalid form data"}), 400)
+
+# @app.route('/<int:review_id>', methods=['DELETE'])
+# def delete_review(review_id):
+#     review = Review.query.get(review_id)
+#     if review:
+#         db.session.delete(review)
 #         db.session.commit()
-
-#         return jsonify({"message": "Review updated successfully"})
+#         return jsonify({"message": "Review deleted successfully"})
 #     else:
-#         return jsonify({"error": "Invalid form data"}), 400
+#         return jsonify({"error": "Review not found"}), 404
+    

@@ -7,6 +7,7 @@ import ReviewForm from "./form";
 // import DeleteReview from "../DeleteReview";
 
 export default function ReviewModal({ spot }) {
+  console.log("🚀 >>>>>>>>>> ~ spot:", spot);
   const dispatch = useDispatch();
   const { setModalContent, setonModalClose } = useModal();
 
