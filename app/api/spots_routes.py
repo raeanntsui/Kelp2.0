@@ -69,4 +69,39 @@ def delete_spot():
     db.session.delete(currentSpot)
     db.session.commit()
     return "Spot successfully deleted"
-    
+
+
+@spots_routes.route("/<int:id>", methods=["PUT"])
+@login_required
+def update_spot(id):
+    """
+    Update spot (while logged in)
+    """
+    spot = Spot.query.get(id)
+
+    if not spot:
+        return {"message": "Spot not found"}, 404
+
+    if current_user.id != spot.user_id:
+        return {"message": "You do not have permission to update this spot"}, 403
+
+    form = SpotForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        spot.business_name = form.data["business_name"]
+        spot.address = form.data["address"]
+        spot.city = form.data["city"]
+        spot.state = form.data["state"]
+        spot.zip_code = form.data["zip_code"]
+        spot.categories = form.data["categories"]
+        spot.open_hours = form.data["open_hours"]
+        spot.close_hours = form.data["close_hours"]
+        spot.description = form.data["description"]
+        spot.price_range = form.data["price_range"]
+
+        db.session.commit()
+
+        return {"resUpdateSpot": spot.to_dict()}
+
+    return {"error": validation_errors_to_error_messages(form.errors)}, 400

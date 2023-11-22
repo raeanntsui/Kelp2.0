@@ -22,7 +22,7 @@ class Spot(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
     # foreign keys
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
 
     # relationship
     # spot can only belong to a user

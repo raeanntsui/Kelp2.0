@@ -27,10 +27,10 @@ const createSpot = (newSpot) => {
   };
 };
 
-const updateSpot = (spotId) => {
+const updateSpot = (spot) => {
   return {
     type: UPDATE_SPOT,
-    spotId,
+    spot,
   };
 };
 
@@ -136,8 +136,10 @@ const spotsReducer = (state = initialState, action) => {
       return newState;
 
     case UPDATE_SPOT:
-      newState = { ...state };
-      newState.spots[action.spot.id] = action.spot;
+      newState = {
+        ...state,
+        spots: { ...state.spots, [action.spot.id]: action.spot },
+      };
       return newState;
 
     case DELETE_SPOT:
