@@ -58,7 +58,11 @@ export default function CreateSpotModal({ id }) {
     };
     const res = await dispatch(createSpotThunk(newSpot));
 
-
+    if (!res.errors) {
+      // history.push(`/products/${product.id}`)
+      yesSubmitted(true);
+    }
+  };
 
   return (
     <div>
@@ -171,5 +175,4 @@ export default function CreateSpotModal({ id }) {
       </form>
     </div>
   );
-}
 }
