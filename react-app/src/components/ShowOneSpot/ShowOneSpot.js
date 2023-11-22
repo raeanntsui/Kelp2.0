@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getOneSpotThunk } from "../../store/spots";
 import ReviewModal from "../Reviews";
+import DeleteSpot from "../DeleteSpot/DeleteSpot";
 import "./ShowOneSpot.css";
 
 function ShowOneSpot() {
@@ -45,7 +46,10 @@ function ShowOneSpot() {
       <div>
         <h2>Reviews</h2>
         <p>Get all reviews component here</p>
-        {/* {sessionUser ? <ReviewModal spot={spot} /> : <p>No session user</p>} */}
+        {sessionUser ? <ReviewModal spot={spot} /> : <p>No session user</p>}
+        <div>
+          <DeleteSpot />
+        </div>
       </div>
     </>
   );
