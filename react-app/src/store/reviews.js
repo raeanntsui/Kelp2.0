@@ -30,15 +30,23 @@ export const getReviewsThunk = (spotId) => async (dispatch) => {
 export const createReviewThunk = (review, spotId) => async (dispatch) => {
   let res;
   try {
+    const urlParams = new URLSearchParams();
+    for (const key of Object.keys(review)) {
+      urlParams.append(key, review[key]);
+    }
     res = await fetch(`/api/reviews/new/${spotId}`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(review),
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: urlParams,
     });
-    const newReview = await res.json();
-    dispatch(createReview(newReview));
-    await dispatch(getReviewsThunk(spotId));
-    return newReview;
+    if (res.ok) {
+      const newReview = await res.json();
+      dispatch(createReview(newReview));
+      await dispatch(getReviewsThunk(spotId));
+      return newReview;
+    } else {
+      console.error(`Server error: ${res.status}`);
+    }
   } catch (e) {
     return await e.json();
   }
@@ -53,9 +61,11 @@ const reviewsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_REVIEWS:
       newState = { ...state, Reviews: {} };
-      action.reviews.Reviews.forEach((review) => {
-        newState.Reviews[review.id] = review;
-      });
+      if (action.reviews && action.reviews.Reviews) {
+        action.reviews.Reviews.forEach((review) => {
+          newState.Reviews[review.id] = review;
+        });
+      }
       return newState;
     case CREATE_REVIEW:
       newState = {
