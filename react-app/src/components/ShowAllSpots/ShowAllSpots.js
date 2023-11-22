@@ -40,9 +40,6 @@ function ShowAllSpots() {
           </NavLink>
         ))}
       </div>
-      <div>
-        <DeleteSpot />
-      </div>
     </>
   );
 }

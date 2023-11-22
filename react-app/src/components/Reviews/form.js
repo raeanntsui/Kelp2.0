@@ -15,7 +15,7 @@ function ReviewForm({ spot }) {
   const user = useSelector((state) => state.session.user);
 
   const checkValidation = () => {
-    return description.length > 9;
+    return description.length > 9 && starRating;
   };
 
   useEffect(() => {
@@ -35,10 +35,8 @@ function ReviewForm({ spot }) {
     setSubmit(true);
 
     const submitReview = {
-      userId: user.id,
-      spotId: spot.id,
-      review: description,
-      //   stars: starRating,
+      description: description,
+      rating: starRating,
     };
 
     if (Object.keys(errors).length === 0) {
@@ -59,11 +57,66 @@ function ReviewForm({ spot }) {
       />
       <p>{submit && errors.description}</p>
 
+      <div className="stars">
+        <i
+          className={
+            (hover || starRating) >= 1
+              ? "fa-solid fa-star"
+              : "fa-regular fa-star"
+          }
+          onMouseEnter={() => setHover(1)}
+          onMouseLeave={() => setHover(0)}
+          onClick={() => setStarRating(1)}
+        />
+        <i
+          className={
+            (hover || starRating) >= 2
+              ? "fa-solid fa-star"
+              : "fa-regular fa-star"
+          }
+          onMouseEnter={() => setHover(2)}
+          onMouseLeave={() => setHover(0)}
+          onClick={() => setStarRating(2)}
+        />
+        <i
+          className={
+            (hover || starRating) >= 3
+              ? "fa-solid fa-star"
+              : "fa-regular fa-star"
+          }
+          onMouseEnter={() => setHover(3)}
+          onMouseLeave={() => setHover(0)}
+          onClick={() => setStarRating(3)}
+        />
+        <i
+          className={
+            (hover || starRating) >= 4
+              ? "fa-solid fa-star"
+              : "fa-regular fa-star"
+          }
+          onMouseEnter={() => setHover(4)}
+          onMouseLeave={() => setHover(0)}
+          onClick={() => setStarRating(4)}
+        />
+        <i
+          className={
+            (hover || starRating) >= 5
+              ? "fa-solid fa-star"
+              : "fa-regular fa-star"
+          }
+          onMouseEnter={() => setHover(5)}
+          onMouseLeave={() => setHover(0)}
+          onClick={() => setStarRating(5)}
+        />
+      </div>
+      <div>
+        <p>Stars</p>
+      </div>
+
       <button
         type="submit"
         onClick={handleSubmit}
-        disabled={!checkValidation()}
-      >
+        disabled={!checkValidation()}>
         Submit Your Review
       </button>
     </form>
