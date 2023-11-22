@@ -10,6 +10,7 @@ import Homepage from "./components/Homepage/Homepage";
 import ReviewForm from "./components/Reviews/form";
 import ShowOneSpot from "./components/ShowOneSpot/ShowOneSpot";
 import CreateSpotModal from "./components/CreateSpot";
+import UpdateSpotPage from "./components/UpdateSpotForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route exact path="/spots/:spotId">
             <ShowOneSpot />
+          </Route>
+          <Route exact path="/spots/:id/update">
+            <UpdateSpotPage />
           </Route>
           <Route path="/login">
             <LoginFormPage />

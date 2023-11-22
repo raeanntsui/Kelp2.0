@@ -59,7 +59,7 @@ export default function CreateSpotModal({ id }) {
     const res = await dispatch(createSpotThunk(newSpot));
 
     if (!res.errors) {
-      // history.push(`/products/${product.id}`)
+      // history.push(`/spots/${spot.id}`)
       yesSubmitted(true);
     }
   };
