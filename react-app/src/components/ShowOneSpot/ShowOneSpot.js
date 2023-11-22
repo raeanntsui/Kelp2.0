@@ -7,9 +7,10 @@ import ReviewModal from "../Reviews";
 import DeleteSpot from "../DeleteSpot/DeleteSpot";
 import "./ShowOneSpot.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { getReviewsThunk } from "../../store/reviews";
 
 function ShowOneSpot() {
-  const { id } = useParams();
+  const { spotId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
@@ -17,7 +18,8 @@ function ShowOneSpot() {
   // console.log("🚀🚀🚀🚀🚀🚀 ~ sessionUser.first_name:", sessionUser.first_name);
 
   const spot = useSelector((state) => state.spots.oneSpot);
-  // console.log("🚀🚀🚀🚀🚀🚀 ~ 123123spot:", spot);
+  const review = useSelector((state) => state.reviews.reviews);
+  console.log("🚀 ~ file: ShowOneSpot.js:20 ~ ShowOneSpot ~ review:", review);
 
   // session owner id
   const userId = sessionUser.id;
@@ -26,24 +28,28 @@ function ShowOneSpot() {
   const businessOwnerId = spot.user_id;
 
   const businessOwner = userId === businessOwnerId;
+  console.log(
+    "🚀 ~ file: ShowOneSpot.js:27 ~ ShowOneSpot ~ businessOwner:",
+    businessOwner
+  );
 
-  const { spotId } = useParams();
-  // console.log("🚀🚀🚀🚀🚀🚀 ~ spotId:", spotId);
+  console.log("🚀🚀🚀🚀🚀🚀 ~ spotId:", spotId);
   // const singleSpot = Object.values(spot);
 
   // const reviews = useSelector((state) => state.reviews.Reviews);
   // console.log("🚀🚀🚀🚀🚀🚀 ~ reviews:", reviews);
 
   useEffect(() => {
+    dispatch(getReviewsThunk(spotId));
     dispatch(getOneSpotThunk(spotId));
-  }, [dispatch]);
+  }, [dispatch, spotId]);
 
   // if (!spot || !spot.length) {
   //   return null;
   // }
 
   const handleSpotUpdate = () => {
-    history.push(`/spots/${id}/update`);
+    history.push(`/spots/${spotId}/update`);
   };
 
   return (
@@ -61,15 +67,16 @@ function ShowOneSpot() {
       <div>
         <h2>Reviews</h2>
         <p>Get all reviews component here</p>
+
         {sessionUser ? <ReviewModal spot={spot} /> : <p>No session user</p>}
         <div>
           <DeleteSpot />
         </div>
         <div>
-          Update Spot
           <div>
             {businessOwner && (
               <>
+                <h1>Update Spot</h1>
                 <button onClick={handleSpotUpdate}>Update Spot</button>
               </>
             )}

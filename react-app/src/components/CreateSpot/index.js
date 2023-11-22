@@ -8,6 +8,7 @@ export default function CreateSpotModal({ id }) {
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
 
+
   const [businessName, setBusinessName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -68,13 +69,13 @@ export default function CreateSpotModal({ id }) {
     <div>
       <h1>Create a Spot</h1>
       <form onSubmit={handleSubmit}>
-        {errors &&
+        {/* {errors &&
           errors.length >= 1 &&
           errors.map((error, idx) => (
             <div className="error" key={idx}>
               {error}
             </div>
-          ))}
+          ))} */}
         <label>Business name</label>
         <input
           type="text"
@@ -166,12 +167,7 @@ export default function CreateSpotModal({ id }) {
           />
         </label>
 
-        <button
-          type="submit"
-          //   disabled={Object.keys(validationObject).length > 0}
-        >
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
