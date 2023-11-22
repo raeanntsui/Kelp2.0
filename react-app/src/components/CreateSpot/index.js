@@ -57,7 +57,7 @@ export default function CreateSpotModal({ id }) {
       user_id: user.id,
     };
     const res = await dispatch(createSpotThunk(newSpot));
-    
+
 
 
   return (
@@ -171,4 +171,5 @@ export default function CreateSpotModal({ id }) {
       </form>
     </div>
   );
+}
 }
