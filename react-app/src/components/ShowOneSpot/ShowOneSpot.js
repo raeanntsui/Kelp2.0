@@ -6,15 +6,26 @@ import { getOneSpotThunk } from "../../store/spots";
 import ReviewModal from "../Reviews";
 import DeleteSpot from "../DeleteSpot/DeleteSpot";
 import "./ShowOneSpot.css";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function ShowOneSpot() {
+  const { id } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   // console.log("🚀🚀🚀🚀🚀🚀 ~ sessionUser:", sessionUser);
   // console.log("🚀🚀🚀🚀🚀🚀 ~ sessionUser.first_name:", sessionUser.first_name);
 
   const spot = useSelector((state) => state.spots.oneSpot);
-  // console.log("🚀🚀🚀🚀🚀🚀 ~ spot:", spot);
+  // console.log("🚀🚀🚀🚀🚀🚀 ~ 123123spot:", spot);
+
+  // session owner id
+  const userId = sessionUser.id;
+
+  // finding business modal user id
+  const businessOwnerId = spot.user_id;
+
+  const businessOwner = userId === businessOwnerId;
 
   const { spotId } = useParams();
   // console.log("🚀🚀🚀🚀🚀🚀 ~ spotId:", spotId);
@@ -30,6 +41,10 @@ function ShowOneSpot() {
   // if (!spot || !spot.length) {
   //   return null;
   // }
+
+  const handleSpotUpdate = () => {
+    history.push(`/spots/${id}/update`);
+  };
 
   return (
     <>
@@ -49,6 +64,16 @@ function ShowOneSpot() {
         {sessionUser ? <ReviewModal spot={spot} /> : <p>No session user</p>}
         <div>
           <DeleteSpot />
+        </div>
+        <div>
+          Update Spot
+          <div>
+            {businessOwner && (
+              <>
+                <button onClick={handleSpotUpdate}>Update Spot</button>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </>
