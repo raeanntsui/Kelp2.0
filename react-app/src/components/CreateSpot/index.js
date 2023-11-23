@@ -8,7 +8,6 @@ export default function CreateSpotModal({ id }) {
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
 
-
   const [businessName, setBusinessName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -28,40 +27,33 @@ export default function CreateSpotModal({ id }) {
   //     history.push("/");
   //   }
 
-  //   const handleSubmit = async (e) => {
-  //     e.preventDefault();
-  //     const formData = new FormData();
-  //     formData.append("business_name", businessName);
-  //     formData.append("city", city);
-  //     formData.append("state", state);
-  //     formData.append("zip_code", zipCode);
-  //     formData.append("categories", categories);
-  //     formData.append("open_hours", openHours);
-  //     formData.append("close_hours", closeHours);
-  //     formData.append("description", description);
-  //     formData.append("price_range", priceRange);
-  //   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors({});
-    const newSpot = {
-      businessName,
-      city,
-      state,
-      zipCode,
-      categories,
-      openHours,
-      closeHours,
-      description,
-      priceRange,
-      user_id: user.id,
-    };
-    const res = await dispatch(createSpotThunk(newSpot));
+    const formData = new FormData();
+    formData.append("business_name", businessName);
+    formData.append("address", address);
+    formData.append("city", city);
+    formData.append("state", state);
+    formData.append("zip_code", zipCode);
+    formData.append("categories", categories);
+    formData.append("open_hours", openHours);
+    formData.append("close_hours", closeHours);
+    formData.append("description", description);
+    formData.append("price_range", priceRange);
 
-    if (!res.errors) {
-      // history.push(`/spots/${spot.id}`)
-      yesSubmitted(true);
+    try {
+      const response = await dispatch(createSpotThunk(formData));
+
+      console.log("Response:", response);
+
+      if (response && response.errors) {
+        setErrors(response.errors);
+      } else {
+        console.log("Create new spot success", response);
+        history.push(`/spots`);
+      }
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
 
