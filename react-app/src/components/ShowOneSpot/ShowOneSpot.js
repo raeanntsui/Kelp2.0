@@ -6,6 +6,7 @@ import { getOneSpotThunk } from "../../store/spots";
 import ReviewModal from "../Reviews";
 import DeleteSpot from "../DeleteSpot/DeleteSpot";
 import "./ShowOneSpot.css";
+import { getReviewsThunk } from "../../store/reviews";
 
 function ShowOneSpot() {
   const dispatch = useDispatch();
@@ -16,6 +17,9 @@ function ShowOneSpot() {
   const spot = useSelector((state) => state.spots.oneSpot);
   // console.log("🚀🚀🚀🚀🚀🚀 ~ spot:", spot);
 
+  const reviews = useSelector((state) => state.reviews.Reviews);
+  console.log("🚀 >>>>>>>>>> ~ reviews:", reviews);
+
   const { spotId } = useParams();
   // console.log("🚀🚀🚀🚀🚀🚀 ~ spotId:", spotId);
   // const singleSpot = Object.values(spot);
@@ -25,7 +29,8 @@ function ShowOneSpot() {
 
   useEffect(() => {
     dispatch(getOneSpotThunk(spotId));
-  }, [dispatch]);
+    dispatch(getReviewsThunk(spotId));
+  }, [dispatch, spotId]);
 
   // if (!spot || !spot.length) {
   //   return null;
@@ -46,6 +51,14 @@ function ShowOneSpot() {
       <div>
         <h2>Reviews</h2>
         <p>Get all reviews component here</p>
+        <div>
+          {Object.values(reviews).map((review) => (
+            <>
+              <div>{review.User?.firstName}</div>
+              <p>{review.review}</p>
+            </>
+          ))}
+        </div>
         {sessionUser ? <ReviewModal spot={spot} /> : <p>No session user</p>}
         <div>
           <DeleteSpot />
