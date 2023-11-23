@@ -1,5 +1,118 @@
-.spots-grid {
+.spots-front-page {
   display: flex;
-  justify-content: space-between;
-  align-content: center;
+  margin: 0 auto;
+  /* border: 4px dashed blue; */
+  max-width: 1200px;
+  /* justify-content: center; */
+  /* max-height: 900px; */
+}
+
+#spot-title {
+  margin: 0px;
+}
+
+.spots-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  justify-content: start;
+  /* border: 2px solid green; */
+}
+
+#spots-grid-navlink {
+  text-decoration: none;
+  color: black;
+}
+
+.each-spot {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 15px 0px;
+}
+
+.each-spots-image {
+  display: flex;
+  margin-right: 10px;
+  justify-content: start;
+  /* align-items: flex-start; */
+  /* border: 4px; */
+}
+
+.each-spots-image > img {
+  align-items: flex-start;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  margin: auto;
+  /* border: 4px dashed purple; */
+  border-radius: 10px;
+}
+
+.each-spots-info {
+  /* border: 4px dashed chartreuse; */
+  /* padding: 10px 0px; */
+  /* flex: 0 0 70%; */
+}
+
+.spots-grid-each {
+  /* border: 7px solid red; */
+  flex: 1;
+  grid-template-columns: 1fr;
+  align-items: start;
+  /* margin: 10px 10px; */
+}
+
+.spot-description {
+  color: rgba(110, 112, 114, 1);
+  /* text-align: left;
+  word-break: break-word; */
+}
+
+.open {
+  color: rgb(0, 128, 85);
+  font-weight: bold;
+}
+
+.opening-hours {
+  margin: 10px 0px;
+}
+
+.ellipsis-text {
+  /* max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap; */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.google-maps-grid {
+  flex: 0 0 40%;
+  /* border: 2px solid orange; */
+  max-height: fit-content;
+}
+
+.google-maps-grid > img {
+  max-width: 480px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.filled-star {
+  color: #fdcc0d;
+  margin: 10px 0px;
+}
+
+/* Categories */
+.categories {
+  display: inline-block;
+  background-color: rgb(240, 240, 240);
+  color: #6e7072;
+  font-weight: bold;
+  border-radius: 10px;
+  margin: 5px 0px;
+  padding: 5px 10px;
 }
