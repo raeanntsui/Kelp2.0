@@ -34,10 +34,10 @@ const updateSpot = (spot) => {
   };
 };
 
-const deleteSpot = (spot) => {
+const deleteSpot = (id) => {
   return {
     type: DELETE_SPOT,
-    spot,
+    id,
   };
 };
 
@@ -79,17 +79,18 @@ export const createSpotThunk = (newSpot) => async (dispatch) => {
   }
 };
 
-export const deleteSpotThunk = (spot) => async (dispatch) => {
-  try {
-    const res = await fetch(`/api/spots/${spot}`, {
-      method: "DELETE",
-    });
+export const deleteSpotThunk = (id) => async (dispatch) => {
+  const res = await fetch(`/api/spots/${id}`, {
+    method: "DELETE",
+  });
 
-    if (res.ok) {
-      dispatch(deleteSpot(spot));
-    }
-  } catch (e) {
-    return await e.json();
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(deleteSpot(id));
+    return data;
+  } else {
+    const errors = await res.json();
+    return errors;
   }
 };
 
@@ -144,6 +145,7 @@ const spotsReducer = (state = initialState, action) => {
 
     case DELETE_SPOT:
       newState = { ...state, allSpots: { ...state.allSpots } };
+      delete newState.allSpots[action.id];
     default:
       return state;
   }

@@ -66,6 +66,16 @@ def delete_spot():
     Delete spot (while logged in)
     """
     currentSpot = Spot.query.get(id)
+
+    if not currentSpot:
+        return {'error': 'Spot does not exists'}, 404
+
+    if currentSpot.user_id != current_user.id:
+        return {'error': 'You do not have permission to delete this spot'}, 401
+
+
+
+
     db.session.delete(currentSpot)
     db.session.commit()
     return "Spot successfully deleted"
