@@ -21,6 +21,7 @@ function Homepage() {
   //poo
   return (
     <>
+      <h1>testing</h1>
       <h1>HOMEPAGE</h1>
       <div className="spots-grid">
         {allSpots.map((spot) => (
