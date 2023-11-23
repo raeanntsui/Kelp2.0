@@ -14,7 +14,7 @@ function ShowOneSpot() {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
-  // console.log("🚀🚀🚀🚀🚀🚀 ~ sessionUser:", sessionUser);
+  // console.log("🚀🚀🚀🚀🚀🚀 ~ sessionUser:", sessionUser);asdasdasdasdasas
 
   const spot = useSelector((state) => state.spots.oneSpot);
   const reviews = useSelector((state) => state.reviews.Reviews);
