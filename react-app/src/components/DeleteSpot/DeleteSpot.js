@@ -33,7 +33,8 @@ function DeleteSpot({ spot }) {
             </button>
             <button
               id="bottom-button-delete"
-              onClick={doNotDeleteAndCloseModal}>
+              onClick={doNotDeleteAndCloseModal}
+            >
               No (Keep Spot)
             </button>
           </div>
