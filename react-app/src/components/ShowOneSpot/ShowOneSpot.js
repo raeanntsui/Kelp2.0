@@ -22,7 +22,7 @@ function ShowOneSpot() {
   // console.log("🚀 ~ file: ShowOneSpot.js:20 ~ ShowOneSpot ~ review:", reviews);
 
   // session owner id
-  const userId = sessionUser.id;
+  const userId = sessionUser?.id;
 
   // finding business modal user id
   const businessOwnerId = spot.user_id;
