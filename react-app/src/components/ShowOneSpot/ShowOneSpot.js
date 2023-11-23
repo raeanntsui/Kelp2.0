@@ -18,8 +18,8 @@ function ShowOneSpot() {
   // console.log("🚀🚀🚀🚀🚀🚀 ~ sessionUser.first_name:", sessionUser.first_name);
 
   const spot = useSelector((state) => state.spots.oneSpot);
-  const review = useSelector((state) => state.reviews.reviews);
-  console.log("🚀 ~ file: ShowOneSpot.js:20 ~ ShowOneSpot ~ review:", review);
+  const reviews = useSelector((state) => state.reviews.Reviews);
+  // console.log("🚀 ~ file: ShowOneSpot.js:20 ~ ShowOneSpot ~ review:", reviews);
 
   // session owner id
   const userId = sessionUser.id;
@@ -68,7 +68,18 @@ function ShowOneSpot() {
         <h2>Reviews</h2>
         <p>Get all reviews component here</p>
 
-        {sessionUser ? <ReviewModal spot={spot} /> : <p>No session user</p>}
+        {sessionUser && !businessOwner ? (
+          <ReviewModal spot={spot} />
+        ) : (
+          <p>Random message: Cannot post review -- you are the owner!</p>
+        )}
+        <div>
+          {Object.values(reviews).map((review) => (
+            <>
+              <p>{review.description}</p>
+            </>
+          ))}
+        </div>
         <div>
           <DeleteSpot />
         </div>
