@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getAllSpotsThunk } from "../../store/spots";
-import Fuse from 'fuse.js';
+import Fuse from "fuse.js";
+
 import "./ShowAllSpots.css";
 import DeleteSpot from "../DeleteSpot/DeleteSpot";
 
@@ -20,7 +21,7 @@ function ShowAllSpots() {
   // console.log("🚀🚀🚀🚀🚀🚀 ~ reviews:", reviews);
 
   const fuseOptions = {
-    keys: ['business_name', 'categories', 'price_range'],
+    keys: ["business_name", "categories", "price_range"],
     includeScore: true,
     threshold: 0.4,
   };
