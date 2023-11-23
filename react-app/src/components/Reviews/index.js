@@ -26,6 +26,7 @@ export default function ReviewModal({ spot }) {
   if (!currentSpotReviews) return null;
 
   let currReview;
+  //bla bla
   // find whether current user has posted a review at this spot or not
   if (user) {
     currReview = currentSpotReviews.find((review) => user.id === review.userId);
@@ -37,7 +38,8 @@ export default function ReviewModal({ spot }) {
         type="submit"
         onClick={() => {
           setModalContent(<ReviewForm spot={spot} />);
-        }}>
+        }}
+      >
         Post Your Review
       </button>
     </>
