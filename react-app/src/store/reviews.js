@@ -61,8 +61,8 @@ const reviewsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_REVIEWS:
       newState = { ...state, Reviews: {} };
-      if (action.reviews && action.reviews.Reviews) {
-        action.reviews.Reviews.forEach((review) => {
+      if (action.reviews) {
+        action.reviews.forEach((review) => {
           newState.Reviews[review.id] = review;
         });
       }
