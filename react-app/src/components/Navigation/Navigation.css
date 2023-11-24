@@ -5,3 +5,137 @@
 .hidden {
   display: none;
 }
+
+* {
+  font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  /* background-color: rgb(173, 173, 173); */
+  margin: 0px;
+  /* padding: 10px 10px; */
+}
+h1 {
+  font-size: 20px;
+  margin: 0px 0px;
+}
+
+button {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+#upper-half-homepage {
+  /* background-image: url("https://wallpapercave.com/wp/wp4553567.png"); */
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+#random-info {
+  height: 450px;
+}
+
+#kelp-logo {
+  font-size: 30px;
+  margin-left: 0px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#kelp-logo > h1 {
+  font-size: 30px;
+  padding: 0px 10px;
+  color: red;
+}
+
+#searchbar {
+  border: 2px solid red;
+  /* border-radius: 4px; */
+  display: flex;
+}
+
+#searchbar > input:first-child {
+  height: 30px;
+  width: fit-content;
+  background-color: white;
+  border: none;
+  padding: 2px 10px;
+}
+
+#searchbar > input:nth-child(3) {
+  height: 30px;
+  background-color: white;
+  border: none;
+  width: 200px;
+  padding: 2px 10px;
+}
+
+#search-icon {
+  width: 40px;
+  border: none;
+  color: white;
+}
+#searchbar {
+  padding: 0px;
+  margin: 0px;
+}
+
+#searchbar > h1 {
+  background-color: white;
+  font-size: 20px;
+  text-align: center;
+  color: lightgrey;
+}
+
+#top-nav {
+  /* min-width: 40%; */
+  /* border: 2px dashed blue; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 10px 10px;
+}
+
+#search-icon {
+  background-color: red;
+}
+
+#write-review-button {
+  background-color: transparent;
+  border: none;
+  height: 40px;
+  width: 70px;
+  border-radius: 4px;
+  color: white;
+}
+
+#homepage-buttons {
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 2px solid green; */
+}
+
+#write-review-button {
+  width: fit-content;
+  padding: 10px 10px;
+}
+
+#login-button {
+  background-color: transparent;
+  border: 2px solid rgb(255, 255, 255);
+  width: fit-content;
+  padding: 10px 10px;
+  color: white;
+  border-radius: 4px;
+  /* height: 20px; */
+}
+
+#signup-button {
+  background-color: red;
+  width: fit-content;
+  padding: 10px 10px;
+  color: white;
+  border-radius: 4px;
+  border: 2px solid red;
+}
