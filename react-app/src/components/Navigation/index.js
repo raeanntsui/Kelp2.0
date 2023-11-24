@@ -13,9 +13,15 @@ function Navigation({ isLoaded }) {
         <div id="top-nav">
           <div id="kelp-logo">
             <NavLink exact to="/">
-              Kelp
+              <div className="logo-container">
+                <h1>Kelp</h1>
+                <img
+                  id="kelp-image"
+                  src="https://media.tenor.com/4eI6Uy-ariYAAAAC/jellyfish-spongebob.gif"
+                  alt="Kelp Logo"
+                />
+              </div>
             </NavLink>{" "}
-            <i class="fa-brands fa-yelp"></i>
           </div>
           <div id="searchbar">
             <input
@@ -29,36 +35,34 @@ function Navigation({ isLoaded }) {
             </button>
           </div>
           <div id="homepage-buttons">
-            <button id="write-review-button">Write a Review</button>
-            <button id="login-button">Log In</button>
-            <button id="signup-button">Sign Up</button>
+            <div className="all-spots">
+              <NavLink exact to="/spots">
+                View All Spots
+              </NavLink>
+            </div>
+            <div className="create-spot">
+              <NavLink exact to="/spots/new">
+                Create a New Spot
+              </NavLink>
+            </div>
+            {/* <button id="write-review-button">Write a Review</button> */}
+            <div className="login-dropdown">
+              {isLoaded && (
+                // <li>
+                <ProfileButton user={sessionUser} />
+                // </li>
+              )}
+            </div>
           </div>
         </div>
       </div>
-      <div>
-        <ul>
-          <li>
-            <NavLink exact to="/">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/spots">
-              Spots
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/spots/new">
-              Create New Spot
-            </NavLink>
-          </li>
-          {isLoaded && (
-            <li>
-              <ProfileButton user={sessionUser} />
-            </li>
-          )}
-        </ul>
-      </div>
+      {/* <div>
+        {isLoaded && (
+          // <li>
+          <ProfileButton user={sessionUser} />
+          // </li>
+        )}
+      </div> */}
     </>
   );
 }
