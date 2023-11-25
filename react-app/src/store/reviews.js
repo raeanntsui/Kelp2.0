@@ -59,18 +59,20 @@ export const createReviewThunk = (review, spotId) => async (dispatch) => {
 
 export const updateReviewThunk =
   (reviewId, updatedReviewData) => async (dispatch) => {
-    const res = await fetch(`/api/reviews/update/${reviewId}`, {
+    const urlParams = new URLSearchParams();
+    for (const key of Object.keys(updatedReviewData)) {
+      urlParams.append(key, updatedReviewData[key]);
+    }
+    const res = await fetch(`/api/reviews/${reviewId}`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedReviewData),
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: urlParams,
     });
 
     if (res.ok) {
       const updatedReview = await res.json();
-      dispatch(updateReview(updatedReview));
-      return updatedReview;
+      dispatch(updateReview(updatedReview.updateReview));
+      return updatedReview.updateReview;
     } else {
       console.error(`Server error: ${res.status}`);
       return { error: `Server error: ${res.status}` };
