@@ -59,16 +59,26 @@ def create_spot():
 
     return {"error": validation_errors_to_error_messages(form.errors)}, 400
 
-@spots_routes.route("/<int:id>", methods=["DELETE"])
+@spots_routes.route("/<int:spotId>", methods=["DELETE"])
 @login_required
-def delete_spot():
+def delete_spot(spotId):
     """
     Delete spot (while logged in)
     """
-    currentSpot = Spot.query.get(id)
+    currentSpot = Spot.query.get(spotId)
+
+    if not currentSpot:
+        return {'error': 'Spot does not exists'}, 404
+
+    if currentSpot.user_id != current_user.id:
+        return {'error': 'You do not have permission to delete this spot'}, 401
+
+
+
+
     db.session.delete(currentSpot)
     db.session.commit()
-    return "Spot successfully deleted"
+    return {'error': 'Spot successfully deleted'}
 
 
 @spots_routes.route("/<int:id>", methods=["PUT"])

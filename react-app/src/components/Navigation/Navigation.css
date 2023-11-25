@@ -1,7 +1,219 @@
 .profile-dropdown {
   position: absolute;
+  top: 100%;
+  right: 0;
+  border: 1px solid rgb(221, 221, 221);
+  padding: 10px;
+  z-index: 1;
+  text-decoration: none;
+  width: 200px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 18px #00000026;
+  padding: 16px;
+}
+
+.profile-dropdown > li:first-child {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.profile-dropdown > li:nth-child(1) {
+  margin-bottom: 5px;
+}
+.profile-dropdown > li:nth-child(2) {
+  margin-bottom: 5px;
+}
+.profile-dropdown > li:nth-child(3) {
+  margin-bottom: 5px;
+}
+.profile-dropdown > li:nth-child(4) {
+  margin-bottom: 5px;
+}
+
+/* .profile-dropdown > li:nth-child(5) {
+  width: 100px;
+  height: 20px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+} */
+ul {
+  list-style-type: none;
 }
 
 .hidden {
   display: none;
+}
+
+* {
+  font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  /* background-color: rgb(173, 173, 173); */
+  margin: 0px;
+  /* padding: 10px 10px; */
+}
+
+h1 {
+  font-size: 20px;
+  margin: 0px 0px;
+}
+
+button {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+#upper-half-homepage {
+  /* background-image: url("https://wallpapercave.com/wp/wp4553567.png"); */
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+#random-info {
+  height: 450px;
+}
+
+#kelp-logo > h1 {
+  font-size: 30px;
+  padding: 0px 10px;
+  color: red;
+}
+#kelp-logo {
+  /* border: 3px dashed red; */
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  margin: 0px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+#kelp-image {
+  height: 30px;
+  margin-left: 5px;
+}
+#searchbar {
+  border: 2px solid red;
+  max-width: 600px;
+  /* padding: 0px 10px; */
+  display: flex;
+  flex-grow: 1;
+  /* margin: 0 20px; */
+  justify-content: space-between;
+}
+
+#searchbar > input:first-child {
+  height: 30px;
+  width: fit-content;
+  background-color: white;
+  border: none;
+  /* padding: 2px 10px; */
+  margin: 0px 5px;
+}
+
+#searchbar > input:nth-child(3) {
+  height: 30px;
+  background-color: white;
+  border: none;
+  width: 200px;
+  /* padding: 2px 10px; */
+  margin: 0px 5px;
+}
+
+#search-icon {
+  width: 40px;
+  border: none;
+  color: white;
+}
+#searchbar {
+  padding: 0px;
+  margin: 0px;
+}
+
+#searchbar > h1 {
+  background-color: white;
+  font-size: 20px;
+  text-align: center;
+  color: lightgrey;
+}
+
+#top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 0 20px; */
+  position: relative;
+  /* border: 5px solid pink; */
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#search-icon {
+  background-color: red;
+  margin: 0px;
+}
+
+#write-review-button {
+  background-color: transparent;
+  border: none;
+  height: 40px;
+  width: 70px;
+  border-radius: 4px;
+  color: white;
+}
+
+#homepage-buttons {
+  /* width: 250px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px;
+  /* border: 3px dashed blueviolet; */
+  gap: 15px;
+}
+
+#write-review-button {
+  width: fit-content;
+  padding: 10px 10px;
+}
+
+#login-button {
+  /* background-color: white; */
+  border: 2px solid rgb(255, 255, 255);
+  width: fit-content;
+  padding: 10px 10px;
+  color: white;
+  border-radius: 4px;
+  /* height: 20px; */
+}
+
+#signup-button {
+  background-color: red;
+  width: fit-content;
+  padding: 10px 10px;
+  color: white;
+  border-radius: 4px;
+  border: 2px solid red;
+}
+
+.all-spots {
+  /* border: 4px solid black; */
+}
+
+.create-spot {
+  /* border: 4px dashed darkcyan; */
+}
+
+.login-dropdown > button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgb(221, 221, 221);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  background-color: white;
 }

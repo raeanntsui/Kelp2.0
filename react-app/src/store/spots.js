@@ -4,6 +4,8 @@ const GET_ONE_SPOT = "spots/GET_ONE_SPOT";
 const CREATE_SPOT = "spots/CREATE_SPOT";
 const UPDATE_SPOT = "spots/UPDATE_SPOT";
 const DELETE_SPOT = "spots/DELETE_SPOT";
+export const DELETE_SPOT_SUCCESS = "DELETE_SPOT_SUCCESS";
+export const DELETE_SPOT_FAILURE = "DELETE_SPOT_FAILURE";
 
 // action creators
 const getAllSpots = (spots) => {
@@ -34,10 +36,24 @@ const updateSpot = (spot) => {
   };
 };
 
-const deleteSpot = (spot) => {
+const deleteSpot = (id) => {
   return {
     type: DELETE_SPOT,
-    spot,
+    id,
+  };
+};
+
+export const deleteSpotSuccess = (spotId) => {
+  return {
+    type: DELETE_SPOT_SUCCESS,
+    spotId: spotId,
+  };
+};
+
+export const deleteSpotFailure = (error) => {
+  return {
+    type: DELETE_SPOT_FAILURE,
+    error: error,
   };
 };
 
@@ -79,17 +95,48 @@ export const createSpotThunk = (newSpot) => async (dispatch) => {
   }
 };
 
-export const deleteSpotThunk = (spot) => async (dispatch) => {
+// export const deleteSpotThunk = (spotId) => async (dispatch) => {
+//   try {
+//     const res = await fetch(`/api/spots/${spotId}`, {
+//       method: "DELETE",
+//     });
+
+//     if (!res.ok) {
+//       const spotError = await res.json();
+//       throw new Error(spotError.message);
+//     }
+//     dispatch(deleteSpot(spotId));
+//   } catch (error) {
+//     console.error("delete spot error", error.message);
+//   }
+// };
+
+export const deleteSpotThunk = (spotId) => async (dispatch) => {
   try {
-    const res = await fetch(`/api/spots/${spot}`, {
+    const res = await fetch(`/api/spots/${spotId}`, {
       method: "DELETE",
     });
+    console.log("🚀 VALUE OF IDDDDDDDDDDDDDDD id:", spotId);
 
-    if (res.ok) {
-      dispatch(deleteSpot(spot));
+    if (!res.ok) {
+      let spotError;
+      try {
+        spotError = await res.json();
+      } catch (jsonError) {
+        // Handle non-JSON response
+        console.error("Non-JSON error response:", res.statusText);
+        throw new Error("Spot deletion failed");
+      }
+
+      throw new Error(spotError.message);
     }
-  } catch (e) {
-    return await e.json();
+
+    // Dispatch an action to update the Redux store with the successful deletion
+    dispatch(deleteSpotSuccess(spotId));
+  } catch (error) {
+    console.error("delete spot error", error.message);
+    // Dispatch an action to update the Redux store with the error information
+    dispatch(deleteSpotFailure(error.message));
   }
 };
 
@@ -144,6 +191,18 @@ const spotsReducer = (state = initialState, action) => {
 
     case DELETE_SPOT:
       newState = { ...state, allSpots: { ...state.allSpots } };
+      delete newState.allSpots[action.id];
+      return newState;
+
+    case DELETE_SPOT_SUCCESS:
+      newState = { ...state, allSpots: { ...state.allSpots } };
+      delete newState.allSpots[action.spotId];
+      return newState;
+
+    case DELETE_SPOT_FAILURE:
+      // Handle failure, update state accordingly
+      console.error("Delete spot failure:", action.error);
+      return state;
     default:
       return state;
   }

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, Review
+from app.models import db, Review, User
 from ..forms import ReviewForm
 
 
@@ -21,6 +21,7 @@ def spot_reviews(spot_id):
     get all reviews for a specific spot
     '''
     reviews = Review.query.filter_by(spot_id=spot_id).all()
+    # users = User.query.filter_by(user_id=user_id).all()
     return jsonify([review.to_dict() for review in reviews])
 
 @reviews_routes.route("/new/<int:spot_id>", methods=["POST"])

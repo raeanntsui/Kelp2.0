@@ -64,7 +64,7 @@ const UpdateSpotPage = () => {
     if (response.errors) {
       setErrors(response.errors);
     } else {
-      console.log("update product successful react act, res", response);
+      console.log("update business successful res", response);
       history.push(`/spots/${id}`);
       return "success";
     }

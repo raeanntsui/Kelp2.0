@@ -29,7 +29,7 @@ function ShowOneSpot() {
   console.log("🚀 >>>>>>>>>> ~ spotReviewssdfsdfsdfsdfsd:", spotReviews);
 
   // session owner id
-  const userId = sessionUser.id;
+  const userId = sessionUser?.id;
 
   const currentUserReview = Object.values(spotReviews).find(
     (review) => review.user_id === userId
