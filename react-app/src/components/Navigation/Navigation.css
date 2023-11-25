@@ -91,6 +91,9 @@ button {
   align-items: center;
 }
 
+.logo-container > h1 {
+  color: red;
+}
 #kelp-image {
   height: 30px;
   margin-left: 5px;
