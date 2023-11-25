@@ -5,13 +5,14 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { NavLink } from "react-router-dom";
+
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
   const sessionUser = useSelector((state) => state.session.user);
   const businessOwner = sessionUser?.business_owner;
-  console.log("🚀🚀🚀🚀🚀🚀 ~ businessOwnerStatus:", businessOwner);
+  // console.log("🚀🚀🚀🚀🚀🚀 ~ businessOwnerStatus:", businessOwner);
 
   const openMenu = () => {
     if (showMenu) return;
@@ -43,7 +44,8 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu}>
-        <i class="fa-solid fa-user"></i>
+        {/* <i class="fa-solid fa-user"></i> */}
+        <i class="fa-solid fa-right-to-bracket"></i>
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
@@ -57,11 +59,6 @@ function ProfileButton({ user }) {
             </li>
             <li>Hello, {user.username}!</li>
             <li>{user.email}</li>
-            <li>
-              <NavLink exact to="/spots/new">
-                Create a New Spot
-              </NavLink>
-            </li>
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>

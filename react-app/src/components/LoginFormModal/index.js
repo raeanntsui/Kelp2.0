@@ -37,35 +37,41 @@ function LoginFormModal() {
 
   return (
     <>
-      <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-        <button className="demo-button" onClick={handleLogInDemo}>
-          Log in as Demo User
-        </button>
+        <h1 id="login-h1">Log In</h1>
+        {/* <ul> */}
+        {errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
+        {/* </ul> */}
+        <div className="email-pw">
+          <div className="email">
+            <label>Email</label>
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="password">
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div className="login">
+            <button type="submit">Log In</button>
+          </div>
+          <div className="demo-login">
+            <button className="demo-button" onClick={handleLogInDemo}>
+              Log in as Demo User
+            </button>
+          </div>
+        </div>
       </form>
     </>
   );
