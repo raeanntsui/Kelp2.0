@@ -52,11 +52,13 @@ def create_review(spot_id):
         return jsonify({"message": "Invalid form submission", "errors": errors}), 400
 
 @reviews_routes.route("/<int:review_id>", methods=["PUT"])
+@login_required
 def update_review(review_id):
     '''
     update an existing review
     '''
     form = ReviewForm(request.form)
+    form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         review = Review.query.get(review_id)
@@ -69,7 +71,7 @@ def update_review(review_id):
 
         db.session.commit()
 
-        return jsonify({"message": "Review updated successfully"})
+        return {"updateReview": review.to_dict()}
     else:
         return (jsonify({"error": "Invalid form data"}), 400)
 

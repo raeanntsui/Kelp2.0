@@ -31,7 +31,7 @@ class Spot(db.Model):
     # spot can have many images
     spot_image = db.relationship("SpotImage", back_populates="spot" )
 
-    review = db.relationship("Review", back_populates="spot")
+    review = db.relationship("Review", back_populates='spot', cascade='all, delete')
 
     def to_dict(self):
         return {
