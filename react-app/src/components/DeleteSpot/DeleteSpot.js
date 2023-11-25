@@ -3,21 +3,23 @@ import { useDispatch } from "react-redux";
 import { deleteSpotThunk } from "../../store/spots";
 import "./DeleteSpot.css";
 import { useModal } from "../../context/Modal";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
-function DeleteSpot({ spotId }) {
+function DeleteSpot() {
+  const { spotId } = useParams();
+
   const { closeModal } = useModal();
   const dispatch = useDispatch();
-  const [errors, setErrors] = useState({});
-  const { push } = useHistory();
+  // const [errors, setErrors] = useState({});
+  const history = useHistory();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const yesbutton = async () => {
+    console.log("Value of id before calling deleteSpotThunk:", spotId);
     await dispatch(deleteSpotThunk(spotId));
+    history.push(`/spots`);
     closeModal();
   };
-  const handleCancel = async (e) => {
-    e.preventDefault();
+  const nobutton = async () => {
     closeModal();
   };
   return (
@@ -26,10 +28,10 @@ function DeleteSpot({ spotId }) {
         <h1>Confirm Delete</h1>
         <h2>Are you sure you want to remove this spot from the listings?</h2>
         <div id="delete-review-button">
-          <button id="top-button-delete" onClick={handleSubmit}>
+          <button id="top-button-delete" onClick={yesbutton}>
             Yes (Delete Spot)
           </button>
-          <button id="bottom-button-delete" onClick={handleCancel}>
+          <button id="bottom-button-delete" onClick={nobutton}>
             No (Keep Spot)
           </button>
         </div>
