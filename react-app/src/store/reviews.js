@@ -1,5 +1,6 @@
 const GET_REVIEWS = "reviews/GET_REVIEWS";
 const CREATE_REVIEW = "reviews/CREATE_REVIEW";
+const UPDATE_REVIEW = "review/UPDATE_REVIEW";
 
 //Action
 const getReviews = (reviews) => ({
@@ -7,8 +8,12 @@ const getReviews = (reviews) => ({
   reviews,
 });
 
-const createReview = (newReview) => ({
+const createReview = (review) => ({
   type: CREATE_REVIEW,
+  review,
+});
+const updateReview = (newReview) => ({
+  type: UPDATE_REVIEW,
   newReview,
 });
 
@@ -40,10 +45,10 @@ export const createReviewThunk = (review, spotId) => async (dispatch) => {
       body: urlParams,
     });
     if (res.ok) {
-      const newReview = await res.json();
-      dispatch(createReview(newReview));
+      const review = await res.json();
+      dispatch(createReview(review));
       await dispatch(getReviewsThunk(spotId));
-      return newReview;
+      return review;
     } else {
       console.error(`Server error: ${res.status}`);
     }
@@ -51,6 +56,28 @@ export const createReviewThunk = (review, spotId) => async (dispatch) => {
     return await e.json();
   }
 };
+
+export const updateReviewThunk =
+  (reviewId, updatedReviewData) => async (dispatch) => {
+    const urlParams = new URLSearchParams();
+    for (const key of Object.keys(updatedReviewData)) {
+      urlParams.append(key, updatedReviewData[key]);
+    }
+    const res = await fetch(`/api/reviews/${reviewId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: urlParams,
+    });
+
+    if (res.ok) {
+      const updatedReview = await res.json();
+      dispatch(updateReview(updatedReview.updateReview));
+      return updatedReview.updateReview;
+    } else {
+      console.error(`Server error: ${res.status}`);
+      return { error: `Server error: ${res.status}` };
+    }
+  };
 
 const initialState = {
   Reviews: {},
@@ -72,8 +99,17 @@ const reviewsReducer = (state = initialState, action) => {
         ...state,
         Reviews: { ...state.Reviews },
       };
+      newState.Reviews[action.review.id] = action.review;
+      return newState;
+
+    case UPDATE_REVIEW:
+      newState = {
+        ...state,
+        Reviews: { ...state.Reviews },
+      };
       newState.Reviews[action.newReview.id] = action.newReview;
       return newState;
+
     default:
       return state;
   }
