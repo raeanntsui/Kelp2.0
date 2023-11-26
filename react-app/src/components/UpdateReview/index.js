@@ -3,9 +3,11 @@ import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { updateReviewThunk } from "../../store/reviews";
 
+
 function UpdateReview({ spot, review }) {
   const [description, setDescription] = useState("");
   const [starRating, setStarRating] = useState(0);
+
   const [hover, setHover] = useState(0);
   const [errors, setErrors] = useState({});
   const [submit, setSubmit] = useState(false);
@@ -14,6 +16,7 @@ function UpdateReview({ spot, review }) {
   const { closeModal } = useModal();
   const user = useSelector((state) => state.session.user);
 
+
   // Update state when review prop changes
   useEffect(() => {
     if (review) {
@@ -21,6 +24,8 @@ function UpdateReview({ spot, review }) {
       setStarRating(review.rating || 0);
     }
   }, [review]);
+
+
 
   const checkValidation = () => {
     return description.length > 9 && starRating;
@@ -36,6 +41,7 @@ function UpdateReview({ spot, review }) {
   }, [description]);
 
   const handleSubmit = async (e) => {
+
     if (!spot.id || !user) {
       return null;
     }
@@ -48,11 +54,13 @@ function UpdateReview({ spot, review }) {
     setSubmit(true);
 
     const submitReview = {
+
       description: description,
       rating: starRating,
     };
 
     if (Object.keys(errors).length === 0) {
+
       dispatch(updateReviewThunk(review.id, submitReview));
       closeModal();
       setSubmit(false);
@@ -77,6 +85,7 @@ function UpdateReview({ spot, review }) {
       <p>{submit && errors.description}</p>
 
       <div className="stars">
+
         <i
           className={
             (hover || starRating) >= 1
@@ -129,9 +138,11 @@ function UpdateReview({ spot, review }) {
         />
       </div>
 
+
       <div>
         <p>Stars</p>
       </div>
+
 
       {isCurrentUserReview && (
         <button
@@ -142,6 +153,7 @@ function UpdateReview({ spot, review }) {
           Update Review
         </button>
       )}
+
     </form>
   );
 }

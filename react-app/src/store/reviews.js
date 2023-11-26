@@ -1,7 +1,9 @@
 const GET_REVIEWS = "reviews/GET_REVIEWS";
 const CREATE_REVIEW = "reviews/CREATE_REVIEW";
 const UPDATE_REVIEW = "review/UPDATE_REVIEW";
+
 const DELETE_REVIEW = "/spots/DELETE_REVIEW";
+
 
 //Action
 const getReviews = (reviews) => ({
@@ -58,6 +60,7 @@ export const createReviewThunk = (review, spotId) => async (dispatch) => {
       dispatch(createReview(review));
       await dispatch(getReviewsThunk(spotId));
       return review;
+
     } else {
       console.error(`Server error: ${res.status}`);
     }
@@ -82,6 +85,7 @@ export const updateReviewThunk =
       const updatedReview = await res.json();
       dispatch(updateReview(updatedReview.updateReview));
       return updatedReview.updateReview;
+
     } else {
       console.error(`Server error: ${res.status}`);
       return { error: `Server error: ${res.status}` };
@@ -101,6 +105,26 @@ export const deleteReviewThunk = (review) => async (dispatch) => {
     return await e.json();
   }
 };
+
+export const updateReviewThunk =
+  (reviewId, updatedReviewData) => async (dispatch) => {
+    const res = await fetch(`/api/reviews/update/${reviewId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedReviewData),
+    });
+
+    if (res.ok) {
+      const updatedReview = await res.json();
+      dispatch(updateReview(updatedReview));
+      return updatedReview;
+    } else {
+      console.error(`Server error: ${res.status}`);
+      return { error: `Server error: ${res.status}` };
+    }
+  };
 
 const initialState = {
   Reviews: {},
@@ -132,6 +156,7 @@ const reviewsReducer = (state = initialState, action) => {
       };
       newState.Reviews[action.newReview.id] = action.newReview;
       return newState;
+
 
     case DELETE_REVIEW:
       newState = {

@@ -17,7 +17,6 @@ function ShowOneSpot() {
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   // console.log("🚀🚀🚀🚀🚀🚀 ~ sessionUser:", sessionUser);
-  // console.log("🚀🚀🚀🚀🚀🚀 ~ sessionUser.first_name:", sessionUser.first_name);
 
   const spot = useSelector((state) => state.spots.oneSpot);
   const reviews = useSelector((state) => state.reviews.Reviews);
@@ -35,6 +34,7 @@ function ShowOneSpot() {
     (review) => review.user_id === userId
   );
   // console.log("🚀 >>>>>>>>>> ~ reviewsdfsdfsdfsdf:", review);
+
 
   // finding business modal user id
   const businessOwnerId = spot.user_id;
@@ -61,19 +61,14 @@ function ShowOneSpot() {
     history.push(`/spots/${spotId}/update`);
   };
 
-  // const spotBackground = {
-  //   backgroundImage:
-  //     'url("https://m.media-amazon.com/images/M/MV5BMTRkNTEzNDQtOGZmMC00MDA2LWJiYmYtZDI0YmFjZWUyMjZlXkEyXkFqcGdeQXVyODA1ODcxNTY@._V1_.jpg")',
-  //   backgroundSize: "cover",
-  //   backgroundRepeat: "no-repeat",
-  //   height: "300px",
-  //   width: "100%",
-  // };
+  const allUsers = spot.user_id;
+  console.log("🚀🚀🚀🚀🚀🚀 ~ allUsers:", allUsers);
 
   return (
     <>
       <div>
         {/* <p>Business Owner: {spot.user_id}</p> */}
+
         <div className="spot-details-top-half">
           <div className="spot-background">
             <img src="https://m.media-amazon.com/images/M/MV5BMTRkNTEzNDQtOGZmMC00MDA2LWJiYmYtZDI0YmFjZWUyMjZlXkEyXkFqcGdeQXVyODA1ODcxNTY@._V1_.jpg" />
@@ -90,6 +85,7 @@ function ShowOneSpot() {
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
         </p>
+
         <p>Business category: {spot.categories}</p>
         <p>{spot.address}</p>
         <p>About the Business: {spot.description}</p>
@@ -106,7 +102,10 @@ function ShowOneSpot() {
         <div>
           {Object.values(reviews).map((review) => (
             <>
-              <p>{review.description}</p>
+              <p>User ID: {review.user_id}</p>
+              {/* <p>{review.User.first_name}</p> */}
+              <p>Star Rating: {review.rating}</p>
+              <p>Review Description: {review.description}</p>
             </>
           ))}
         </div>
