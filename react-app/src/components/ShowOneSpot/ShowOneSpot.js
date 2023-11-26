@@ -61,14 +61,35 @@ function ShowOneSpot() {
     history.push(`/spots/${spotId}/update`);
   };
 
+  // const spotBackground = {
+  //   backgroundImage:
+  //     'url("https://m.media-amazon.com/images/M/MV5BMTRkNTEzNDQtOGZmMC00MDA2LWJiYmYtZDI0YmFjZWUyMjZlXkEyXkFqcGdeQXVyODA1ODcxNTY@._V1_.jpg")',
+  //   backgroundSize: "cover",
+  //   backgroundRepeat: "no-repeat",
+  //   height: "300px",
+  //   width: "100%",
+  // };
+
   return (
     <>
       <div>
-        <h1>GET SINGLE SPOT</h1>
         {/* <p>Business Owner: {spot.user_id}</p> */}
-        <p>{spot.business_name}</p>
-        <p>Spot owner id: {spot.user_id}</p>
-        <p>AVERAGE RATING HERE</p>
+        <div className="spot-details-top-half">
+          <div className="spot-background">
+            <img src="https://m.media-amazon.com/images/M/MV5BMTRkNTEzNDQtOGZmMC00MDA2LWJiYmYtZDI0YmFjZWUyMjZlXkEyXkFqcGdeQXVyODA1ODcxNTY@._V1_.jpg" />
+          </div>
+          <div className="business-name">
+            <p>{spot.business_name}</p>
+          </div>
+        </div>
+        {/* <p>Spot owner id: {spot.user_id}</p> */}
+        <p>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </p>
         <p>Business category: {spot.categories}</p>
         <p>{spot.address}</p>
         <p>About the Business: {spot.description}</p>

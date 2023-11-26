@@ -1,0 +1,18 @@
+.spot-background > img {
+  position: sticky;
+  max-height: 400px;
+  height: auto;
+  width: 100%;
+}
+
+.spot-details-top-half {
+  position: relative;
+  border: 6px solid rgb(200, 0, 255);
+}
+
+.business-name {
+  border: 6px solid rgb(21, 255, 0);
+  font-size: 48px;
+  color: blue;
+  font-weight: bold;
+}
