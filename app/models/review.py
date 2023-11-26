@@ -46,4 +46,5 @@ class Review(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'spot_id': self.spot_id,
+            'user': self.user.to_dict(),
         }

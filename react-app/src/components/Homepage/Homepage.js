@@ -46,6 +46,7 @@ function Homepage() {
   return (
     <>
       {/* <h1>HOMEPAGE</h1> */}
+
       <div className="frontpage-image">
         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgV4opNgXkJW3vJ1no6nvp8SCwtJuisrOjeU27QfOlESq9x-VwalxQZ1Is9wmfPClELNca7B5javckAuZodxRq4lzPW65SzPq7Kh_QVPWadFpTHSoYlgL9Z2DG8pcDYBFko1NrpcbdvC1_qTeMQABDEmPZdPL0gE8O-qsM_Ob93tZtSc0Fqyw/s1420/No_Weenies_Allowed_043.webp" />
       </div>
@@ -70,6 +71,12 @@ function Homepage() {
                 </p>
               </div>
             </div>
+            {spot.review.map((review) => (
+              <div key={review.id}>
+                <p>Description: {review.spot_id}</p>
+                {/* Add more lines for other properties if needed */}
+              </div>
+            ))}
             <div className="recent-activity-business-name">
               <NavLink to={`/spots/${spot.id}`}>{spot.business_name}</NavLink>
             </div>
@@ -84,6 +91,7 @@ function Homepage() {
                 is for you and me N is for anywhere and anytime at all Down here
                 in the deep blue sea.
               </p>
+
             </div>
           </div>
         ))}
