@@ -1,11 +1,21 @@
-.spot-background > img {
-  position: sticky;
+/* .spot-background > img {
+  position: absolute;
   max-height: 400px;
   height: auto;
   width: 100%;
-}
+  background-position: 0%;
+  z-index: 99;
+} */
 
-.spot-details-top-half {
+/* .spot-details-top {
+  position: absolute;
+  z-index: 1;
+} */
+
+.show-one-spot-bottom-content {
+  padding: 20px;
+}
+.spot-details-bottom {
   position: relative;
   border: 6px solid rgb(200, 0, 255);
 }
