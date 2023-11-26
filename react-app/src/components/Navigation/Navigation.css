@@ -6,11 +6,30 @@
   padding: 10px;
   z-index: 1;
   text-decoration: none;
-  width: 200px;
+  width: fit-content;
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 0 18px #00000026;
   padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* justify-content: flex-start; */
+}
+
+.profile-dropdown > button {
+  background-color: #d32323;
+  width: 100px;
+  padding: 10px 10px;
+  color: white;
+  border-radius: 4px;
+  /* border: 2px solid #d32323; */
+  border: none;
+}
+
+.profile-dropdown > button:hover {
+  cursor: pointer;
+  background-color: rgba(237, 62, 62, 0.638);
 }
 
 .profile-dropdown > li:first-child {

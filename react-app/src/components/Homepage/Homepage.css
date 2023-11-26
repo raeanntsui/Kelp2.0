@@ -1,6 +1,6 @@
 .frontpage-image > img {
   width: 100%;
-  z-index: 2;
+  /* z-index: 2; */
   position: relative;
 }
 

@@ -39,9 +39,9 @@ form > input {
   background-color: #d32323;
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 4px;
   cursor: pointer;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .email-pw {
@@ -54,16 +54,19 @@ form > input {
 .password {
   display: flex;
   flex-direction: column;
+  margin: 0px;
+  padding: 0px;
 }
 
 .email label,
 .password label {
+  font-weight: bold;
   margin-bottom: 8px;
 }
 
 .email input,
 .password input {
-  width: 200px;
+  width: 100%;
   padding: 5px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -73,7 +76,7 @@ form > input {
 
 #modal-content {
   /* border: 3px solid black; */
-  width: 300px;
+  width: 400px;
   height: fit-content;
   border-radius: 10px;
   margin: 0;
@@ -83,4 +86,13 @@ form > input {
 #modal-content form {
   margin: 0;
   padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+.modal-errors {
+  padding-bottom: 10px;
+  color: red;
+  /* width: 100%; */
 }
