@@ -54,7 +54,7 @@ def create_spot():
             )
             db.session.add(spot_params)
             db.session.commit()
-            return {"resCreateSpot": spot_params.to_dict()}
+            return {"newSpot": spot_params.to_dict()}
 
 
     return {"error": validation_errors_to_error_messages(form.errors)}, 400

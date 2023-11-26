@@ -33,5 +33,17 @@ class Review(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'user_id': self.user_id,
-            'spot_id': self.spot_id
+            'spot_id': self.spot_id,
+        }
+
+    def to_dict_information(self):
+        return {
+            'id': self.id,
+            'rating': self.rating,
+            'description': self.description,
+            'user_img':self.user_img,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            'user': self.user.to_dict(),
+            'spot_id': self.spot_id,
         }

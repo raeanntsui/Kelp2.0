@@ -7,22 +7,22 @@ from ..forms import ReviewForm
 
 reviews_routes = Blueprint("reviews", __name__)
 
-# @reviews_routes.route("/")
-# def get_all_reviews():
-#     '''
-#     get all reviews 
-#     '''
-#     reviews = Review.query.all()
-#     return jsonify([review.to_dict() for review in reviews])
+@reviews_routes.route("/all")
+def get_all_reviews():
+    '''
+    get all reviews
+    '''
+    reviews = Review.query.all()
+    return {"reviews":[review.to_dict_information() for review in reviews]}
 
 @reviews_routes.route("/<int:spot_id>")
 def spot_reviews(spot_id):
     '''
     get all reviews for a specific spot
     '''
-    reviews = Review.query.filter_by(spot_id=spot_id).all()
+    review = Review.query.filter_by(spot_id=spot_id).all()
     # users = User.query.filter_by(user_id=user_id).all()
-    return jsonify([review.to_dict() for review in reviews])
+    return {"reviews":[review.to_dict_information()]}
 
 @reviews_routes.route("/new/<int:spot_id>", methods=["POST"])
 @login_required
@@ -94,4 +94,3 @@ def delete_review(review_id):
     db.session.commit()
 
     return jsonify({"message": "Review deleted successfully"})
-    
