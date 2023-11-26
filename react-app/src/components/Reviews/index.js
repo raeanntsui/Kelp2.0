@@ -3,8 +3,8 @@ import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { getReviewsThunk } from "../../store/reviews";
 import ReviewForm from "./form";
-// import OpenModalButton from "../OpenModalButton";
-// import DeleteReview from "../DeleteReview";
+import OpenModalButton from "../OpenModalButton";
+import DeleteReview from "../DeleteReview";
 
 export default function ReviewModal({ spot }) {
   console.log("🚀 >>>>>>>>>> ~ spot:", spot);
@@ -14,7 +14,7 @@ export default function ReviewModal({ spot }) {
   const user = useSelector((state) => state.session.user);
 
   const spotReviews = useSelector((state) => state.reviews.Reviews);
-  console.log("spotReviews>>>>>>>:   ", spotReviews);
+  // console.log("spotReviews>>>>>>>:   ", spotReviews);
 
   const currentSpotReviews = Object.values(spotReviews);
 
@@ -29,8 +29,11 @@ export default function ReviewModal({ spot }) {
   //bla bla
   // find whether current user has posted a review at this spot or not
   if (user) {
-    currReview = currentSpotReviews.find((review) => user.id === review.userId);
+    currReview = currentSpotReviews.find(
+      (review) => user.id === review.user_id
+    );
   }
+  console.log("🚀 >>>>>>>>>> ~ currReview:", currReview);
   return (
     <>
       <button
@@ -42,6 +45,13 @@ export default function ReviewModal({ spot }) {
       >
         Post Your Review
       </button>
+
+      <div>
+        <OpenModalButton
+          buttonText="Delete Review"
+          modalComponent={<DeleteReview review={currReview} />}
+        />
+      </div>
     </>
   );
 }
