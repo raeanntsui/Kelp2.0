@@ -72,57 +72,54 @@ function ShowOneSpot() {
 
   return (
     <>
-      <div>
-        {/* <p>Business Owner: {spot.user_id}</p> */}
-        <div className="spot-details-top-half">
-          <div className="spot-background">
-            <img src="https://m.media-amazon.com/images/M/MV5BMTRkNTEzNDQtOGZmMC00MDA2LWJiYmYtZDI0YmFjZWUyMjZlXkEyXkFqcGdeQXVyODA1ODcxNTY@._V1_.jpg" />
-          </div>
-          <div className="business-name">
-            <p>{spot.business_name}</p>
-          </div>
+      {/* <p>Business Owner: {spot.user_id}</p> */}
+      <div className="spot-details-bottom">
+        <div className="spot-background">
+          <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2022/07/super-weenie-hut-jrs-from-spongebob-squarepants.jpg" />
         </div>
-        {/* <p>Spot owner id: {spot.user_id}</p> */}
-        <p>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-        </p>
-        <p>Business category: {spot.categories}</p>
+        <div className="business-name">
+          <p>{spot.business_name}</p>
+        </div>
+      </div>
+      <div className="show-one-spot-bottom-content">
+        <div className="filled-star">
+          <p>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-regular fa-star"></i>
+          </p>
+        </div>
+        <span className="categories">{spot.categories}</span>
+
         <p>{spot.address}</p>
         <p>About the Business: {spot.description}</p>
-      </div>
-      <div>
-        <h2>Reviews</h2>
-        <p>Get all reviews component here</p>
+        <div className="spot-details-top">
+          <h2>Reviews</h2>
 
-        {sessionUser && !businessOwner ? (
-          <ReviewModal spot={spot} />
-        ) : (
-          <p>Random message: Cannot post review -- you are the owner!</p>
-        )}
-        <div>
-          {Object.values(reviews).map((review) => (
-            <>
-              <p>{review.description}</p>
-            </>
-          ))}
-        </div>
-
-        <UpdateReview spot={spot} review={currentUserReview} />
-        <div>
-          <DeleteSpot />
-        </div>
-        <div>
+          {sessionUser && !businessOwner ? <ReviewModal spot={spot} /> : null}
           <div>
-            {businessOwner && (
+            {Object.values(reviews).map((review) => (
               <>
-                <h1>Update Spot</h1>
-                <button onClick={handleSpotUpdate}>Update Spot</button>
+                <p>{review.description}</p>
               </>
-            )}
+            ))}
+          </div>
+
+          <UpdateReview spot={spot} review={currentUserReview} />
+          <div>
+            <DeleteSpot />
+          </div>
+          <div>
+            <div>
+              {businessOwner && (
+                <>
+                  <h1>Update Spot</h1>
+                  <button onClick={handleSpotUpdate}>Update Spot</button>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>
