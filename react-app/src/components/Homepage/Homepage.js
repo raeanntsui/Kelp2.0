@@ -8,6 +8,7 @@ import "./Homepage.css";
 function Homepage() {
   const dispatch = useDispatch();
   const spots = useSelector((state) => state.spots.allSpots);
+
   console.log("🚀🚀🚀🚀🚀🚀 ~ spots:", spots);
   const allSpots = Object.values(spots);
 
