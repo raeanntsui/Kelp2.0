@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
 import "./SignupForm.css";
-// i shat on the screen
+
 function SignupFormModal() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
@@ -35,80 +35,89 @@ function SignupFormModal() {
   };
 
   return (
-    <>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Username
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          First Name
+    <form onSubmit={handleSubmit} className="form-container">
+      <h1 id="login-h1">Sign Up</h1>
+      <div className="modal-errors">
+        {errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
+      </div>
+
+      <div className="form-content">
+        <div className="form-chunk">
+          <label>Is this a business account?</label>
+          <div className="sub-form-chunk">
+            <p>Yes</p>
+            <input
+              type="checkbox"
+              checked={businessOwner}
+              onChange={() => setBusinessOwner((prev) => !prev)}
+              required
+            />
+          </div>
+        </div>
+        <div className="form-chunk">
+          <label>First Name</label>
           <input
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Last Name
+        </div>
+        <div className="form-chunk">
+          <label>Last Name</label>
           <input
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Business Owner?
+        </div>
+        <div className="form-chunk">
+          <label>Email</label>
           <input
-            type="checkbox"
-            checked={businessOwner}
-            onChange={() => setBusinessOwner((prev) => !prev)}
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Password
+        </div>
+        <div className="form-chunk">
+          <label>Username</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-chunk">
+          <label>Password</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Confirm Password
+        </div>
+        <div className="form-chunk">
+          <label>Confirm Password</label>
           <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
-    </>
+        </div>
+        <div className="sign-up">
+          <button className="sign-up-button" type="submit">
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </form>
   );
 }
 
