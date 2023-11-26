@@ -20,9 +20,9 @@ function ReviewForm({ spot }) {
 
   useEffect(() => {
     let errObj = {};
-    if (!description || description.length < 10)
+    if (!description || description.length < 30)
       errObj.description =
-        "Please enter a minimum of 10 characters for your review";
+        "Please enter a minimum of 30 characters for your review";
 
     setErrors(errObj);
   }, [description]);
@@ -116,7 +116,8 @@ function ReviewForm({ spot }) {
       <button
         type="submit"
         onClick={handleSubmit}
-        disabled={!checkValidation()}>
+        disabled={!checkValidation()}
+      >
         Submit Your Review
       </button>
     </form>
