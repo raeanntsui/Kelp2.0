@@ -34,6 +34,7 @@ class Review(db.Model):
             'updated_at': self.updated_at,
             'user_id': self.user_id,
             'spot_id': self.spot_id,
+            'user': self.user.to_dict(),
         }
 
     def to_dict_information(self):
@@ -44,6 +45,6 @@ class Review(db.Model):
             'user_img':self.user_img,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'user': self.user.to_dict(),
             'spot_id': self.spot_id,
+            'user': self.user.to_dict(),
         }
