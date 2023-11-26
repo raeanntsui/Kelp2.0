@@ -1,0 +1,98 @@
+.frontpage-image > img {
+  width: 100%;
+  z-index: 2;
+  position: relative;
+}
+
+.recent-activity > h1 {
+  font-size: 28px;
+  margin: 30px 0px;
+  text-align: center;
+}
+
+.spots-grid-2 {
+  display: flex;
+  grid-template-columns: 1fr 3fr;
+  max-width: 1200px;
+  gap: 30px;
+  /* border: 2px solid grey; */
+}
+
+.each-spots-grid-2 {
+  border: 2px solid rgba(164, 164, 164, 0.309);
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.each-spots-image > img {
+  display: flex;
+  justify-content: center;
+}
+
+.user-container {
+  /* border: 4px solid pink; */
+  display: flex;
+  grid-template-columns: 1fr 2fr;
+}
+
+.user-profile-picture {
+  border: 2px solid rgba(164, 164, 164, 0.309);
+  width: fit-content;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 10px; */
+  margin-left: 0px;
+  margin-right: 10px;
+  padding: 0px;
+}
+
+.user-info {
+  /* border: 4px solid red; */
+  /* margin: 0px; */
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 0px;
+  gap: 5px;
+}
+
+.user-info > p {
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 0px;
+  /* gap: 10px; */
+}
+.user-info > p:nth-child(2) {
+  color: #fdcc0d;
+}
+
+.recent-activity-business-name {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px 0px;
+  /* color: rgba(2, 122, 151, 1); */
+}
+
+.recent-activity-business-name > a {
+  color: rgba(2, 122, 151, 1);
+}
+
+.each-spots-image-2 > img {
+  align-items: flex-start;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  margin: auto;
+  /* border: 4px dashed purple; */
+  border-radius: 4px;
+}
+
+.user-description {
+  padding: 10px;
+}

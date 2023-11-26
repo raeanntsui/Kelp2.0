@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { useEffect } from "react";
 import { getAllSpotsThunk } from "../../store/spots";
@@ -44,16 +44,46 @@ function Homepage() {
   // }, []);
   return (
     <>
-      <h1>HOMEPAGE</h1>
-      {/* <div className="rotating-images">
-        <img src={spotImages[currentImage]} />
-      </div> */}
-      <div className="spots-grid">
+      {/* <h1>HOMEPAGE</h1> */}
+      <div className="frontpage-image">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgV4opNgXkJW3vJ1no6nvp8SCwtJuisrOjeU27QfOlESq9x-VwalxQZ1Is9wmfPClELNca7B5javckAuZodxRq4lzPW65SzPq7Kh_QVPWadFpTHSoYlgL9Z2DG8pcDYBFko1NrpcbdvC1_qTeMQABDEmPZdPL0gE8O-qsM_Ob93tZtSc0Fqyw/s1420/No_Weenies_Allowed_043.webp" />
+      </div>
+      <div className="recent-activity">
+        <h1>Recent activity</h1>
+      </div>
+      <div className="spots-grid-2">
         {allSpots.map((spot) => (
-          <div key={spot.id}>
-            <h2>{spot.business_name}</h2>
-            <p>user name here</p>
-            <p>user review here</p>
+          <div className="each-spots-grid-2" key={spot.id}>
+            <div className="user-container">
+              <div className="user-profile-picture">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <div className="user-info">
+                <p>Amy C.</p>
+                <p>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </p>
+              </div>
+            </div>
+            <div className="recent-activity-business-name">
+              <NavLink to={`/spots/${spot.id}`}>{spot.business_name}</NavLink>
+            </div>
+            <div className="each-spots-image-2">
+              {/* <img src={spot.spot_image} /> */}
+              <img src="https://img.buzzfeed.com/buzzfeed-static/static/2019-11/21/20/campaign_images/fbf76a44e63d/could-you-pass-an-interview-and-get-hired-at-the--2-2131-1574368600-0_dblbig.jpg?resize=1200:*" />
+            </div>
+            <div className="user-description">
+              <p>
+                Once upon a time, there was an ugly barnacle. So ugly that
+                everyone died. The end. F is for friends who do stuff together U
+                is for you and me N is for anywhere and anytime at all Down here
+                in the deep blue sea.
+              </p>
+            </div>
           </div>
         ))}
       </div>
