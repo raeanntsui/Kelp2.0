@@ -60,15 +60,19 @@ function Homepage() {
   return (
     <>
       {/* <h1>HOMEPAGE</h1> */}
-      <div>
+      <div className="homepage-search-button">
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css"
+        />
         <form onSubmit={handleSearchSubmit}>
           <input
             type="text"
             value={searchInput}
             onChange={handleSearchInputChange}
-            placeholder="Search spots"
+            placeholder="Search by name, category, or price range"
           />
-          <button type="submit">Search</button>
+          <button type="submit"><i className="fas fa-search" style={{ color: 'white' }}></i></button>
         </form>
       </div>
       <div className="frontpage-image">

@@ -1,10 +1,10 @@
-.frontpage-image > img {
+.frontpage-image>img {
   width: 100%;
   /* z-index: 2; */
   position: relative;
 }
 
-.recent-activity > h1 {
+.recent-activity>h1 {
   font-size: 28px;
   margin: 30px 0px;
   text-align: center;
@@ -24,7 +24,7 @@
   border-radius: 4px;
 }
 
-.each-spots-image > img {
+.each-spots-image>img {
   display: flex;
   justify-content: center;
 }
@@ -62,13 +62,14 @@
   gap: 5px;
 }
 
-.user-info > p {
+.user-info>p {
   font-weight: bold;
   font-size: 18px;
   margin-left: 0px;
   /* gap: 10px; */
 }
-.user-info > p:nth-child(2) {
+
+.user-info>p:nth-child(2) {
   color: #fdcc0d;
 }
 
@@ -79,11 +80,11 @@
   /* color: rgba(2, 122, 151, 1); */
 }
 
-.recent-activity-business-name > a {
+.recent-activity-business-name>a {
   color: rgba(2, 122, 151, 1);
 }
 
-.each-spots-image-2 > img {
+.each-spots-image-2>img {
   align-items: flex-start;
   width: 100%;
   object-fit: cover;
@@ -95,4 +96,38 @@
 
 .user-description {
   padding: 10px 0px;
+}
+
+.homepage-search-button {
+  position: relative;
+  width: 100px;
+  margin-bottom: -90px;
+  right: 471px;
+  bottom: 77.5px;
+}
+
+.homepage-search-button form {
+  display: flex;
+  width: 520px;
+}
+
+.homepage-search-button form input {
+  flex: 1;
+  padding: 10px;
+  height: 40px;
+  border: none;
+  outline: none;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.homepage-search-button form button {
+  background-color: red;
+  height: 40px;
+  width: 50px;
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 3px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
 }
