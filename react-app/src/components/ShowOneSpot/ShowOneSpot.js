@@ -72,53 +72,54 @@ function ShowOneSpot() {
 
   return (
     <>
-      {/* <p>Business Owner: {spot.user_id}</p> */}
-      <div className="spot-details-bottom">
-        <div className="spot-background">
-          <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2022/07/super-weenie-hut-jrs-from-spongebob-squarepants.jpg" />
-        </div>
-        <div className="business-name">
-          <p>{spot.business_name}</p>
-        </div>
-      </div>
-      <div className="show-one-spot-bottom-content">
-        <div className="filled-star">
-          <p>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-regular fa-star"></i>
-          </p>
-        </div>
-        <span className="categories">{spot.categories}</span>
-
-        <p>{spot.address}</p>
-        <p>About the Business: {spot.description}</p>
-        <div className="spot-details-top">
-          <h2>Reviews</h2>
-
-          {sessionUser && !businessOwner ? <ReviewModal spot={spot} /> : null}
-          <div>
-            {Object.values(reviews).map((review) => (
-              <>
-                <p>{review.description}</p>
-              </>
-            ))}
+      <div className="spot-details-page">
+        {/* <p>Business Owner: {spot.user_id}</p> */}
+        <div className="spot-details-bottom">
+          <div className="spot-background">
+            <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2022/07/super-weenie-hut-jrs-from-spongebob-squarepants.jpg" />
           </div>
-
-          <UpdateReview spot={spot} review={currentUserReview} />
-          <div>
-            <DeleteSpot />
+          <div className="business-name">
+            <p>{spot.business_name}</p>
           </div>
-          <div>
+        </div>
+        <div className="show-one-spot-bottom-content">
+          <div className="filled-star">
+            <p>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-regular fa-star"></i>
+            </p>
+          </div>
+          <span className="categories">{spot.categories}</span>
+          <p>{spot.address}</p>
+          <p>About the Business: {spot.description}</p>
+          <div className="spot-details-top">
+            <h2>Reviews</h2>
+
+            {sessionUser && !businessOwner ? <ReviewModal spot={spot} /> : null}
             <div>
-              {businessOwner && (
+              {Object.values(reviews).map((review) => (
                 <>
-                  <h1>Update Spot</h1>
-                  <button onClick={handleSpotUpdate}>Update Spot</button>
+                  <p>{review.description}</p>
                 </>
-              )}
+              ))}
+            </div>
+
+            <UpdateReview spot={spot} review={currentUserReview} />
+            <div>
+              <DeleteSpot />
+            </div>
+            <div>
+              <div>
+                {businessOwner && (
+                  <>
+                    <h1>Update Spot</h1>
+                    <button onClick={handleSpotUpdate}>Update Spot</button>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
