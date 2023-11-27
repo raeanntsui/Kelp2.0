@@ -55,9 +55,9 @@ export const createReviewThunk = (review, spotId) => async (dispatch) => {
     });
     if (res.ok) {
       const review = await res.json();
-      dispatch(createReview(review));
+      dispatch(createReview(review.new_review));
       await dispatch(getReviewsThunk(spotId));
-      return review;
+      return review.new_review;
     } else {
       console.error(`Server error: ${res.status}`);
     }

@@ -4,8 +4,7 @@ const GET_ONE_SPOT = "spots/GET_ONE_SPOT";
 const CREATE_SPOT = "spots/CREATE_SPOT";
 const UPDATE_SPOT = "spots/UPDATE_SPOT";
 const DELETE_SPOT = "spots/DELETE_SPOT";
-export const DELETE_SPOT_SUCCESS = "DELETE_SPOT_SUCCESS";
-export const DELETE_SPOT_FAILURE = "DELETE_SPOT_FAILURE";
+const CREATE_SPOT_IMAGE = "spots/CREATE_SPOT_IMAGE";
 
 // action creators
 const getAllSpots = (spots) => {
@@ -43,17 +42,10 @@ const deleteSpot = (id) => {
   };
 };
 
-export const deleteSpotSuccess = (spotId) => {
+const createSpotImage = (newSpotImage) => {
   return {
-    type: DELETE_SPOT_SUCCESS,
-    spotId: spotId,
-  };
-};
-
-export const deleteSpotFailure = (error) => {
-  return {
-    type: DELETE_SPOT_FAILURE,
-    error: error,
+    type: CREATE_SPOT_IMAGE,
+    newSpotImage,
   };
 };
 
@@ -79,19 +71,108 @@ export const getOneSpotThunk = (spotId) => async (dispatch) => {
   }
 };
 
-// CreateThunks -- add spot to spots
-export const createSpotThunk = (newSpot) => async (dispatch) => {
-  const res = await fetch("/api/spots/new", {
-    method: "POST",
-    body: newSpot,
-  });
+// // CreateThunks -- add spot to spots
+// export const createSpotThunk = (newSpot) => async (dispatch) => {
+//   const res = await fetch("/api/spots/new", {
+//     method: "POST",
+//     body: newSpot,
+//   });
 
-  if (res.ok) {
-    const { newSpot } = await res.json();
-    dispatch(createSpot(newSpot));
-    return newSpot;
-  } else {
-    console.log("There is an error creating a new Spot");
+//   if (res.ok) {
+//     const createdSpot = await res.json();
+//     dispatch(createSpot(createdSpot));
+//     return createdSpot;
+//   } else {
+//     console.log("There is an error creating a new Spot");
+//   }
+// };
+
+// export const createSpotImageThunk =
+//   (spotId, formData, url, preview) => async (dispatch) => {
+//     const res = await fetch(`/api/spots/${spotId}/images`, {
+//       method: "POST",
+//       body: formData,
+//     });
+
+//     if (res.ok) {
+//       const createdSpotImage = await res.json();
+//       // Add the URL and preview status to the createdSpotImage object
+//       createdSpotImage.url = url;
+//       createdSpotImage.preview = preview;
+
+//       dispatch(createSpotImage(createdSpotImage));
+//       return createdSpotImage;
+//     } else {
+//       console.error("There is an error creating a new Spot Image");
+//     }
+//   };
+
+export const createSpotThunk = (newSpot, imageFormData) => async (dispatch) => {
+  try {
+    const res = await fetch("/api/spots/new", {
+      method: "POST",
+      body: newSpot,
+    });
+
+    if (!res.ok) {
+      console.log("There is an error creating a new Spot");
+      return;
+    }
+
+    const createdSpot = await res.json();
+
+    if (imageFormData) {
+      const imageUploadResponse = await dispatch(
+        createSpotImageThunk(
+          createdSpot.id,
+          imageFormData,
+          "https://example.com/image-url",
+          true
+        )
+      );
+
+      console.log("Image upload response:", imageUploadResponse);
+    }
+
+    dispatch(createSpot(createdSpot));
+    return createdSpot;
+  } catch (error) {
+    console.error("Error creating a new Spot:", error);
+  }
+};
+
+export const createSpotImageThunk =
+  (spotId, formData, url, preview) => async (dispatch) => {
+    const res = await fetch(`/api/spots/${spotId}/images`, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (res.ok) {
+      const createdSpotImage = await res.json();
+      createdSpotImage.url = url;
+      createdSpotImage.preview = preview;
+
+      dispatch(createSpotImage(createdSpotImage));
+      return createdSpotImage;
+    } else {
+      console.error("There is an error creating a new Spot Image");
+    }
+  };
+
+export const deleteSpotThunk = (spotId) => async (dispatch) => {
+  try {
+    const res = await fetch(`/api/spots/${spotId}`, {
+      method: "DELETE",
+    });
+
+    if (!res.ok) {
+      const spotError = await res.json();
+      throw new Error(spotError.message);
+    }
+    dispatch(deleteSpot(spotId));
+  } catch (error) {
+    console.error("delete spot error", error.message);
   }
 };
 
@@ -100,45 +181,29 @@ export const createSpotThunk = (newSpot) => async (dispatch) => {
 //     const res = await fetch(`/api/spots/${spotId}`, {
 //       method: "DELETE",
 //     });
+//     console.log("🚀 VALUE OF IDDDDDDDDDDDDDDD id:", spotId);
 
 //     if (!res.ok) {
-//       const spotError = await res.json();
+//       let spotError;
+//       try {
+//         spotError = await res.json();
+//       } catch (jsonError) {
+//         // Handle non-JSON response
+//         console.error("Non-JSON error response:", res.statusText);
+//         throw new Error("Spot deletion failed");
+//       }
+
 //       throw new Error(spotError.message);
 //     }
-//     dispatch(deleteSpot(spotId));
+
+//     // Dispatch an action to update the Redux store with the successful deletion
+//     dispatch(deleteSpotSuccess(spotId));
 //   } catch (error) {
 //     console.error("delete spot error", error.message);
+//     // Dispatch an action to update the Redux store with the error information
+//     dispatch(deleteSpotFailure(error.message));
 //   }
 // };
-
-export const deleteSpotThunk = (spotId) => async (dispatch) => {
-  try {
-    const res = await fetch(`/api/spots/${spotId}`, {
-      method: "DELETE",
-    });
-    console.log("🚀 VALUE OF IDDDDDDDDDDDDDDD id:", spotId);
-
-    if (!res.ok) {
-      let spotError;
-      try {
-        spotError = await res.json();
-      } catch (jsonError) {
-        // Handle non-JSON response
-        console.error("Non-JSON error response:", res.statusText);
-        throw new Error("Spot deletion failed");
-      }
-
-      throw new Error(spotError.message);
-    }
-
-    // Dispatch an action to update the Redux store with the successful deletion
-    dispatch(deleteSpotSuccess(spotId));
-  } catch (error) {
-    console.error("delete spot error", error.message);
-    // Dispatch an action to update the Redux store with the error information
-    dispatch(deleteSpotFailure(error.message));
-  }
-};
 
 // update spots thunks
 export const updateSpotThunk = (formData, spotId) => async (dispatch) => {
@@ -177,9 +242,14 @@ const spotsReducer = (state = initialState, action) => {
       newState = { ...state, oneSpot: action.spotId };
       return newState;
 
+    // case CREATE_SPOT:
+    //   newState = { ...state };
+    //   newState.spots[action.spot.id] = action.spot;
+    //   return newState;
+
     case CREATE_SPOT:
-      newState = { ...state };
-      newState.spots[action.spot.id] = action.spot;
+      newState = { ...state, allSpots: { ...state.allSpots } };
+      newState.allSpots[action.newSpot.id] = action.newSpot;
       return newState;
 
     case UPDATE_SPOT:
@@ -194,15 +264,20 @@ const spotsReducer = (state = initialState, action) => {
       delete newState.allSpots[action.id];
       return newState;
 
-    case DELETE_SPOT_SUCCESS:
-      newState = { ...state, allSpots: { ...state.allSpots } };
-      delete newState.allSpots[action.spotId];
+    // case DELETE_SPOT_SUCCESS:
+    //   newState = { ...state, allSpots: { ...state.allSpots } };
+    //   delete newState.allSpots[action.spotId];
+    //   return newState;
+
+    // case DELETE_SPOT_FAILURE:
+    //   // Handle failure, update state accordingly
+    //   console.error("Delete spot failure:", action.error);
+    //   return state;
+    case CREATE_SPOT_IMAGE:
+      newState = { ...state };
+      newState[action.newSpotImage.id] = action.newSpotImage;
       return newState;
 
-    case DELETE_SPOT_FAILURE:
-      // Handle failure, update state accordingly
-      console.error("Delete spot failure:", action.error);
-      return state;
     default:
       return state;
   }

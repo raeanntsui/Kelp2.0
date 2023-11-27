@@ -43,9 +43,13 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
+      <button id="loginsignupbutton" onClick={openMenu}>
+        <span id="fish">
+          <i class="fa-solid fa-fish"></i>{" "}
+        </span>
         {/* <i class="fa-solid fa-user"></i> */}
-        <i className="fa-solid fa-right-to-bracket"></i>
+        <span>Log In or Sign Up</span>
+        {/* <i className="fa-solid fa-right-to-bracket"></i> */}
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
@@ -57,10 +61,14 @@ function ProfileButton({ user }) {
                 <p>Customer Account</p>
               )}
             </li>
-            <li>Hello, {user.username}!</li>
+            <li>
+              Hello, <span className="bold-this">{user.first_name}</span>!
+            </li>
             <li>{user.email}</li>
             <li>
-              <button onClick={handleLogout}>Log Out</button>
+              <div className="sign-up">
+                <button onClick={handleLogout}>Log Out</button>
+              </div>
             </li>
           </>
         ) : (

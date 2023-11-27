@@ -1,28 +1,151 @@
-/* .spot-background > img {
-  position: absolute;
+.spot-details-bottom {
+  background-image: url("https://static1.srcdn.com/wordpress/wp-content/uploads/2022/07/super-weenie-hut-jrs-from-spongebob-squarepants.jpg");
+  height: 300px;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  /* border: 6px solid rgb(200, 0, 255); */
+}
+
+.spot-about-info {
+  padding: 0px;
+  margin: 0px;
+  margin-left: 20px;
+}
+
+.spot-details-page {
+  margin: 0 auto;
+  /* border: 5px solid pink; */
+  max-width: 1200px;
+}
+
+.spot-background > img {
+  /* position: absolute; */
+  max-width: 1024px;
   max-height: 400px;
   height: auto;
   width: 100%;
   background-position: 0%;
   z-index: 99;
-} */
+}
 
 /* .spot-details-top {
   position: absolute;
   z-index: 1;
 } */
 
-.show-one-spot-bottom-content {
-  padding: 20px;
-}
-.spot-details-bottom {
-  position: relative;
-  border: 6px solid rgb(200, 0, 255);
+.review-h1 {
+  padding: 10px 0px;
 }
 
 .business-name {
-  border: 6px solid rgb(21, 255, 0);
+  /* padding: 10px; */
+  /* border: 6px solid rgb(21, 255, 0); */
   font-size: 48px;
-  color: blue;
+  color: white;
   font-weight: bold;
+}
+
+.spot-details-top {
+  /* border: solid 5px black; */
+  padding: 0px;
+  margin: 0px;
+}
+
+.write-review {
+  /* border: solid 5px blue; */
+  /* display: flex; */
+  padding-top: 10px;
+}
+
+.left-right {
+  /* border: 9px solid rgb(0, 234, 255); */
+  display: flex;
+  width: 100%;
+}
+
+.left {
+  /* border: 4px dashed purple; */
+  width: 60%;
+}
+.right {
+  /* border: 4px dashed rgb(0, 9, 128); */
+  width: 40%;
+}
+
+.directions {
+  padding: 10px;
+}
+
+.directions > h1 {
+  /* color: rgba(2, 122, 151, 1); */
+  color: #d32323;
+  font-size: 20px;
+}
+
+.directions > h2 {
+  font-size: 16px;
+  font-weight: 400;
+  /* padding-top: 5px; */
+  padding-bottom: 10px;
+  /* color: #6e7072; */
+}
+
+.directions > h3 {
+  color: black;
+  font-size: 16px;
+  font-weight: 400;
+  /* padding-top: 5px; */
+  padding-bottom: 10px;
+}
+
+.each-review {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  /* margin-left: 10px; */
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.each-review > p {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  /* width: fit-content; */
+}
+
+.name {
+  padding: 0px;
+  margin: 0px;
+}
+
+.icon {
+  margin: 0px;
+  padding: 0px;
+  border: 2px solid rgba(164, 164, 164, 0.309);
+  width: fit-content;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 10px; */
+  margin-left: 0px;
+  margin-right: 10px;
+  /* color: #d32323; */
+}
+
+.name-p {
+  font-weight: bold;
+  font-size: 18px;
+  padding-bottom: 5px;
+}
+
+#maps {
+  color: rgba(2, 122, 151, 1);
 }

@@ -39,13 +39,14 @@ def create_review(spot_id):
 
         description = form.description.data
         rating = form.rating.data
+        user_img =form.user_img.data
 
-        new_review = Review(spot_id=spot_id, description=description, rating=rating, user_id=current_user.id)
+        new_review = Review(spot_id=spot_id, description=description, rating=rating, user_img=user_img, user_id=current_user.id)
 
         db.session.add(new_review)
         db.session.commit()
 
-        return jsonify({"message": "Review created successfully"})
+        return {"new_review": new_review.to_dict()}
     else:
 
         errors = form.errors
@@ -75,12 +76,12 @@ def update_review(review_id):
     else:
         return (jsonify({"error": "Invalid form data"}), 400)
 
-# @app.route('/<int:review_id>', methods=['DELETE'])
-# def delete_review(review_id):
-#     review = Review.query.get(review_id)
-#     if review:
-#         db.session.delete(review)
-#         db.session.commit()
-#         return jsonify({"message": "Review deleted successfully"})
-#     else:
-#         return jsonify({"error": "Review not found"}), 404
+@reviews_routes.route('/<int:review_id>', methods=['DELETE'])
+def delete_review(review_id):
+    review = Review.query.get(review_id)
+    if review:
+        db.session.delete(review)
+        db.session.commit()
+        return jsonify({"message": "Review deleted successfully"})
+    else:
+        return jsonify({"error": "Review not found"}), 404

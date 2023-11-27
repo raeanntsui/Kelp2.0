@@ -9,19 +9,19 @@ class SpotImage(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     #foreignkey
-    spotId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spots.id')))
+    spot_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spots.id')), nullable=False)
 
-    url = db.Column(db.String(255), nullable=False)
-    preview = db.Column(db.Boolean)
+    img_url = db.Column(db.String(255), nullable=False)
+    preview = db.Column(db.Boolean, default=False)
 
 
     #relationship
-    spot = db.relationship('Spot', back_populates="spot_image")
+    spot = db.relationship('Spot', back_populates="img_urls")
 
     def to_dict(self):
         return {
             'id': self.id,
-            'spot_id': self.spot_id,
-            'url': self.url,
+            'spotId': self.spot_id,
+            'imgUrl': self.img_url,
             'preview': self.preview
         }
