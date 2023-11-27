@@ -52,34 +52,44 @@ function ShowOneSpot() {
     history.push(`/spots/${spotId}/update`);
   };
 
+  // const spotBackground = {
+  //   backgroundImage:
+  //     'url("https://m.media-amazon.com/images/M/MV5BMTRkNTEzNDQtOGZmMC00MDA2LWJiYmYtZDI0YmFjZWUyMjZlXkEyXkFqcGdeQXVyODA1ODcxNTY@._V1_.jpg")',
+  //   backgroundSize: "cover",
+  //   backgroundRepeat: "no-repeat",
+  //   height: "300px",
+  //   width: "100%",
+  // };
+
   return (
     <>
-      <div>
-        <h1>GET SINGLE SPOT</h1>
+      <div className="spot-details-page">
         {/* <p>Business Owner: {spot.user_id}</p> */}
-        <p>{spot.business_name}</p>
-        <p>Spot owner id: {spot.user_id}</p>
-        <p>AVERAGE RATING HERE</p>
-        <p>Business category: {spot.categories}</p>
-        <p>{spot.address}</p>
-        <p>About the Business: {spot.description}</p>
-      </div>
-      <div>
-        <h2>Reviews</h2>
-        <p>Get all reviews component here</p>
-
-        {sessionUser && !businessOwner ? (
-          <ReviewModal spot={spot} />
-        ) : (
-          <p>Random message: Cannot post review -- you are the owner!</p>
-        )}
-        <div>
-          {Object.values(reviews).map((review) => (
-            <>
-              <p>{review.description}</p>
-            </>
-          ))}
+        <div className="spot-details-bottom">
+          {/* <div className="spot-background">
+            <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2022/07/super-weenie-hut-jrs-from-spongebob-squarepants.jpg" />
+          </div> */}
+          <div className="business-name">
+            <p>{spot.business_name}</p>
+          </div>
+          <div className="filled-star">
+            <p>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-regular fa-star"></i>
+            </p>
+          </div>
+          <span className="categories">{spot.categories}</span>
+          <div id="open-time">
+            <p className="opening-hours">
+              <span className="open">Open</span> until {spot.close_hours - 12}
+              :00 PM
+            </p>
+          </div>
         </div>
+
         <div>
           <DeleteSpot />
         </div>
@@ -91,6 +101,53 @@ function ShowOneSpot() {
                 <button onClick={handleSpotUpdate}>Update Spot</button>
               </>
             )}
+
+        <div className="left-right">
+          <div className="left">
+            <div className="write-review">
+              {sessionUser && !businessOwner ? (
+                <ReviewModal spot={spot} />
+              ) : null}
+            </div>
+            <div className="show-one-spot-bottom-content">
+              {/* <p>{spot.address}</p> */}
+              <p>About the Business: {spot.description}</p>
+              <div className="spot-details-top">
+                <h2>Reviews</h2>
+                <div>
+                  {Object.values(reviews).map((review) => (
+                    <>
+                      <p>{review.description}</p>
+                    </>
+                  ))}
+                </div>
+
+                <UpdateReview spot={spot} review={currentUserReview} />
+                <div>
+                  <DeleteSpot />
+                </div>
+                <div>
+                  <div>
+                    {businessOwner && (
+                      <>
+                        <h1>Update Spot</h1>
+                        <button onClick={handleSpotUpdate}>Update Spot</button>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="right">
+            <div className="about-restaurant">
+              <h1>Get Directions</h1>
+              {spot.address}
+              <i class="fa-solid fa-map"></i>
+              {spot.description}
+            </div>
+
           </div>
         </div>
       </div>

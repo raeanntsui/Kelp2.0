@@ -10,7 +10,7 @@ reviews_routes = Blueprint("reviews", __name__)
 # @reviews_routes.route("/")
 # def get_all_reviews():
 #     '''
-#     get all reviews 
+#     get all reviews
 #     '''
 #     reviews = Review.query.all()
 #     return jsonify([review.to_dict() for review in reviews])
@@ -76,23 +76,12 @@ def update_review(review_id):
     else:
         return (jsonify({"error": "Invalid form data"}), 400)
 
-@reviews_routes.route("/<int:review_id>", methods=["DELETE"])
-@login_required
-def delete_review(review_id):
-    '''
-    delete an existing review
-    '''
-    review = Review.query.get(review_id)
-
-    if not review:
-        return jsonify({"error": "Review not found"}), 404
-
-    # Check if the user making the request is the owner of the review
-    if review.user_id != current_user.id:
-        return jsonify({"error": "Unauthorized access"}), 403
-
-    db.session.delete(review)
-    db.session.commit()
-
-    return jsonify({"message": "Review deleted successfully"})
-    
+# @app.route('/<int:review_id>', methods=['DELETE'])
+# def delete_review(review_id):
+#     review = Review.query.get(review_id)
+#     if review:
+#         db.session.delete(review)
+#         db.session.commit()
+#         return jsonify({"message": "Review deleted successfully"})
+#     else:
+#         return jsonify({"error": "Review not found"}), 404

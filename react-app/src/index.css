@@ -1,7 +1,9 @@
 /* TODO Add site wide styles */
 * {
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0 auto;
+  /* margin: 10px; */
+  /* padding: 0px 10px; */
 }
 
 a {

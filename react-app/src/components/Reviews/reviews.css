@@ -1,0 +1,17 @@
+#post-review-button,
+#delete-button {
+  background-color: #d32323;
+  font-size: 18px;
+  width: 175px;
+  padding: 10px 10px;
+  color: white;
+  border-radius: 4px;
+  /* border: 2px solid #d32323; */
+  border: none;
+}
+
+#post-review-button:hover,
+#delete-button:hover {
+  cursor: pointer;
+  background-color: rgba(237, 62, 62, 0.638);
+}

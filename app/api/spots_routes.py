@@ -26,6 +26,33 @@ def get_spot(id):
         return {"error": "Spot could not be found"}, 404
 
 
+@spots_routes.route("/int:spotId", methods=['POST'])
+@login_required
+def post_img(spotId):
+    """
+    CREATE IMAGE FOR A SPOT
+    """
+    spot = spot.query.get(spotId)
+    if not spot:
+        return{'errors':'Spot not found'}, 404
+
+    if current_user.business_owner == False:
+        return {"message":"You do not have authorize to upload image"}, 401
+
+    form = SpotImageForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_image = SpotImage(
+            preview = form.data['preview'],
+            img_url = form.data['img_url'],
+            spot_id = spotId
+        )
+        db.session.add(new_image)
+        db.session.commit()
+        return new_image.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
 @spots_routes.route("/new", methods=["POST"])
 @login_required
 def create_spot():
@@ -54,7 +81,7 @@ def create_spot():
             )
             db.session.add(spot_params)
             db.session.commit()
-            return {"resCreateSpot": spot_params.to_dict()}
+            return {"newSpot": spot_params.to_dict()}
 
 
     return {"error": validation_errors_to_error_messages(form.errors)}, 400

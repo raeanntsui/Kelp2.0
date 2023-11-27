@@ -33,8 +33,7 @@ function ShowAllSpots() {
             <NavLink
               key={spot.id}
               to={`/spots/${spot.id}`}
-              id="spots-grid-navlink"
-            >
+              id="spots-grid-navlink">
               <div className="spots-grid-each">
                 <div className="each-spot">
                   <div className="each-spots-image">
@@ -46,9 +45,13 @@ function ShowAllSpots() {
                       {count++}. {spot.business_name}
                     </h2>
                     <div className="filled-star">
-                      {" "}
-                      Insert ratings logic here:{" "}
-                      <i className="fa-solid fa-star"></i>
+                      <p>
+                        <i className="fa-solid fa-star"></i>
+                        <i className="fa-solid fa-star"></i>
+                        <i className="fa-solid fa-star"></i>
+                        <i className="fa-solid fa-star"></i>
+                        <i className="fa-regular fa-star"></i>
+                      </p>
                     </div>
                     <span className="categories">{spot.categories}</span>
                     <div id="open-time">
