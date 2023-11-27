@@ -90,17 +90,19 @@ function ShowOneSpot() {
                 </div>
                 {/* <UpdateReview spot={spot} review={currentUserReview} /> */}
 
-                <div>
-                  <DeleteSpot />
-                </div>
-                <div>
-                  {businessOwner && (
-                    <>
-                      <h1>Update Spot</h1>
-                      <button onClick={handleSpotUpdate}>Update Spot</button>
-                    </>
-                  )}
-                </div>
+                {businessOwner && (
+                  <div>
+                    {Object.values(reviews).some(
+                      (review) => review.user.id === userId
+                    ) && (
+                      <div>
+                        <DeleteSpot />
+                        <h1>Update Spot</h1>
+                        <button onClick={handleSpotUpdate}>Update Spot</button>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>
