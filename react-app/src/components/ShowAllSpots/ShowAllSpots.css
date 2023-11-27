@@ -22,6 +22,7 @@
 #spots-grid-navlink {
   text-decoration: none;
   color: black;
+  margin-left: 0px;
 }
 
 .each-spot {
@@ -51,9 +52,8 @@
 }
 
 .each-spots-info {
-  /* border: 4px dashed chartreuse; */
-  /* padding: 10px 0px; */
-  /* flex: 0 0 70%; */
+  /* border: 2px solid green; */
+  /* max-width: 200px; */
 }
 
 .spots-grid-each {
