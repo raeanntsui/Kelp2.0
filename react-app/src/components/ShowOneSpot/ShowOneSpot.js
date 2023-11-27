@@ -35,24 +35,26 @@ function ShowOneSpot() {
     <>
       <div className="spot-details-page">
         <div className="spot-details-bottom">
-          <div className="business-name">
-            <p>{spot.business_name}</p>
-          </div>
-          <div className="filled-star">
-            <p>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-regular fa-star"></i>
-            </p>
-          </div>
-          <span className="categories">{spot.categories}</span>
-          <div id="open-time">
-            <p className="opening-hours">
-              <span className="open">Open</span> until {spot.close_hours - 12}
-              :00 PM
-            </p>
+          <div className="spot-about-info">
+            <div className="business-name">
+              <p>{spot.business_name}</p>
+            </div>
+            <div className="filled-star">
+              <p>
+                <i className="fa-solid fa-star"></i>
+                <i className="fa-solid fa-star"></i>
+                <i className="fa-solid fa-star"></i>
+                <i className="fa-solid fa-star"></i>
+                <i className="fa-regular fa-star"></i>
+              </p>
+            </div>
+            <span className="categories">{spot.categories}</span>
+            <div id="open-time">
+              <p className="opening-hours">
+                <span className="open">Open</span> until {spot.close_hours - 12}
+                :00 PM
+              </p>
+            </div>
           </div>
         </div>
         {/* 
@@ -76,37 +78,51 @@ function ShowOneSpot() {
               ) : null}
             </div>
             <div className="show-one-spot-bottom-content">
-              <p>About the Business: {spot.description}</p>
               <div className="spot-details-top">
-                <h2>Reviews</h2>
-                <div>
+                <h2 className="review-h1">Reviews</h2>
+                <div className="spot-reviews">
                   {Object.values(reviews).map((review, index) => (
-                    <p key={index}>{review.description}</p>
+                    <div className="each-review">
+                      <div className="icon">
+                        <i class="fa-solid fa-user"></i>
+                      </div>
+                      <div className="name">
+                        <p className="name-p">
+                          {review.user.first_name} {review.user.last_name}
+                        </p>
+                        {/* <p>{review.rating}</p> */}
+                        <p key={index}>{review.description}</p>
+                      </div>
+                    </div>
                   ))}
                 </div>
                 {/* <UpdateReview spot={spot} review={currentUserReview} /> */}
 
-                <div>
+                {/* <div>
                   <DeleteSpot />
-                </div>
-                <div>
+                </div> */}
+                {/* <div>
                   {businessOwner && (
                     <>
                       <h1>Update Spot</h1>
                       <button onClick={handleSpotUpdate}>Update Spot</button>
                     </>
                   )}
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
 
           <div className="right">
             <div className="about-restaurant">
-              <h1>Get Directions</h1>
-              {spot.address}
-              <i className="fa-solid fa-map"></i>
-              {spot.description}
+              <div className="directions">
+                <h1>Get Directions</h1>
+                <h2>
+                  {spot.address} <i id="maps" className="fa-solid fa-map"></i>
+                </h2>
+                <h1>About the Business</h1>
+                <h3>{spot.description}</h3>
+              </div>
             </div>
           </div>
         </div>
