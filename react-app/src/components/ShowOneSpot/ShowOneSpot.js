@@ -8,11 +8,9 @@ import DeleteSpot from "../DeleteSpot/DeleteSpot";
 import "./ShowOneSpot.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { getReviewsThunk } from "../../store/reviews";
-import UpdateReview from "../UpdateReview";
 
 function ShowOneSpot() {
   const { spotId } = useParams();
-  console.log("🚀 >>>>>>>>>> ~ spotId:", typeof spotId);
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
@@ -21,20 +19,10 @@ function ShowOneSpot() {
 
   const spot = useSelector((state) => state.spots.oneSpot);
   const reviews = useSelector((state) => state.reviews.Reviews);
-  console.log("🚀 >>>>>>>>>> ~ reviewssdsdsd:", Object.values(reviews));
-
-  const spotReviews = Object.values(reviews).filter(
-    (review) => review.spot_id === parseInt(spotId)
-  );
-  console.log("🚀 >>>>>>>>>> ~ spotReviewssdfsdfsdfsdfsd:", spotReviews);
+  // console.log("🚀 ~ file: ShowOneSpot.js:20 ~ ShowOneSpot ~ review:", reviews);
 
   // session owner id
-  const userId = sessionUser?.id;
-
-  const currentUserReview = Object.values(spotReviews).find(
-    (review) => review.user_id === userId
-  );
-  // console.log("🚀 >>>>>>>>>> ~ reviewsdfsdfsdfsdf:", review);
+  const userId = sessionUser.id;
 
   // finding business modal user id
   const businessOwnerId = spot.user_id;
@@ -47,6 +35,9 @@ function ShowOneSpot() {
 
   console.log("🚀🚀🚀🚀🚀🚀 ~ spotId:", spotId);
   // const singleSpot = Object.values(spot);
+
+  // const reviews = useSelector((state) => state.reviews.Reviews);
+  // console.log("🚀🚀🚀🚀🚀🚀 ~ reviews:", reviews);
 
   useEffect(() => {
     dispatch(getReviewsThunk(spotId));
@@ -98,6 +89,19 @@ function ShowOneSpot() {
             </p>
           </div>
         </div>
+
+        <div>
+          <DeleteSpot />
+        </div>
+        <div>
+          <div>
+            {businessOwner && (
+              <>
+                <h1>Update Spot</h1>
+                <button onClick={handleSpotUpdate}>Update Spot</button>
+              </>
+            )}
+
         <div className="left-right">
           <div className="left">
             <div className="write-review">
@@ -143,6 +147,7 @@ function ShowOneSpot() {
               <i class="fa-solid fa-map"></i>
               {spot.description}
             </div>
+
           </div>
         </div>
       </div>
