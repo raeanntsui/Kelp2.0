@@ -58,19 +58,24 @@ export default function CreateSpotModal({ id }) {
     }
   };
 
+  useEffect(() => {
+    let errorsObject = {};
+    if (!businessName) errorsObject.businessName = "Business name is required";
+    setValidationObject(errorsObject);
+  }, [businessName]);
   return (
     <>
       <h1 id="create-h1">Create a Spot</h1>
       <div className="form-content">
         <form onSubmit={handleSubmit}>
           <div className="modal-errors">
-            {errors &&
+            {/* {errors &&
               errors.length >= 1 &&
               errors.map((error, idx) => (
                 <div className="error" key={idx}>
                   {error}
                 </div>
-              ))}
+              ))} */}
           </div>
           <div className="form-chunk">
             <label>Hello! Let’s start with your business name</label>
@@ -139,6 +144,7 @@ export default function CreateSpotModal({ id }) {
             </p>
             <input
               type="text"
+              id="description-input"
               placeholder="Business categories"
               value={categories}
               onChange={(e) => setCategories(e.target.value)}
@@ -166,11 +172,12 @@ export default function CreateSpotModal({ id }) {
 
           <div className="form-chunk">
             <label>Description</label>
-            <p id="form-chunk-p">
+            {/* <p id="form-chunk-p">
               Write some information about your business that will draw
               customers in.
-            </p>
+            </p> */}
             <input
+              placeholder="Write something about your business that will draw customers in!"
               id="description-input"
               type="text"
               value={description}
@@ -181,6 +188,7 @@ export default function CreateSpotModal({ id }) {
           <div className="form-chunk">
             <label>Price Range </label>
             <input
+              placeholder="Select a price range between $ to $$$$"
               type="number"
               value={priceRange}
               onChange={(e) => setPriceRange(e.target.value)}

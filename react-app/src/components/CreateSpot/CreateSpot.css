@@ -52,7 +52,7 @@
   box-sizing: border-box;
 }
 
-#description-input {
+/* #description-input {
   height: 70px;
   width: 100%;
   padding: 5px;
@@ -61,7 +61,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-}
+} */
 
 #form-chunk-p {
   margin: 10px 0px;
