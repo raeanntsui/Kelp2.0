@@ -72,7 +72,7 @@ const UpdateSpotPage = () => {
 
   return (
     <>
-      <h1 id="create-h1">Update Your spot</h1>
+      <h1 id="create-h1">Update Your Spot</h1>
       <div className="form-content">
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="form-chunk">
