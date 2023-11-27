@@ -4,8 +4,7 @@ const GET_ONE_SPOT = "spots/GET_ONE_SPOT";
 const CREATE_SPOT = "spots/CREATE_SPOT";
 const UPDATE_SPOT = "spots/UPDATE_SPOT";
 const DELETE_SPOT = "spots/DELETE_SPOT";
-export const DELETE_SPOT_SUCCESS = "DELETE_SPOT_SUCCESS";
-export const DELETE_SPOT_FAILURE = "DELETE_SPOT_FAILURE";
+const CREATE_SPOT_IMAGE = "spots/CREATE_SPOT_IMAGE";
 
 // action creators
 const getAllSpots = (spots) => {
@@ -43,17 +42,10 @@ const deleteSpot = (id) => {
   };
 };
 
-export const deleteSpotSuccess = (spotId) => {
+const createSpotImage = (newSpotImage) => {
   return {
-    type: DELETE_SPOT_SUCCESS,
-    spotId: spotId,
-  };
-};
-
-export const deleteSpotFailure = (error) => {
-  return {
-    type: DELETE_SPOT_FAILURE,
-    error: error,
+    type: CREATE_SPOT_IMAGE,
+    newSpotImage,
   };
 };
 
@@ -156,6 +148,26 @@ export const updateSpotThunk = (formData, spotId) => async (dispatch) => {
   }
 };
 
+export const createSpotImageThunk =
+  (spotId, formData, url, preview) => async (dispatch) => {
+    const res = await fetch(`/api/spots/${spotId}/images`, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (res.ok) {
+      const createdSpotImage = await res.json();
+      // Add the URL and preview status to the createdSpotImage object
+      createdSpotImage.url = url;
+      createdSpotImage.preview = preview;
+
+      dispatch(createSpotImage(createdSpotImage));
+      return createdSpotImage;
+    } else {
+      console.error("There is an error creating a new Spot Image");
+    }
+  };
+
 // initial state
 const initialState = {
   allSpots: {},
@@ -208,6 +220,11 @@ const spotsReducer = (state = initialState, action) => {
     //   // Handle failure, update state accordingly
     //   console.error("Delete spot failure:", action.error);
     //   return state;
+    case CREATE_SPOT_IMAGE:
+      newState = { ...state };
+      newState[action.newSpotImage.id] = action.newSpotImage;
+      return newState;
+
     default:
       return state;
   }

@@ -26,11 +26,11 @@ def get_spot(id):
         return {"error": "Spot could not be found"}, 404
 
 
-@spots_routes.route("/int:spotId", methods=['POST'])
+@spots_routes.route("/<int:spotId>/images", methods=['POST'])
 @login_required
 def post_img(spotId):
     """
-    CREATE IMAGE FOR A SPOT
+    Create an image when creating a spot
     """
     spot = spot.query.get(spotId)
     if not spot:
