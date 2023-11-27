@@ -16,18 +16,18 @@ function ReviewForm({ spot }) {
   const user = useSelector((state) => state.session.user);
 
   const checkValidation = () => {
-    return description.length > 9 && starRating && userImgUrl !== "";
+    return description.length > 10 && starRating;
   };
 
   useEffect(() => {
     let errObj = {};
-    if (!description || description.length < 30)
+    if (!description || description.length < 10)
       errObj.description =
-        "Please enter a minimum of 30 characters for your review";
-    if (!userImgUrl) errObj.userImgUrl = "Please enter a valid image URL";
+        "Please enter a minimum of 10 characters for your review";
+    // if (!userImgUrl) errObj.userImgUrl = "Please enter a valid image URL";
 
     setErrors(errObj);
-  }, [description, userImgUrl]);
+  }, [description]);
 
   const handleSubmit = async (e) => {
     if (!spot.id) {
