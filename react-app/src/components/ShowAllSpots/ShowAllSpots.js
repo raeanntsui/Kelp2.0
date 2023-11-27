@@ -63,12 +63,23 @@ function ShowAllSpots() {
         <button onClick={handleSearchButtonClick}>Search</button>
       </div>
       <div className="spots-front-page">
-        {searchButtonClicked && filteredSpots.length === 0 ? (
+        {filteredSpots.length === 0 ? (
           <div className="results-container">
             <ResultNotFoundMessage
               searchInput={searchInput}
               address={filteredSpots[0]?.address}
             />
+            <div className="suggestions-container">
+              <div className="suggestions-header">
+                Suggestions for improving your results:
+              </div>
+              <div className="suggestions-list">
+                <ul>Try a larger search area</ul>
+                <ul>Try a different location</ul>
+                <ul>Check the spelling or try alternate spellings</ul>
+                <ul>Try a more general search, e.g. "pizza instead of "pepperoni"</ul>
+              </div>
+            </div>
           </div>
         ) : (
           <div className="spots-grid">

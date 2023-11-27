@@ -162,3 +162,28 @@
   text-align: center;
   color: lightgrey;
 }
+
+.results-container {
+  width: 718px;
+}
+
+.result-not-found {
+  font-weight: bold;
+  font-size: 25px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.suggestions-header {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.suggestions-list>ul {
+  margin: 6px;
+  margin-left: 10px;
+}
+
+ul {
+  list-style-type: circle;
+}
