@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createSpotThunk } from "../../store/spots";
 import "./CreateSpot.css";
@@ -7,14 +7,12 @@ import "./CreateSpot.css";
 export default function CreateSpotModal({ id }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const user = useSelector((state) => state.session.user);
 
   const [businessName, setBusinessName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zipCode, setZipCode] = useState("");
-
   const [categories, setCategories] = useState("");
   const [openHours, setOpenHours] = useState("");
   const [closeHours, setCloseHours] = useState("");
@@ -23,10 +21,18 @@ export default function CreateSpotModal({ id }) {
   const [validationObject, setValidationObject] = useState([]);
   const [submitted, yesSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [uploadedImages, setUploadedImages] = useState([]);
 
-  //   if (!currentUser) {
-  //     history.push("/");
-  //   }
+  const handleImageUpload = (e) => {
+    const files = e.target.files;
+
+    if (uploadedImages.length + files.length > 8) {
+      console.log("You can only upload up to 8 images.");
+      return;
+    }
+
+    setUploadedImages([...uploadedImages, ...files]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,12 +51,29 @@ export default function CreateSpotModal({ id }) {
     try {
       const response = await dispatch(createSpotThunk(formData));
 
-      console.log("Response:", response);
-
       if (response && response.errors) {
         setErrors(response.errors);
       } else {
         console.log("Create new spot success", response);
+
+        const spotId = response.id;
+
+        if (uploadedImages.length > 0) {
+          for (let i = 0; i < uploadedImages.length; i++) {
+            const imageFormData = new FormData();
+            imageFormData.append("image", uploadedImages[i]);
+            // Add other necessary data like URL and preview status
+
+            await dispatch(
+              createSpotImageThunk(
+                spotId,
+                imageFormData,
+                "https://example.com/image-url"
+              )
+            );
+          }
+        }
+
         history.push(`/spots`);
       }
     } catch (error) {
