@@ -1,13 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import BusinessButton from "./KelpForBusiness";
+// import { useHistory } from "react-router-dom";
+import { getAllSpotsThunk } from "../../store/spots";
 import "./Navigation.css";
 
+
 function Navigation({ isLoaded }) {
+  // const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const businessOwner = sessionUser?.business_owner;
+
+  const [spots, setSpots] = useState(getAllSpotsThunk)
+
+  const filterSpots = e => {
+    const search = e.target.value.toLowerCase()
+    const filteredSpots = getAllSpotsThunk.filter(spots => spots.business_name.toLowerCase().includes(search))
+    setSpots(filteredSpots)
+  }
+
+  // const handleSearchSubmit = (event) => {
+  //   event.preventDefault();
+
+  //   history.push("/spots");
+  // };
+
   return (
     <>
       <div id="upper-half-homepage">
@@ -24,17 +43,19 @@ function Navigation({ isLoaded }) {
               </div>
             </NavLink>{" "}
           </div>
-          <div id="searchbar">
-            <input
-              type="text"
-              placeholder="things to do, nail salons, plumbers"
-            />
-            <h1>|</h1>
-            <input type="text" placeholder="San Francisco, CA" />
-            <button id="search-icon" type="submit" className="search-button">
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </div>
+          {/* <div id="searchbar">
+            <form onSubmit={handleSearchSubmit}>
+              <input
+                type="text" onChange={(e) => filterSpots(e)}
+                placeholder="things to do, nail salons, plumbers"
+              />
+              <h1>|</h1>
+              <input type="text" placeholder="San Francisco, CA" />
+              <button id="search-icon" type="submit" className="search-button">
+                <i className="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+          </div> */}
           <div id="homepage-buttons">
             {businessOwner ? (
               // <div className="login-dropdown">

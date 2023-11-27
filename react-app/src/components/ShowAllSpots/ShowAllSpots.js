@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -9,8 +9,22 @@ import DeleteSpot from "../DeleteSpot/DeleteSpot";
 function ShowAllSpots() {
   const dispatch = useDispatch();
   const spots = useSelector((state) => state.spots.allSpots);
+  const [searchInput, setSearchInput] = useState("");
   // console.log("🚀🚀🚀🚀🚀🚀 ~ spots:", spots);
   const allSpots = Object.values(spots);
+
+  function handleSearchInputChange(event) {
+    setSearchInput(event.target.value);
+  }
+
+  const filteredSpots = allSpots.filter((spot) => {
+    const lowerCaseSearchInput = searchInput.toLowerCase();
+    const isNameMatch = spot.business_name.toLowerCase().includes(lowerCaseSearchInput);
+    const isCategoryMatch = spot.categories.toLowerCase().includes(lowerCaseSearchInput);
+    const isPriceRangeMatch = typeof spot.price_range === 'string' && spot.price_range.toLowerCase().includes(lowerCaseSearchInput);
+
+    return isNameMatch || isCategoryMatch || isPriceRangeMatch;
+  });
 
   const reviews = useSelector((state) => state.reviews.Reviews);
   console.log("🚀🚀🚀🚀🚀🚀 ~ reviews:", reviews);
@@ -27,9 +41,16 @@ function ShowAllSpots() {
   return (
     <>
       {/* <h1>GET ALL SPOTS</h1> */}
+      <input
+        type="text"
+        value={searchInput}
+        onChange={handleSearchInputChange}
+        placeholder="Search by name, category, or price range"
+      />
       <div className="spots-front-page">
+
         <div className="spots-grid">
-          {allSpots.map((spot) => (
+          {filteredSpots.map((spot) => (
             <NavLink
               key={spot.id}
               to={`/spots/${spot.id}`}
