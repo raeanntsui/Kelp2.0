@@ -242,3 +242,16 @@ button {
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   background-color: white;
 }
+
+.bold-this {
+  font-weight: bold;
+}
+
+#loginsignupbutton {
+  padding: 0px 10px;
+  width: fit-content;
+  border-radius: 10px;
+  color: #d32323;
+  font-size: 14px;
+  font-weight: bold;
+}
