@@ -251,7 +251,13 @@ button {
   padding: 0px 10px;
   width: fit-content;
   border-radius: 10px;
-  color: #d32323;
+  /* color: #d32323; */
   font-size: 14px;
   font-weight: bold;
+  align-items: center;
+}
+
+#fish {
+  color: #4169e1;
+  font-size: 14px;
 }
