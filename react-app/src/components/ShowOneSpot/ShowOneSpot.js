@@ -57,8 +57,8 @@ function ShowOneSpot() {
             </div>
           </div>
         </div>
-        {/* 
-        <div>
+
+        <div className="delete-spot">
           <DeleteSpot />
         </div>
         <div>
@@ -68,7 +68,7 @@ function ShowOneSpot() {
               <button onClick={handleSpotUpdate}>Update Spot</button>
             </>
           )}
-        </div> */}
+        </div>
 
         <div className="left-right">
           <div className="left">
