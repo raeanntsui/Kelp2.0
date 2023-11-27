@@ -77,7 +77,6 @@ export default function CreateSpotModal({ id }) {
               onChange={(e) => setBusinessName(e.target.value)}
             />
           </div>
-
           <div className="form-chunk">
             <label>What is your business address?</label>
             <input
@@ -108,7 +107,6 @@ export default function CreateSpotModal({ id }) {
               />
             </div>
           </div>
-
           <div className="form-chunk">
             <label>Zip Code</label>
             <input
@@ -118,7 +116,6 @@ export default function CreateSpotModal({ id }) {
               onChange={(e) => setZipCode(e.target.value)}
             />
           </div>
-
           <div className="form-chunk">
             <label>What kind of business are you in?</label>
             <input
@@ -148,7 +145,6 @@ export default function CreateSpotModal({ id }) {
               />
             </div>
           </div>
-
           <div className="form-chunk">
             <label>Description</label>
             <input
@@ -159,7 +155,6 @@ export default function CreateSpotModal({ id }) {
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-
           <div className="form-chunk">
             <label>Price Range </label>
             <input
@@ -180,7 +175,6 @@ export default function CreateSpotModal({ id }) {
               onChange={(e) => setImageUrl(e.target.value)}
             />
           </div>
-
           <div className="sign-up">
             <button type="submit">Submit</button>
           </div>
