@@ -61,18 +61,19 @@ function Homepage() {
                 <i class="fa-solid fa-user"></i>
               </div>
               <div className="user-info">
-                {spot.review.map((review) => (
+                {spot.review.slice(0, 1).map((review) => (
                   <div key={review.id}>
                     <p>{review.user.first_name}</p>
+                    {/* <p>{review}</p> */}
                   </div>
                 ))}
-                <p>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                </p>
+                {/* <p>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                </p> */}
               </div>
             </div>
 
@@ -84,9 +85,9 @@ function Homepage() {
               <img src="https://img.buzzfeed.com/buzzfeed-static/static/2019-11/21/20/campaign_images/fbf76a44e63d/could-you-pass-an-interview-and-get-hired-at-the--2-2131-1574368600-0_dblbig.jpg?resize=1200:*" />
             </div>
             <div className="user-description">
-              {spot.review.map((review) => (
+              {spot.review.slice(0, 1).map((review) => (
                 <div key={review.id}>
-                  <p>Description: {review.description}</p>
+                  <p>{review.description}</p>
                 </div>
               ))}
             </div>
