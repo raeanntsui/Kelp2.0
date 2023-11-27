@@ -44,18 +44,19 @@ export default function ReviewModal({ spot }) {
           type="submit"
           onClick={() => {
             setModalContent(<ReviewForm spot={spot} />);
-          }}>
+          }}
+        >
           <i className="fa-regular fa-star"></i> Write a review
         </button>
       </div>
 
       <div className="delete-button">
-        {currReview ? (
+        {
           <OpenModalButton
             buttonText="Delete my review"
             modalComponent={<DeleteReview review={currReview} />}
           />
-        ) : null}
+        }
       </div>
     </>
   );

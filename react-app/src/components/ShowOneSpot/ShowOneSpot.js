@@ -18,7 +18,7 @@ function ShowOneSpot() {
   const spot = useSelector((state) => state.spots.oneSpot);
   const reviews = useSelector((state) => state.reviews.Reviews);
 
-  const userId = sessionUser.id;
+  const userId = sessionUser?.id;
   const businessOwnerId = spot.user_id;
   const businessOwner = userId === businessOwnerId;
 
@@ -92,6 +92,7 @@ function ShowOneSpot() {
                         </p>
                         {/* <p>{review.rating}</p> */}
                         <p key={index}>{review.description}</p>
+                        <img src={review.user_img} />
                       </div>
                     </div>
                   ))}
