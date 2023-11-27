@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createSpotThunk } from "../../store/spots";
-import "./CreateSpot.css";
 
 export default function CreateSpotModal({ id }) {
   const dispatch = useDispatch();
@@ -14,22 +13,21 @@ export default function CreateSpotModal({ id }) {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zipCode, setZipCode] = useState("");
-
   const [categories, setCategories] = useState("");
   const [openHours, setOpenHours] = useState("");
   const [closeHours, setCloseHours] = useState("");
   const [description, setDescription] = useState("");
   const [priceRange, setPriceRange] = useState("");
+  const [imageUrl, setImageUrl] = useState(""); // Updated state for imageUrl
   const [validationObject, setValidationObject] = useState([]);
   const [submitted, yesSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
-
-  //   if (!currentUser) {
-  //     history.push("/");
-  //   }
+  const [uploadedImages, setUploadedImages] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Prepare spot data
     const formData = new FormData();
     formData.append("business_name", businessName);
     formData.append("address", address);
@@ -41,28 +39,21 @@ export default function CreateSpotModal({ id }) {
     formData.append("close_hours", closeHours);
     formData.append("description", description);
     formData.append("price_range", priceRange);
+    formData.append("img_url", imageUrl); // Include imageUrl in the spotData
 
     try {
-      const response = await dispatch(createSpotThunk(formData));
+      // Dispatch createSpotThunk with spotData
+      const createdSpot = await dispatch(createSpotThunk(formData));
 
-      console.log("Response:", response);
+      console.log("Response from createSpotThunk:", createdSpot);
 
-      if (response && response.errors) {
-        setErrors(response.errors);
-      } else {
-        console.log("Create new spot success", response);
-        history.push(`/spots`);
-      }
+      // Redirect to the spots page or handle success as needed
+      history.push(`/spots`);
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error creating a new Spot:", error);
     }
   };
 
-  useEffect(() => {
-    let errorsObject = {};
-    if (!businessName) errorsObject.businessName = "Business name is required";
-    setValidationObject(errorsObject);
-  }, [businessName]);
   return (
     <>
       <h1 id="create-h1">Create a Spot</h1>
@@ -79,10 +70,6 @@ export default function CreateSpotModal({ id }) {
           </div>
           <div className="form-chunk">
             <label>Hello! Let’s start with your business name</label>
-            {/* <p id="form-chunk-p">
-              We’ll use this information to help you claim your Kelp page. Your
-              business will come up automatically if it is already listed.
-            </p> */}
             <input
               type="text"
               placeholder="Enter your business' name here"
@@ -93,9 +80,6 @@ export default function CreateSpotModal({ id }) {
 
           <div className="form-chunk">
             <label>What is your business address?</label>
-            {/* <p id="form-chunk-p">
-              Enter the address for where your customers can find you.
-            </p> */}
             <input
               type="text"
               placeholder="Enter the address for where your customers can find you."
@@ -137,11 +121,6 @@ export default function CreateSpotModal({ id }) {
 
           <div className="form-chunk">
             <label>What kind of business are you in?</label>
-            {/* <p id="form-chunk-p">
-              Help customers find your product and service. You can add up to 3
-              categories that best describe what your core business is. You can
-              always edit and add more later.
-            </p> */}
             <input
               type="text"
               id="description-input"
@@ -172,10 +151,6 @@ export default function CreateSpotModal({ id }) {
 
           <div className="form-chunk">
             <label>Description</label>
-            {/* <p id="form-chunk-p">
-              Write some information about your business that will draw
-              customers in.
-            </p> */}
             <input
               placeholder="Write something about your business that will draw customers in"
               id="description-input"
@@ -194,6 +169,18 @@ export default function CreateSpotModal({ id }) {
               onChange={(e) => setPriceRange(e.target.value)}
             />
           </div>
+
+          {/* New input for Image URL */}
+          <div className="form-chunk">
+            <label>Image URL</label>
+            <input
+              type="text"
+              placeholder="Enter the URL for your business image"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+            />
+          </div>
+
           <div className="sign-up">
             <button type="submit">Submit</button>
           </div>

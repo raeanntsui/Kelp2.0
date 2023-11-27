@@ -16,7 +16,7 @@ class SpotImage(db.Model):
 
 
     #relationship
-    spot = db.relationship('Spot', back_populates="spot_image")
+    spot = db.relationship('Spot', back_populates="img_urls")
 
     def to_dict(self):
         return {

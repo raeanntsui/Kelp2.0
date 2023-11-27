@@ -1,8 +1,9 @@
 from flask import Blueprint, jsonify, redirect, request
 from flask_login import login_required, current_user
-from app.models import db, Spot
+from app.models import db, Spot, SpotImage
 from app.forms import SpotForm
 from .auth_routes import validation_errors_to_error_messages
+
 
 spots_routes = Blueprint("spots", __name__)
 
@@ -26,13 +27,14 @@ def get_spot(id):
         return {"error": "Spot could not be found"}, 404
 
 
-@spots_routes.route("/int:spotId", methods=['POST'])
+@spots_routes.route("/<int:spotId>/images", methods=['POST'])
 @login_required
 def post_img(spotId):
+    from app.forms.spot_images_form import SpotImageForm
     """
-    CREATE IMAGE FOR A SPOT
+    Create an image when creating a spot
     """
-    spot = spot.query.get(spotId)
+    spot = Spot.query.get(spotId)
     if not spot:
         return{'errors':'Spot not found'}, 404
 
@@ -60,31 +62,42 @@ def create_spot():
     Create spot (while logged in)
     """
     if current_user.business_owner == False:
-        return {"message":"You do not have authorize to sell on your account"}, 403
+        return {"message": "You do not have authorize to sell on your account"}, 403
     else:
-
         form = SpotForm()
         form['csrf_token'].data = request.cookies['csrf_token']
+
         if form.validate_on_submit():
             spot_params = Spot(
-            business_name=form.data["business_name"],
-            address=form.data["address"],
-            city=form.data["city"],
-            state=form.data["state"],
-            zip_code=form.data["zip_code"],
-            categories=form.data["categories"],
-            open_hours=form.data["open_hours"],
-            close_hours=form.data["close_hours"],
-            description=form.data["description"],
-            price_range=form.data["price_range"],
-            user_id=current_user.id
+                business_name=form.data["business_name"],
+                address=form.data["address"],
+                city=form.data["city"],
+                state=form.data["state"],
+                zip_code=form.data["zip_code"],
+                categories=form.data["categories"],
+                open_hours=form.data["open_hours"],
+                close_hours=form.data["close_hours"],
+                description=form.data["description"],
+                price_range=form.data["price_range"],
+                user_id=current_user.id,
             )
+
             db.session.add(spot_params)
             db.session.commit()
+
+            img_url = request.form.get("img_url")
+            if img_url:
+                new_image = SpotImage(
+                    preview=False,
+                    img_url=img_url,
+                    spot_id=spot_params.id, 
+                )
+                db.session.add(new_image)
+                db.session.commit()
+
             return {"newSpot": spot_params.to_dict()}
 
-
-    return {"error": validation_errors_to_error_messages(form.errors)}, 400
+        return {"error": validation_errors_to_error_messages(form.errors)}, 400
 
 @spots_routes.route("/<int:spotId>", methods=["DELETE"])
 @login_required
