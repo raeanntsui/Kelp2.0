@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createSpotThunk } from "../../store/spots";
+import "./CreateSpot.css";
 
 export default function CreateSpotModal({ id }) {
   const dispatch = useDispatch();
@@ -54,6 +55,11 @@ export default function CreateSpotModal({ id }) {
     }
   };
 
+  useEffect(() => {
+    let errorsObject = {};
+    if (!businessName) errorsObject.businessName = "Business name is required";
+    setValidationObject(errorsObject);
+  }, [businessName]);
   return (
     <>
       <h1 id="create-h1">Create a Spot</h1>
@@ -70,6 +76,10 @@ export default function CreateSpotModal({ id }) {
           </div>
           <div className="form-chunk">
             <label>Hello! Let’s start with your business name</label>
+            {/* <p id="form-chunk-p">
+              We’ll use this information to help you claim your Kelp page. Your
+              business will come up automatically if it is already listed.
+            </p> */}
             <input
               type="text"
               placeholder="Enter your business' name here"
@@ -77,8 +87,12 @@ export default function CreateSpotModal({ id }) {
               onChange={(e) => setBusinessName(e.target.value)}
             />
           </div>
+
           <div className="form-chunk">
             <label>What is your business address?</label>
+            {/* <p id="form-chunk-p">
+              Enter the address for where your customers can find you.
+            </p> */}
             <input
               type="text"
               placeholder="Enter the address for where your customers can find you."
@@ -107,6 +121,7 @@ export default function CreateSpotModal({ id }) {
               />
             </div>
           </div>
+
           <div className="form-chunk">
             <label>Zip Code</label>
             <input
@@ -116,8 +131,14 @@ export default function CreateSpotModal({ id }) {
               onChange={(e) => setZipCode(e.target.value)}
             />
           </div>
+
           <div className="form-chunk">
             <label>What kind of business are you in?</label>
+            {/* <p id="form-chunk-p">
+              Help customers find your product and service. You can add up to 3
+              categories that best describe what your core business is. You can
+              always edit and add more later.
+            </p> */}
             <input
               type="text"
               id="description-input"
@@ -145,8 +166,13 @@ export default function CreateSpotModal({ id }) {
               />
             </div>
           </div>
+
           <div className="form-chunk">
             <label>Description</label>
+            {/* <p id="form-chunk-p">
+              Write some information about your business that will draw
+              customers in.
+            </p> */}
             <input
               placeholder="Write something about your business that will draw customers in"
               id="description-input"
@@ -155,6 +181,7 @@ export default function CreateSpotModal({ id }) {
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
+
           <div className="form-chunk">
             <label>Price Range </label>
             <input
