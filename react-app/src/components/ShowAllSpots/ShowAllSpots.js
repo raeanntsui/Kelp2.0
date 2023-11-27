@@ -4,11 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllSpotsThunk } from "../../store/spots";
 import "./ShowAllSpots.css";
 
+const ResultNotFoundMessage = ({ searchInput, address }) => (
+  <div className="result-not-found">
+    No results for {searchInput} {address && `(${address})`}
+  </div>
+);
+
 function ShowAllSpots() {
   const dispatch = useDispatch();
   const location = useLocation();
   const spots = useSelector((state) => state.spots.allSpots);
   const [searchInput, setSearchInput] = useState("");
+  const [searchButtonClicked, setSearchButtonClicked] = useState(false);
 
   const allSpots = Object.values(spots);
 
@@ -16,9 +23,16 @@ function ShowAllSpots() {
     setSearchInput(event.target.value);
   }
 
+  const handleSearchButtonClick = () => {
+    setSearchButtonClicked(true);
+  };
+
   useEffect(() => {
-    dispatch(getAllSpotsThunk());
-  }, [dispatch]);
+    if (searchButtonClicked) {
+      dispatch(getAllSpotsThunk());
+      setSearchButtonClicked(false);
+    }
+  }, [dispatch, searchButtonClicked]);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -36,19 +50,26 @@ function ShowAllSpots() {
     return isNameMatch || isCategoryMatch || isPriceRangeMatch;
   });
 
-  //poo
   let count = 1;
   return (
     <>
-      <input
-        type="text"
-        value={searchInput}
-        onChange={handleSearchInputChange}
-        placeholder="Search by name, category, or price range"
-      />
+      <div className="search-bar">
+        <input
+          type="text"
+          value={searchInput}
+          onChange={handleSearchInputChange}
+          placeholder="Search by name, category, or price range"
+        />
+        <button onClick={handleSearchButtonClick}>Search</button>
+      </div>
       <div className="spots-front-page">
-        {filteredSpots.length === 0 ? (
-          <div className="result-not-found">No results found</div>
+        {searchButtonClicked && filteredSpots.length === 0 ? (
+          <div className="results-container">
+            <ResultNotFoundMessage
+              searchInput={searchInput}
+              address={filteredSpots[0]?.address}
+            />
+          </div>
         ) : (
           <div className="spots-grid">
             {filteredSpots.map((spot) => (
