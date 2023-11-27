@@ -68,7 +68,6 @@ def create_spot():
         form['csrf_token'].data = request.cookies['csrf_token']
 
         if form.validate_on_submit():
-            # Create spot
             spot_params = Spot(
                 business_name=form.data["business_name"],
                 address=form.data["address"],
@@ -86,13 +85,12 @@ def create_spot():
             db.session.add(spot_params)
             db.session.commit()
 
-            # Create spot image
             img_url = request.form.get("img_url")
             if img_url:
                 new_image = SpotImage(
-                    preview=False,  # Adjust as needed
+                    preview=False,
                     img_url=img_url,
-                    spot_id=spot_params.id,  # Associate with the newly created spot
+                    spot_id=spot_params.id, 
                 )
                 db.session.add(new_image)
                 db.session.commit()

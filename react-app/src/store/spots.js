@@ -109,7 +109,6 @@ export const getOneSpotThunk = (spotId) => async (dispatch) => {
 
 export const createSpotThunk = (newSpot, imageFormData) => async (dispatch) => {
   try {
-    // Assuming newSpot is a FormData object that includes the required fields
     const res = await fetch("/api/spots/new", {
       method: "POST",
       body: newSpot,
@@ -117,13 +116,11 @@ export const createSpotThunk = (newSpot, imageFormData) => async (dispatch) => {
 
     if (!res.ok) {
       console.log("There is an error creating a new Spot");
-      // Handle error if needed
       return;
     }
 
     const createdSpot = await res.json();
 
-    // Check if imageFormData is provided before dispatching image upload
     if (imageFormData) {
       const imageUploadResponse = await dispatch(
         createSpotImageThunk(
@@ -134,7 +131,6 @@ export const createSpotThunk = (newSpot, imageFormData) => async (dispatch) => {
         )
       );
 
-      // Log or handle the image upload response if needed
       console.log("Image upload response:", imageUploadResponse);
     }
 
@@ -154,7 +150,6 @@ export const createSpotImageThunk =
 
     if (res.ok) {
       const createdSpotImage = await res.json();
-      // Add the URL and preview status to the createdSpotImage object
       createdSpotImage.url = url;
       createdSpotImage.preview = preview;
 
