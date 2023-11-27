@@ -1,11 +1,18 @@
-/* .spot-background > img {
-  position: absolute;
+.spot-details-page {
+  margin: 0 auto;
+  border: 5px solid pink;
+  max-width: 1200px;
+}
+
+.spot-background > img {
+  /* position: absolute; */
+  max-width: 1024px;
   max-height: 400px;
   height: auto;
   width: 100%;
   background-position: 0%;
   z-index: 99;
-} */
+}
 
 /* .spot-details-top {
   position: absolute;
