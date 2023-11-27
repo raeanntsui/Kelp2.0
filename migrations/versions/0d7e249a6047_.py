@@ -1,20 +1,16 @@
 """empty message
 
-Revision ID: 53218e126ea5
-Revises:
-Create Date: 2023-11-26 18:47:24.271610
+Revision ID: 0d7e249a6047
+Revises: 
+Create Date: 2023-11-27 16:49:22.141004
 
 """
 from alembic import op
 import sqlalchemy as sa
 
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
-
 
 # revision identifiers, used by Alembic.
-revision = '53218e126ea5'
+revision = '0d7e249a6047'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -34,8 +30,6 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('spots',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('business_name', sa.String(), nullable=False),
@@ -55,9 +49,6 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('address')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE spots SET SCHEMA {SCHEMA};")
-
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('rating', sa.Integer(), nullable=False),
@@ -71,8 +62,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
     op.create_table('spot_images',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('spot_id', sa.Integer(), nullable=False),
@@ -81,8 +70,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['spot_id'], ['spots.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE spot_images SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
