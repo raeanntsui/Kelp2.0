@@ -48,5 +48,6 @@ class Spot(db.Model):
             'price_range': self.price_range,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'review': [review.to_dict_information() for review in self.review],
+            # 'user': user.to_dict(),
+            'review': [review.to_dict() for review in self.review],
         }
