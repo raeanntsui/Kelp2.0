@@ -61,7 +61,12 @@ function Homepage() {
                 <i class="fa-solid fa-user"></i>
               </div>
               <div className="user-info">
-                <p>Amy C.</p>
+                {spot.review.map((review) => (
+                  <div key={review.id}>
+                    
+                    <p>user name: {review.user.email}</p>
+                  </div>
+                ))}
                 <p>
                   <i class="fa-solid fa-star"></i>
                   <i class="fa-solid fa-star"></i>
@@ -71,12 +76,7 @@ function Homepage() {
                 </p>
               </div>
             </div>
-            {spot.review.map((review) => (
-              <div key={review.id}>
-                <p>Description: {review.spot_id}</p>
-                {/* Add more lines for other properties if needed */}
-              </div>
-            ))}
+
             <div className="recent-activity-business-name">
               <NavLink to={`/spots/${spot.id}`}>{spot.business_name}</NavLink>
             </div>
@@ -85,13 +85,12 @@ function Homepage() {
               <img src="https://img.buzzfeed.com/buzzfeed-static/static/2019-11/21/20/campaign_images/fbf76a44e63d/could-you-pass-an-interview-and-get-hired-at-the--2-2131-1574368600-0_dblbig.jpg?resize=1200:*" />
             </div>
             <div className="user-description">
-              <p>
-                Once upon a time, there was an ugly barnacle. So ugly that
-                everyone died. The end. F is for friends who do stuff together U
-                is for you and me N is for anywhere and anytime at all Down here
-                in the deep blue sea.
-              </p>
-
+              {spot.review.map((review) => (
+                <div key={review.id}>
+                  <p>Description: {review.description}</p>
+                  {/* Add more lines for other properties if needed */}
+                </div>
+              ))}
             </div>
           </div>
         ))}
