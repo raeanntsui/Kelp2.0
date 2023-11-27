@@ -69,12 +69,12 @@ function ReviewForm({ spot }) {
       />
       <p>{submit && errors.user_img}</p>
 
-      {userImgUrl && (
+      {/* {userImgUrl && (
         <div>
           <p>Image Preview:</p>
           <img src={userImgUrl} alt="User's uploaded image" />
         </div>
-      )}
+      )} */}
 
       <div className="stars">
         <i

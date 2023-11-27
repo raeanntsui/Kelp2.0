@@ -76,12 +76,12 @@ def update_review(review_id):
     else:
         return (jsonify({"error": "Invalid form data"}), 400)
 
-# @app.route('/<int:review_id>', methods=['DELETE'])
-# def delete_review(review_id):
-#     review = Review.query.get(review_id)
-#     if review:
-#         db.session.delete(review)
-#         db.session.commit()
-#         return jsonify({"message": "Review deleted successfully"})
-#     else:
-#         return jsonify({"error": "Review not found"}), 404
+@reviews_routes.route('/<int:review_id>', methods=['DELETE'])
+def delete_review(review_id):
+    review = Review.query.get(review_id)
+    if review:
+        db.session.delete(review)
+        db.session.commit()
+        return jsonify({"message": "Review deleted successfully"})
+    else:
+        return jsonify({"error": "Review not found"}), 404
