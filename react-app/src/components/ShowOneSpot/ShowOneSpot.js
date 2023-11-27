@@ -92,15 +92,11 @@ function ShowOneSpot() {
 
                 {businessOwner && (
                   <div>
-                    {Object.values(reviews).some(
-                      (review) => review.user.id === userId
-                    ) && (
                       <div>
                         <DeleteSpot />
                         <h1>Update Spot</h1>
                         <button onClick={handleSpotUpdate}>Update Spot</button>
                       </div>
-                    )}
                   </div>
                 )}
               </div>

@@ -29,9 +29,15 @@ function ShowAllSpots() {
 
   const filteredSpots = allSpots.filter((spot) => {
     const lowerCaseSearchInput = searchInput.toLowerCase();
-    const isNameMatch = spot.business_name.toLowerCase().includes(lowerCaseSearchInput);
-    const isCategoryMatch = spot.categories.toLowerCase().includes(lowerCaseSearchInput);
-    const isPriceRangeMatch = typeof spot.price_range === 'string' && spot.price_range.toLowerCase().includes(lowerCaseSearchInput);
+    const isNameMatch = spot.business_name
+      ?.toLowerCase()
+      ?.includes(lowerCaseSearchInput);
+    const isCategoryMatch = spot.categories
+      ?.toLowerCase()
+      ?.includes(lowerCaseSearchInput);
+    const isPriceRangeMatch =
+      typeof spot.price_range === "string" &&
+      spot.price_range.toLowerCase()?.includes(lowerCaseSearchInput);
 
     return isNameMatch || isCategoryMatch || isPriceRangeMatch;
   });
