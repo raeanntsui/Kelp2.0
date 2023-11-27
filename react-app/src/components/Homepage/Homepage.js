@@ -65,15 +65,17 @@ function Homepage() {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css"
         />
-        <form onSubmit={handleSearchSubmit}>
-          <input
-            type="text"
-            value={searchInput}
-            onChange={handleSearchInputChange}
-            placeholder="Search by name, category, or price range"
-          />
-          <button type="submit"><i className="fas fa-search" style={{ color: 'white' }}></i></button>
-        </form>
+        <div className="rae-told-me-to">
+          <form onSubmit={handleSearchSubmit}>
+            <input
+              type="text"
+              value={searchInput}
+              onChange={handleSearchInputChange}
+              placeholder="Search by name, category, or price range"
+            />
+            <button type="submit"><i className="fas fa-search" style={{ color: 'white' }}></i></button>
+          </form>
+        </div>
       </div>
       <div className="frontpage-image">
         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgV4opNgXkJW3vJ1no6nvp8SCwtJuisrOjeU27QfOlESq9x-VwalxQZ1Is9wmfPClELNca7B5javckAuZodxRq4lzPW65SzPq7Kh_QVPWadFpTHSoYlgL9Z2DG8pcDYBFko1NrpcbdvC1_qTeMQABDEmPZdPL0gE8O-qsM_Ob93tZtSc0Fqyw/s1420/No_Weenies_Allowed_043.webp" />
