@@ -79,13 +79,13 @@ export default function CreateSpotModal({ id }) {
           </div>
           <div className="form-chunk">
             <label>Hello! Let’s start with your business name</label>
-            <p id="form-chunk-p">
+            {/* <p id="form-chunk-p">
               We’ll use this information to help you claim your Kelp page. Your
               business will come up automatically if it is already listed.
-            </p>
+            </p> */}
             <input
               type="text"
-              placeholder="Your business name"
+              placeholder="Enter your business' name here"
               value={businessName}
               onChange={(e) => setBusinessName(e.target.value)}
             />
@@ -93,12 +93,12 @@ export default function CreateSpotModal({ id }) {
 
           <div className="form-chunk">
             <label>What is your business address?</label>
-            <p id="form-chunk-p">
+            {/* <p id="form-chunk-p">
               Enter the address for where your customers can find you.
-            </p>
+            </p> */}
             <input
               type="text"
-              placeholder="Street Address"
+              placeholder="Enter the address for where your customers can find you."
               value={address}
               onChange={(e) => setAddress(e.target.value)}
             />
@@ -137,15 +137,15 @@ export default function CreateSpotModal({ id }) {
 
           <div className="form-chunk">
             <label>What kind of business are you in?</label>
-            <p id="form-chunk-p">
+            {/* <p id="form-chunk-p">
               Help customers find your product and service. You can add up to 3
               categories that best describe what your core business is. You can
               always edit and add more later.
-            </p>
+            </p> */}
             <input
               type="text"
               id="description-input"
-              placeholder="Business categories"
+              placeholder="Share the categories of your business so customers can find your service"
               value={categories}
               onChange={(e) => setCategories(e.target.value)}
             />
@@ -177,7 +177,7 @@ export default function CreateSpotModal({ id }) {
               customers in.
             </p> */}
             <input
-              placeholder="Write something about your business that will draw customers in!"
+              placeholder="Write something about your business that will draw customers in"
               id="description-input"
               type="text"
               value={description}

@@ -1,3 +1,9 @@
+.spot-details-bottom {
+  background-image: url("https://static1.srcdn.com/wordpress/wp-content/uploads/2022/07/super-weenie-hut-jrs-from-spongebob-squarepants.jpg");
+  height: 300px;
+  background-position: center;
+}
+
 .spot-details-page {
   margin: 0 auto;
   border: 5px solid pink;
@@ -32,4 +38,27 @@
   font-size: 48px;
   color: blue;
   font-weight: bold;
+}
+
+.spot-details-top {
+  border: solid 5px black;
+}
+
+.write-review {
+  border: solid 5px blue;
+}
+
+.left-right {
+  border: 9px solid rgb(0, 234, 255);
+  display: flex;
+  width: 100%;
+}
+
+.left {
+  border: 4px dashed purple;
+  width: 60%;
+}
+.right {
+  border: 4px dashed rgb(0, 9, 128);
+  width: 40%;
 }
