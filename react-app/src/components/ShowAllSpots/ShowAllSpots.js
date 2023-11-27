@@ -28,11 +28,11 @@ function ShowAllSpots() {
   };
 
   useEffect(() => {
-    if (searchButtonClicked) {
+
+    if (!searchInput) {
       dispatch(getAllSpotsThunk());
-      setSearchButtonClicked(false);
     }
-  }, [dispatch, searchButtonClicked]);
+  }, [dispatch, searchInput]);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -73,7 +73,7 @@ function ShowAllSpots() {
 
       </div>
       <div className="spots-front-page">
-        {filteredSpots.length === 0 ? (
+        {searchInput && filteredSpots.length === 0 ? (
           <div className="results-container">
             <ResultNotFoundMessage
               searchInput={searchInput}
