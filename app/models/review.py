@@ -11,7 +11,7 @@ class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     rating = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String(2000), nullable=False)
-    user_img = db.Column(db.String(250))
+    user_img = db.Column(db.String(250), nullable=True)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 

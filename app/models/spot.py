@@ -48,6 +48,7 @@ class Spot(db.Model):
             'price_range': self.price_range,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
+            'user_id':self.user_id,
             'user': self.user.to_dict() if self.user else None,
             'review': [review.to_dict() for review in self.review],
             'img_urls': [image.img_url for image in self.img_urls],

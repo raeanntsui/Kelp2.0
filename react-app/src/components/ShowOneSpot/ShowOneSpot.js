@@ -24,6 +24,9 @@ function ShowOneSpot() {
   const businessOwner = userId === businessOwnerId;
 
   useEffect(() => {
+    console.log("userId:", userId);
+    console.log("businessOwnerId:", businessOwnerId);
+    console.log("businessOwner:", businessOwner);
     dispatch(getReviewsThunk(spotId));
     dispatch(getOneSpotThunk(spotId));
   }, [dispatch, spotId]);
@@ -58,7 +61,6 @@ function ShowOneSpot() {
             </div>
           </div>
         </div>
-
         <div className="delete-spot">
           <DeleteSpot />
         </div>
@@ -102,17 +104,15 @@ function ShowOneSpot() {
                 </div>
                 {/* <UpdateReview spot={spot} review={currentUserReview} /> */}
 
-                {/* <div>
-                  <DeleteSpot />
-                </div> */}
-                {/* <div>
-                  {businessOwner && (
-                    <>
-                      <h1>Update Spot</h1>
-                      <button onClick={handleSpotUpdate}>Update Spot</button>
-                    </>
-                  )}
-                </div> */}
+                {businessOwner && (
+                  <div>
+                      <div>
+                        <DeleteSpot />
+                        <h1>Update Spot</h1>
+                        <button onClick={handleSpotUpdate}>Update Spot</button>
+                      </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
