@@ -71,21 +71,99 @@ export const getOneSpotThunk = (spotId) => async (dispatch) => {
   }
 };
 
-// CreateThunks -- add spot to spots
-export const createSpotThunk = (newSpot) => async (dispatch) => {
-  const res = await fetch("/api/spots/new", {
-    method: "POST",
-    body: newSpot,
-  });
+// // CreateThunks -- add spot to spots
+// export const createSpotThunk = (newSpot) => async (dispatch) => {
+//   const res = await fetch("/api/spots/new", {
+//     method: "POST",
+//     body: newSpot,
+//   });
 
-  if (res.ok) {
+//   if (res.ok) {
+//     const createdSpot = await res.json();
+//     dispatch(createSpot(createdSpot));
+//     return createdSpot;
+//   } else {
+//     console.log("There is an error creating a new Spot");
+//   }
+// };
+
+// export const createSpotImageThunk =
+//   (spotId, formData, url, preview) => async (dispatch) => {
+//     const res = await fetch(`/api/spots/${spotId}/images`, {
+//       method: "POST",
+//       body: formData,
+//     });
+
+//     if (res.ok) {
+//       const createdSpotImage = await res.json();
+//       // Add the URL and preview status to the createdSpotImage object
+//       createdSpotImage.url = url;
+//       createdSpotImage.preview = preview;
+
+//       dispatch(createSpotImage(createdSpotImage));
+//       return createdSpotImage;
+//     } else {
+//       console.error("There is an error creating a new Spot Image");
+//     }
+//   };
+
+export const createSpotThunk = (newSpot, imageFormData) => async (dispatch) => {
+  try {
+    // Assuming newSpot is a FormData object that includes the required fields
+    const res = await fetch("/api/spots/new", {
+      method: "POST",
+      body: newSpot,
+    });
+
+    if (!res.ok) {
+      console.log("There is an error creating a new Spot");
+      // Handle error if needed
+      return;
+    }
+
     const createdSpot = await res.json();
+
+    // Check if imageFormData is provided before dispatching image upload
+    if (imageFormData) {
+      const imageUploadResponse = await dispatch(
+        createSpotImageThunk(
+          createdSpot.id,
+          imageFormData,
+          "https://example.com/image-url",
+          true
+        )
+      );
+
+      // Log or handle the image upload response if needed
+      console.log("Image upload response:", imageUploadResponse);
+    }
+
     dispatch(createSpot(createdSpot));
     return createdSpot;
-  } else {
-    console.log("There is an error creating a new Spot");
+  } catch (error) {
+    console.error("Error creating a new Spot:", error);
   }
 };
+
+export const createSpotImageThunk =
+  (spotId, formData, url, preview) => async (dispatch) => {
+    const res = await fetch(`/api/spots/${spotId}/images`, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (res.ok) {
+      const createdSpotImage = await res.json();
+      // Add the URL and preview status to the createdSpotImage object
+      createdSpotImage.url = url;
+      createdSpotImage.preview = preview;
+
+      dispatch(createSpotImage(createdSpotImage));
+      return createdSpotImage;
+    } else {
+      console.error("There is an error creating a new Spot Image");
+    }
+  };
 
 export const deleteSpotThunk = (spotId) => async (dispatch) => {
   try {
@@ -147,26 +225,6 @@ export const updateSpotThunk = (formData, spotId) => async (dispatch) => {
     return data;
   }
 };
-
-export const createSpotImageThunk =
-  (spotId, formData, url, preview) => async (dispatch) => {
-    const res = await fetch(`/api/spots/${spotId}/images`, {
-      method: "POST",
-      body: formData,
-    });
-
-    if (res.ok) {
-      const createdSpotImage = await res.json();
-      // Add the URL and preview status to the createdSpotImage object
-      createdSpotImage.url = url;
-      createdSpotImage.preview = preview;
-
-      dispatch(createSpotImage(createdSpotImage));
-      return createdSpotImage;
-    } else {
-      console.error("There is an error creating a new Spot Image");
-    }
-  };
 
 // initial state
 const initialState = {

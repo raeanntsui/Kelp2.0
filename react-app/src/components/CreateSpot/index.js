@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createSpotThunk } from "../../store/spots";
-import "./CreateSpot.css";
+import { createSpotThunk, createSpotImageThunk } from "../../store/spots";
 
 export default function CreateSpotModal({ id }) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const user = useSelector((state) => state.session.user);
 
   const [businessName, setBusinessName] = useState("");
   const [address, setAddress] = useState("");
@@ -23,69 +23,41 @@ export default function CreateSpotModal({ id }) {
   const [errors, setErrors] = useState({});
   const [uploadedImages, setUploadedImages] = useState([]);
 
-  const handleImageUpload = (e) => {
-    const files = e.target.files;
-
-    if (uploadedImages.length + files.length > 8) {
-      console.log("You can only upload up to 8 images.");
-      return;
-    }
-
-    setUploadedImages([...uploadedImages, ...files]);
-  };
+  const [imageFormData, setImageFormData] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("business_name", businessName);
-    formData.append("address", address);
-    formData.append("city", city);
-    formData.append("state", state);
-    formData.append("zip_code", zipCode);
-    formData.append("categories", categories);
-    formData.append("open_hours", openHours);
-    formData.append("close_hours", closeHours);
-    formData.append("description", description);
-    formData.append("price_range", priceRange);
+
+    // Prepare spot data
+    const spotData = new FormData();
+    spotData.append("business_name", businessName);
+    // ... append other spot data
 
     try {
-      const response = await dispatch(createSpotThunk(formData));
+      // Dispatch createSpotThunk with spotData and imageFormData
+      const createdSpot = await dispatch(
+        createSpotThunk(spotData, imageFormData)
+      );
 
-      if (response && response.errors) {
-        setErrors(response.errors);
-      } else {
-        console.log("Create new spot success", response);
+      console.log("Response from createSpotThunk:", createdSpot);
 
-        const spotId = response.id;
-
-        if (uploadedImages.length > 0) {
-          for (let i = 0; i < uploadedImages.length; i++) {
-            const imageFormData = new FormData();
-            imageFormData.append("image", uploadedImages[i]);
-            // Add other necessary data like URL and preview status
-
-            await dispatch(
-              createSpotImageThunk(
-                spotId,
-                imageFormData,
-                "https://example.com/image-url"
-              )
-            );
-          }
-        }
-
-        history.push(`/spots`);
-      }
+      // Redirect to the spots page or handle success as needed
+      history.push(`/spots`);
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error creating a new Spot:", error);
     }
   };
 
-  useEffect(() => {
-    let errorsObject = {};
-    if (!businessName) errorsObject.businessName = "Business name is required";
-    setValidationObject(errorsObject);
-  }, [businessName]);
+  // Handle image file input change
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+
+    // Set imageFormData state
+    setImageFormData(formData);
+  };
+
   return (
     <>
       <h1 id="create-h1">Create a Spot</h1>
@@ -216,6 +188,17 @@ export default function CreateSpotModal({ id }) {
               value={priceRange}
               onChange={(e) => setPriceRange(e.target.value)}
             />
+          </div>
+          <div>
+            {/* Image input */}
+            <label>
+              Upload Image
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+              />
+            </label>
           </div>
           <div className="sign-up">
             <button type="submit">Submit</button>
