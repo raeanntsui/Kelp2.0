@@ -187,3 +187,19 @@
 ul {
   list-style-type: circle;
 }
+
+.search-bar {
+  margin-left: 30px;
+  margin-bottom: -30px;
+  position: relative;
+  left: 100px;
+  bottom: 58px;
+  box-sizing: border-box;
+
+}
+
+.search-bar input {
+  width: 35%;
+  height: 40px;
+  box-sizing: border-box;
+}
