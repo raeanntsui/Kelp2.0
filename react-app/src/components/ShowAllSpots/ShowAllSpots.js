@@ -50,17 +50,27 @@ function ShowAllSpots() {
     return isNameMatch || isCategoryMatch || isPriceRangeMatch;
   });
 
+
+
   let count = 1;
   return (
     <>
       <div className="search-bar">
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css"
+        />
         <input
           type="text"
           value={searchInput}
           onChange={handleSearchInputChange}
           placeholder="Search by name, category, or price range"
         />
-        <button onClick={handleSearchButtonClick}>Search</button>
+
+        <button onClick={handleSearchButtonClick}>
+          <i className="fas fa-search" style={{ color: 'white' }}></i>
+        </button>
+
       </div>
       <div className="spots-front-page">
         {filteredSpots.length === 0 ? (
