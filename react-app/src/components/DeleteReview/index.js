@@ -8,6 +8,8 @@ export default function DeleteReview({ review }) {
   const dispatch = useDispatch();
   const [deleted, setDeleted] = useState(true);
 
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(deleteReviewThunk(review));

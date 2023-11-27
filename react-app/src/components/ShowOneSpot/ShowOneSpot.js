@@ -61,19 +61,6 @@ function ShowOneSpot() {
             </div>
           </div>
         </div>
-        <div className="delete-spot">
-          <DeleteSpot />
-        </div>
-        <div>
-          {/* {businessOwner && (
-            <>
-              <h1>Update Spot</h1>
-              <button onClick={handleSpotUpdate}>
-                Update Spot <UpdateSpotPage />
-              </button>
-            </>
-          )} */}
-        </div>
 
         <div className="left-right">
           <div className="left">
@@ -106,11 +93,11 @@ function ShowOneSpot() {
 
                 {businessOwner && (
                   <div>
-                      <div>
-                        <DeleteSpot />
-                        <h1>Update Spot</h1>
-                        <button onClick={handleSpotUpdate}>Update Spot</button>
-                      </div>
+                    <div className="delete-spot">
+                      <DeleteSpot />
+                      <h1>Update Spot</h1>
+                      <button onClick={handleSpotUpdate}>Update Spot</button>
+                    </div>
                   </div>
                 )}
               </div>
