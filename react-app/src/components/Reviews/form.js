@@ -6,6 +6,7 @@ import { createReviewThunk } from "../../store/reviews";
 function ReviewForm({ spot }) {
   const [description, setDescription] = useState("");
   const [starRating, setStarRating] = useState(0);
+  const [userImgUrl, setUserImgUrl] = useState("");
   const [hover, setHover] = useState(0);
   const [errors, setErrors] = useState({});
   const [submit, setSubmit] = useState(false);
@@ -15,7 +16,7 @@ function ReviewForm({ spot }) {
   const user = useSelector((state) => state.session.user);
 
   const checkValidation = () => {
-    return description.length > 9 && starRating;
+    return description.length > 9 && starRating && userImgUrl !== "";
   };
 
   useEffect(() => {
@@ -23,9 +24,10 @@ function ReviewForm({ spot }) {
     if (!description || description.length < 30)
       errObj.description =
         "Please enter a minimum of 30 characters for your review";
+    if (!userImgUrl) errObj.userImgUrl = "Please enter a valid image URL";
 
     setErrors(errObj);
-  }, [description]);
+  }, [description, userImgUrl]);
 
   const handleSubmit = async (e) => {
     if (!spot.id) {
@@ -37,6 +39,7 @@ function ReviewForm({ spot }) {
     const submitReview = {
       description: description,
       rating: starRating,
+      user_img: userImgUrl,
     };
 
     if (Object.keys(errors).length === 0) {
@@ -56,6 +59,22 @@ function ReviewForm({ spot }) {
         placeholder="Leave your review here..."
       />
       <p>{submit && errors.description}</p>
+
+      <input
+        type="url"
+        id="userImgUrl"
+        value={userImgUrl}
+        onChange={(e) => setUserImgUrl(e.target.value)}
+        placeholder="Enter image URL"
+      />
+      <p>{submit && errors.user_img}</p>
+
+      {userImgUrl && (
+        <div>
+          <p>Image Preview:</p>
+          <img src={userImgUrl} alt="User's uploaded image" />
+        </div>
+      )}
 
       <div className="stars">
         <i

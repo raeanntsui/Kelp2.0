@@ -39,13 +39,14 @@ def create_review(spot_id):
 
         description = form.description.data
         rating = form.rating.data
+        user_img =form.user_img.data
 
-        new_review = Review(spot_id=spot_id, description=description, rating=rating, user_id=current_user.id)
+        new_review = Review(spot_id=spot_id, description=description, rating=rating, user_img=user_img, user_id=current_user.id)
 
         db.session.add(new_review)
         db.session.commit()
 
-        return jsonify({"message": "Review created successfully"})
+        return {"new_review": new_review.to_dict()}
     else:
 
         errors = form.errors
