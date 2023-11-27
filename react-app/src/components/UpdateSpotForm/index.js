@@ -71,102 +71,106 @@ const UpdateSpotPage = () => {
   };
 
   return (
-    <div>
-      <h1>Update Your spot</h1>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <div>
-          <label>Business Name</label>
-          <input
-            type="text"
-            placeholder="Name of business"
-            value={businessName}
-            onChange={(e) => setBusinessName(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Address</label>
-          <input
-            type="text"
-            placeholder="Business address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>City</label>
-          <input
-            type="text"
-            placeholder="Business address"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>State</label>
-          <input
-            type="text"
-            placeholder="Business address"
-            value={state}
-            onChange={(e) => setState(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Zip Code</label>
-          <input
-            type="text"
-            placeholder="Business address"
-            value={zipCode}
-            onChange={(e) => setZipCode(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Categories</label>
-          <input
-            type="text"
-            placeholder="Business address"
-            value={categories}
-            onChange={(e) => setCategories(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Open Hours</label>
-          <input
-            type="text"
-            placeholder="Business address"
-            value={openHours}
-            onChange={(e) => setOpenHours(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Close Hours</label>
-          <input
-            type="text"
-            placeholder="Business address"
-            value={closeHours}
-            onChange={(e) => setCloseHours(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Description</label>
-          <input
-            type="text"
-            placeholder="Business address"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Price Range</label>
-          <input
-            type="text"
-            placeholder="Business address"
-            value={priceRange}
-            onChange={(e) => setPriceRange(e.target.value)}
-          />
-        </div>
-        <button type="submit">Update Spot</button>
-      </form>
-    </div>
+    <>
+      <h1 id="create-h1">Update Your spot</h1>
+      <div className="form-content">
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
+          <div className="form-chunk">
+            <label>Business Name</label>
+            <input
+              type="text"
+              placeholder="Name of business"
+              value={businessName}
+              onChange={(e) => setBusinessName(e.target.value)}
+            />
+          </div>
+          <div className="form-chunk">
+            <label>Address</label>
+            <input
+              type="text"
+              placeholder="Business address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </div>
+          <div className="form-chunk">
+            <label>City</label>
+            <input
+              type="text"
+              placeholder="Business address"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+          </div>
+          <div className="form-chunk">
+            <label>State</label>
+            <input
+              type="text"
+              placeholder="Business address"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+            />
+          </div>
+          <div className="form-chunk">
+            <label>Zip Code</label>
+            <input
+              type="text"
+              placeholder="Business address"
+              value={zipCode}
+              onChange={(e) => setZipCode(e.target.value)}
+            />
+          </div>
+          <div className="form-chunk">
+            <label>Categories</label>
+            <input
+              type="text"
+              placeholder="Business address"
+              value={categories}
+              onChange={(e) => setCategories(e.target.value)}
+            />
+          </div>
+          <div className="form-chunk">
+            <label>Open Hours</label>
+            <input
+              type="text"
+              placeholder="Business address"
+              value={openHours}
+              onChange={(e) => setOpenHours(e.target.value)}
+            />
+          </div>
+          <div className="form-chunk">
+            <label>Close Hours</label>
+            <input
+              type="text"
+              placeholder="Business address"
+              value={closeHours}
+              onChange={(e) => setCloseHours(e.target.value)}
+            />
+          </div>
+          <div className="form-chunk">
+            <label>Description</label>
+            <input
+              type="text"
+              placeholder="Business address"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          <div className="form-chunk">
+            <label>Price Range</label>
+            <input
+              type="text"
+              placeholder="Business address"
+              value={priceRange}
+              onChange={(e) => setPriceRange(e.target.value)}
+            />
+          </div>
+          <div className="sign-up">
+            <button type="submit">Update Spot</button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 };
 

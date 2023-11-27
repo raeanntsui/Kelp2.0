@@ -63,7 +63,7 @@ function Homepage() {
               <div className="user-info">
                 {spot.review.map((review) => (
                   <div key={review.id}>
-                    <p>user name: {review.user.email}</p>
+                    <p>{review.user.first_name}</p>
                   </div>
                 ))}
                 <p>
