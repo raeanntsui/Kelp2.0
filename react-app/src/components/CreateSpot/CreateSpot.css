@@ -5,6 +5,7 @@
 }
 
 #create-h1 {
+  /* display: flex; */
   text-align: center;
   font-size: 24px;
   /* margin-top: 20px; */
