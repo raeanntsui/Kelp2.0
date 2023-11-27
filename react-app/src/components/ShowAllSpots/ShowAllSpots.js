@@ -1,21 +1,31 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import { getAllSpotsThunk } from "../../store/spots";
 import "./ShowAllSpots.css";
-import DeleteSpot from "../DeleteSpot/DeleteSpot";
 
 function ShowAllSpots() {
   const dispatch = useDispatch();
+  const location = useLocation();
   const spots = useSelector((state) => state.spots.allSpots);
   const [searchInput, setSearchInput] = useState("");
-  // console.log("🚀🚀🚀🚀🚀🚀 ~ spots:", spots);
+
   const allSpots = Object.values(spots);
 
   function handleSearchInputChange(event) {
     setSearchInput(event.target.value);
   }
+
+  useEffect(() => {
+    dispatch(getAllSpotsThunk());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const searchQuery = searchParams.get("search") || "";
+
+    setSearchInput(searchQuery);
+  }, [location.search]);
 
   const filteredSpots = allSpots.filter((spot) => {
     const lowerCaseSearchInput = searchInput.toLowerCase();
@@ -26,16 +36,6 @@ function ShowAllSpots() {
     return isNameMatch || isCategoryMatch || isPriceRangeMatch;
   });
 
-  const reviews = useSelector((state) => state.reviews.Reviews);
-  console.log("🚀🚀🚀🚀🚀🚀 ~ reviews:", reviews);
-
-  useEffect(() => {
-    dispatch(getAllSpotsThunk());
-  }, [dispatch]);
-
-  if (!allSpots || !allSpots.length) {
-    return null;
-  }
   //poo
   let count = 1;
   return (
