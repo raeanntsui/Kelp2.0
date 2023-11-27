@@ -8,6 +8,7 @@ import DeleteSpot from "../DeleteSpot/DeleteSpot";
 import "./ShowOneSpot.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { getReviewsThunk } from "../../store/reviews";
+import UpdateSpotPage from "../UpdateSpotForm";
 
 function ShowOneSpot() {
   const { spotId } = useParams();
@@ -62,12 +63,14 @@ function ShowOneSpot() {
           <DeleteSpot />
         </div>
         <div>
-          {businessOwner && (
+          {/* {businessOwner && (
             <>
               <h1>Update Spot</h1>
-              <button onClick={handleSpotUpdate}>Update Spot</button>
+              <button onClick={handleSpotUpdate}>
+                Update Spot <UpdateSpotPage />
+              </button>
             </>
-          )}
+          )} */}
         </div>
 
         <div className="left-right">
