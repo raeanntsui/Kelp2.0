@@ -29,7 +29,7 @@ class Spot(db.Model):
     user = db.relationship("User", back_populates="spot")
 
     # spot can have many images
-    spot_image = db.relationship("SpotImage", back_populates="spot", cascade='all, delete' )
+    img_urls = db.relationship("SpotImage", back_populates="spot", lazy=True, cascade='all, delete' )
 
     review = db.relationship("Review", back_populates='spot', cascade='all, delete')
 
@@ -50,4 +50,5 @@ class Spot(db.Model):
             'updated_at': self.updated_at,
             'user': self.user.to_dict() if self.user else None,
             'review': [review.to_dict() for review in self.review],
+            'img_urls': [image.img_url for image in self.img_urls],
         }
