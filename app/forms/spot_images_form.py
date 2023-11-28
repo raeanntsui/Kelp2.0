@@ -4,9 +4,9 @@ from wtforms.validators import DataRequired, ValidationError
 
 
 class SpotImageForm(FlaskForm):
-    img_url = StringField("URL", validators=[DataRequired(), validate_image_url])
+    img_url = StringField("URL")
     preview = BooleanField("Preview", default=False)
-    spot_id = IntegerField(validators=[DataRequired()])
+    spot_id = IntegerField()
 
 def validate_image_url(form, field):
     validate_image_obj = {'png', 'jpeg', 'jpg'}

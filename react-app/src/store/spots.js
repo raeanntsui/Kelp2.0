@@ -5,6 +5,7 @@ const CREATE_SPOT = "spots/CREATE_SPOT";
 const UPDATE_SPOT = "spots/UPDATE_SPOT";
 const DELETE_SPOT = "spots/DELETE_SPOT";
 const CREATE_SPOT_IMAGE = "spots/CREATE_SPOT_IMAGE";
+const DELETE_SPOT_IMAGE = "spots/DELETE_SPOT_IMAGE";
 
 // action creators
 const getAllSpots = (spots) => {
@@ -46,6 +47,13 @@ const createSpotImage = (newSpotImage) => {
   return {
     type: CREATE_SPOT_IMAGE,
     newSpotImage,
+  };
+};
+
+const deleteSpotImage = (spotId) => {
+  return {
+    type: DELETE_SPOT_IMAGE,
+    spotId,
   };
 };
 
@@ -176,6 +184,22 @@ export const deleteSpotThunk = (spotId) => async (dispatch) => {
   }
 };
 
+export const deleteSpotImageThunk = (spotId) => async (dispatch) => {
+  try {
+    const res = await fetch(`/api/spots/img/${spotId}`, {
+      method: "DELETE",
+    });
+
+    if (!res.ok) {
+      const spotError = await res.json();
+      throw new Error(spotError.message);
+    }
+    dispatch(deleteSpotImage(spotId));
+  } catch (error) {
+    console.error("delete spot image error", error.message);
+  }
+};
+
 // export const deleteSpotThunk = (spotId) => async (dispatch) => {
 //   try {
 //     const res = await fetch(`/api/spots/${spotId}`, {
@@ -276,6 +300,12 @@ const spotsReducer = (state = initialState, action) => {
     case CREATE_SPOT_IMAGE:
       newState = { ...state };
       newState[action.newSpotImage.id] = action.newSpotImage;
+      return newState;
+
+    case DELETE_SPOT_IMAGE:
+      newState = { ...state };
+
+      delete newState[action.spotImageId];
       return newState;
 
     default:

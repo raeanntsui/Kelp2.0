@@ -9,11 +9,16 @@ import "./ShowOneSpot.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { getReviewsThunk } from "../../store/reviews";
 import UpdateSpotPage from "../UpdateSpotForm";
+import DeleteSpotImage from "../DeleteSpotImage";
+import OpenModalButton from "../OpenModalButton";
+import ImageUploadModal from "../CreateSpotImage";
+import { useModal } from "../../context/Modal";
 
 function ShowOneSpot() {
   const { spotId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
+  const { openModal } = useModal();
   const sessionUser = useSelector((state) => state.session.user);
 
   const spot = useSelector((state) => state.spots.oneSpot);
@@ -35,10 +40,29 @@ function ShowOneSpot() {
     history.push(`/spots/${spotId}/update`);
   };
 
+  const handleUploadImage = () => {
+    openModal(<ImageUploadModal spotId={spotId} />);
+  };
+
   return (
     <>
       <div className="spot-details-page">
         <div className="spot-details-bottom">
+          {spot.img_urls?.length > 0 ? (
+            spot.img_urls.map((imageUrl, imageIndex) => (
+              <img
+                key={imageIndex}
+                src={imageUrl}
+                alt={`Spot Image ${imageIndex}`}
+              />
+            ))
+          ) : (
+            // Display a default image if there are no spot images
+            <img
+              src="https://m.media-amazon.com/images/M/MV5BZjgzNGUyNDQtMWMxMS00Nzc0LWE1NWQtODRkYzZiMDNlODQ2XkEyXkFqcGdeQXVyMTM0Mjc1MDYw._V1_.jpg"
+              alt="default spot image"
+            />
+          )}
           <div className="spot-about-info">
             <div className="business-name">
               <p>{spot.business_name}</p>
@@ -97,6 +121,12 @@ function ShowOneSpot() {
                       <DeleteSpot />
                       <h1>Update Spot</h1>
                       <button onClick={handleSpotUpdate}>Update Spot</button>
+                      <DeleteSpotImage />
+
+                      <OpenModalButton
+                        buttonText="Upload Image"
+                        modalComponent={<ImageUploadModal spotId={spotId} />}
+                      />
                     </div>
                   </div>
                 )}
