@@ -41,16 +41,16 @@ function ShowAllSpots() {
   }, [location.search]);
 
   const filteredSpots = allSpots.filter((spot) => {
-    const lowerCaseSearchInput = searchInput.toLowerCase();
+    const lowerCaseSearchInput = searchInput?.toLowerCase();
     const isNameMatch = spot.business_name
-      .toLowerCase()
+      ?.toLowerCase()
       .includes(lowerCaseSearchInput);
     const isCategoryMatch = spot.categories
-      .toLowerCase()
+      ?.toLowerCase()
       .includes(lowerCaseSearchInput);
     const isPriceRangeMatch =
       typeof spot.price_range === "string" &&
-      spot.price_range.toLowerCase().includes(lowerCaseSearchInput);
+      spot.price_range?.toLowerCase().includes(lowerCaseSearchInput);
 
     return isNameMatch || isCategoryMatch || isPriceRangeMatch;
   });
@@ -102,7 +102,8 @@ function ShowAllSpots() {
               <NavLink
                 key={spot.id}
                 to={`/spots/${spot.id}`}
-                id="spots-grid-navlink">
+                id="spots-grid-navlink"
+              >
                 <div className="spots-grid-each">
                   <div className="each-spot">
                     <div className="each-spots-image">
