@@ -81,16 +81,24 @@ function Homepage() {
         {allSpots.map((spot) => (
           <div className="each-spots-grid-2" key={spot.id}>
             <div className="user-container">
+                {spot.review.length === 0 ? null : (
               <div className="user-profile-picture">
-                <i class="fa-solid fa-user"></i>
+                  <i class="fa-solid fa-user"></i>
               </div>
+                )}
               <div className="user-info">
-                {spot.review.slice(0, 1).map((review) => (
-                  <div key={review.id}>
-                    <p>{review.user.first_name}</p>
-                    {/* <p>{review}</p> */}
+                {spot.review.length === 0 ? (
+                  <div>
+                    <p>Be the first to leave a review!</p>
                   </div>
-                ))}
+                ) : (
+                  spot.review.slice(0, 1).map((review) => (
+                    <div key={review.id}>
+                      <p>{review.user.first_name}</p>
+                      {/* Additional content related to the review */}
+                    </div>
+                  ))
+                )}
                 {/* <p>
                   <i className="fa-solid fa-star"></i>
                   <i className="fa-solid fa-star"></i>
