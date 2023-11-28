@@ -38,12 +38,18 @@ form>input {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background-color: #d32323;
+  background-color: #00890D;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   margin-top: 10px;
+}
+
+.login button:hover,
+.demo-login button:hover {
+  cursor: pointer;
+  background-color: #43C174
 }
 
 .email-pw {
@@ -76,18 +82,12 @@ form>input {
   box-sizing: border-box;
 }
 
-#modal-content {
-  /* border: 3px solid black; */
-  width: 400px;
-  height: fit-content;
-  border-radius: 10px;
-  margin: 0;
-  padding: 20px;
-}
+
 
 #modal-content form {
   margin: 0;
   padding: 0;
+
 }
 
 li {

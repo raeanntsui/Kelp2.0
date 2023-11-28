@@ -47,6 +47,7 @@ export default function CreateSpotModal({ id }) {
 
       console.log("Response from createSpotThunk:", createdSpot);
 
+
       history.push(`/spots`);
     } catch (error) {
       console.error("Error creating a new Spot:", error);
@@ -230,6 +231,7 @@ export default function CreateSpotModal({ id }) {
             />
           </div>
           <div className="sign-up">
+
             <button
               type="submit"
               disabled={Object.keys(validationErrors).length > 0}
@@ -241,6 +243,7 @@ export default function CreateSpotModal({ id }) {
             >
               Submit
             </button>
+
           </div>
         </form>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import BusinessButton from "./KelpForBusiness";
@@ -11,6 +11,7 @@ import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
   const history = useHistory();
+  const location = useLocation();
   const [searchInput, setSearchInput] = useState("");
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -39,6 +40,8 @@ function Navigation({ isLoaded }) {
 
     history.push(`/spots?search=${encodeURIComponent(searchInput)}`);
   };
+
+  const linkColor = location.pathname === "/" ? "white" : "black";
 
   return (
     <>
@@ -77,12 +80,12 @@ function Navigation({ isLoaded }) {
               // <div className="login-dropdown">
               //   {isLoaded && <BusinessButton user={sessionUser} />}
               // </div>
-              <NavLink exact to="/spots/new">
+              <NavLink exact to="/spots/new" style={{ color: linkColor }}>
                 Create a New Spot
               </NavLink>
             ) : null}
             <div className="all-spots">
-              <NavLink exact to="/spots">
+              <NavLink exact to="/spots" style={{ color: linkColor }}>
                 View All Spots
               </NavLink>
             </div>

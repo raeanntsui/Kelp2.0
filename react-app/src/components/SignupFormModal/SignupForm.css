@@ -9,7 +9,7 @@
   flex-direction: column;
 }
 
-.form-content > button {
+.form-content>button {
   background-color: #d32323;
   width: 100px;
   padding: 10px 10px;
@@ -19,7 +19,7 @@
   border: none;
 }
 
-.form-content > button:hover {
+.form-content>button:hover {
   cursor: pointer;
   background-color: rgba(237, 62, 62, 0.638);
 }
@@ -41,14 +41,14 @@ li {
   margin-bottom: 10px;
 }
 
-.form-chunk > label {
+.form-chunk>label {
   font-weight: bold;
   display: flex;
   text-align: left;
   margin-bottom: 8px;
 }
 
-.form-chunk > input {
+.form-chunk>input {
   width: 100%;
   padding: 5px;
   margin-bottom: 10px;
@@ -68,10 +68,17 @@ li {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background-color: #d32323;
+  background-color: #00890D;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   /* margin-top: 10px; */
+}
+
+.form-container {
+  position: relative;
+  z-index: 10;
+  /* Choose a value higher than 1 */
+  /* Other styling */
 }
