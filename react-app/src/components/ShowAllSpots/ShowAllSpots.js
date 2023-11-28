@@ -114,7 +114,7 @@ function ShowAllSpots() {
                         )
                       ) : (
                         <img
-                          src="https://m.media-amazon.com/images/M/MV5BZjgzNGUyNDQtMWMxMS00Nzc0LWE1NWQtODRkYzZiMDNlODQ2XkEyXkFqcGdeQXVyMTM0Mjc1MDYw._V1_.jpg"
+                          src="https://t3.ftcdn.net/jpg/06/42/18/22/360_F_642182262_4kqb9AgMr0qhqBHcwWEgTfvTCOFklokO.jpg"
                           alt="default spot image"
                         />
                       )}
