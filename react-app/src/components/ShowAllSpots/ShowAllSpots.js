@@ -28,7 +28,6 @@ function ShowAllSpots() {
   };
 
   useEffect(() => {
-
     if (!searchInput) {
       dispatch(getAllSpotsThunk());
     }
@@ -43,14 +42,18 @@ function ShowAllSpots() {
 
   const filteredSpots = allSpots.filter((spot) => {
     const lowerCaseSearchInput = searchInput.toLowerCase();
-    const isNameMatch = spot.business_name.toLowerCase().includes(lowerCaseSearchInput);
-    const isCategoryMatch = spot.categories.toLowerCase().includes(lowerCaseSearchInput);
-    const isPriceRangeMatch = typeof spot.price_range === 'string' && spot.price_range.toLowerCase().includes(lowerCaseSearchInput);
+    const isNameMatch = spot.business_name
+      .toLowerCase()
+      .includes(lowerCaseSearchInput);
+    const isCategoryMatch = spot.categories
+      .toLowerCase()
+      .includes(lowerCaseSearchInput);
+    const isPriceRangeMatch =
+      typeof spot.price_range === "string" &&
+      spot.price_range.toLowerCase().includes(lowerCaseSearchInput);
 
     return isNameMatch || isCategoryMatch || isPriceRangeMatch;
   });
-
-
 
   let count = 1;
   return (
@@ -87,7 +90,9 @@ function ShowAllSpots() {
                 <ul>Try a larger search area</ul>
                 <ul>Try a different location</ul>
                 <ul>Check the spelling or try alternate spellings</ul>
-                <ul>Try a more general search, e.g. "pizza instead of "pepperoni"</ul>
+                <ul>
+                  Try a more general search, e.g. "pizza instead of "pepperoni"
+                </ul>
               </div>
             </div>
           </div>
@@ -97,8 +102,7 @@ function ShowAllSpots() {
               <NavLink
                 key={spot.id}
                 to={`/spots/${spot.id}`}
-                id="spots-grid-navlink"
-              >
+                id="spots-grid-navlink">
                 <div className="spots-grid-each">
                   <div className="each-spot">
                     <div className="each-spots-image">
@@ -144,12 +148,12 @@ function ShowAllSpots() {
             ))}
           </div>
         )}
-        <div className="google-maps-grid">
+        {/* <div className="google-maps-grid">
           <img
             src="https://www.google.com/maps/d/thumbnail?mid=149XtkqRiBZ68Y28N8Px4kMh9ld4&hl=en"
             alt="Google Maps Thumbnail"
           />
-        </div>
+        </div> */}
       </div>
     </>
   );
