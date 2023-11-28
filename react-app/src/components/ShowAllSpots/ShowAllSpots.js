@@ -4,11 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllSpotsThunk } from "../../store/spots";
 import "./ShowAllSpots.css";
 
+const ResultNotFoundMessage = ({ searchInput, address }) => (
+  <div className="result-not-found">
+    No results for {searchInput} {address && `(${address})`}
+  </div>
+);
+
 function ShowAllSpots() {
   const dispatch = useDispatch();
   const location = useLocation();
   const spots = useSelector((state) => state.spots.allSpots);
   const [searchInput, setSearchInput] = useState("");
+  const [searchButtonClicked, setSearchButtonClicked] = useState(false);
 
   const allSpots = Object.values(spots);
 
@@ -16,9 +23,16 @@ function ShowAllSpots() {
     setSearchInput(event.target.value);
   }
 
+  const handleSearchButtonClick = () => {
+    setSearchButtonClicked(true);
+  };
+
   useEffect(() => {
-    dispatch(getAllSpotsThunk());
-  }, [dispatch]);
+
+    if (!searchInput) {
+      dispatch(getAllSpotsThunk());
+    }
+  }, [dispatch, searchInput]);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -29,32 +43,54 @@ function ShowAllSpots() {
 
   const filteredSpots = allSpots.filter((spot) => {
     const lowerCaseSearchInput = searchInput.toLowerCase();
-    const isNameMatch = spot.business_name
-      ?.toLowerCase()
-      ?.includes(lowerCaseSearchInput);
-    const isCategoryMatch = spot.categories
-      ?.toLowerCase()
-      ?.includes(lowerCaseSearchInput);
-    const isPriceRangeMatch =
-      typeof spot.price_range === "string" &&
-      spot.price_range.toLowerCase()?.includes(lowerCaseSearchInput);
+    const isNameMatch = spot.business_name.toLowerCase().includes(lowerCaseSearchInput);
+    const isCategoryMatch = spot.categories.toLowerCase().includes(lowerCaseSearchInput);
+    const isPriceRangeMatch = typeof spot.price_range === 'string' && spot.price_range.toLowerCase().includes(lowerCaseSearchInput);
 
     return isNameMatch || isCategoryMatch || isPriceRangeMatch;
   });
 
-  //poo
+
+
   let count = 1;
   return (
     <>
-      <input
-        type="text"
-        value={searchInput}
-        onChange={handleSearchInputChange}
-        placeholder="Search by name, category, or price range"
-      />
+      {/* <div className="search-bar">
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css"
+        />
+        <input
+          type="text"
+          value={searchInput}
+          onChange={handleSearchInputChange}
+          placeholder="Search by name, category, or price range"
+        />
+
+        <button onClick={handleSearchButtonClick}>
+          <i className="fas fa-search" style={{ color: 'white' }}></i>
+        </button>
+
+      </div> */}
       <div className="spots-front-page">
-        {filteredSpots.length === 0 ? (
-          <div className="result-not-found">No results found</div>
+        {searchInput && filteredSpots.length === 0 ? (
+          <div className="results-container">
+            <ResultNotFoundMessage
+              searchInput={searchInput}
+              address={filteredSpots[0]?.address}
+            />
+            <div className="suggestions-container">
+              <div className="suggestions-header">
+                Suggestions for improving your results:
+              </div>
+              <div className="suggestions-list">
+                <ul>Try a larger search area</ul>
+                <ul>Try a different location</ul>
+                <ul>Check the spelling or try alternate spellings</ul>
+                <ul>Try a more general search, e.g. "pizza instead of "pepperoni"</ul>
+              </div>
+            </div>
+          </div>
         ) : (
           <div className="spots-grid">
             {filteredSpots.map((spot) => (
