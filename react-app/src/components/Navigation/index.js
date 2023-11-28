@@ -58,15 +58,18 @@ function Navigation({ isLoaded }) {
               </div>
             </NavLink>{" "}
           </div>
-          <div>
-            <form onSubmit={handleSearchSubmit}>
+          <div classname="searchbar-home">
+            <form onSubmit={handleSearchSubmit} className="search-form">
               <input
                 type="text"
                 value={searchInput}
                 onChange={handleSearchInputChange}
-                placeholder="Search spots"
+                placeholder="Search by name, category, or price range"
+                className="search-input"
               />
-              <button type="submit">Search</button>
+
+              <button type="submit"><i className="fas fa-search" style={{ color: 'white' }}></i></button>
+
             </form>
           </div>
           <div id="homepage-buttons">
