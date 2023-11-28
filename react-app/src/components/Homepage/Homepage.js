@@ -81,11 +81,11 @@ function Homepage() {
         {allSpots.map((spot) => (
           <div className="each-spots-grid-2" key={spot.id}>
             <div className="user-container">
-                {spot.review.length === 0 ? null : (
-              <div className="user-profile-picture">
+              {spot.review?.length === 0 ? null : (
+                <div className="user-profile-picture">
                   <i class="fa-solid fa-user"></i>
-              </div>
-                )}
+                </div>
+              )}
               <div className="user-info">
                 {spot.review.length === 0 ? (
                   <div>
