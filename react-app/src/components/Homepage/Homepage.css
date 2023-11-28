@@ -36,11 +36,14 @@
   border: 2px solid rgba(164, 164, 164, 0.309);
   padding: 20px;
   border-radius: 4px;
+  width: 100%;
 }
 
-.each-spots-image>img {
+.each-spots-image-2>img {
   display: flex;
   justify-content: center;
+  width: 250px;
+  height: 250px;
 }
 
 .user-container {
