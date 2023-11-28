@@ -40,10 +40,6 @@ function ShowOneSpot() {
     history.push(`/spots/${spotId}/update`);
   };
 
-  const handleUploadImage = () => {
-    openModal(<ImageUploadModal spotId={spotId} />);
-  };
-
   return (
     <>
       <div className="spot-details-page">
@@ -57,7 +53,7 @@ function ShowOneSpot() {
               />
             ))
           ) : (
-            // Display a default image if there are no spot images
+            // default img if there's no img
             <img
               src="https://m.media-amazon.com/images/M/MV5BZjgzNGUyNDQtMWMxMS00Nzc0LWE1NWQtODRkYzZiMDNlODQ2XkEyXkFqcGdeQXVyMTM0Mjc1MDYw._V1_.jpg"
               alt="default spot image"
@@ -121,6 +117,7 @@ function ShowOneSpot() {
                       <DeleteSpot />
                       <h1>Update Spot</h1>
                       <button onClick={handleSpotUpdate}>Update Spot</button>
+
                       <DeleteSpotImage />
 
                       <OpenModalButton
