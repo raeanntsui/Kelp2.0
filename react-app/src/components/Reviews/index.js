@@ -37,7 +37,7 @@ export default function ReviewModal({ spot }) {
   }
   console.log("🚀 >>>>>>>>>> ~ currReview:", currReview);
   return (
-    <>
+    <div className="button-chunk">
       <div className="post-review">
         <button
           id="post-review-button"
@@ -45,8 +45,7 @@ export default function ReviewModal({ spot }) {
           type="submit"
           onClick={() => {
             setModalContent(<ReviewForm spot={spot} />);
-          }}
-        >
+          }}>
           <i className="fa-regular fa-star"></i> Write a review
         </button>
       </div>
@@ -55,6 +54,7 @@ export default function ReviewModal({ spot }) {
         {user &&
         currentSpotReviews.some((review) => review.user_id === user.id) ? (
           <OpenModalButton
+            // className="delete-button"
             buttonText="Delete my review"
             modalComponent={<DeleteReview review={currReview} />}
           />
@@ -70,6 +70,6 @@ export default function ReviewModal({ spot }) {
           />
         ) : null}
       </div>
-    </>
+    </div>
   );
 }
