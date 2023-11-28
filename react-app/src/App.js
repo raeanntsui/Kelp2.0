@@ -17,9 +17,24 @@ function App() {
   const location = useLocation();
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [currentImage, setCurrentImage] = useState(1);
+
+  const imageList = [
+    "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgV4opNgXkJW3vJ1no6nvp8SCwtJuisrOjeU27QfOlESq9x-VwalxQZ1Is9wmfPClELNca7B5javckAuZodxRq4lzPW65SzPq7Kh_QVPWadFpTHSoYlgL9Z2DG8pcDYBFko1NrpcbdvC1_qTeMQABDEmPZdPL0gE8O-qsM_Ob93tZtSc0Fqyw/s1420/No_Weenies_Allowed_043.webp",
+    "https://i.imgur.com/gvMDuOh.png",
+    "https://i.imgur.com/uz1vEb5.png",
+    "https://i.imgur.com/S0NCG15.png"
+  ];
 
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
+
+    const interval = setInterval(() => {
+      setCurrentImage((prevImage) => (prevImage % imageList.length) + 1);
+    }, 3000);
+
+    return () => clearInterval(interval);
+
   }, [dispatch]);
 
   return (
@@ -31,7 +46,10 @@ function App() {
 
       {location.pathname === "/" && (
         <div className="frontpage-image">
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgV4opNgXkJW3vJ1no6nvp8SCwtJuisrOjeU27QfOlESq9x-VwalxQZ1Is9wmfPClELNca7B5javckAuZodxRq4lzPW65SzPq7Kh_QVPWadFpTHSoYlgL9Z2DG8pcDYBFko1NrpcbdvC1_qTeMQABDEmPZdPL0gE8O-qsM_Ob93tZtSc0Fqyw/s1420/No_Weenies_Allowed_043.webp" />
+          <img
+            src={imageList[currentImage - 1]}
+            alt={`Frontpage Image ${currentImage}`}
+          />
         </div>
       )}
       {isLoaded && (
