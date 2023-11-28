@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { useEffect } from "react";
@@ -7,22 +7,22 @@ import { getAllSpotsThunk } from "../../store/spots";
 import "./Homepage.css";
 
 function Homepage() {
-  const [searchInput, setSearchInput] = useState("");
-  const history = useHistory();
+  // const [searchInput, setSearchInput] = useState("");
+  // const history = useHistory();
 
   const dispatch = useDispatch();
   const spots = useSelector((state) => state.spots.allSpots);
   // console.log("🚀🚀🚀🚀🚀🚀 ~ spots:", spots);
 
-  const handleSearchInputChange = (event) => {
-    setSearchInput(event.target.value);
-  };
+  // const handleSearchInputChange = (event) => {
+  //   setSearchInput(event.target.value);
+  // };
 
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
+  // const handleSearchSubmit = (event) => {
+  //   event.preventDefault();
 
-    history.push(`/spots?search=${encodeURIComponent(searchInput)}`);
-  };
+  //   history.push(`/spots?search=${encodeURIComponent(searchInput)}`);
+  // };
 
   const allSpots = Object.values(spots);
 
@@ -60,7 +60,7 @@ function Homepage() {
   return (
     <>
       {/* <h1>HOMEPAGE</h1> */}
-      <div>
+      {/* <div>
         <form onSubmit={handleSearchSubmit}>
           <input
             type="text"
@@ -70,7 +70,7 @@ function Homepage() {
           />
           <button type="submit">Search</button>
         </form>
-      </div>
+      </div> */}
       <div className="frontpage-image">
         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgV4opNgXkJW3vJ1no6nvp8SCwtJuisrOjeU27QfOlESq9x-VwalxQZ1Is9wmfPClELNca7B5javckAuZodxRq4lzPW65SzPq7Kh_QVPWadFpTHSoYlgL9Z2DG8pcDYBFko1NrpcbdvC1_qTeMQABDEmPZdPL0gE8O-qsM_Ob93tZtSc0Fqyw/s1420/No_Weenies_Allowed_043.webp" />
       </div>

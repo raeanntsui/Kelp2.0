@@ -5,21 +5,24 @@ import ProfileButton from "./ProfileButton";
 import BusinessButton from "./KelpForBusiness";
 // import { useHistory } from "react-router-dom";
 import { getAllSpotsThunk } from "../../store/spots";
+import { useHistory } from "react-router-dom";
 import "./Navigation.css";
 
 
 function Navigation({ isLoaded }) {
-  // const history = useHistory();
+  const history = useHistory();
+  const [searchInput, setSearchInput] = useState("");
+
   const sessionUser = useSelector((state) => state.session.user);
   const businessOwner = sessionUser?.business_owner;
 
-  const [spots, setSpots] = useState(getAllSpotsThunk)
+  // const [spots, setSpots] = useState(getAllSpotsThunk)
 
-  const filterSpots = e => {
-    const search = e.target.value.toLowerCase()
-    const filteredSpots = getAllSpotsThunk.filter(spots => spots.business_name.toLowerCase().includes(search))
-    setSpots(filteredSpots)
-  }
+  // const filterSpots = e => {
+  //   const search = e.target.value.toLowerCase()
+  //   const filteredSpots = getAllSpotsThunk.filter(spots => spots.business_name.toLowerCase().includes(search))
+  //   setSpots(filteredSpots)
+  // }
 
   // const handleSearchSubmit = (event) => {
   //   event.preventDefault();
@@ -27,10 +30,22 @@ function Navigation({ isLoaded }) {
   //   history.push("/spots");
   // };
 
+  const handleSearchInputChange = (event) => {
+    setSearchInput(event.target.value);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+
+    history.push(`/spots?search=${encodeURIComponent(searchInput)}`);
+  };
+
   return (
     <>
+
       <div id="upper-half-homepage">
         <div id="top-nav">
+
           <div id="kelp-logo">
             <NavLink exact to="/">
               <div className="logo-container">
@@ -43,19 +58,17 @@ function Navigation({ isLoaded }) {
               </div>
             </NavLink>{" "}
           </div>
-          {/* <div id="searchbar">
+          <div>
             <form onSubmit={handleSearchSubmit}>
               <input
-                type="text" onChange={(e) => filterSpots(e)}
-                placeholder="things to do, nail salons, plumbers"
+                type="text"
+                value={searchInput}
+                onChange={handleSearchInputChange}
+                placeholder="Search spots"
               />
-              <h1>|</h1>
-              <input type="text" placeholder="San Francisco, CA" />
-              <button id="search-icon" type="submit" className="search-button">
-                <i className="fa-solid fa-magnifying-glass"></i>
-              </button>
+              <button type="submit">Search</button>
             </form>
-          </div> */}
+          </div>
           <div id="homepage-buttons">
             {businessOwner ? (
               // <div className="login-dropdown">

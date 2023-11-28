@@ -26,7 +26,9 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
+
             <Homepage />
+
           </Route>
           <Route exact path="/spots">
             <ShowAllSpots />
