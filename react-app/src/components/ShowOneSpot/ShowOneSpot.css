@@ -1,4 +1,4 @@
-.spot-details-bottom > img {
+.spot-details-bottom>img {
   height: 400px;
   min-width: 1024px;
   background-position: center;
@@ -21,7 +21,7 @@
   max-width: 1200px;
 }
 
-.spot-background > img {
+.spot-background>img {
   /* position: absolute; */
   max-width: 1024px;
   max-height: 400px;
@@ -44,7 +44,7 @@
   /* padding: 10px; */
   /* border: 6px solid rgb(21, 255, 0); */
   font-size: 48px;
-  color: #d32323;
+  color: #00890D;
   font-weight: bold;
 }
 
@@ -70,6 +70,7 @@
   /* border: 4px dashed purple; */
   width: 60%;
 }
+
 .right {
   /* border: 4px dashed rgb(0, 9, 128); */
   width: 40%;
@@ -79,13 +80,13 @@
   padding: 10px;
 }
 
-.directions > h1 {
+.directions>h1 {
   /* color: rgba(2, 122, 151, 1); */
-  color: #d32323;
+  color: #00890D;
   font-size: 20px;
 }
 
-.directions > h2 {
+.directions>h2 {
   font-size: 16px;
   font-weight: 400;
   /* padding-top: 5px; */
@@ -93,7 +94,7 @@
   /* color: #6e7072; */
 }
 
-.directions > h3 {
+.directions>h3 {
   color: black;
   font-size: 16px;
   font-weight: 400;
@@ -110,7 +111,7 @@
   padding-bottom: 10px;
 }
 
-.each-review > p {
+.each-review>p {
   margin: 0px;
   padding: 0px;
   display: flex;
@@ -150,7 +151,7 @@
   color: rgba(2, 122, 151, 1);
 }
 
-.name > img {
+.name>img {
   width: 200px;
   height: 200px;
 
