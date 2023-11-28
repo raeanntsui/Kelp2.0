@@ -5,20 +5,9 @@ from sqlalchemy.sql import text
 def seed_spot_images():
     spot_images = [
     SpotImage(spot_id=1, img_url="https://upload.wikimedia.org/wikipedia/commons/2/25/The_Krusty_Krab.png", preview=True),
-    SpotImage(spot_id=1, img_url="https://upload.wikimedia.org/wikipedia/commons/2/25/The_Krusty_Krab.png", preview=False),
-    SpotImage(spot_id=1, img_url="https://upload.wikimedia.org/wikipedia/commons/2/25/The_Krusty_Krab.png", preview=False),
-    SpotImage(spot_id=1, img_url="https://upload.wikimedia.org/wikipedia/commons/2/25/The_Krusty_Krab.png", preview=False),
-    SpotImage(spot_id=1, img_url="https://upload.wikimedia.org/wikipedia/commons/2/25/The_Krusty_Krab.png", preview=False),
     SpotImage(spot_id=2, img_url="https://static.wikia.nocookie.net/spongebob/images/a/ac/SpongeBob%27sPlace.png", preview=True),
-    SpotImage(spot_id=2, img_url="https://static.wikia.nocookie.net/spongebob/images/a/ac/SpongeBob%27sPlace.png", preview=False),
-    SpotImage(spot_id=2, img_url="https://static.wikia.nocookie.net/spongebob/images/a/ac/SpongeBob%27sPlace.png", preview=False),
-    SpotImage(spot_id=2, img_url="https://static.wikia.nocookie.net/spongebob/images/a/ac/SpongeBob%27sPlace.png", preview=False),
-    SpotImage(spot_id=2, img_url="https://static.wikia.nocookie.net/spongebob/images/a/ac/SpongeBob%27sPlace.png", preview=False),
     SpotImage(spot_id=3, img_url="https://thespongeclub.com/wp-content/uploads/2022/08/Chum-Bucket-Guide.png", preview=True),
-    SpotImage(spot_id=3, img_url="https://thespongeclub.com/wp-content/uploads/2022/08/Chum-Bucket-Guide.png", preview=False),
-    SpotImage(spot_id=3, img_url="https://thespongeclub.com/wp-content/uploads/2022/08/Chum-Bucket-Guide.png", preview=False),
-    SpotImage(spot_id=3, img_url="https://thespongeclub.com/wp-content/uploads/2022/08/Chum-Bucket-Guide.png", preview=False),
-    SpotImage(spot_id=3, img_url="https://thespongeclub.com/wp-content/uploads/2022/08/Chum-Bucket-Guide.png", preview=False),
+
 
     ]
 

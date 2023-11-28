@@ -1,6 +1,5 @@
-.spot-details-bottom {
-  background-image: url("https://static1.srcdn.com/wordpress/wp-content/uploads/2022/07/super-weenie-hut-jrs-from-spongebob-squarepants.jpg");
-  height: 300px;
+.spot-details-bottom > img {
+  height: 740px;
   background-position: center;
   display: flex;
   flex-direction: column;

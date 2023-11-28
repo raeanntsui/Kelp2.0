@@ -20,7 +20,14 @@ function SignupFormModal() {
     e.preventDefault();
     if (password === confirmPassword) {
       const data = await dispatch(
-        signUp(email, username, firstName, lastName, businessOwner, password)
+        signUp({
+          email,
+          username,
+          first_name: firstName,
+          last_name: lastName,
+          business_owner: businessOwner,
+          password,
+        })
       );
       if (data) {
         setErrors(data);
@@ -52,7 +59,7 @@ function SignupFormModal() {
               type="checkbox"
               checked={businessOwner}
               onChange={() => setBusinessOwner((prev) => !prev)}
-              required
+              // required
             />
           </div>
         </div>

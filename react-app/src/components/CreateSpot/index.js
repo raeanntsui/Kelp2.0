@@ -19,7 +19,7 @@ export default function CreateSpotModal({ id }) {
   const [closeHours, setCloseHours] = useState("");
   const [description, setDescription] = useState("");
   const [priceRange, setPriceRange] = useState("");
-  const [imageUrl, setImageUrl] = useState(""); // Updated state for imageUrl
+  const [imageUrl, setImageUrl] = useState(""); // updated state for imageUrl
   const [validationObject, setValidationObject] = useState([]);
   const [submitted, yesSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
@@ -28,7 +28,7 @@ export default function CreateSpotModal({ id }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Prepare spot data
+    // spot data
     const formData = new FormData();
     formData.append("business_name", businessName);
     formData.append("address", address);
@@ -40,15 +40,15 @@ export default function CreateSpotModal({ id }) {
     formData.append("close_hours", closeHours);
     formData.append("description", description);
     formData.append("price_range", priceRange);
-    formData.append("img_url", imageUrl); // Include imageUrl in the spotData
+    formData.append("img_url", imageUrl); // added imageUrl in the spotData
 
     try {
-      // Dispatch createSpotThunk with spotData
+
       const createdSpot = await dispatch(createSpotThunk(formData));
 
       console.log("Response from createSpotThunk:", createdSpot);
 
-      // Redirect to the spots page or handle success as needed
+     
       history.push(`/spots`);
     } catch (error) {
       console.error("Error creating a new Spot:", error);

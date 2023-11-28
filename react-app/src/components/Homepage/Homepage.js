@@ -81,16 +81,24 @@ function Homepage() {
         {allSpots.map((spot) => (
           <div className="each-spots-grid-2" key={spot.id}>
             <div className="user-container">
+                {spot.review.length === 0 ? null : (
               <div className="user-profile-picture">
-                <i class="fa-solid fa-user"></i>
+                  <i class="fa-solid fa-user"></i>
               </div>
+                )}
               <div className="user-info">
-                {spot.review.slice(0, 1).map((review) => (
-                  <div key={review.id}>
-                    <p>{review.user.first_name}</p>
-                    {/* <p>{review}</p> */}
+                {spot.review.length === 0 ? (
+                  <div>
+                    <p>Be the first to leave a review!</p>
                   </div>
-                ))}
+                ) : (
+                  spot.review.slice(0, 1).map((review) => (
+                    <div key={review.id}>
+                      <p>{review.user.first_name}</p>
+                      {/* Additional content related to the review */}
+                    </div>
+                  ))
+                )}
                 {/* <p>
                   <i className="fa-solid fa-star"></i>
                   <i className="fa-solid fa-star"></i>
@@ -106,7 +114,17 @@ function Homepage() {
             </div>
             <div className="each-spots-image-2">
               {/* <img src={spot.spot_image} /> */}
-              <img src="https://img.buzzfeed.com/buzzfeed-static/static/2019-11/21/20/campaign_images/fbf76a44e63d/could-you-pass-an-interview-and-get-hired-at-the--2-2131-1574368600-0_dblbig.jpg?resize=1200:*" />
+              {spot.img_urls.length > 0 ? (
+                spot.img_urls &&
+                spot.img_urls[0] && (
+                  <img src={spot.img_urls[0]} alt={`Spot Image 0`} />
+                )
+              ) : (
+                <img
+                  src="https://m.media-amazon.com/images/M/MV5BZjgzNGUyNDQtMWMxMS00Nzc0LWE1NWQtODRkYzZiMDNlODQ2XkEyXkFqcGdeQXVyMTM0Mjc1MDYw._V1_.jpg"
+                  alt="default spot image"
+                />
+              )}
             </div>
             <div className="user-description">
               {spot.review.slice(0, 1).map((review) => (
