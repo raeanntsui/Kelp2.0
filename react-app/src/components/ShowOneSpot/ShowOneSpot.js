@@ -29,9 +29,6 @@ function ShowOneSpot() {
   const businessOwner = userId === businessOwnerId;
 
   useEffect(() => {
-    console.log("userId:", userId);
-    console.log("businessOwnerId:", businessOwnerId);
-    console.log("businessOwner:", businessOwner);
     dispatch(getReviewsThunk(spotId));
     dispatch(getOneSpotThunk(spotId));
   }, [dispatch, spotId]);
@@ -40,9 +37,9 @@ function ShowOneSpot() {
     history.push(`/spots/${spotId}/update`);
   };
 
-if (!spot){
-  return null
-}
+  if (!spot) {
+    return null;
+  }
 
   return (
     <>
@@ -123,24 +120,26 @@ if (!spot){
                   ))}
                 </div>
                 {/* <UpdateReview spot={spot} review={currentUserReview} /> */}
-
-                {businessOwner && (
-                  <div>
-                    <div className="delete-spot">
-                      <DeleteSpot />
-                      <h1>Update Spot</h1>
-                      <button onClick={handleSpotUpdate}>Update Spot</button>
-
-                      <DeleteSpotImage />
-
-                      <OpenModalButton
-                        buttonText="Upload Image"
-                        modalComponent={<ImageUploadModal spotId={spotId} />}
-                      />
-                    </div>
-                  </div>
-                )}
               </div>
+            </div>
+            <div>
+              {businessOwner && (
+                <div>
+                  <div className="delete-spot">
+                    <DeleteSpot />
+                    <h1>Update Spot</h1>
+                    <button onClick={handleSpotUpdate}>Update Spot</button>
+                    <div className="delete-image">
+                      <DeleteSpotImage />
+                    </div>
+
+                    <OpenModalButton
+                      buttonText="Upload Image"
+                      modalComponent={<ImageUploadModal spotId={spotId} />}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 

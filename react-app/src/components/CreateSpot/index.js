@@ -47,7 +47,6 @@ export default function CreateSpotModal({ id }) {
 
       console.log("Response from createSpotThunk:", createdSpot);
 
-
       history.push(`/spots`);
     } catch (error) {
       console.error("Error creating a new Spot:", error);
@@ -184,6 +183,7 @@ export default function CreateSpotModal({ id }) {
               <label>Open Hours </label>
               <input
                 type="number"
+                placeholder="Opening time (Military Time)"
                 value={openHours}
                 onChange={(e) => setOpenHours(e.target.value)}
               />
@@ -193,6 +193,7 @@ export default function CreateSpotModal({ id }) {
               <label>Close Hours </label>
               <input
                 type="number"
+                placeholder="Closing time (Military Time)"
                 value={closeHours}
                 onChange={(e) => setCloseHours(e.target.value)}
               />
@@ -212,9 +213,9 @@ export default function CreateSpotModal({ id }) {
           </div>
 
           <div className="form-chunk">
-            <label>Price Range </label>
+            <label>Average Price </label>
             <input
-              placeholder="Select a price range between $ to $$$$"
+              placeholder="What is the average price at your business?"
               type="number"
               value={priceRange}
               onChange={(e) => setPriceRange(e.target.value)}
@@ -231,19 +232,18 @@ export default function CreateSpotModal({ id }) {
             />
           </div>
           <div className="sign-up">
-
             <button
+              className="button-color"
               type="submit"
               disabled={Object.keys(validationErrors).length > 0}
               style={{
-                backgroundColor: `rgba(211, 35, 35, ${
+                backgroundColor: `rgba(0, 137, 13, ${
                   Object.keys(validationErrors).length > 0 ? "0.7" : "1"
                 })`,
               }}
             >
               Submit
             </button>
-
           </div>
         </form>
       </div>

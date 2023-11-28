@@ -19,20 +19,14 @@ function DeleteSpot() {
     history.push(`/spots`);
     closeModal();
   };
-  const nobutton = async () => {
-    closeModal();
-  };
+
   return (
     <>
       <div id="delete-review">
-        <h1>Confirm Delete</h1>
         <h2>Are you sure you want to remove this spot from the listings?</h2>
         <div id="delete-review-button">
           <button id="top-button-delete" onClick={yesbutton}>
             Yes (Delete Spot)
-          </button>
-          <button id="bottom-button-delete" onClick={nobutton}>
-            No (Keep Spot)
           </button>
         </div>
       </div>

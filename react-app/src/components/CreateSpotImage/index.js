@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { createSpotImageThunk } from "../../store/spots";
-import "./CreateSpotImage.css"
+import "./CreateSpotImage.css";
 
 const ImageUploadModal = ({ spotId }) => {
   const dispatch = useDispatch();
@@ -10,12 +10,20 @@ const ImageUploadModal = ({ spotId }) => {
   const [imageUrl, setImageUrl] = useState("");
   const [preview, setPreview] = useState(null);
   const [error, setError] = useState("");
+  const [forceRender, setForceRender] = useState(false);
+
+  const spotImages = useSelector(
+    (state) => state.spots.allSpots[spotId]?.img_urls
+  );
+  console.log(
+    "🚀 ~ file: index.js:18 ~ ImageUploadModal ~ spotImages:",
+    spotImages
+  );
 
   const handleUrlChange = (e) => {
     const url = e.target.value;
     setImageUrl(url);
-    setError(""); //
-
+    setError("");
     setPreview(url);
   };
 
@@ -23,9 +31,9 @@ const ImageUploadModal = ({ spotId }) => {
     e.preventDefault();
 
     const validExtensions = ["png", "jpeg", "jpg"];
-    const isValidUrl = validExtensions.some((ext) => imageUrl.endsWith(ext));
+    const validUrl = validExtensions.some((ext) => imageUrl.endsWith(ext));
 
-    if (!isValidUrl) {
+    if (!validUrl) {
       setError("Invalid image URL. Supported extensions: png, jpeg, jpg");
       return;
     }
@@ -37,10 +45,16 @@ const ImageUploadModal = ({ spotId }) => {
 
       await dispatch(createSpotImageThunk(spotId, formData, imageUrl, preview));
       closeModal();
+      setPreview(imageUrl);
     } catch (error) {
       console.error("Image upload error:", error.message);
     }
   };
+
+  useEffect(() => {
+    console.log("Preview state changed:", preview);
+    setForceRender((prev) => !prev);
+  }, [preview]);
 
   return (
     <div>
@@ -55,8 +69,7 @@ const ImageUploadModal = ({ spotId }) => {
           placeholder="Enter image URL"
         />
         <div className="preview-img">
-        {preview && <img src={preview} alt="Preview" />}
-
+          {preview && <img src={preview} alt="Preview" />}
         </div>
         {error && <p style={{ color: "red" }}>{error}</p>}
         <button type="submit">Upload</button>
