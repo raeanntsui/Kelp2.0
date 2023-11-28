@@ -80,10 +80,10 @@ export default function CreateSpotModal({ id }) {
     }
     if (!description) errorsObject.description = "Description is required";
     if (!priceRange) {
-      errorsObject.priceRange = "Price Range is required";
+      errorsObject.priceRange = "Average Price is required";
     } else if (isNaN(priceRange) || priceRange < 0 || priceRange > 100000) {
       errorsObject.priceRange =
-        "Price Range must be a number between 0 and 100000";
+        "Average Price must be a number between 0 and 100000";
     }
     setValidationErrors(errorsObject);
   }, [
