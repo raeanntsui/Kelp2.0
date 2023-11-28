@@ -75,3 +75,10 @@ li {
   cursor: pointer;
   /* margin-top: 10px; */
 }
+
+.form-container {
+  position: relative;
+  z-index: 10;
+  /* Choose a value higher than 1 */
+  /* Other styling */
+}

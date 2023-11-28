@@ -82,18 +82,12 @@ form>input {
   box-sizing: border-box;
 }
 
-#modal-content {
-  /* border: 3px solid black; */
-  width: 400px;
-  height: fit-content;
-  border-radius: 10px;
-  margin: 0;
-  padding: 20px;
-}
+
 
 #modal-content form {
   margin: 0;
   padding: 0;
+
 }
 
 li {
