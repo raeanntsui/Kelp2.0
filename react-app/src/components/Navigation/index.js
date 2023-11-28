@@ -52,7 +52,7 @@ function Navigation({ isLoaded }) {
                 <h1>Kelp</h1>
                 <img
                   id="kelp-image"
-                  src="https://media.tenor.com/4eI6Uy-ariYAAAAC/jellyfish-spongebob.gif"
+                  src="https://s5.gifyu.com/images/SRaKm.gif"
                   alt="Kelp Logo"
                 />
               </div>

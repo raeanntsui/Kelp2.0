@@ -98,7 +98,8 @@ h1 {
 #kelp-logo>h1 {
   font-size: 30px;
   padding: 0px 10px;
-  color: #d32323;
+  color: #006009;
+
 }
 
 #kelp-logo {
@@ -112,10 +113,11 @@ h1 {
 .logo-container {
   display: flex;
   align-items: center;
+  margin-left: 15px;
 }
 
 .logo-container>h1 {
-  color: #d32323;
+  color: #00C413;
   font-size: 28px;
 }
 
@@ -164,7 +166,7 @@ h1 {
   margin: 0px;
   /* border: 3px dashed blueviolet; */
   gap: 15px;
-  color: white;
+
 }
 
 #write-review-button {
@@ -250,7 +252,7 @@ h1 {
 }
 
 .search-form button {
-  background-color: red;
+  background-color: #00890D;
   outline: none;
   border: none;
   height: 32px;
