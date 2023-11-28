@@ -21,11 +21,11 @@ function ShowOneSpot() {
   const { openModal } = useModal();
   const sessionUser = useSelector((state) => state.session.user);
 
-  const spot = useSelector((state) => state.spots.oneSpot);
+  const spot = useSelector((state) => state.spots.allSpots[spotId]);
   const reviews = useSelector((state) => state.reviews.Reviews);
 
   const userId = sessionUser?.id;
-  const businessOwnerId = spot.user_id;
+  const businessOwnerId = spot?.user_id;
   const businessOwner = userId === businessOwnerId;
 
   useEffect(() => {
@@ -39,6 +39,10 @@ function ShowOneSpot() {
   const handleSpotUpdate = () => {
     history.push(`/spots/${spotId}/update`);
   };
+
+if (!spot){
+  return null
+}
 
   return (
     <>
@@ -103,8 +107,17 @@ function ShowOneSpot() {
                           {review.user.first_name} {review.user.last_name}
                         </p>
                         {/* <p>{review.rating}</p> */}
-                        <p key={index}>{review.description}</p>
-                        <img src={review.user_img} />
+                        <p
+                          className={`review-img1 ${
+                            review.user_img ? "with-img" : ""
+                          }`}
+                          key={index}
+                        >
+                          {review.description}
+                        </p>
+                        {review.user_img && (
+                          <img src={review.user_img} alt="User" />
+                        )}
                       </div>
                     </div>
                   ))}
