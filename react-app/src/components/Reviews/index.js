@@ -5,6 +5,7 @@ import { getReviewsThunk } from "../../store/reviews";
 import ReviewForm from "./form";
 import OpenModalButton from "../OpenModalButton";
 import DeleteReview from "../DeleteReview";
+import UpdateReview from "../UpdateReview";
 import "./reviews.css";
 
 export default function ReviewModal({ spot }) {
@@ -56,6 +57,16 @@ export default function ReviewModal({ spot }) {
           <OpenModalButton
             buttonText="Delete my review"
             modalComponent={<DeleteReview review={currReview} />}
+          />
+        ) : null}
+      </div>
+
+      <div className="update-button">
+        {user &&
+        currentSpotReviews.some((review) => review.user_id === user.id) ? (
+          <OpenModalButton
+            buttonText="Update my review"
+            modalComponent={<UpdateReview spot={spot} review={currReview} />}
           />
         ) : null}
       </div>
