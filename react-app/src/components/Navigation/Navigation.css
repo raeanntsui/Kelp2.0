@@ -18,7 +18,7 @@
 }
 
 .profile-dropdown>button {
-  background-color: #d32323;
+  background-color: #00890D;
   width: 100px;
   padding: 10px 10px;
   color: white;
@@ -29,7 +29,7 @@
 
 .profile-dropdown>button:hover {
   cursor: pointer;
-  background-color: rgba(237, 62, 62, 0.638);
+  background-color: #43C174
 }
 
 .profile-dropdown>li:first-child {
