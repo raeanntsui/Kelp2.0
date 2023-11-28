@@ -25,7 +25,7 @@ const UpdateSpotPage = () => {
   const [closeHours, setCloseHours] = useState("");
   const [description, setDescription] = useState("");
   const [priceRange, setPriceRange] = useState("");
-
+  const [validationErrors, setValidationErrors] = useState({});
   const [submitted, yesSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
 
@@ -43,6 +43,53 @@ const UpdateSpotPage = () => {
       setPriceRange(response.price_range);
     });
   }, [dispatch, id]);
+
+  useEffect(() => {
+    const errorsObject = {};
+
+    if (!businessName) errorsObject.businessName = "Business name is required";
+    if (!address) errorsObject.address = "Address is required";
+    if (!city) errorsObject.city = "City is required";
+    if (!state) errorsObject.state = "State is required";
+    const trimmedZipCode = zipCode.toString().trim();
+    if (!trimmedZipCode) {
+      errorsObject.zipCode = "Zip Code is required";
+    } else if (trimmedZipCode.length !== 5 || isNaN(trimmedZipCode)) {
+      errorsObject.zipCode = "Zip Code must be a 5-digit number";
+    }
+    if (!categories)
+      errorsObject.categories = "Category of your business is required";
+    if (!openHours) {
+      errorsObject.openHours = "Open Hours is required";
+    } else if (isNaN(openHours) || openHours < 0 || openHours > 24) {
+      errorsObject.openHours = "Open Hours must be a number between 0 and 24";
+    }
+
+    if (!closeHours) {
+      errorsObject.closeHours = "Close Hours is required";
+    } else if (isNaN(closeHours) || closeHours < 0 || closeHours > 24) {
+      errorsObject.closeHours = "Close Hours must be a number between 0 and 24";
+    }
+    if (!description) errorsObject.description = "Description is required";
+    if (!priceRange) {
+      errorsObject.priceRange = "Price Range is required";
+    } else if (isNaN(priceRange) || priceRange < 0 || priceRange > 100000) {
+      errorsObject.priceRange =
+        "Price Range must be a number between 0 and 100000";
+    }
+    setValidationErrors(errorsObject);
+  }, [
+    businessName,
+    address,
+    city,
+    state,
+    zipCode,
+    categories,
+    openHours,
+    closeHours,
+    description,
+    priceRange,
+  ]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,6 +122,17 @@ const UpdateSpotPage = () => {
       <h1 id="create-h1">Update Your Spot</h1>
       <div className="form-content">
         <form onSubmit={handleSubmit} encType="multipart/form-data">
+          <div className="modal-errors">
+            {Object.keys(validationErrors).length > 0 && (
+              <div className="modal-errors">
+                {Object.values(validationErrors).map((error, idx) => (
+                  <div className="error" key={idx}>
+                    {error}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
           <div className="form-chunk">
             <label>Business Name</label>
             <input
@@ -166,7 +224,17 @@ const UpdateSpotPage = () => {
             />
           </div>
           <div className="sign-up">
-            <button type="submit">Update Spot</button>
+            <button
+              type="submit"
+              disabled={Object.keys(validationErrors).length > 0}
+              style={{
+                backgroundColor: `rgba(0, 137, 13, ${
+                  Object.keys(validationErrors).length > 0 ? "0.7" : "1"
+                })`,
+              }}
+            >
+              Update Spot
+            </button>
           </div>
         </form>
       </div>
