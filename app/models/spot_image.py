@@ -9,9 +9,9 @@ class SpotImage(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     #foreignkey
-    spot_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spots.id')), nullable=False)
+    spot_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spots.id')), nullable=True)
 
-    img_url = db.Column(db.String(255), nullable=False)
+    img_url = db.Column(db.String(255), nullable=True)
     preview = db.Column(db.Boolean, default=False)
 
 

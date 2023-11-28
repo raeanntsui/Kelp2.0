@@ -106,7 +106,17 @@ function Homepage() {
             </div>
             <div className="each-spots-image-2">
               {/* <img src={spot.spot_image} /> */}
-              <img src="https://img.buzzfeed.com/buzzfeed-static/static/2019-11/21/20/campaign_images/fbf76a44e63d/could-you-pass-an-interview-and-get-hired-at-the--2-2131-1574368600-0_dblbig.jpg?resize=1200:*" />
+              {spot.img_urls.length > 0 ? (
+                spot.img_urls &&
+                spot.img_urls[0] && (
+                  <img src={spot.img_urls[0]} alt={`Spot Image 0`} />
+                )
+              ) : (
+                <img
+                  src="https://m.media-amazon.com/images/M/MV5BZjgzNGUyNDQtMWMxMS00Nzc0LWE1NWQtODRkYzZiMDNlODQ2XkEyXkFqcGdeQXVyMTM0Mjc1MDYw._V1_.jpg"
+                  alt="default spot image"
+                />
+              )}
             </div>
             <div className="user-description">
               {spot.review.slice(0, 1).map((review) => (
