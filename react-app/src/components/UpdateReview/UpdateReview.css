@@ -1,0 +1,44 @@
+.textarea {
+  width: 100%;
+  height: 50px;
+}
+
+.update-h1 {
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 24px;
+}
+
+/* #fdcc0d; */
+
+.fa-solid {
+  color: #fdcc0d;
+}
+
+.stars {
+  padding: 10px 0px;
+  display: flex;
+  justify-content: center;
+  width: 30px;
+  font-size: 24px;
+}
+
+.update-review > button {
+  background-color: #00890d;
+  font-size: 18px;
+  width: 175px;
+  padding: 10px 10px;
+  color: white;
+  border-radius: 4px;
+  /* border: 2px solid #d32323; */
+  border: none;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.update-review {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
