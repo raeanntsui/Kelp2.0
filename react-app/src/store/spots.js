@@ -15,10 +15,10 @@ const getAllSpots = (spots) => {
   };
 };
 
-const getOneSpot = (spotId) => {
+const getOneSpot = (spot) => {
   return {
     type: GET_ONE_SPOT,
-    spotId,
+    spot,
   };
 };
 
@@ -78,7 +78,6 @@ export const getOneSpotThunk = (spotId) => async (dispatch) => {
     return spot;
   }
 };
-
 
 export const createSpotThunk = (newSpot, imageFormData) => async (dispatch) => {
   try {
@@ -165,8 +164,6 @@ export const deleteSpotImageThunk = (spotId) => async (dispatch) => {
   }
 };
 
-
-
 // update spots thunks
 export const updateSpotThunk = (formData, spotId) => async (dispatch) => {
   const res = await fetch(`/api/spots/${spotId}`, {
@@ -186,7 +183,6 @@ export const updateSpotThunk = (formData, spotId) => async (dispatch) => {
 // initial state
 const initialState = {
   allSpots: {},
-  oneSpot: {},
 };
 
 // reducer hi
@@ -201,7 +197,8 @@ const spotsReducer = (state = initialState, action) => {
       return newState;
 
     case GET_ONE_SPOT:
-      newState = { ...state, oneSpot: action.spotId };
+      newState = { ...state, allSpots: { ...state.allSpots } };
+      newState.allSpots[action.spot.id] = action.spot;
       return newState;
 
     // case CREATE_SPOT:
@@ -217,8 +214,10 @@ const spotsReducer = (state = initialState, action) => {
     case UPDATE_SPOT:
       newState = {
         ...state,
-        spots: { ...state.spots, [action.spot.id]: action.spot },
+        allSpots: { ...state.allSpots },
       };
+      newState.allSpots[action.spot.id] = action.spot;
+
       return newState;
 
     case DELETE_SPOT:
@@ -226,7 +225,6 @@ const spotsReducer = (state = initialState, action) => {
       delete newState.allSpots[action.id];
       return newState;
 
-  
     case CREATE_SPOT_IMAGE:
       newState = { ...state };
       newState[action.newSpotImage.id] = action.newSpotImage;

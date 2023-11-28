@@ -1,5 +1,6 @@
 .spot-details-bottom > img {
-  height: 740px;
+  height: 400px;
+  min-width: 1024px;
   background-position: center;
   display: flex;
   flex-direction: column;
@@ -43,7 +44,7 @@
   /* padding: 10px; */
   /* border: 6px solid rgb(21, 255, 0); */
   font-size: 48px;
-  color: white;
+  color: #d32323;
   font-weight: bold;
 }
 
@@ -147,4 +148,10 @@
 
 #maps {
   color: rgba(2, 122, 151, 1);
+}
+
+.name > img {
+  width: 200px;
+  height: 200px;
+
 }
