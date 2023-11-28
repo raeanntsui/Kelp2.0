@@ -158,16 +158,17 @@ function ShowOneSpot() {
                       <h1>Update Spot</h1>
                       <button onClick={handleSpotUpdate}>Update Spot</button>
 
-                      <DeleteSpotImage />
 
-                      <OpenModalButton
-                        buttonText="Upload Image"
-                        modalComponent={<ImageUploadModal spotId={spotId} />}
-                      />
+                      <DeleteSpotImage />
                     </div>
+
+                    <OpenModalButton
+                      buttonText="Upload Image"
+                      modalComponent={<ImageUploadModal spotId={spotId} />}
+                    />
                   </div>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
 

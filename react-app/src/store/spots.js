@@ -226,9 +226,13 @@ const spotsReducer = (state = initialState, action) => {
       return newState;
 
     case CREATE_SPOT_IMAGE:
-      newState = { ...state };
-      newState[action.newSpotImage.id] = action.newSpotImage;
-      return newState;
+      newState = { ...state, allSpots: { ...state.allSpots } };
+      const spotId = action.newSpotImage.spot_id;
+      const spot = newState.allSpots[spotId];
+
+      if (spot) {
+        spot.img_urls = [...spot.img_urls, action.newSpotImage];
+      }
 
     case DELETE_SPOT_IMAGE:
       newState = { ...state };
