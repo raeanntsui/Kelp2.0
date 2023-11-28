@@ -39,15 +39,17 @@ export default function ReviewModal({ spot }) {
   return (
     <div className="button-chunk">
       <div className="post-review">
-        <button
-          id="post-review-button"
-          className="postReview"
-          type="submit"
-          onClick={() => {
-            setModalContent(<ReviewForm spot={spot} />);
-          }}>
-          <i className="fa-regular fa-star"></i> Write a review
-        </button>
+        {currReview ? null : (
+          <button
+            id="post-review-button"
+            className="postReview"
+            type="submit"
+            onClick={() => {
+              setModalContent(<ReviewForm spot={spot} />);
+            }}>
+            <i className="fa-regular fa-star"></i> Write a review
+          </button>
+        )}
       </div>
 
       <div className="delete-button">

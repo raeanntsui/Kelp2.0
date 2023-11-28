@@ -1,4 +1,5 @@
-.delete-button > button {
+.delete-button > button,
+.update-button > button {
   background-color: #00890d;
   font-size: 18px;
   width: 175px;
