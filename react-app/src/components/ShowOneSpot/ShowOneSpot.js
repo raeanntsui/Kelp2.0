@@ -150,24 +150,25 @@ function ShowOneSpot() {
                     </div>
                   ))}
                 </div>
-
-                {businessOwner && (
-                  <div>
-                    <div className="delete-spot">
-                      <DeleteSpot />
-                      <h1>Update Spot</h1>
-                      <button onClick={handleSpotUpdate}>Update Spot</button>
-
-                      <DeleteSpotImage />
-                    </div>
-
-                    <OpenModalButton
-                      buttonText="Upload Image"
-                      modalComponent={<ImageUploadModal spotId={spotId} />}
-                    />
-                  </div>
-                )}
               </div>
+            </div>
+            <div className="delete-box">
+              {businessOwner && (
+                <div>
+                  <div className="delete-spot">
+                    <DeleteSpot />
+                    <h1>Update Spot</h1>
+                    <button onClick={handleSpotUpdate}>Update Spot</button>
+
+                    <DeleteSpotImage />
+                  </div>
+
+                  <OpenModalButton
+                    buttonText="Upload Image"
+                    modalComponent={<ImageUploadModal spotId={spotId} />}
+                  />
+                </div>
+              )}
             </div>
           </div>
 
