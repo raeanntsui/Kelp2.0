@@ -139,6 +139,7 @@ h1 {
   margin-bottom: 25px;
   margin-left: 10px;
   margin-right: 10px;
+  z-index: 2
 }
 
 /* #search-icon {
