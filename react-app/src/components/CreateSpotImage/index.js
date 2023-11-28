@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { createSpotImageThunk } from "../../store/spots";
 import "./CreateSpotImage.css";
+import { getOneSpotThunk } from "../../store/spots";
 
 const ImageUploadModal = ({ spotId }) => {
   const dispatch = useDispatch();
@@ -10,14 +11,10 @@ const ImageUploadModal = ({ spotId }) => {
   const [imageUrl, setImageUrl] = useState("");
   const [preview, setPreview] = useState(null);
   const [error, setError] = useState("");
-  const [forceRender, setForceRender] = useState(false);
+  const [render, setRender] = useState(false);
 
   const spotImages = useSelector(
     (state) => state.spots.allSpots[spotId]?.img_urls
-  );
-  console.log(
-    "🚀 ~ file: index.js:18 ~ ImageUploadModal ~ spotImages:",
-    spotImages
   );
 
   const handleUrlChange = (e) => {
@@ -53,8 +50,9 @@ const ImageUploadModal = ({ spotId }) => {
 
   useEffect(() => {
     console.log("Preview state changed:", preview);
-    setForceRender((prev) => !prev);
-  }, [preview]);
+    setRender((prev) => !prev);
+    return () => {};
+  }, []);
 
   return (
     <div>

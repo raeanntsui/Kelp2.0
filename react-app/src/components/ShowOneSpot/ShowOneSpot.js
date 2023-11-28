@@ -83,13 +83,11 @@ function ShowOneSpot() {
       <div className="spot-details-page">
         <div className="spot-details-bottom">
           {spot.img_urls?.length > 0 ? (
-            spot.img_urls.map((imageUrl, imageIndex) => (
-              <img
-                key={imageIndex}
-                src={imageUrl}
-                alt={`Spot Image ${imageIndex}`}
-              />
-            ))
+            <img
+              key={0} // Set a key for the single image
+              src={spot.img_urls[0]}
+              alt={`Spot Image 0`}
+            />
           ) : (
             // default img if there's no img
             <img
@@ -97,6 +95,7 @@ function ShowOneSpot() {
               alt="default spot image"
             />
           )}
+
           <div className="spot-about-info">
             <div className="business-name">
               <p>{spot.business_name}</p>
