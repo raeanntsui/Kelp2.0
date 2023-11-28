@@ -157,6 +157,12 @@
 
 }
 
+
 .delete-spot {
   margin-bottom: 25px;
+
+.filled-stars {
+  color: #fdcc0d;
+  margin-bottom: 5px;
+
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { updateReviewThunk } from "../../store/reviews";
+import "./UpdateReview.css";
 
 function UpdateReview({ spot, review }) {
   const [description, setDescription] = useState("");
@@ -67,14 +68,17 @@ function UpdateReview({ spot, review }) {
   const isCurrentUserReview = user && review && user.id === review.user_id;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Update Your Review</h2>
-      <textarea
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        placeholder="Update your review here..."
-      />
-      <p>{submit && errors.description}</p>
+    <form id="update-form" onSubmit={handleSubmit}>
+      <h1 className="update-h1">Update Your Review</h1>
+      <div className="form-chunk">
+        <textarea
+          className="textarea"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Update your review here..."
+        />
+        <p>{submit && errors.description}</p>
+      </div>
 
       <div className="stars">
         <i
@@ -129,18 +133,16 @@ function UpdateReview({ spot, review }) {
         />
       </div>
 
-      <div>
-        <p>Stars</p>
-      </div>
-
       {isCurrentUserReview && (
-        <button
-          type="submit"
-          onClick={handleSubmit}
-          disabled={!checkValidation()}
-        >
-          Update Review
-        </button>
+        <div className="update-review">
+          <button
+            // className="update-button"
+            type="submit"
+            onClick={handleSubmit}
+            disabled={!checkValidation()}>
+            Update Review
+          </button>
+        </div>
       )}
     </form>
   );

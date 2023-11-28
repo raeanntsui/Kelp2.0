@@ -23,10 +23,47 @@ function ShowOneSpot() {
 
   const spot = useSelector((state) => state.spots.allSpots[spotId]);
   const reviews = useSelector((state) => state.reviews.Reviews);
+  const spotReviews = Object.values(reviews).filter(
+    (review) => review.spot_id === parseInt(spotId)
+  );
 
   const userId = sessionUser?.id;
   const businessOwnerId = spot?.user_id;
   const businessOwner = userId === businessOwnerId;
+
+  const renderStars = (rating) => {
+    const starElements = [];
+    const filledStars = Math.floor(rating);
+
+    for (let i = 0; i < filledStars; i++) {
+      starElements.push(
+        <i key={i} className="fa-solid fa-star filled-stars"></i>
+      );
+    }
+
+    const emptyStars = 5 - filledStars;
+    for (let i = 0; i < emptyStars; i++) {
+      starElements.push(
+        <i key={`empty-${i}`} className="fa-regular fa-star filled-stars"></i>
+      );
+    }
+
+    return starElements;
+  };
+
+  const calculateAverageRating = () => {
+    if (reviews.length === 0) {
+      return 0;
+    }
+
+    const totalRating = spotReviews.reduce(
+      (sum, review) => sum + review.rating,
+      0
+    );
+    return totalRating / spotReviews.length;
+  };
+
+  const averageRating = calculateAverageRating();
 
   useEffect(() => {
     dispatch(getReviewsThunk(spotId));
@@ -65,13 +102,7 @@ function ShowOneSpot() {
               <p>{spot.business_name}</p>
             </div>
             <div className="filled-star">
-              <p>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-regular fa-star"></i>
-              </p>
+              <p>{renderStars(averageRating)}</p>
             </div>
             <span className="categories">{spot.categories}</span>
             <div id="open-time">
@@ -103,7 +134,7 @@ function ShowOneSpot() {
                         <p className="name-p">
                           {review.user.first_name} {review.user.last_name}
                         </p>
-                        {/* <p>{review.rating}</p> */}
+                        <p>{renderStars(review.rating)}</p>
                         <p
                           className={`review-img1 ${
                             review.user_img ? "with-img" : ""
@@ -119,17 +150,15 @@ function ShowOneSpot() {
                     </div>
                   ))}
                 </div>
-                {/* <UpdateReview spot={spot} review={currentUserReview} /> */}
-              </div>
-            </div>
-            <div>
-              {businessOwner && (
-                <div>
-                  <div className="delete-spot">
-                    <DeleteSpot />
-                    <h1>Update Spot</h1>
-                    <button onClick={handleSpotUpdate}>Update Spot</button>
-                    <div className="delete-image">
+
+                {businessOwner && (
+                  <div>
+                    <div className="delete-spot">
+                      <DeleteSpot />
+                      <h1>Update Spot</h1>
+                      <button onClick={handleSpotUpdate}>Update Spot</button>
+
+
                       <DeleteSpotImage />
                     </div>
 
