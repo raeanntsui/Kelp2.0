@@ -12,6 +12,7 @@ import ShowOneSpot from "./components/ShowOneSpot/ShowOneSpot";
 import CreateSpotModal from "./components/CreateSpot";
 import UpdateSpotPage from "./components/UpdateSpotForm";
 import { useLocation } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const location = useLocation();
@@ -23,7 +24,7 @@ function App() {
     "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgV4opNgXkJW3vJ1no6nvp8SCwtJuisrOjeU27QfOlESq9x-VwalxQZ1Is9wmfPClELNca7B5javckAuZodxRq4lzPW65SzPq7Kh_QVPWadFpTHSoYlgL9Z2DG8pcDYBFko1NrpcbdvC1_qTeMQABDEmPZdPL0gE8O-qsM_Ob93tZtSc0Fqyw/s1420/No_Weenies_Allowed_043.webp",
     "https://i.imgur.com/gvMDuOh.png",
     "https://i.imgur.com/uz1vEb5.png",
-    "https://i.imgur.com/S0NCG15.png"
+    "https://i.imgur.com/S0NCG15.png",
   ];
 
   useEffect(() => {
@@ -34,14 +35,11 @@ function App() {
     }, 3000);
 
     return () => clearInterval(interval);
-
   }, [dispatch]);
 
   return (
     <>
-      {location.pathname === "/" && (
-        <div className="overlay"></div>
-      )}
+      {location.pathname === "/" && <div className="overlay"></div>}
       <Navigation isLoaded={isLoaded} />
 
       {location.pathname === "/" && (
@@ -55,9 +53,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
-
             <Homepage />
-
           </Route>
           <Route exact path="/spots">
             <ShowAllSpots />
@@ -79,6 +75,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer isLoaded={isLoaded} />
     </>
   );
 }
