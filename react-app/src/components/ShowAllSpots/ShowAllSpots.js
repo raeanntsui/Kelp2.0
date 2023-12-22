@@ -4,11 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllSpotsThunk } from "../../store/spots";
 import "./ShowAllSpots.css";
 
+const ResultNotFoundMessage = ({ searchInput, address }) => (
+  <div className="result-not-found">
+    No results for {searchInput} {address && `(${address})`}
+  </div>
+);
+
 function ShowAllSpots() {
   const dispatch = useDispatch();
   const location = useLocation();
   const spots = useSelector((state) => state.spots.allSpots);
   const [searchInput, setSearchInput] = useState("");
+  const [searchButtonClicked, setSearchButtonClicked] = useState(false);
 
   const allSpots = Object.values(spots);
 
@@ -16,9 +23,15 @@ function ShowAllSpots() {
     setSearchInput(event.target.value);
   }
 
+  const handleSearchButtonClick = () => {
+    setSearchButtonClicked(true);
+  };
+
   useEffect(() => {
-    dispatch(getAllSpotsThunk());
-  }, [dispatch]);
+    if (!searchInput) {
+      dispatch(getAllSpotsThunk());
+    }
+  }, [dispatch, searchInput]);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -28,33 +41,61 @@ function ShowAllSpots() {
   }, [location.search]);
 
   const filteredSpots = allSpots.filter((spot) => {
-    const lowerCaseSearchInput = searchInput.toLowerCase();
+    const lowerCaseSearchInput = searchInput?.toLowerCase();
     const isNameMatch = spot.business_name
       ?.toLowerCase()
-      ?.includes(lowerCaseSearchInput);
+      .includes(lowerCaseSearchInput);
     const isCategoryMatch = spot.categories
       ?.toLowerCase()
-      ?.includes(lowerCaseSearchInput);
+      .includes(lowerCaseSearchInput);
     const isPriceRangeMatch =
       typeof spot.price_range === "string" &&
-      spot.price_range.toLowerCase()?.includes(lowerCaseSearchInput);
+      spot.price_range?.toLowerCase().includes(lowerCaseSearchInput);
 
     return isNameMatch || isCategoryMatch || isPriceRangeMatch;
   });
 
-  //poo
   let count = 1;
   return (
     <>
-      <input
-        type="text"
-        value={searchInput}
-        onChange={handleSearchInputChange}
-        placeholder="Search by name, category, or price range"
-      />
+      {/* <div className="search-bar">
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css"
+        />
+        <input
+          type="text"
+          value={searchInput}
+          onChange={handleSearchInputChange}
+          placeholder="Search by name, category, or price range"
+        />
+
+        <button onClick={handleSearchButtonClick}>
+          <i className="fas fa-search" style={{ color: 'white' }}></i>
+        </button>
+
+      </div> */}
       <div className="spots-front-page">
-        {filteredSpots.length === 0 ? (
-          <div className="result-not-found">No results found</div>
+        {searchInput && filteredSpots.length === 0 ? (
+          <div className="results-container">
+            <ResultNotFoundMessage
+              searchInput={searchInput}
+              address={filteredSpots[0]?.address}
+            />
+            <div className="suggestions-container">
+              <div className="suggestions-header">
+                Suggestions for improving your results:
+              </div>
+              <div className="suggestions-list">
+                <ul>Try a larger search area</ul>
+                <ul>Try a different location</ul>
+                <ul>Check the spelling or try alternate spellings</ul>
+                <ul>
+                  Try a more general search, e.g. "pizza instead of "pepperoni"
+                </ul>
+              </div>
+            </div>
+          </div>
         ) : (
           <div className="spots-grid">
             {filteredSpots.map((spot) => (
@@ -66,10 +107,17 @@ function ShowAllSpots() {
                 <div className="spots-grid-each">
                   <div className="each-spot">
                     <div className="each-spots-image">
-                      <img
-                        src="https://img.buzzfeed.com/buzzfeed-static/static/2019-11/21/20/campaign_images/fbf76a44e63d/could-you-pass-an-interview-and-get-hired-at-the--2-2131-1574368600-0_dblbig.jpg?resize=1200:*"
-                        alt="Spot Image"
-                      />
+                      {spot.img_urls.length > 0 ? (
+                        spot.img_urls &&
+                        spot.img_urls[0] && (
+                          <img src={spot.img_urls[0]} alt={`Spot Image 0`} />
+                        )
+                      ) : (
+                        <img
+                          src="https://t3.ftcdn.net/jpg/06/42/18/22/360_F_642182262_4kqb9AgMr0qhqBHcwWEgTfvTCOFklokO.jpg"
+                          alt="default spot image"
+                        />
+                      )}
                     </div>
                     <div className="each-spots-info">
                       <h2 id="spot-title">
@@ -101,12 +149,12 @@ function ShowAllSpots() {
             ))}
           </div>
         )}
-        <div className="google-maps-grid">
+        {/* <div className="google-maps-grid">
           <img
             src="https://www.google.com/maps/d/thumbnail?mid=149XtkqRiBZ68Y28N8Px4kMh9ld4&hl=en"
             alt="Google Maps Thumbnail"
           />
-        </div>
+        </div> */}
       </div>
     </>
   );

@@ -18,7 +18,7 @@
 }
 
 .profile-dropdown>button {
-  background-color: #d32323;
+  background-color: #00890D;
   width: 100px;
   padding: 10px 10px;
   color: white;
@@ -29,7 +29,7 @@
 
 .profile-dropdown>button:hover {
   cursor: pointer;
-  background-color: rgba(237, 62, 62, 0.638);
+  background-color: #43C174
 }
 
 .profile-dropdown>li:first-child {
@@ -98,7 +98,8 @@ h1 {
 #kelp-logo>h1 {
   font-size: 30px;
   padding: 0px 10px;
-  color: #d32323;
+  color: #006009;
+
 }
 
 #kelp-logo {
@@ -112,10 +113,11 @@ h1 {
 .logo-container {
   display: flex;
   align-items: center;
+  margin-left: 15px;
 }
 
 .logo-container>h1 {
-  color: #d32323;
+  color: #00C413;
   font-size: 28px;
 }
 
@@ -124,51 +126,9 @@ h1 {
   margin-left: 5px;
 }
 
-#searchbar {
-  border: 2px solid #d32323;
-  max-width: 600px;
-  /* padding: 0px 10px; */
-  display: flex;
-  flex-grow: 1;
-  /* margin: 0 20px; */
-  justify-content: space-between;
-}
 
-#searchbar>input:first-child {
-  height: 30px;
-  width: fit-content;
-  background-color: white;
-  border: none;
-  /* padding: 2px 10px; */
-  margin: 0px 5px;
-}
 
-#searchbar>input:nth-child(3) {
-  height: 30px;
-  background-color: white;
-  border: none;
-  width: 200px;
-  /* padding: 2px 10px; */
-  margin: 0px 5px;
-}
 
-#search-icon {
-  width: 40px;
-  border: none;
-  color: white;
-}
-
-#searchbar {
-  padding: 0px;
-  margin: 0px;
-}
-
-#searchbar>h1 {
-  background-color: white;
-  font-size: 20px;
-  text-align: center;
-  color: lightgrey;
-}
 
 #top-nav {
   display: flex;
@@ -177,16 +137,17 @@ h1 {
   /* padding: 0 20px; */
   position: relative;
   /* border: 5px solid pink; */
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   margin-left: 10px;
   margin-right: 10px;
+  z-index: 2
 }
 
-#search-icon {
+/* #search-icon {
   background-color: #d32323;
   margin: 0px;
-}
+} */
 
 #write-review-button {
   background-color: transparent;
@@ -205,6 +166,7 @@ h1 {
   margin: 0px;
   /* border: 3px dashed blueviolet; */
   gap: 15px;
+
 }
 
 #write-review-button {
@@ -265,4 +227,51 @@ h1 {
 #fish {
   color: #4169e1;
   font-size: 14px;
+}
+
+
+.search-input {
+  width: 300px;
+}
+
+.searchbar-home {
+  margin-top: 10px;
+}
+
+.search-form {
+  padding: 0px;
+}
+
+.search-input {
+  padding: 8px;
+  margin-bottom: 0px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.search-form button {
+  background-color: #00890D;
+  outline: none;
+  border: none;
+  height: 32px;
+  width: 40px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#modal-content {
+
+  height: fit-content;
+  border-radius: 20px;
+  margin: 0;
+  padding: 20px;
+
+}
+
+#modal {
+  position: fixed;
+  z-index: 10;
 }

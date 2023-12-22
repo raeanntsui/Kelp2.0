@@ -40,7 +40,7 @@
   /* border: 4px; */
 }
 
-.each-spots-image>img {
+.each-spots-image > img {
   align-items: flex-start;
   width: 250px;
   height: 250px;
@@ -94,7 +94,7 @@
   max-height: fit-content;
 }
 
-.google-maps-grid>img {
+.google-maps-grid > img {
   max-width: 480px;
   height: 100%;
   object-fit: cover;
@@ -127,7 +127,7 @@
   justify-content: space-between;
 }
 
-#searchbar>input:first-child {
+#searchbar > input:first-child {
   height: 30px;
   width: fit-content;
   background-color: white;
@@ -136,7 +136,7 @@
   margin: 0px 5px;
 }
 
-#searchbar>input:nth-child(3) {
+#searchbar > input:nth-child(3) {
   height: 30px;
   background-color: white;
   border: none;
@@ -156,9 +156,69 @@
   margin: 0px;
 }
 
-#searchbar>h1 {
+#searchbar > h1 {
   background-color: white;
   font-size: 20px;
   text-align: center;
   color: lightgrey;
+}
+
+.results-container {
+  width: 718px;
+}
+
+.result-not-found {
+  font-weight: bold;
+  font-size: 25px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.suggestions-header {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.suggestions-list > ul {
+  margin: 6px;
+  margin-left: 10px;
+}
+
+ul {
+  list-style-type: circle;
+}
+
+.search-bar {
+  width: 500px;
+  margin-left: 30px;
+  margin-bottom: -30px;
+  position: relative;
+  left: 100px;
+  bottom: 58px;
+  box-sizing: border-box;
+}
+
+.search-bar input {
+  position: relative;
+  width: 75%;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 10px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+  outline: none;
+  border-radius: 3px;
+}
+
+.search-bar button {
+  position: relative;
+  right: 1px;
+  background-color: red;
+  border: none;
+  outline: none;
+  width: 50px;
+  height: 40px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border-radius: 3px;
 }

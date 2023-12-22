@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 53218e126ea5
+Revision ID: 8ed3e85bb9fe
 Revises:
-Create Date: 2023-11-26 18:47:24.271610
+Create Date: 2023-11-27 23:27:50.195177
 
 """
 from alembic import op
@@ -14,7 +14,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '53218e126ea5'
+revision = '8ed3e85bb9fe'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -34,8 +34,10 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
     op.create_table('spots',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('business_name', sa.String(), nullable=False),
@@ -55,6 +57,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('address')
     )
+
     if environment == "production":
         op.execute(f"ALTER TABLE spots SET SCHEMA {SCHEMA};")
 
@@ -71,16 +74,19 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+
     if environment == "production":
         op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
+
     op.create_table('spot_images',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('spot_id', sa.Integer(), nullable=False),
-    sa.Column('img_url', sa.String(length=255), nullable=False),
+    sa.Column('spot_id', sa.Integer(), nullable=True),
+    sa.Column('img_url', sa.String(length=255), nullable=True),
     sa.Column('preview', sa.Boolean(), nullable=True),
     sa.ForeignKeyConstraint(['spot_id'], ['spots.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+
     if environment == "production":
         op.execute(f"ALTER TABLE spot_images SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###

@@ -1,0 +1,177 @@
+#footer-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 3.5vh;
+}
+
+#footer-top p {
+  font-size: 14.4px;
+}
+
+/* #root{
+  display: flex;
+  flex-direction: column;
+} */
+
+#footer-div {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  background-color: white
+
+}
+
+#developer-github{
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  padding-top: 20px;
+}
+
+.developer-icons {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+
+
+.join-us-btn {
+  border: none;
+  background-color: transparent;
+  font-size: 14.4px;
+  margin:0;
+  transition: color 0.1s ease-in-out;
+  color: rgb(214, 35, 35);
+}
+
+.join-us-btn:hover {
+  cursor: pointer;
+  color: rgb(235, 103, 103);
+}
+
+
+.footer-contactus {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.githubicon {
+  width: 22px;
+  height: 22px;
+}
+
+.footer-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#copyright-div {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#copyright-div p {
+  margin: 0px;
+}
+
+
+
+#about-kelp-div h1 {
+  font-size: 24px;
+  font-weight: 500;
+  color: #00C413;
+  text-align: center;
+}
+
+#about-kelp-div p {
+  margin-bottom: 10px;
+}
+
+#aboutus-logo {
+  width: 100px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#contact-us-div {
+  width: 300px;
+  padding: 12px 24px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+#contact-us-div h1 {
+  font-size: 22px;
+  font-weight: 500;
+  color: #00C413;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.developer-icons {
+  color: #00C413
+}
+
+.fa-github:hover {
+  cursor: pointer;
+  color: rgb(222, 53, 53);
+}
+
+.fa-linkedin:hover {
+  cursor: pointer;
+  color: rgb(222, 53, 53);
+}
+
+.developer-portfolio {
+  transition: color 0.1s ease-in-out;
+  font-size: 16px;
+  color: rgb(55, 51, 51);
+}
+
+
+.developer-portfolio:hover {
+  cursor: pointer;
+  color: rgb(207, 63, 63);
+}
+
+.stack-img {
+  width: 50px;
+}
+
+.stack-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 40px;
+}
+
+.one-stack {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.trademark {
+  color: #00C413
+}
+
+#footer-top button{
+  padding: 0;
+border: none;
+background: none;
+}

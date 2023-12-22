@@ -19,8 +19,8 @@ export default function CreateSpotModal({ id }) {
   const [closeHours, setCloseHours] = useState("");
   const [description, setDescription] = useState("");
   const [priceRange, setPriceRange] = useState("");
-  const [imageUrl, setImageUrl] = useState(""); // Updated state for imageUrl
-  const [validationObject, setValidationObject] = useState([]);
+  const [imageUrl, setImageUrl] = useState("");
+  const [validationErrors, setValidationErrors] = useState({});
   const [submitted, yesSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
   const [uploadedImages, setUploadedImages] = useState([]);
@@ -28,7 +28,7 @@ export default function CreateSpotModal({ id }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Prepare spot data
+    // spot data
     const formData = new FormData();
     formData.append("business_name", businessName);
     formData.append("address", address);
@@ -40,15 +40,13 @@ export default function CreateSpotModal({ id }) {
     formData.append("close_hours", closeHours);
     formData.append("description", description);
     formData.append("price_range", priceRange);
-    formData.append("img_url", imageUrl); // Include imageUrl in the spotData
+    formData.append("img_url", imageUrl);
 
     try {
-      // Dispatch createSpotThunk with spotData
       const createdSpot = await dispatch(createSpotThunk(formData));
 
       console.log("Response from createSpotThunk:", createdSpot);
 
-      // Redirect to the spots page or handle success as needed
       history.push(`/spots`);
     } catch (error) {
       console.error("Error creating a new Spot:", error);
@@ -56,30 +54,69 @@ export default function CreateSpotModal({ id }) {
   };
 
   useEffect(() => {
-    let errorsObject = {};
+    const errorsObject = {};
+
     if (!businessName) errorsObject.businessName = "Business name is required";
-    setValidationObject(errorsObject);
-  }, [businessName]);
+    if (!address) errorsObject.address = "Address is required";
+    if (!city) errorsObject.city = "City is required";
+    if (!state) errorsObject.state = "State is required";
+    if (!zipCode) {
+      errorsObject.zipCode = "Zip Code is required";
+    } else if (zipCode.length !== 5 || isNaN(zipCode)) {
+      errorsObject.zipCode = "Zip Code must be a 5-digit number";
+    }
+    if (!categories)
+      errorsObject.categories = "Category of your business is required";
+    if (!openHours) {
+      errorsObject.openHours = "Open Hours is required";
+    } else if (isNaN(openHours) || openHours < 0 || openHours > 24) {
+      errorsObject.openHours = "Open Hours must be a number between 0 and 24";
+    }
+
+    if (!closeHours) {
+      errorsObject.closeHours = "Close Hours is required";
+    } else if (isNaN(closeHours) || closeHours < 0 || closeHours > 24) {
+      errorsObject.closeHours = "Close Hours must be a number between 0 and 24";
+    }
+    if (!description) errorsObject.description = "Description is required";
+    if (!priceRange) {
+      errorsObject.priceRange = "Average Price is required";
+    } else if (isNaN(priceRange) || priceRange < 0 || priceRange > 100000) {
+      errorsObject.priceRange =
+        "Average Price must be a number between 0 and 100000";
+    }
+    setValidationErrors(errorsObject);
+  }, [
+    businessName,
+    address,
+    city,
+    state,
+    zipCode,
+    categories,
+    openHours,
+    closeHours,
+    description,
+    priceRange,
+  ]);
   return (
     <>
       <h1 id="create-h1">Create a Spot</h1>
       <div className="form-content">
         <form onSubmit={handleSubmit}>
           <div className="modal-errors">
-            {/* {errors &&
-              errors.length >= 1 &&
-              errors.map((error, idx) => (
-                <div className="error" key={idx}>
-                  {error}
-                </div>
-              ))} */}
+            {Object.keys(validationErrors).length > 0 && (
+              <div className="modal-errors">
+                {Object.values(validationErrors).map((error, idx) => (
+                  <div className="error" key={idx}>
+                    {error}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           <div className="form-chunk">
             <label>Hello! Let’s start with your business name</label>
-            {/* <p id="form-chunk-p">
-              We’ll use this information to help you claim your Kelp page. Your
-              business will come up automatically if it is already listed.
-            </p> */}
+
             <input
               type="text"
               placeholder="Enter your business' name here"
@@ -90,9 +127,7 @@ export default function CreateSpotModal({ id }) {
 
           <div className="form-chunk">
             <label>What is your business address?</label>
-            {/* <p id="form-chunk-p">
-              Enter the address for where your customers can find you.
-            </p> */}
+
             <input
               type="text"
               placeholder="Enter the address for where your customers can find you."
@@ -134,11 +169,7 @@ export default function CreateSpotModal({ id }) {
 
           <div className="form-chunk">
             <label>What kind of business are you in?</label>
-            {/* <p id="form-chunk-p">
-              Help customers find your product and service. You can add up to 3
-              categories that best describe what your core business is. You can
-              always edit and add more later.
-            </p> */}
+
             <input
               type="text"
               id="description-input"
@@ -152,6 +183,7 @@ export default function CreateSpotModal({ id }) {
               <label>Open Hours </label>
               <input
                 type="number"
+                placeholder="Opening time (Military Time)"
                 value={openHours}
                 onChange={(e) => setOpenHours(e.target.value)}
               />
@@ -161,6 +193,7 @@ export default function CreateSpotModal({ id }) {
               <label>Close Hours </label>
               <input
                 type="number"
+                placeholder="Closing time (Military Time)"
                 value={closeHours}
                 onChange={(e) => setCloseHours(e.target.value)}
               />
@@ -169,10 +202,7 @@ export default function CreateSpotModal({ id }) {
 
           <div className="form-chunk">
             <label>Description</label>
-            {/* <p id="form-chunk-p">
-              Write some information about your business that will draw
-              customers in.
-            </p> */}
+
             <input
               placeholder="Write something about your business that will draw customers in"
               id="description-input"
@@ -183,16 +213,15 @@ export default function CreateSpotModal({ id }) {
           </div>
 
           <div className="form-chunk">
-            <label>Price Range </label>
+            <label>Average Price </label>
             <input
-              placeholder="Select a price range between $ to $$$$"
+              placeholder="What is the average price at your business?"
               type="number"
               value={priceRange}
               onChange={(e) => setPriceRange(e.target.value)}
             />
           </div>
 
-          {/* New input for Image URL */}
           <div className="form-chunk">
             <label>Image URL</label>
             <input
@@ -203,7 +232,18 @@ export default function CreateSpotModal({ id }) {
             />
           </div>
           <div className="sign-up">
-            <button type="submit">Submit</button>
+            <button
+              className="button-color"
+              type="submit"
+              disabled={Object.keys(validationErrors).length > 0}
+              style={{
+                backgroundColor: `rgba(0, 137, 13, ${
+                  Object.keys(validationErrors).length > 0 ? "0.7" : "1"
+                })`,
+              }}
+            >
+              Submit
+            </button>
           </div>
         </form>
       </div>

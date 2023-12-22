@@ -20,7 +20,7 @@ def seed_reviews():
         description = "THIS PLACE IS OK1",
         created_at = date.today(),
         updated_at = date.today(),
-        user_id=1,
+        user_id=3,
         spot_id=2
     )
     db.session.add(review_1)
@@ -30,7 +30,7 @@ def seed_reviews():
         description = "THIS PLACE IS OK2",
         created_at = date.today(),
         updated_at = date.today(),
-        user_id=1,
+        user_id=2,
         spot_id=3
     )
     db.session.add(review_2)
@@ -40,7 +40,7 @@ def seed_reviews():
         description = "THIS PLACE IS OK3",
         created_at = date.today(),
         updated_at = date.today(),
-        user_id=2,
+        user_id=3,
         spot_id=1
     )
     db.session.add(review_3)
@@ -50,8 +50,8 @@ def seed_reviews():
         description = "THIS PLACE IS OK4",
         created_at = date.today(),
         updated_at = date.today(),
-        user_id=2,
-        spot_id=3
+        user_id=4,
+        spot_id=2
     )
     db.session.add(review_4)
 
@@ -60,8 +60,8 @@ def seed_reviews():
         description = "THIS PLACE IS OK5",
         created_at = date.today(),
         updated_at = date.today(),
-        user_id=3,
-        spot_id=1
+        user_id=5,
+        spot_id=2
     )
     db.session.add(review_5)
 
@@ -70,8 +70,8 @@ def seed_reviews():
         description = "THIS PLACE IS OK6",
         created_at = date.today(),
         updated_at = date.today(),
-        user_id=3,
-        spot_id=2
+        user_id=1,
+        spot_id=3
     )
     db.session.add(review_6)
 

@@ -1,6 +1,10 @@
+.button-chunk {
+  display: flex;
+}
+
 #post-review-button,
 #delete-button {
-  background-color: #d32323;
+  background-color: #00890d;
   font-size: 18px;
   width: 175px;
   padding: 10px 10px;
@@ -13,5 +17,18 @@
 #post-review-button:hover,
 #delete-button:hover {
   cursor: pointer;
-  background-color: rgba(237, 62, 62, 0.638);
+  background-color: #43c174;
+}
+
+.delete-button > button,
+.update-button > button {
+  background-color: #00890d;
+  font-size: 18px;
+  width: 175px;
+  padding: 10px 10px;
+  color: white;
+  border-radius: 4px;
+  /* border: 2px solid #d32323; */
+  border: none;
+  margin: 0;
 }
