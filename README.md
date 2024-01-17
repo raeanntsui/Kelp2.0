@@ -1,148 +1,113 @@
-# Flask React Project
+# Group Full Stack Project (Kelp)
 
-This is the starter for the Flask React project.
+Feel free to explore our website, Kelp, a platform designed to allow users to see reviews about businesses in Bikini Bottom from the iconic show, Spongebob Squarepants! Take a tour of the website and discover a diverse range of restaurants and businesses available at your fingertips. Registered users can explore, create businesses, and leave reviews on Kelp.
 
-## Getting started
-1. Clone this repository (only this branch)
+**Click on the link below to visit the live site!**<br>
+[![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
+](https://kelp-sqpk.onrender.com/)
 
-2. Install dependencies
+<!-- **Check out the developers' LinkedIn profiles:**<br>
+[![Linkedin](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/khuong-c-nguyen/) -->
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+**Languages Used**<br>
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+<!-- ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) -->
 
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+**Site Preview**<br>
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
+<!-- ![Alt Text](https://cdn.discordapp.com/attachments/1110721109076221993/1195912430971260958/image.png) -->
 
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+<!-- ![Alt text](<Screen-Recording-2024-01-13-at-11.17.31 AM.gif>) -->
 
-   ```bash
-   pipenv shell
-   ```
+## What can you do on Kelp?
 
-   ```bash
-   flask db upgrade
-   ```
+**1. Check out reviews and ratings for businesses helping others make informed decisions!**<br>
 
-   ```bash
-   flask seed all
-   ```
+- Navigate through the website as either a registered or unregistered user. Create your own account or simply log in as the demo user for quick access!
+- View available businesses and see what other users have to say about it
 
-   ```bash
-   flask run
-   ```
+**2. What are the perks of being a registered user?**<br>
 
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+- Create your own business in Bikini Bottom
+- Edit or delete your existing spots
+- Other users can leave reviews on your existing spots
+- Post reviews on other spots
 
+## How to download Kelp on your local computer
 
-## Deployment through Render.com
+1. In the root folder:
 
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
+- create an .env file
+- copy over .envexample content into the new .env file
+- run these commands in terminal
 
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
+  ```bash
+  pipenv requirements > requirements.txt
+  pipenv install
+  pipenv shell
+  flask db upgrade
+  flask seed all
+  flask run
+  ```
 
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
+2. cd into the root folder and then run `pipenv run flask run` to start the back-end
 
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
+3. cd into the react-app folder and then run `npm start` to start the front-end
 
-### Part A: Configure the Start and Build Commands
+# Site Summary
 
-Start by giving your application a name.
+## Landing Page
 
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
+<!-- ![](img.png) -->
 
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
+- This page generates three randomly selected reviews to present a brief excerpt written by customers about other businesses
 
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
+## Main Page
 
-For your Flask project, enter the following command into the Build field, all in
-one line:
+<!-- ![All business](image.png) -->
 
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
-flask seed all
-```
+- Click the 'View All Spots' link to navigate here
+- The homepage displays a comprehensive list of all available locations featured on Kelp.
+- This page is also accessible to anyone (registered and unregistered users)
 
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
+## Sign Up
 
-Now, add your start command in the Start field:
+<!-- ![Sign up](https://cdn.discordapp.com/attachments/1110721109076221993/1196687779342594048/image.png) -->
 
-```shell
-# start script
-gunicorn app:app
-```
+- Unregistered users have the option to create an account through the dropdown menu located at the top-right corner
+- In the event a user attempts to input invalid information, error messages will populate to guide the user to resolve them accurately
+- Upon successful completion of the Sign Up form, the new user will be logged in automatically
 
-_If you are using websockets, use the following start command instead for increased performance:_
+## Log In
 
-`gunicorn --worker-class eventlet -w 1 app:app`
+<!-- ![Login](https://media.discordapp.net/attachments/1110721109076221993/1196688534917099602/image.png) -->
 
-### Part B: Add the Environment Variables
+- Existing users can access their accounts through the designated login portal through the dropdown menu located at the top-right corner
+- To gain full access to Kelp quickly, simply click the "Sign In as Demo User" button. This will allow you to creating new business, managing existing businesses, and leave reviews on others' businesses
 
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
+## Leave a Review
 
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
+<!-- ![Leave a comment](image.png) -->
 
-Add the following keys and values in the Render GUI form:
+- Registered users can submit reviews provided that they have not previously submitted a review for the same spot
+- Each review requires a description and star rating, while the inclusion of photos remains optional
+- Newly ubmitted reviews dynamically appear on the current page
+- Users may modify or delete their reviews conveniently through the business details page
 
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
+## Add a Business
 
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
+<!-- ![Add a Spot](https://cdn.discordapp.com/attachments/1110721109076221993/1196688537177829487/image.png) -->
 
-Add the following keys and values:
+- As a logged-in user, create a spot in Bikini Bottom
+- Each new listing requires a name, description, category, price, and image!
 
-- DATABASE_URL (copy value from Internal Database URL field)
+## Manage Business
 
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
+<!-- ![Manage Spot](https://cdn.discordapp.com/attachments/1110721109076221993/1196688537702109274/image.png) -->
 
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
-
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
-
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
-
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+- User is able to update or delete the spot on the spot details page
+- Each update requires a name, description, category, price, and image!

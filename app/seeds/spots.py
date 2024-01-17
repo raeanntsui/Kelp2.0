@@ -210,9 +210,9 @@ def seed_spots():
     )
     db.session.add(stinky_burgers)
 
-    #14 Taco Haüs
+    #14 Taco Sombrero
     taco = Spot(
-        business_name='Taco Haüs',
+        business_name='Taco Sombrero',
         address='63 Pacific Lane',
         city="Bikini Bottom",
         state="Pacific Ocean",
@@ -220,7 +220,7 @@ def seed_spots():
         categories="restaurant",
         open_hours=8,
         close_hours=21,
-        description="Welcome to Taco Haüs, where every bite is a journey into the vibrant world of tacos that dance with flavor and ignite your taste buds! Nestled outside of Bikini Bottom, our taco haven promises an unforgettable experience for taco enthusiasts and culinary adventurers alike.",
+        description="Welcome to Taco Sombrero, where every bite is a journey into the vibrant world of tacos that dance with flavor and ignite your taste buds! Nestled outside of Bikini Bottom, our taco haven promises an unforgettable experience for taco enthusiasts and culinary adventurers alike.",
         price_range=2,
         user_id=6
     )
