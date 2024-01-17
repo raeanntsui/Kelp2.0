@@ -34,7 +34,7 @@ def seed_spots():
     )
     db.session.add(weenie_hut_juniors)
 
-    #3  
+    #3
     chum_bucket = Spot(
         business_name='The Chum Bucket',
         address='830 Bottom Feeder Lane',
@@ -60,7 +60,7 @@ def seed_spots():
         categories="restaurant",
         open_hours=8,
         close_hours=21,
-        description="Welcome to The Salty Spitoon, the toughest hangout spot in all of Bikini Bottom! This legendary restaurant and bar cater exclusively to the roughest and toughest fish in the deep blue sea. Located in the gritty side of Bikini Bottom, The Salty Spitoon is not for the faint of heart – it's where the true sea warriors gather.",
+        description="Welcome to The Salty Spitoon, the toughest hangout spot in all of Bikini Bottom! This legendary restaurant and bar cater exclusively to the roughest and toughest fish in the deep blue sea. Located in the gritty side of Bikini Bottom, The Salty Spitoon is not for the faint of heart it's where the true sea warriors gather.",
         price_range=2,
         user_id=6
     )
@@ -101,7 +101,7 @@ def seed_spots():
     #7 MilkShake
     milkshake = Spot(
         business_name='Milk Shake',
-        address='123 Pacific Lane',
+        address='123123 Pacific Lane',
         city="Bikini Bottom",
         state="Pacific Ocean",
         zip_code=32842,
@@ -229,7 +229,7 @@ def seed_spots():
     #15 The Krusty Klam
     krusty_klam = Spot(
         business_name='Krusty Klam',
-        address='123 Pacific Lane',
+        address='12389 Pacific Lane',
         city="Bikini Bottom",
         state="Pacific Ocean",
         zip_code=52847,
