@@ -88,11 +88,11 @@ def seed_spots():
         address='143 Goofy Lane',
         city="Bikini Bottom",
         state="Pacific Ocean",
-        zip_code=32847,
+        zip_code=32841,
         categories="restaurant",
         open_hours=8,
         close_hours=21,
-        description="Put on your goofiest hat, grab a seat, and get ready for a wacky and wonderful time at Goofy Goober – where every moment is a celebration of laughter, friendship, and the joy of being a true goofball!",
+        description="Put on your goofiest hat, grab a seat, and get ready for a wacky and wonderful time at Goofy Goober. This is where every moment is a celebration of laughter, friendship, and the joy of being a true goofball!",
         price_range=2,
         user_id=7
     )
@@ -104,11 +104,11 @@ def seed_spots():
         address='123 Pacific Lane',
         city="Bikini Bottom",
         state="Pacific Ocean",
-        zip_code=32847,
+        zip_code=32842,
         categories="restaurant",
         open_hours=8,
         close_hours=21,
-        description='Welcome to Milk Shake, where every visit promises a delightful dip into the world of sweet nostalgia and frosty treats! As you approach, the restaurant stands out with its playful exterior, shaped like a giant milkshake cup painted in a delightful combination of pink, white, and blue. The name "Milk Shake" is proudly displayed in vibrant purple text outlined in a charming blue hue.',
+        description='Welcome to Milk Shake, where every visit promises a delightful dip into the world of sweet nostalgia and frosty treats! As you approach, the restaurant stands out with its playful exterior, shaped like a giant milkshake cup painted in a delightful combination of pink, white, and blue.',
         price_range=3,
         user_id=8
     )
@@ -120,7 +120,7 @@ def seed_spots():
         address='124 Conch Street',
         city="Bikini Bottom",
         state="Pacific Ocean",
-        zip_code=32847,
+        zip_code=32845,
         categories="restaurant",
         open_hours=8,
         close_hours=21,
@@ -136,7 +136,7 @@ def seed_spots():
         address='433 Pacific Lane',
         city="Bikini Bottom",
         state="Pacific Ocean",
-        zip_code=32847,
+        zip_code=32840,
         categories="restaurant",
         open_hours=8,
         close_hours=21,
@@ -152,11 +152,11 @@ def seed_spots():
         address='3452 Pacific Lane',
         city="Bikini Bottom",
         state="Pacific Ocean",
-        zip_code=32847,
+        zip_code=32113,
         categories="restaurant",
         open_hours=8,
         close_hours=21,
-        description='Welcome to "Rustic Rib Retreat," a hidden gem nestled in the heart of simplicity, where the allure lies in the authenticity of flavors and the charm of a well-worn shack. This unassuming eatery invites you to experience the true essence of down-to-earth dining, where the focus is on the tantalizing perfection of one thing: ribeye.',
+        description='Welcome to "Rustic Rib Retreat," a hidden gem nestled in the heart of simplicity, where the allure lies in the authenticity of flavors and the charm of a well-worn shack. This unassuming eatery invites you to experience the true essence of down-to-earth dining.',
         price_range=1,
         user_id=9
     )
@@ -164,11 +164,11 @@ def seed_spots():
 
     #11 Rusty Anchor
     rusty_anchor = Spot(
-        business_name='The Salty Spitoon',
-        address='123 Pacific Lane',
+        business_name='Rusty Anchor',
+        address='2390 Waterfront Drive',
         city="Bikini Bottom",
         state="Pacific Ocean",
-        zip_code=32847,
+        zip_code=32821,
         categories="restaurant",
         open_hours=8,
         close_hours=21,
@@ -181,14 +181,14 @@ def seed_spots():
     #12 Mrs. Puff's Driving School
     mrspuffs_driving_school = Spot(
         business_name="Mrs. Puff's Boating School",
-        address='986 Pacific Lane',
+        address='986 Boat Drive',
         city="Bikini Bottom",
         state="Pacific Ocean",
-        zip_code=32847,
+        zip_code=32337,
         categories="restaurant",
         open_hours=8,
         close_hours=21,
-        description="Ready to dive into the world of driving with confidence? Choose Mrs. Puff's Driving School, where the road to success is navigated with care, expertise, and a splash of underwater charm. Enroll today and discover the joy of driving under the guidance of Bikini Bottom's premier driving instructor! 🚗💨",
+        description="Ready to dive into the world of driving with confidence? Choose Mrs. Puff's Driving School, where the road to success is navigated with care, expertise, and a splash of underwater charm. Enroll today and discover the joy of driving!",
         price_range=5,
         user_id=11
     )
@@ -196,15 +196,15 @@ def seed_spots():
 
     #13 Stinky Burgers
     stinky_burgers = Spot(
-        business_name='The Salty Spitoon',
+        business_name='Stinky Burgers',
         address='165 Pacific Lane',
         city="Bikini Bottom",
         state="Pacific Ocean",
-        zip_code=32847,
+        zip_code=33437,
         categories="restaurant",
         open_hours=8,
         close_hours=21,
-        description='Stinky Burgers wears its character proudly. The metal roof, though humble, shelters a treasure trove of bold and satisfying bites. The orange rectangle sign boldly announces "Stinky" in vibrant yellow, with "Burgers" adding a touch of mystery in black. A dried-out clam, exhaling a rancid yellow breath, stands as a quirky emblem of the unique flavors that await.',
+        description='Stinky Burgers wears its character proudly. The metal roof, though humble, shelters a treasure trove of bold and satisfying bites. The orange rectangle sign boldly announces "Stinky" in vibrant yellow, with "Burgers" adding a touch of mystery in black.',
         price_range=2,
         user_id=12
     )
@@ -232,7 +232,7 @@ def seed_spots():
         address='123 Pacific Lane',
         city="Bikini Bottom",
         state="Pacific Ocean",
-        zip_code=32847,
+        zip_code=52847,
         categories="restaurant",
         open_hours=8,
         close_hours=21,
@@ -248,11 +248,11 @@ def seed_spots():
         address='1230 Pacific Lane',
         city="Bikini Bottom",
         state="Pacific Ocean",
-        zip_code=32847,
+        zip_code=22847,
         categories="restaurant",
         open_hours=8,
         close_hours=21,
-        description="Experience bold flavors at The Slop Pail, a unique fast-food haven redefining culinary norms. Our menu features chum creations that defy expectations, from savory chum burgers to crispy chum fries. Embrace the unconventional with each bite in a lively atmosphere that celebrates the joy of unexpected taste adventures. Join us for a chum-filled feast where innovation meets indulgence, and let The Slop Pail redefine your fast-food experience. It's not just a meal; it's a flavorful journey into the extraordinary! 🍔🌟",
+        description="Experience bold flavors at The Slop Pail, a unique fast-food haven redefining culinary norms. Our menu features chum creations that defy expectations, from savory chum burgers to crispy chum fries. Embrace the unconventional with each bite in a lively atmosphere that celebrates the joy of unexpected taste adventures.",
         price_range=2,
         user_id=14
     )
@@ -268,7 +268,7 @@ def seed_spots():
         categories="restaurant",
         open_hours=8,
         close_hours=21,
-        description="At The Poop Deck, we blend maritime tradition with culinary innovation to create a dining experience that delights the senses. Whether you're a seafood aficionado, a lover of maritime-inspired creations, or seeking a taste of Bikini Bottom's finest, The Poop Deck invites you to savor the sea's bounty in every bite. Join us for a maritime feast that's as unforgettable as the ocean itself! 🌊🍔🥗",
+        description="At The Poop Deck, we blend maritime tradition with culinary innovation to create a dining experience that delights the senses. The Poop Deck invites you to savor the sea's bounty in every bite. Join us for a maritime feast that's as unforgettable as the ocean itself!",
         price_range=2,
         user_id=13
     )
@@ -280,7 +280,7 @@ def seed_spots():
         address='1223 Pacific Lane',
         city="Bikini Bottom",
         state="Pacific Ocean",
-        zip_code=32847,
+        zip_code=32447,
         categories="restaurant",
         open_hours=8,
         close_hours=21,
@@ -300,7 +300,7 @@ def seed_spots():
         categories="shop",
         open_hours=8,
         close_hours=21,
-        description="ncover a world of singular charm at Cyclops Treasures, where a cyclops's keen eye selects the most unique and enchanting gifts for you. From one-eyed plushies to mystical artifacts, our gift shop offers an eclectic array of treasures that captivate and delight.",
+        description="Uncover a world of singular charm at Cyclops Treasures, where a cyclops's keen eye selects the most unique and enchanting gifts for you. From one-eyed plushies to mystical artifacts, our gift shop offers an eclectic array of treasures that captivate and delight.",
         price_range=2,
         user_id=9
     )
