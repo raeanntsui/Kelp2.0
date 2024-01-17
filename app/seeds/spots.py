@@ -100,7 +100,7 @@ def seed_spots():
 
     #7 MilkShake
     milkshake = Spot(
-        business_name='The Salty Spitoon',
+        business_name='Milk Shake',
         address='123 Pacific Lane',
         city="Bikini Bottom",
         state="Pacific Ocean",
@@ -228,7 +228,7 @@ def seed_spots():
 
     #15 The Krusty Klam
     krusty_klam = Spot(
-        business_name='The Salty Spitoon',
+        business_name='Krusty Klam',
         address='123 Pacific Lane',
         city="Bikini Bottom",
         state="Pacific Ocean",
@@ -276,7 +276,7 @@ def seed_spots():
 
     #18 Kuddly Krab
     kuddlykrab = Spot(
-        business_name='The Salty Spitoon',
+        business_name='Kuddly Krab',
         address='1223 Pacific Lane',
         city="Bikini Bottom",
         state="Pacific Ocean",
@@ -316,7 +316,7 @@ def seed_spots():
         categories="bar",
         open_hours=8,
         close_hours=21,
-        description="Quench your thirst for seaside delights at Beach Bliss Juice Bar, an oasis of freshness nestled by the waves. Bask in the coastal vibes as you sip on our rejuvenating array of tropical smoothies, cold-pressed juices, and beach-inspired elixirs. Our vibrant menu, bursting with the flavors of sun-kissed fruits, is the perfect companion for your beach day escapade!",
+        description="Quench your thirst for seaside delights at the Bikini Bottom Juice Bar, an oasis of freshness nestled by the waves. Bask in the coastal vibes as you sip on our rejuvenating array of tropical smoothies, cold-pressed juices, and beach-inspired elixirs. Our vibrant menu, bursting with the flavors of sun-kissed fruits, is the perfect companion for your beach day escapade!",
         price_range=1,
         user_id=1
     )

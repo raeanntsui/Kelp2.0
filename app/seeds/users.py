@@ -145,6 +145,7 @@ def seed_users():
         password='password',
         )
     db.session.add(user_14) 
+    
     db.session.commit()
 
 
