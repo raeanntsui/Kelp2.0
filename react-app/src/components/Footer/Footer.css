@@ -3,11 +3,19 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 3.5vh;
+  /* height: 3.5vh; */
+  height: 30px;
+  /* font-weight: 800px; */
+  backdrop-filter: blur(40px);
+  /* background: white; */
+  /* opacity: 0.8; */
 }
 
 #footer-top p {
   font-size: 14.4px;
+  font-weight: 800;
+  opacity: 1;
+  /* font-weight: 600; */
 }
 
 /* #root{
@@ -22,15 +30,14 @@
   width: 100%;
   color: white;
   text-align: center;
-  background-color: white
-
+  /* background-color: white; */
 }
 
-#developer-github{
+#developer-github {
   margin-left: auto;
   margin-right: auto;
   width: 200px;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 18px;
@@ -43,12 +50,12 @@
   column-gap: 20px;
 }
 
-
 .join-us-btn {
   border: none;
+  font-weight: 800;
   background-color: transparent;
   font-size: 14.4px;
-  margin:0;
+  margin: 0;
   transition: color 0.1s ease-in-out;
   color: rgb(214, 35, 35);
 }
@@ -57,7 +64,6 @@
   cursor: pointer;
   color: rgb(235, 103, 103);
 }
-
 
 .footer-contactus {
   display: flex;
@@ -85,17 +91,16 @@
   margin: 0px;
 }
 
-
-
 #about-kelp-div h1 {
   font-size: 24px;
   font-weight: 500;
-  color: #00C413;
+  color: #00c413;
   text-align: center;
 }
 
 #about-kelp-div p {
   margin-bottom: 10px;
+  max-width: 500px;
 }
 
 #aboutus-logo {
@@ -115,13 +120,13 @@
 #contact-us-div h1 {
   font-size: 22px;
   font-weight: 500;
-  color: #00C413;
+  color: #00c413;
   text-align: center;
   margin-bottom: 25px;
 }
 
 .developer-icons {
-  color: #00C413
+  color: #00c413;
 }
 
 .fa-github:hover {
@@ -139,7 +144,6 @@
   font-size: 16px;
   color: rgb(55, 51, 51);
 }
-
 
 .developer-portfolio:hover {
   cursor: pointer;
@@ -167,11 +171,11 @@
 }
 
 .trademark {
-  color: #00C413
+  color: #00c413;
 }
 
-#footer-top button{
+#footer-top button {
   padding: 0;
-border: none;
-background: none;
+  border: none;
+  background: none;
 }
