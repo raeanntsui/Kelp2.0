@@ -354,7 +354,7 @@ export default function CreateSpotModal({ id }) {
             <label>
               Hello! Let’s start with the name for your new business!
             </label>
-            {validationErrors.businessName && (
+            {submit && validationErrors.businessName && (
               <p id="errors">{validationErrors.businessName}</p>
             )}
             <input
@@ -367,7 +367,7 @@ export default function CreateSpotModal({ id }) {
 
           <div className="form-chunk">
             <label>Where is your business located?</label>
-            {validationErrors.address && (
+            {submit && validationErrors.address && (
               <p id="errors">{validationErrors.address}</p>
             )}
             <input
@@ -380,7 +380,7 @@ export default function CreateSpotModal({ id }) {
           <div className="form-chunk-side">
             <div className="form-chunk1">
               <label>City</label>
-              {validationErrors.city && (
+              {submit && validationErrors.city && (
                 <p id="errors">{validationErrors.city}</p>
               )}
               <input
@@ -393,7 +393,7 @@ export default function CreateSpotModal({ id }) {
 
             <div className="form-chunk1">
               <label>State</label>
-              {validationErrors.state && (
+              {submit && validationErrors.state && (
                 <p id="errors">{validationErrors.state}</p>
               )}
               <input
@@ -407,7 +407,7 @@ export default function CreateSpotModal({ id }) {
 
           <div className="form-chunk">
             <label>Zip Code</label>
-            {validationErrors.zipCode && (
+            {submit && validationErrors.zipCode && (
               <p id="errors">{validationErrors.zipCode}</p>
             )}
             <input
@@ -420,7 +420,7 @@ export default function CreateSpotModal({ id }) {
 
           <div className="form-chunk">
             <label>What kind of business are you in?</label>
-            {validationErrors.categories && (
+            {submit && validationErrors.categories && (
               <p id="errors">{validationErrors.categories}</p>
             )}
             <input
@@ -434,7 +434,7 @@ export default function CreateSpotModal({ id }) {
           <div className="form-chunk-side">
             <div className="form-chunk1">
               <label>When do you open?</label>
-              {validationErrors.openHours && (
+              {submit && validationErrors.openHours && (
                 <p id="errors">{validationErrors.openHours}</p>
               )}
               <input
@@ -447,7 +447,7 @@ export default function CreateSpotModal({ id }) {
 
             <div className="form-chunk1">
               <label>When do you close?</label>
-              {validationErrors.closeHours && (
+              {submit && validationErrors.closeHours && (
                 <p id="errors">{validationErrors.closeHours}</p>
               )}
               <input
@@ -461,7 +461,7 @@ export default function CreateSpotModal({ id }) {
 
           <div className="form-chunk">
             <label>Tell us more about your business</label>
-            {validationErrors.description && (
+            {submit && validationErrors.description && (
               <p id="errors">{validationErrors.description}</p>
             )}
             <input
@@ -478,7 +478,7 @@ export default function CreateSpotModal({ id }) {
               What is average price of the items or services sold at your
               business?{" "}
             </label>
-            {validationErrors.priceRange && (
+            {submit && validationErrors.priceRange && (
               <p id="errors">{validationErrors.priceRange}</p>
             )}
             <input
@@ -491,7 +491,7 @@ export default function CreateSpotModal({ id }) {
 
           <div className="form-chunk">
             <label>Image URL</label>
-            {validationErrors.imageUrl && (
+            {submit && validationErrors.imageUrl && (
               <p id="errors">{validationErrors.imageUrl}</p>
             )}
             <input
@@ -505,7 +505,7 @@ export default function CreateSpotModal({ id }) {
             <button
               className="button-color"
               type="submit"
-              disabled={Object.keys(validationErrors).length > 0}
+              // disabled={Object.keys(validationErrors).length > 0}
               style={{
                 backgroundColor: `rgba(0, 137, 13, ${
                   Object.keys(validationErrors).length > 0 ? "0.7" : "1"
