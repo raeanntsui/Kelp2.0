@@ -111,7 +111,7 @@ const UpdateSpotPage = () => {
     if (response.errors) {
       setErrors(response.errors);
     } else {
-      console.log("update business successful res", response);
+      // console.log("update business successful res", response);
       history.push(`/spots/${id}`);
       return "success";
     }
@@ -231,8 +231,7 @@ const UpdateSpotPage = () => {
                 backgroundColor: `rgba(0, 137, 13, ${
                   Object.keys(validationErrors).length > 0 ? "0.7" : "1"
                 })`,
-              }}
-            >
+              }}>
               Update Spot
             </button>
           </div>

@@ -87,7 +87,7 @@ export const createSpotThunk = (newSpot, imageFormData) => async (dispatch) => {
     });
 
     if (!res.ok) {
-      console.log("There is an error creating a new Spot");
+      // console.log("There is an error creating a new Spot");
       return;
     }
 
@@ -103,7 +103,7 @@ export const createSpotThunk = (newSpot, imageFormData) => async (dispatch) => {
         )
       );
 
-      console.log("Image upload response:", imageUploadResponse);
+      // console.log("Image upload response:", imageUploadResponse);
     }
 
     dispatch(createSpot(createdSpot));
