@@ -14,7 +14,7 @@ function DeleteSpotImage() {
   );
 
   useEffect(() => {
-    console.log("useEffect is being executed");
+    // console.log("useEffect is being executed");
 
     if (deletedImageId === spotId) {
       setImageDeleted(true);
@@ -22,10 +22,10 @@ function DeleteSpotImage() {
   }, [deletedImageId, spotId]);
 
   const yesbutton = async () => {
-    console.log("SPOT ID BEFORE DELETE IMAGE THUNK", spotId);
+    // console.log("SPOT ID BEFORE DELETE IMAGE THUNK", spotId);
     await dispatch(deleteSpotImageThunk(spotId));
     setImageDeleted(true);
-    console.log("After dispatch and setImageDeleted");
+    // console.log("After dispatch and setImageDeleted");
     history.push(`/spots/${spotId}`);
   };
 

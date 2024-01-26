@@ -14,7 +14,7 @@ function DeleteSpot() {
   const history = useHistory();
 
   const yesbutton = async () => {
-    console.log("value of id before calling deleteSpotThunk:", spotId);
+    // console.log("value of id before calling deleteSpotThunk:", spotId);
     await dispatch(deleteSpotThunk(spotId));
     history.push(`/spots`);
     closeModal();

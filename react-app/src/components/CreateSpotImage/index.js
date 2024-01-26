@@ -49,7 +49,7 @@ const ImageUploadModal = ({ spotId }) => {
   };
 
   useEffect(() => {
-    console.log("Preview state changed:", preview);
+    // console.log("Preview state changed:", preview);
     setRender((prev) => !prev);
     return () => {};
   }, []);

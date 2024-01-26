@@ -54,6 +54,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Homepage />
+            <Footer isLoaded={isLoaded} />
           </Route>
           <Route exact path="/spots">
             <ShowAllSpots />
@@ -75,7 +76,7 @@ function App() {
           </Route>
         </Switch>
       )}
-      <Footer isLoaded={isLoaded} />
+      {/* <Footer isLoaded={isLoaded} /> */}
     </>
   );
 }
