@@ -74,10 +74,17 @@ export default function CreateSpotModal({ id }) {
     if (!description) errorsObject.description = "Description is required";
     if (!priceRange) {
       errorsObject.priceRange = "Average price is required";
-    } else if (isNaN(priceRange) || priceRange < 0 || priceRange > 100000) {
-      errorsObject.priceRange =
-        "Average price must be a number between $0 and $100,000";
     }
+    // if (isNaN(priceRange) || priceRange < 0 || priceRange > 100000) {
+    //   errorsObject.priceRange =
+    //     "Average price must be a number between $0 and $100,000";
+    // }
+    if (priceRange && priceRange <= 0)
+      errorsObject.priceRange = "Price must be at least $1";
+    if (priceRange && priceRange < 0)
+      errorsObject.priceRange = "Price cannot be negative";
+    if (priceRange && priceRange > 100000)
+      errorsObject.priceRange = "Price cannot exceed $100,000";
     if (!imageUrl) errorsObject.imageUrl = "Image is required";
     setValidationErrors(errorsObject);
   }, [
