@@ -1,18 +1,25 @@
-.spot-details-bottom>img {
-  height: 400px;
-  min-width: 1024px;
+.spot-details-bottom > img {
+  /* height: 400px; */
+  width: 100%;
+  max-height: 400px;
   background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  position: relative;
-  /* border: 6px solid rgb(200, 0, 255); */
+  /* position: relative; */
+  border: 6px solid rgb(200, 0, 255);
+  object-fit: cover;
 }
 
 .spot-about-info {
   padding: 0px;
   margin: 0px;
-  margin-left: 20px;
+  border: 6px solid red;
+  position: absolute;
+  bottom: 225px;
+  width: fit-content;
+  align-items: center;
+  flex-direction: column;
 }
 
 .spot-details-page {
@@ -21,7 +28,7 @@
   max-width: 1200px;
 }
 
-.spot-background>img {
+.spot-background > img {
   /* position: absolute; */
   max-width: 1024px;
   max-height: 400px;
@@ -44,7 +51,7 @@
   /* padding: 10px; */
   /* border: 6px solid rgb(21, 255, 0); */
   font-size: 48px;
-  color: #00890D;
+  color: #00890d;
   font-weight: bold;
 }
 
@@ -80,13 +87,13 @@
   padding: 10px;
 }
 
-.directions>h1 {
+.directions > h1 {
   /* color: rgba(2, 122, 151, 1); */
-  color: #00890D;
+  color: #00890d;
   font-size: 20px;
 }
 
-.directions>h2 {
+.directions > h2 {
   font-size: 16px;
   font-weight: 400;
   /* padding-top: 5px; */
@@ -94,7 +101,7 @@
   /* color: #6e7072; */
 }
 
-.directions>h3 {
+.directions > h3 {
   color: black;
   font-size: 16px;
   font-weight: 400;
@@ -111,7 +118,7 @@
   padding-bottom: 10px;
 }
 
-.each-review>p {
+.each-review > p {
   margin: 0px;
   padding: 0px;
   display: flex;
@@ -151,12 +158,10 @@
   color: rgba(2, 122, 151, 1);
 }
 
-.name>img {
+.name > img {
   width: 200px;
   height: 200px;
-
 }
-
 
 .delete-spot {
   margin-bottom: 25px;
@@ -164,6 +169,4 @@
 .filled-stars {
   color: #fdcc0d;
   margin-bottom: 5px;
-
 }
-

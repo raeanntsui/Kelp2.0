@@ -95,7 +95,6 @@ function ShowOneSpot() {
               alt="default spot image"
             />
           )}
-
           <div className="spot-about-info">
             <div className="business-name">
               <p>{spot.business_name}</p>
@@ -138,8 +137,7 @@ function ShowOneSpot() {
                           className={`review-img1 ${
                             review.user_img ? "with-img" : ""
                           }`}
-                          key={index}
-                        >
+                          key={index}>
                           {review.description}
                         </p>
                         {review.user_img && (
