@@ -51,13 +51,11 @@ export default function ReviewModal({ spot }) {
         {user &&
         currentSpotReviews.some((review) => review.user_id === user.id) ? (
           <OpenModalButton
-            // className="delete-button"
             buttonText="Delete my review"
             modalComponent={<DeleteReview review={currReview} />}
           />
         ) : null}
       </div>
-
       <div className="update-button">
         {user &&
         currentSpotReviews.some((review) => review.user_id === user.id) ? (

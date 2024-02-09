@@ -19,27 +19,31 @@ function ShowOneSpot() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { openModal } = useModal();
+
   const sessionUser = useSelector((state) => state.session.user);
-
   const spot = useSelector((state) => state.spots.allSpots[spotId]);
-  // console.log("🚀🚀🚀🚀🚀🚀 ~ spot:", spot);
-
-  let reviewCount;
-
-  if (spot) {
-    reviewCount = spot.review.length;
-    // console.log("🚀🚀🚀🚀🚀🚀 ~ reviewCount:", reviewCount);
-  }
-
-  console.log("🚀🚀🚀🚀🚀🚀 ~ reviewCount:", reviewCount);
   const reviews = useSelector((state) => state.reviews.Reviews);
-  const spotReviews = Object.values(reviews).filter(
-    (review) => review.spot_id === parseInt(spotId)
-  );
+  console.log("🚀🚀🚀🚀🚀🚀 ~ reviews:", reviews);
 
   const userId = sessionUser?.id;
   const businessOwnerId = spot?.user_id;
   const businessOwner = userId === businessOwnerId;
+  const reviewCount = spot?.review?.length;
+  const arrayOfObjectsForReviews = Object.values(reviews);
+  console.log(
+    "🚀🚀🚀🚀🚀🚀 ~ arrayOfObjectsForReviews:",
+    arrayOfObjectsForReviews
+  );
+  const reviewByUser = arrayOfObjectsForReviews.find(
+    (review) => review.user_id === userId
+  );
+  console.log("🚀🚀🚀🚀🚀🚀 ~ reviewByUser:", reviewByUser);
+
+  const matchingReviewUserId = reviewByUser?.user_id;
+  console.log("🚀🚀🚀🚀🚀🚀 ~ matchingReviewUserId:", matchingReviewUserId);
+  const spotReviews = Object.values(reviews).filter(
+    (review) => review.spot_id === parseInt(spotId)
+  );
 
   const renderStars = (rating) => {
     const starElements = [];
@@ -160,39 +164,46 @@ function ShowOneSpot() {
           </div>
         </div>
 
-        <div className="left-right">
-          <div className="left">
-            <div className="write-review">
-              {sessionUser && !businessOwner ? (
-                <ReviewModal spot={spot} />
-              ) : null}
-            </div>
+        <div className="spot-bottom-parent-container">
+          <div className="spot-bottom-left-child">
             <div className="show-one-spot-bottom-content">
               <div className="spot-details-top">
                 <h2 className="review-h1">Reviews</h2>
+                {sessionUser && userId !== businessOwnerId && !reviewByUser ? (
+                  <ReviewModal spot={spot} />
+                ) : (
+                  <p>You already wrote a review!</p>
+                )}
                 <div className="spot-reviews">
-                  {Object.values(reviews).map((review, index) => (
-                    <div className="each-review">
-                      <div className="icon">
-                        <i class="fa-solid fa-user"></i>
+                  {arrayOfObjectsForReviews.reverse().map((review, index) => (
+                    <>
+                      <div className="each-review" key={review.id}>
+                        <div className="icon">
+                          <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div className="name">
+                          <p className="name-p">
+                            {review.user.first_name} {review.user.last_name}
+                          </p>
+                          <p>{renderStars(review.rating)}</p>
+                          <p
+                            className={`review-img1 ${
+                              review.user_img ? "with-img" : ""
+                            }`}
+                            key={index}>
+                            {review.description}
+                          </p>
+                          {review.user_img && (
+                            <img src={review.user_img} alt="User" />
+                          )}
+                        </div>
                       </div>
-                      <div className="name">
-                        <p className="name-p">
-                          {review.user.first_name} {review.user.last_name}
-                        </p>
-                        <p>{renderStars(review.rating)}</p>
-                        <p
-                          className={`review-img1 ${
-                            review.user_img ? "with-img" : ""
-                          }`}
-                          key={index}>
-                          {review.description}
-                        </p>
-                        {review.user_img && (
-                          <img src={review.user_img} alt="User" />
-                        )}
+                      <div>
+                        {review.user_id === userId ? (
+                          <ReviewModal spot={spot} />
+                        ) : null}
                       </div>
-                    </div>
+                    </>
                   ))}
                 </div>
               </div>

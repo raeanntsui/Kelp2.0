@@ -13,7 +13,7 @@
 .stars-info {
   color: white;
   display: flex;
-  font-size: 30px;
+  font-size: 24px;
   margin: 0px 10px;
   align-items: center;
 }
@@ -77,6 +77,29 @@
   z-index: 99;
 }
 
+.spot-bottom-parent-container {
+  border: 9px solid rgb(0, 234, 255);
+  display: flex;
+  max-width: 1200px;
+}
+
+.spot-bottom-left-child {
+  border: 4px solid red;
+  width: 60%;
+}
+
+.reviews-button {
+  border: solid 5px blue;
+  /* padding-top: 10px; */
+  margin: 0px;
+  padding: 0px;
+}
+
+.right {
+  /* border: 4px dashed rgb(0, 9, 128); */
+  width: 40%;
+}
+
 .review-h1 {
   padding: 10px 0px;
 }
@@ -93,27 +116,6 @@
   /* border: solid 5px black; */
   padding: 0px;
   margin: 0px;
-}
-
-.write-review {
-  /* border: solid 5px blue; */
-  padding-top: 10px;
-}
-
-.left-right {
-  /* border: 9px solid rgb(0, 234, 255); */
-  display: flex;
-  width: 100%;
-}
-
-.left {
-  /* border: 4px dashed purple; */
-  width: 60%;
-}
-
-.right {
-  /* border: 4px dashed rgb(0, 9, 128); */
-  width: 40%;
 }
 
 .directions {
