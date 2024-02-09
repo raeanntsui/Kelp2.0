@@ -145,6 +145,16 @@ def seed_users():
         password='password',
         )
     db.session.add(user_14) 
+
+    user_15 = User(
+        email='bubblebass@io.com',
+        username="bubblebass",
+        first_name="Bubble",
+        last_name="Bass",
+        business_owner=True,
+        password='password',
+        )
+    db.session.add(user_15) 
     
     db.session.commit()
 
