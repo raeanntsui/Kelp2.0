@@ -4,7 +4,6 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import { NavLink } from "react-router-dom";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -44,12 +43,7 @@ function ProfileButton({ user }) {
   return (
     <>
       <button id="loginsignupbutton" onClick={openMenu}>
-        <span id="fish">
-          {/* <i class="fa-solid fa-fish"></i>{" "} */}
-        </span>
         <i class="fa-solid fa-user"></i>
-        <span></span>
-        {/* <i className="fa-solid fa-right-to-bracket"></i> */}
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (

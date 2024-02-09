@@ -32,9 +32,22 @@ export default function ReviewModal({ spot }) {
   }
 
   return (
-    <div className="button-chunk">
-      <div className="post-review">
-        {currReview ? null : (
+    <div>
+      <div>
+        {!currReview && currentSpotReviews.length === 0 ? (
+          <>
+            <h1>Be the first to write a review!</h1>
+            <button
+              id="post-review-button"
+              className="postReview"
+              type="submit"
+              onClick={() => {
+                setModalContent(<ReviewForm spot={spot} />);
+              }}>
+              <i className="fa-solid fa-star filled-stars"></i> Write a review
+            </button>
+          </>
+        ) : !currReview && currentSpotReviews.length >= 1 ? (
           <button
             id="post-review-button"
             className="postReview"
@@ -42,22 +55,20 @@ export default function ReviewModal({ spot }) {
             onClick={() => {
               setModalContent(<ReviewForm spot={spot} />);
             }}>
-            <i className="fa-regular fa-star"></i> Write a review
+            <i className="fa-solid fa-star filled-stars"></i> Write a review
           </button>
-        )}
+        ) : null}
       </div>
 
       <div className="delete-button">
         {user &&
         currentSpotReviews.some((review) => review.user_id === user.id) ? (
           <OpenModalButton
-            // className="delete-button"
             buttonText="Delete my review"
             modalComponent={<DeleteReview review={currReview} />}
           />
         ) : null}
       </div>
-
       <div className="update-button">
         {user &&
         currentSpotReviews.some((review) => review.user_id === user.id) ? (

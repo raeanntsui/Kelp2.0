@@ -3,12 +3,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* height: 3.5vh; */
   height: 30px;
-  /* font-weight: 800px; */
-  backdrop-filter: blur(40px);
-  /* background: white; */
-  /* opacity: 0.8; */
+  background: white;
 }
 
 #footer-top p {
@@ -17,11 +13,6 @@
   opacity: 1;
   /* font-weight: 600; */
 }
-
-/* #root{
-  display: flex;
-  flex-direction: column;
-} */
 
 #footer-div {
   position: fixed;

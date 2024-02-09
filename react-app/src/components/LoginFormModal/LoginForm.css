@@ -11,7 +11,7 @@
   margin-bottom: 10px;
 }
 
-form>label {
+form > label {
   text-align: left;
 }
 
@@ -22,7 +22,7 @@ form {
   margin: 0 auto;
 }
 
-form>input {
+form > input {
   /* width: 100%; */
   padding: 8px;
   margin-bottom: 16px;
@@ -38,7 +38,7 @@ form>input {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background-color: #00890D;
+  background-color: #00c413;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -49,7 +49,7 @@ form>input {
 .login button:hover,
 .demo-login button:hover {
   cursor: pointer;
-  background-color: #43C174
+  background-color: #43c174;
 }
 
 .email-pw {
@@ -82,12 +82,9 @@ form>input {
   box-sizing: border-box;
 }
 
-
-
 #modal-content form {
   margin: 0;
   padding: 0;
-
 }
 
 li {

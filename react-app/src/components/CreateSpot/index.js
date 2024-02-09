@@ -98,6 +98,7 @@ export default function CreateSpotModal({ id }) {
     closeHours,
     description,
     priceRange,
+    imageUrl,
   ]);
   return (
     <>
