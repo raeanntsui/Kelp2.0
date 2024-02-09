@@ -14,7 +14,8 @@
   color: white;
   display: flex;
   font-size: 24px;
-  margin: 0px 10px;
+  margin: 0px 0px;
+  gap: 5px;
   align-items: center;
 }
 
@@ -124,7 +125,7 @@
 
 .directions > h1 {
   /* color: rgba(2, 122, 151, 1); */
-  color: #00890d;
+  color: #00c413;
   font-size: 20px;
 }
 

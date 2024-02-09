@@ -85,7 +85,7 @@ function ShowOneSpot() {
   useEffect(() => {
     dispatch(getReviewsThunk(spotId));
     dispatch(getOneSpotThunk(spotId));
-  }, [dispatch, spotId]);
+  }, [dispatch, spotId, arrayOfObjectsForReviews.length]);
 
   const handleSpotUpdate = () => {
     history.push(`/spots/${spotId}/update`);
@@ -116,18 +116,22 @@ function ShowOneSpot() {
                 style={{ fontSize: "40px", margin: "0px" }}>
                 {renderStars(averageRating)}
               </div>
-              <div className="stars-info">
-                {averageRating?.toFixed(1)}
+              <div style={{ marginLeft: "5px" }} className="stars-info">
+                <div>{averageRating > 0 && averageRating.toFixed(1)}</div>
                 {reviewCount > 1 ? (
-                  <div style={{ margin: "0px 5px" }}>
+                  <div
+                  // style={{ margin: "0px 5px" }}
+                  >
                     ({reviewCount} reviews)
                   </div>
                 ) : reviewCount === 1 ? (
-                  <div style={{ margin: "0px 5px" }}>
+                  <div
+                  // style={{ margin: "0px 5px" }}
+                  >
                     ({reviewCount} review)
                   </div>
                 ) : (
-                  <div>No Reviews</div>
+                  <div style={{ gap: "0px" }}>No Reviews</div>
                 )}
               </div>
             </div>
@@ -169,11 +173,11 @@ function ShowOneSpot() {
             <div className="show-one-spot-bottom-content">
               <div className="spot-details-top">
                 <h2 className="review-h1">Reviews</h2>
-                {sessionUser && userId !== businessOwnerId && !reviewByUser ? (
-                  <ReviewModal spot={spot} />
-                ) : (
-                  <p>You already wrote a review!</p>
-                )}
+                <div>
+                  {sessionUser &&
+                    userId !== businessOwnerId &&
+                    !reviewByUser && <ReviewModal spot={spot} />}
+                </div>
                 <div className="spot-reviews">
                   {arrayOfObjectsForReviews.reverse().map((review, index) => (
                     <>
