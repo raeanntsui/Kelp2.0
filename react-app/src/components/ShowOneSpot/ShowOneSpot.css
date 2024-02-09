@@ -5,9 +5,15 @@
 }
 
 .images {
-  border: 4px darkcyan dotted;
+  /* border: 4px darkcyan dotted; */
   max-height: 400px;
   width: 100%;
+}
+
+.stars-info {
+  color: white;
+  display: flex;
+  font-size: 20px;
 }
 
 .title-parent {
@@ -15,8 +21,8 @@
   margin: 0px;
   /* border: 6px solid red; */
   position: relative;
-  bottom: 240px;
-  left: 50px;
+  bottom: 220px;
+  left: 30px;
   width: fit-content;
   align-items: center;
   flex-direction: column;

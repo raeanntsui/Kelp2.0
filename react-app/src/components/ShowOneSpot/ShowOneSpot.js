@@ -22,6 +22,16 @@ function ShowOneSpot() {
   const sessionUser = useSelector((state) => state.session.user);
 
   const spot = useSelector((state) => state.spots.allSpots[spotId]);
+  // console.log("🚀🚀🚀🚀🚀🚀 ~ spot:", spot);
+
+  let reviewCount;
+
+  if (spot) {
+    reviewCount = spot.review.length;
+    // console.log("🚀🚀🚀🚀🚀🚀 ~ reviewCount:", reviewCount);
+  }
+
+  console.log("🚀🚀🚀🚀🚀🚀 ~ reviewCount:", reviewCount);
   const reviews = useSelector((state) => state.reviews.Reviews);
   const spotReviews = Object.values(reviews).filter(
     (review) => review.spot_id === parseInt(spotId)
@@ -96,11 +106,21 @@ function ShowOneSpot() {
           )}
           <div className="title-parent">
             <p className="business-name">{spot.business_name}</p>
-            <p
+            <span
               className="filled-star"
               style={{ fontSize: "40px", margin: "0px" }}>
               {renderStars(averageRating)}
-            </p>
+              <span className="stars-info">
+                {averageRating?.toFixed(1)}
+                {reviewCount > 1 ? (
+                  <span>({reviewCount} reviews)</span>
+                ) : reviewCount === 1 ? (
+                  <span>({reviewCount} review)</span>
+                ) : (
+                  <span>No Reviews</span>
+                )}
+              </span>
+            </span>
 
             <div className="title-owner">
               <i
