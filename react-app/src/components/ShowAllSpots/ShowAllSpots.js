@@ -102,8 +102,7 @@ function ShowAllSpots() {
               <NavLink
                 key={spot.id}
                 to={`/spots/${spot.id}`}
-                id="spots-grid-navlink"
-              >
+                id="spots-grid-navlink">
                 <div className="spots-grid-each">
                   <div className="each-spot">
                     <div className="each-spots-image">
@@ -133,12 +132,14 @@ function ShowAllSpots() {
                         </p>
                       </div>
                       <span className="categories">{spot.categories}</span>
-                      <div id="open-time">
-                        <p className="opening-hours">
-                          <span className="open">Open</span> until{" "}
-                          {spot.close_hours - 12}:00 PM
+                      <div>
+                        <p className="open">Open</p>
+                        <p className="open-until">
+                          {" "}
+                          until {spot.close_hours - 12}:00 PM
                         </p>
                       </div>
+
                       <p className="spot-description ellipsis-text">
                         {spot.description}
                       </p>

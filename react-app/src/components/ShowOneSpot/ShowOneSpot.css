@@ -1,35 +1,61 @@
-.spot-details-bottom > img {
-  /* height: 400px; */
+.images > img {
   width: 100%;
   max-height: 400px;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  /* position: relative; */
-  border: 6px solid rgb(200, 0, 255);
   object-fit: cover;
 }
 
-.spot-about-info {
+.images {
+  border: 4px darkcyan dotted;
+  max-height: 400px;
+  width: 100%;
+}
+
+.title-parent {
   padding: 0px;
   margin: 0px;
-  border: 6px solid red;
-  position: absolute;
-  bottom: 225px;
+  /* border: 6px solid red; */
+  position: relative;
+  bottom: 240px;
+  left: 50px;
   width: fit-content;
   align-items: center;
   flex-direction: column;
 }
 
-.spot-details-page {
-  margin: 0 auto;
-  /* border: 5px solid pink; */
-  max-width: 1200px;
+.title-owner {
+  /* border: 2px solid green; */
+  color: rgba(88, 180, 255, 1);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 10px;
+  margin: 10px 0px;
+}
+
+.title-categories {
+  /* border: 2px solid red; */
+  color: white;
+}
+
+.open-parent {
+  color: white;
+  margin: 10px 0px;
+  display: flex;
+  width: fit-content;
+  gap: 3px;
+}
+
+.open-open {
+  color: rgba(4, 197, 133, 1);
+  font-weight: 900;
+}
+
+.open-until {
+  color: white;
 }
 
 .spot-background > img {
-  /* position: absolute; */
   max-width: 1024px;
   max-height: 400px;
   height: auto;
@@ -38,11 +64,6 @@
   z-index: 99;
 }
 
-/* .spot-details-top {
-  position: absolute;
-  z-index: 1;
-} */
-
 .review-h1 {
   padding: 10px 0px;
 }
@@ -50,9 +71,9 @@
 .business-name {
   /* padding: 10px; */
   /* border: 6px solid rgb(21, 255, 0); */
-  font-size: 48px;
-  color: #00890d;
-  font-weight: bold;
+  font-size: 50px;
+  color: white;
+  font-weight: 900;
 }
 
 .spot-details-top {
@@ -63,7 +84,6 @@
 
 .write-review {
   /* border: solid 5px blue; */
-  /* display: flex; */
   padding-top: 10px;
 }
 

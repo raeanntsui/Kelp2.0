@@ -44,7 +44,10 @@ function ShowOneSpot() {
     const emptyStars = 5 - filledStars;
     for (let i = 0; i < emptyStars; i++) {
       starElements.push(
-        <i key={`empty-${i}`} className="fa-regular fa-star filled-stars"></i>
+        <i
+          key={`empty-${i}`}
+          style={{ color: "black" }}
+          className="fa-solid fa-star filled-stars"></i>
       );
     }
 
@@ -81,13 +84,9 @@ function ShowOneSpot() {
   return (
     <>
       <div className="spot-details-page">
-        <div className="spot-details-bottom">
+        <div className="images">
           {spot.img_urls?.length > 0 ? (
-            <img
-              key={0} // Set a key for the single image
-              src={spot.img_urls[0]}
-              alt={`Spot Image 0`}
-            />
+            <img key={0} src={spot.img_urls[0]} alt={`Spot Image 0`} />
           ) : (
             // default img if there's no img
             <img
@@ -95,19 +94,42 @@ function ShowOneSpot() {
               alt="default spot image"
             />
           )}
-          <div className="spot-about-info">
-            <div className="business-name">
-              <p>{spot.business_name}</p>
+          <div className="title-parent">
+            <p className="business-name">{spot.business_name}</p>
+            <p
+              className="filled-star"
+              style={{ fontSize: "40px", margin: "0px" }}>
+              {renderStars(averageRating)}
+            </p>
+
+            <div className="title-owner">
+              <i
+                style={{ color: "rgba(88, 180, 255, 1)" }}
+                class="fa-solid fa-circle-check"></i>
+              Operated by {spot.user.first_name}
+              <i
+                class="fa-solid fa-circle fa-sm"
+                style={{
+                  color: "rgba(88, 180, 255, 1)",
+                  fontSize: "5px",
+                }}></i>
+              <span className="title-categories">{spot.categories}</span>
             </div>
-            <div className="filled-star">
-              <p>{renderStars(averageRating)}</p>
-            </div>
-            <span className="categories">{spot.categories}</span>
-            <div id="open-time">
-              <p className="opening-hours">
-                <span className="open">Open</span> until {spot.close_hours - 12}
-                :00 PM
-              </p>
+
+            <div className="open-parent">
+              {spot.close_hours > 12 ? (
+                <>
+                  <p className="open-open">Open</p>
+                  <p className="open-until">
+                    until {spot.close_hours - 12}:00 PM
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="open-open">Open</p>
+                  <p className="open-until">until {spot.close_hours}:00 AM</p>
+                </>
+              )}
             </div>
           </div>
         </div>
