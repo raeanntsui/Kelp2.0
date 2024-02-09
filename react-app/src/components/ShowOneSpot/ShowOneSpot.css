@@ -13,7 +13,9 @@
 .stars-info {
   color: white;
   display: flex;
-  font-size: 20px;
+  font-size: 30px;
+  margin: 0px 10px;
+  align-items: center;
 }
 
 .title-parent {
@@ -26,6 +28,11 @@
   width: fit-content;
   align-items: center;
   flex-direction: column;
+}
+
+.stars-and-reviews {
+  display: flex;
+  /* border: 2px solid red; */
 }
 
 .title-owner {

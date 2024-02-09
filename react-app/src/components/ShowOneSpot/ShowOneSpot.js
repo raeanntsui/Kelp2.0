@@ -106,21 +106,27 @@ function ShowOneSpot() {
           )}
           <div className="title-parent">
             <p className="business-name">{spot.business_name}</p>
-            <span
-              className="filled-star"
-              style={{ fontSize: "40px", margin: "0px" }}>
-              {renderStars(averageRating)}
-              <span className="stars-info">
+            <div className="stars-and-reviews">
+              <div
+                className="filled-star"
+                style={{ fontSize: "40px", margin: "0px" }}>
+                {renderStars(averageRating)}
+              </div>
+              <div className="stars-info">
                 {averageRating?.toFixed(1)}
                 {reviewCount > 1 ? (
-                  <span>({reviewCount} reviews)</span>
+                  <div style={{ margin: "0px 5px" }}>
+                    ({reviewCount} reviews)
+                  </div>
                 ) : reviewCount === 1 ? (
-                  <span>({reviewCount} review)</span>
+                  <div style={{ margin: "0px 5px" }}>
+                    ({reviewCount} review)
+                  </div>
                 ) : (
-                  <span>No Reviews</span>
+                  <div>No Reviews</div>
                 )}
-              </span>
-            </span>
+              </div>
+            </div>
 
             <div className="title-owner">
               <i
