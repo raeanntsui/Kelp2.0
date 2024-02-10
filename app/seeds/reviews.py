@@ -208,7 +208,7 @@ def seed_reviews():
 
     mrspuff_chumbkt = Review(
     rating = 2,
-    description = "Plankton's creations are certainly unique, but I found the atmosphere to be rather gloomy and the food to be less than appetizing. I'm not how sure this establishment is still in business",
+    description = "Plankton's creations are certainly unique, but I found the atmosphere to be rather gloomy and the food to be less than appetizing. I'm not sure how this establishment is still in business",
     created_at = date.today(),
     updated_at = date.today(),
     user_id=11,
