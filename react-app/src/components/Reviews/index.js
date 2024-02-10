@@ -33,19 +33,18 @@ export default function ReviewModal({ spot }) {
 
   return (
     <div>
-      <div>
+      <div className="reviewmodal">
         {!currReview && currentSpotReviews.length === 0 ? (
           <>
-            <h1>Be the first to write a review!</h1>
             <button
-              id="post-review-button"
+              id="first-post-review-button"
               className="postReview"
               type="submit"
               onClick={() => {
                 setModalContent(<ReviewForm spot={spot} />);
               }}>
-              <i class="fa-solid fa-pen" style={{ color: "white" }}></i> Write a
-              review
+              <i class="fa-solid fa-pen" style={{ color: "white" }}></i> Be the
+              first to write a review!
             </button>
           </>
         ) : !currReview && currentSpotReviews.length >= 1 ? (

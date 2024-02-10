@@ -116,27 +116,19 @@ function ShowOneSpot() {
                 style={{ fontSize: "40px", margin: "0px" }}>
                 {renderStars(averageRating)}
               </div>
-              <div style={{ marginLeft: "0px" }} className="stars-info">
+              <div className="stars-info">
                 {averageRating > 0 && (
                   <div style={{ margin: "10px 5px" }}>
                     {averageRating.toFixed(1)}
                   </div>
                 )}
                 {reviewCount > 1 ? (
-                  <div
-                  // style={{ margin: "0px 5px" }}
-                  >
-                    ({reviewCount} reviews)
-                  </div>
+                  <div>({reviewCount} reviews)</div>
                 ) : reviewCount === 1 ? (
-                  <div
-                  // style={{ margin: "0px 5px" }}
-                  >
-                    ({reviewCount} review)
-                  </div>
+                  <div>({reviewCount} review)</div>
                 ) : (
                   <div style={{ margin: "0px", padding: "0px", gap: "0px" }}>
-                    No Reviews
+                    No Reviews Yet!
                   </div>
                 )}
               </div>
@@ -178,44 +170,46 @@ function ShowOneSpot() {
           <div className="spot-bottom-left-child">
             <div className="show-one-spot-bottom-content">
               <div className="spot-details-top">
-                <h2 className="review-h1">Reviews</h2>
-                <div>
-                  {sessionUser &&
-                    userId !== businessOwnerId &&
-                    !reviewByUser && <ReviewModal spot={spot} />}
-                </div>
-                <div className="spot-reviews">
-                  {arrayOfObjectsForReviews.reverse().map((review, index) => (
-                    <>
-                      <div className="each-review" key={review.id}>
-                        <div className="icon">
-                          <i class="fa-solid fa-user"></i>
-                        </div>
-                        <div className="name">
-                          <p className="name-p">
-                            {review.user.first_name} {review.user.last_name}
-                          </p>
-                          <p>{renderStars(review.rating)}</p>
-                          <p
-                            className={`review-img1 ${
-                              review.user_img ? "with-img" : ""
-                            }`}
-                            key={index}>
-                            {review.description}
-                          </p>
-                          {review.user_img && (
-                            <img src={review.user_img} alt="User" />
-                          )}
-                        </div>
+                <h2 style={{ padding: "20px 0px", fontSize: "30px" }}>
+                  Reviews
+                </h2>
+                {/* <div className="reviewmodal"> */}
+                {sessionUser && userId !== businessOwnerId && !reviewByUser && (
+                  <ReviewModal spot={spot} />
+                )}
+                {/* </div> */}
+                {/* <div className="spot-reviews"> */}
+                {arrayOfObjectsForReviews.reverse().map((review, index) => (
+                  <>
+                    <div className="each-review" key={review.id}>
+                      <div className="icon">
+                        <i class="fa-solid fa-user"></i>
                       </div>
-                      <div>
-                        {review.user_id === userId ? (
-                          <ReviewModal spot={spot} />
-                        ) : null}
+                      <div className="name">
+                        <p className="name-p">
+                          {review.user.first_name} {review.user.last_name}
+                        </p>
+                        <p>{renderStars(review.rating)}</p>
+                        <p
+                          className={`review-img1 ${
+                            review.user_img ? "with-img" : ""
+                          }`}
+                          key={index}>
+                          {review.description}
+                        </p>
+                        {review.user_img && (
+                          <img src={review.user_img} alt="User" />
+                        )}
                       </div>
-                    </>
-                  ))}
-                </div>
+                    </div>
+                    <div>
+                      {review.user_id === userId ? (
+                        <ReviewModal spot={spot} />
+                      ) : null}
+                    </div>
+                  </>
+                ))}
+                {/* </div> */}
               </div>
             </div>
             <div className="delete-box">

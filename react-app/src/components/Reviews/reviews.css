@@ -1,4 +1,3 @@
-#post-review-button,
 #delete-button {
   background-color: #00c413;
   font-size: 18px;
@@ -7,6 +6,15 @@
   color: white;
   border-radius: 4px;
   /* border: 4px solid #d32323; */
+  border: none;
+}
+
+#first-post-review-button {
+  background-color: #00c413;
+  color: white;
+  padding: 14px;
+  font-size: 20px;
+  border-radius: 10px;
   border: none;
 }
 

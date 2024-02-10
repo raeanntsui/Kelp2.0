@@ -101,10 +101,6 @@
   width: 40%;
 }
 
-.review-h1 {
-  padding: 10px 0px;
-}
-
 .business-name {
   /* padding: 10px; */
   /* border: 6px solid rgb(21, 255, 0); */
@@ -114,7 +110,7 @@
 }
 
 .spot-details-top {
-  /* border: solid 5px black; */
+  border: solid 5px black;
   padding: 0px;
   margin: 0px;
 }
@@ -146,6 +142,7 @@
 }
 
 .each-review {
+  border: 2px dashed red;
   display: flex;
   margin: 0px;
   padding: 0px;
