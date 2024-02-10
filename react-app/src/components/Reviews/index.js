@@ -44,7 +44,8 @@ export default function ReviewModal({ spot }) {
               onClick={() => {
                 setModalContent(<ReviewForm spot={spot} />);
               }}>
-              <i className="fa-solid fa-star filled-stars"></i> Write a review
+              <i class="fa-solid fa-pen" style={{ color: "white" }}></i> Write a
+              review
             </button>
           </>
         ) : !currReview && currentSpotReviews.length >= 1 ? (

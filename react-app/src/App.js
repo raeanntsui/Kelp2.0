@@ -65,6 +65,9 @@ function App() {
           <Route exact path="/spots/:spotId">
             <ShowOneSpot />
           </Route>
+          {/* <Route exact path="/reviews/new">
+            <ReviewForm />
+          </Route> */}
           <Route exact path="/spots/:id/update">
             <UpdateSpotPage />
           </Route>

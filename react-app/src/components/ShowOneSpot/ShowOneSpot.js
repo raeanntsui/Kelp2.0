@@ -30,17 +30,17 @@ function ShowOneSpot() {
   const businessOwner = userId === businessOwnerId;
   const reviewCount = spot?.review?.length;
   const arrayOfObjectsForReviews = Object.values(reviews);
-  console.log(
-    "🚀🚀🚀🚀🚀🚀 ~ arrayOfObjectsForReviews:",
-    arrayOfObjectsForReviews
-  );
+  // console.log(
+  //   "🚀🚀🚀🚀🚀🚀 ~ arrayOfObjectsForReviews:",
+  //   arrayOfObjectsForReviews
+  // );
   const reviewByUser = arrayOfObjectsForReviews.find(
     (review) => review.user_id === userId
   );
-  console.log("🚀🚀🚀🚀🚀🚀 ~ reviewByUser:", reviewByUser);
+  // console.log("🚀🚀🚀🚀🚀🚀 ~ reviewByUser:", reviewByUser);
 
   const matchingReviewUserId = reviewByUser?.user_id;
-  console.log("🚀🚀🚀🚀🚀🚀 ~ matchingReviewUserId:", matchingReviewUserId);
+  // console.log("🚀🚀🚀🚀🚀🚀 ~ matchingReviewUserId:", matchingReviewUserId);
   const spotReviews = Object.values(reviews).filter(
     (review) => review.spot_id === parseInt(spotId)
   );
@@ -116,8 +116,12 @@ function ShowOneSpot() {
                 style={{ fontSize: "40px", margin: "0px" }}>
                 {renderStars(averageRating)}
               </div>
-              <div style={{ marginLeft: "5px" }} className="stars-info">
-                <div>{averageRating > 0 && averageRating.toFixed(1)}</div>
+              <div style={{ marginLeft: "0px" }} className="stars-info">
+                {averageRating > 0 && (
+                  <div style={{ margin: "10px 5px" }}>
+                    {averageRating.toFixed(1)}
+                  </div>
+                )}
                 {reviewCount > 1 ? (
                   <div
                   // style={{ margin: "0px 5px" }}
@@ -131,7 +135,9 @@ function ShowOneSpot() {
                     ({reviewCount} review)
                   </div>
                 ) : (
-                  <div style={{ gap: "0px" }}>No Reviews</div>
+                  <div style={{ margin: "0px", padding: "0px", gap: "0px" }}>
+                    No Reviews
+                  </div>
                 )}
               </div>
             </div>
