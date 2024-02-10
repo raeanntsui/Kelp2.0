@@ -82,6 +82,7 @@
   /* border: 9px solid rgb(0, 234, 255); */
   display: flex;
   max-width: 1200px;
+  gap: 20px;
 }
 
 .spot-bottom-left-child {
@@ -99,6 +100,10 @@
 .right {
   /* border: 4px dashed rgb(0, 9, 128); */
   width: 40%;
+  position: sticky;
+  top: 0;
+  height: 100%;
+  padding: 10px 0px;
 }
 
 .business-name {
@@ -110,7 +115,7 @@
 }
 
 .spot-details-top {
-  border: solid 5px black;
+  /* border: solid 5px black; */
   padding: 0px;
   margin: 0px;
 }
@@ -142,13 +147,23 @@
 }
 
 .each-review {
-  border: 2px dashed red;
+  /* border: 2px dashed red; */
   display: flex;
+  align-items: flex-start;
+  /* justify-content: flex-start; */
   margin: 0px;
-  padding: 0px;
-  /* margin-left: 10px; */
+  padding: 16px 0px;
   gap: 20px;
-  /* padding-bottom: 10px; */
+}
+
+.each-review-picture {
+  /* border: 2px solid red; */
+  /* padding: 5px 0px; */
+}
+
+.icon {
+  /* display: flex; */
+  margin: 0px;
 }
 
 .name {
@@ -157,13 +172,8 @@
 }
 
 .name-p {
-  font-weight: bold;
+  font-weight: 700;
   font-size: 18px;
-  padding-bottom: 5px;
-}
-
-#maps {
-  color: rgba(2, 122, 151, 1);
 }
 
 .name > img {
@@ -177,4 +187,8 @@
 .filled-stars {
   color: #fdcc0d;
   margin-bottom: 5px;
+}
+
+.directions:hover {
+  color: blue;
 }

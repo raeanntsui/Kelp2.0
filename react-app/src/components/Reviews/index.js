@@ -32,52 +32,46 @@ export default function ReviewModal({ spot }) {
   }
 
   return (
-    <div>
-      <div className="reviewmodal">
-        {!currReview && currentSpotReviews.length === 0 ? (
-          <>
-            <button
-              id="first-post-review-button"
-              className="postReview"
-              type="submit"
-              onClick={() => {
-                setModalContent(<ReviewForm spot={spot} />);
-              }}>
-              <i class="fa-solid fa-pen" style={{ color: "white" }}></i> Be the
-              first to write a review!
-            </button>
-          </>
-        ) : !currReview && currentSpotReviews.length >= 1 ? (
+    <div className="review-modal-buttons">
+      {!currReview && currentSpotReviews.length === 0 ? (
+        <>
           <button
-            id="post-review-button"
+            id="first-post-review-button"
             className="postReview"
             type="submit"
             onClick={() => {
               setModalContent(<ReviewForm spot={spot} />);
             }}>
-            <i className="fa-solid fa-star filled-stars"></i> Write a review
+            <i class="fa-solid fa-pen" style={{ color: "white" }}></i> Be the
+            first to write a review!
           </button>
-        ) : null}
-      </div>
+        </>
+      ) : !currReview && currentSpotReviews.length >= 1 ? (
+        <button
+          id="post-review-button"
+          className="postReview"
+          type="submit"
+          onClick={() => {
+            setModalContent(<ReviewForm spot={spot} />);
+          }}>
+          <i className="fa-solid fa-star filled-stars"></i> Write a review
+        </button>
+      ) : null}
 
-      <div className="delete-button">
-        {user &&
-        currentSpotReviews.some((review) => review.user_id === user.id) ? (
-          <OpenModalButton
-            buttonText="Delete my review"
-            modalComponent={<DeleteReview review={currReview} />}
-          />
-        ) : null}
-      </div>
-      <div className="update-button">
-        {user &&
-        currentSpotReviews.some((review) => review.user_id === user.id) ? (
-          <OpenModalButton
-            buttonText="Update my review"
-            modalComponent={<UpdateReview spot={spot} review={currReview} />}
-          />
-        ) : null}
-      </div>
+      {user &&
+      currentSpotReviews.some((review) => review.user_id === user.id) ? (
+        <OpenModalButton
+          buttonText="Delete my review"
+          modalComponent={<DeleteReview review={currReview} />}
+        />
+      ) : null}
+      {user &&
+      currentSpotReviews.some((review) => review.user_id === user.id) ? (
+        <OpenModalButton
+          buttonText="Update my review"
+          modalComponent={<UpdateReview spot={spot} review={currReview} />}
+        />
+      ) : null}
     </div>
   );
 }

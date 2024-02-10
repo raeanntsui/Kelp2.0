@@ -194,7 +194,7 @@ function ShowOneSpot() {
           <div className="spot-bottom-left-child">
             <div className="show-one-spot-bottom-content">
               <div className="spot-details-top">
-                <h2 style={{ padding: "20px 0px", fontSize: "30px" }}>
+                <h2 style={{ padding: "10px 0px", fontSize: "30px" }}>
                   Reviews
                 </h2>
                 {/* <div className="reviewmodal"> */}
@@ -213,14 +213,23 @@ function ShowOneSpot() {
                             border: "3px solid #58B4FF",
                             borderRadius: "50%",
                             color: "#58B4FF",
+                            backgroundColor: "#eeffff",
                           }}
                           class="fa-solid fa-user"></i>
                       </div>
                       <div className="name">
-                        <p className="name-p">
-                          {review.user.first_name} {review.user.last_name}
-                        </p>
-                        <p>
+                        <div className="name-p">
+                          <div>
+                            {review.user.first_name} {review.user.last_name}
+                          </div>
+                          <div>
+                            {review.user_id === userId ? (
+                              <ReviewModal spot={spot} />
+                            ) : null}
+                          </div>
+                        </div>
+
+                        <p style={{ fontWeight: "600", padding: "5px 0px" }}>
                           {renderStars(review.rating)}{" "}
                           {newDateFormatter(review.created_at)}
                         </p>
@@ -231,15 +240,20 @@ function ShowOneSpot() {
                           key={index}>
                           {review.description}
                         </p>
-                        {review.user_img && (
-                          <img src={review.user_img} alt="User" />
-                        )}
+                        <div className="each-review-picture">
+                          {review.user_img && (
+                            <img
+                              style={{
+                                height: "200px",
+                                width: "200px",
+                                objectFit: "cover",
+                              }}
+                              src={review.user_img}
+                              alt="User"
+                            />
+                          )}
+                        </div>
                       </div>
-                    </div>
-                    <div>
-                      {review.user_id === userId ? (
-                        <ReviewModal spot={spot} />
-                      ) : null}
                     </div>
                   </>
                 ))}
@@ -265,18 +279,25 @@ function ShowOneSpot() {
               )}
             </div>
           </div>
-
           <div className="right">
-            <div className="about-restaurant">
-              <div className="directions">
-                <h1>Get Directions</h1>
-                <h2>
-                  {spot.address} <i id="maps" className="fa-solid fa-map"></i>
-                </h2>
-                <h1>About the Business</h1>
-                <h3>{spot.description}</h3>
-              </div>
-            </div>
+            <h1 style={{ fontSize: "30px", fontWeight: "800" }}>
+              Get Directions
+            </h1>
+            <a
+              className="directions"
+              style={{ fontSize: "24px" }}
+              onClick={() => alert("Feature coming soon!")}>
+              <span style={{ color: "black" }}>{spot.address} </span>
+              <i
+                id="maps"
+                className="fa-solid fa-map"
+                style={{ color: "#00c413" }}></i>
+            </a>
+
+            <h1 style={{ fontSize: "24px" }}>About the Business</h1>
+            <h3 style={{ fontSize: "18px", fontWeight: "500" }}>
+              {spot.description}
+            </h3>
           </div>
         </div>
       </div>

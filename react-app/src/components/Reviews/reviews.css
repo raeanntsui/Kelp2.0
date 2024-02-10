@@ -36,3 +36,24 @@
   border: none;
   margin: 0;
 }
+
+.review-modal-buttons {
+  /* border: 2px solid red; */
+  display: flex;
+  gap: 10px;
+}
+
+.review-modal-buttons > button {
+  background-color: #00c413;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: none;
+  margin: 0px;
+}
+
+.review-modal-buttons > button:hover {
+  cursor: pointer;
+  background-color: #43c174;
+}
