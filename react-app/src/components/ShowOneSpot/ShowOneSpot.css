@@ -147,38 +147,13 @@
   margin: 0px;
   padding: 0px;
   /* margin-left: 10px; */
-  gap: 10px;
-  padding-bottom: 10px;
-}
-
-.each-review > p {
-  margin: 0px;
-  padding: 0px;
-  display: flex;
-  align-items: center;
-  /* width: fit-content; */
+  gap: 20px;
+  /* padding-bottom: 10px; */
 }
 
 .name {
   padding: 0px;
   margin: 0px;
-}
-
-.icon {
-  margin: 0px;
-  padding: 0px;
-  border: 2px solid rgba(164, 164, 164, 0.309);
-  width: fit-content;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* margin: 10px; */
-  margin-left: 0px;
-  margin-right: 10px;
-  /* color: #d32323; */
 }
 
 .name-p {

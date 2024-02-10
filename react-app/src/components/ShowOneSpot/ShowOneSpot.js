@@ -95,6 +95,30 @@ function ShowOneSpot() {
     return null;
   }
 
+  const newDateFormatter = (date) => {
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sept",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    const adjustedDate = new Date(date);
+    const month = months[adjustedDate.getMonth()];
+    const datenumber = adjustedDate.getDate();
+    const year = adjustedDate.getFullYear();
+
+    return `${month} ${datenumber}, ${year}`;
+  };
+
   return (
     <>
       <div className="spot-details-page">
@@ -183,13 +207,23 @@ function ShowOneSpot() {
                   <>
                     <div className="each-review" key={review.id}>
                       <div className="icon">
-                        <i class="fa-solid fa-user"></i>
+                        <i
+                          style={{
+                            padding: "14px",
+                            border: "3px solid #58B4FF",
+                            borderRadius: "50%",
+                            color: "#58B4FF",
+                          }}
+                          class="fa-solid fa-user"></i>
                       </div>
                       <div className="name">
                         <p className="name-p">
                           {review.user.first_name} {review.user.last_name}
                         </p>
-                        <p>{renderStars(review.rating)}</p>
+                        <p>
+                          {renderStars(review.rating)}{" "}
+                          {newDateFormatter(review.created_at)}
+                        </p>
                         <p
                           className={`review-img1 ${
                             review.user_img ? "with-img" : ""
