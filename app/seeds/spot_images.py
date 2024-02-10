@@ -20,7 +20,7 @@ def seed_spot_images():
     SpotImage(spot_id=14, img_url="https://i.imgur.com/kBBOEzq.png", preview=True),
     SpotImage(spot_id=15, img_url="https://i.imgur.com/UMmfxEH.png", preview=True),
     SpotImage(spot_id=16, img_url="https://i.imgur.com/JGifEsN.png", preview=True),
-    SpotImage(spot_id=17, img_url="blob:https://imgur.com/52c44673-d4ce-4be0-b488-9af55448d107", preview=True),
+    SpotImage(spot_id=17, img_url="https://i.imgur.com/6O6R4g7.png", preview=True),
     SpotImage(spot_id=18, img_url="https://i.imgur.com/XkVgY9R.png", preview=True),
     SpotImage(spot_id=19, img_url="https://i.imgur.com/RS3skDQ.png", preview=True),
     SpotImage(spot_id=20, img_url="https://i.imgur.com/cFgo20Z.jpeg", preview=True),
