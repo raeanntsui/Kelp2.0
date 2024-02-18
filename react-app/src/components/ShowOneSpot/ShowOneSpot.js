@@ -315,8 +315,10 @@ function ShowOneSpot() {
               </div>
             </div>
             <div className="rightAboutBusiness">
-              <h1 style={{ fontSize: "24px" }}>About the Business</h1>
-              <h3 style={{ fontSize: "18px", fontWeight: "500" }}>
+              <h1 style={{ color: "#00c413", fontSize: "16px" }}>
+                About the Business
+              </h1>
+              <h3 style={{ fontSize: "16px", fontWeight: "500" }}>
                 {spot.description}
               </h3>
             </div>
