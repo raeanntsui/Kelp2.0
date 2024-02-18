@@ -30,8 +30,8 @@ function ShowOneSpot() {
   const businessOwner = userId === businessOwnerId;
   const reviewCount = spot?.review?.length;
   const arrayOfObjectsForReviews = Object.values(reviews);
-  const businessURL = spot.business_name;
-  const businessURLToLowerCase = businessURL.toLowerCase().replace(/\s/g, "");
+  const businessURL = spot?.business_name;
+  const businessURLToLowerCase = businessURL?.toLowerCase().replace(/\s/g, "");
   // console.log(
   //   "🚀🚀🚀🚀🚀🚀 ~ arrayOfObjectsForReviews:",
   //   arrayOfObjectsForReviews
@@ -283,25 +283,36 @@ function ShowOneSpot() {
           </div>
           <div className="right">
             <div className="rightURL">
-              <span>www.{businessURLToLowerCase}.com</span>
+              <h1 style={{ color: "#00c413", fontSize: "16px" }}>
+                www.{businessURLToLowerCase}.com
+              </h1>
             </div>
             <div className="rightPhone">
-              <span>Phone Number TBD</span>
+              <h1 style={{ color: "rgba(45,46,47,1)", fontSize: "16px" }}>
+                Phone Number TBD
+              </h1>
               <i
-                style={{ color: "#00c413" }}
+                style={{ color: "#00c413", margin: "0px", padding: "0px" }}
                 class="fa-solid fa-phone-volume"></i>
             </div>
             <div className="rightAddress">
-              <span onClick={() => alert("Feature coming soon!")}>
+              <h1
+                style={{ color: "#00c413", fontSize: "16px" }}
+                onClick={() => alert("Feature coming soon!")}>
                 Get Directions
-              </span>
-              <a className="directions">
-                <h1 style={{ color: "black" }}>{spot.address} </h1>
+              </h1>
+              <div className="directions">
+                <h1 style={{ color: "rgba(110,112,114,1)", fontSize: "16px" }}>
+                  {spot.address}{" "}
+                </h1>
                 <i
-                  id="maps"
                   className="fa-solid fa-location-dot"
-                  style={{ color: "#00c413" }}></i>
-              </a>
+                  style={{
+                    color: "#00c413",
+                    margin: "0px",
+                    padding: "0px",
+                  }}></i>
+              </div>
             </div>
             <div className="rightAboutBusiness">
               <h1 style={{ fontSize: "24px" }}>About the Business</h1>
@@ -309,15 +320,21 @@ function ShowOneSpot() {
                 {spot.description}
               </h3>
             </div>
-            <div className="rightMessage">
-              <span>Message the business</span>
+            <div
+              onClick={() => alert("Feature coming soon!")}
+              className="rightMessage">
+              <h1 style={{ color: "#00c413", fontSize: "16px" }}>
+                Message the business
+              </h1>
               <i
-                style={{ color: "#00c413" }}
+                style={{ color: "#00c413", margin: "0px", padding: "0px" }}
                 class="fa-regular fa-comment-dots"></i>
             </div>
             <div className="rightSuggestions">
               <button className="suggestionsButton">
-                <i style={{ color: "#00c413" }} class="fa-solid fa-pencil"></i>{" "}
+                <i
+                  style={{ color: "#00c413", margin: "0px", padding: "0px" }}
+                  class="fa-solid fa-pencil"></i>{" "}
                 Suggest an Edit
               </button>
             </div>

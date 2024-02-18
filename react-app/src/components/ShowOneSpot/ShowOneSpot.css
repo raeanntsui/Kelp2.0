@@ -98,13 +98,14 @@
 }
 
 .right {
-  border: 1px solid rgba(235, 235, 235, 1);
+  border: 2px solid rgba(235, 235, 235, 1);
   width: 40%;
   position: sticky;
   top: 10px;
   height: 100%;
   padding: 10px;
   border-radius: 10px;
+  margin-top: 10px;
 }
 
 .business-name {
@@ -119,28 +120,6 @@
   /* border: solid 5px black; */
   padding: 0px;
   margin: 0px;
-}
-
-.directions > h1 {
-  /* color: rgba(2, 122, 151, 1); */
-  color: #00c413;
-  font-size: 20px;
-}
-
-.directions > h2 {
-  font-size: 16px;
-  font-weight: 400;
-  /* padding-top: 5px; */
-  padding-bottom: 10px;
-  /* color: #6e7072; */
-}
-
-.directions > h3 {
-  color: black;
-  font-size: 16px;
-  font-weight: 400;
-  /* padding-top: 5px; */
-  padding-bottom: 10px;
 }
 
 .each-review {
@@ -186,17 +165,33 @@
   margin-bottom: 5px;
 }
 
-.directions:hover {
-  color: blue;
-}
-
 .rightURL,
 .rightPhone,
 .rightAddress,
 .rightAboutBusiness,
 .rightMessage {
-  border-bottom: 1px solid rgba(235, 235, 235, 1);
+  border-bottom: 2px solid rgba(235, 235, 235, 1);
   padding: 10px;
+}
+
+.rightAddress {
+  border: 2px solid red;
+}
+
+.directions,
+.rightPhone {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rightMessage {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rightSuggestions {
+  padding-top: 10px;
 }
 
 .suggestionsButton {
@@ -205,8 +200,11 @@
   padding: 10px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   background-color: white;
   min-width: 200px;
   max-width: 400px;
+  font-size: 16px;
+  /* margin: 10px; */
 }
