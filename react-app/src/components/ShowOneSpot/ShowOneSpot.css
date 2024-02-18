@@ -98,12 +98,13 @@
 }
 
 .right {
-  border: 4px dashed rgb(0, 9, 128);
+  border: 1px solid rgba(235, 235, 235, 1);
   width: 40%;
   position: sticky;
-  top: 0;
+  top: 10px;
   height: 100%;
-  padding: 10px 0px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .business-name {
@@ -187,4 +188,25 @@
 
 .directions:hover {
   color: blue;
+}
+
+.rightURL,
+.rightPhone,
+.rightAddress,
+.rightAboutBusiness,
+.rightMessage {
+  border-bottom: 1px solid rgba(235, 235, 235, 1);
+  padding: 10px;
+}
+
+.suggestionsButton {
+  border: 2px solid red;
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: white;
+  min-width: 200px;
+  max-width: 400px;
 }

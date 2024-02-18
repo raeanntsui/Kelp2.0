@@ -283,21 +283,23 @@ function ShowOneSpot() {
           </div>
           <div className="right">
             <div className="rightURL">
-              <h1>www.{businessURLToLowerCase}.com</h1>
+              <span>www.{businessURLToLowerCase}.com</span>
             </div>
-            {/* <div className="rightPhone">
-              <h1>Phone Number</h1>
-              <i class="fa-solid fa-phone-volume"></i>
-            </div> */}
+            <div className="rightPhone">
+              <span>Phone Number TBD</span>
+              <i
+                style={{ color: "#00c413" }}
+                class="fa-solid fa-phone-volume"></i>
+            </div>
             <div className="rightAddress">
-              <h1 onClick={() => alert("Feature coming soon!")}>
+              <span onClick={() => alert("Feature coming soon!")}>
                 Get Directions
-              </h1>
-              <a className="directions" style={{ fontSize: "24px" }}>
-                <span style={{ color: "black" }}>{spot.address} </span>
+              </span>
+              <a className="directions">
+                <h1 style={{ color: "black" }}>{spot.address} </h1>
                 <i
                   id="maps"
-                  className="fa-solid fa-map"
+                  className="fa-solid fa-location-dot"
                   style={{ color: "#00c413" }}></i>
               </a>
             </div>
@@ -308,12 +310,15 @@ function ShowOneSpot() {
               </h3>
             </div>
             <div className="rightMessage">
-              <h1>Message the business</h1>
-              <i class="fa-regular fa-comment-dots"></i>
+              <span>Message the business</span>
+              <i
+                style={{ color: "#00c413" }}
+                class="fa-regular fa-comment-dots"></i>
             </div>
             <div className="rightSuggestions">
-              <button>
-                <i class="fa-solid fa-pencil"></i> Suggest an Edit
+              <button className="suggestionsButton">
+                <i style={{ color: "#00c413" }} class="fa-solid fa-pencil"></i>{" "}
+                Suggest an Edit
               </button>
             </div>
           </div>
