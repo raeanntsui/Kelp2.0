@@ -98,7 +98,7 @@
 }
 
 .right {
-  /* border: 4px dashed rgb(0, 9, 128); */
+  border: 4px dashed rgb(0, 9, 128);
   width: 40%;
   position: sticky;
   top: 0;
@@ -118,10 +118,6 @@
   /* border: solid 5px black; */
   padding: 0px;
   margin: 0px;
-}
-
-.directions {
-  padding: 10px;
 }
 
 .directions > h1 {

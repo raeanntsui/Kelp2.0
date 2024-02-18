@@ -30,6 +30,8 @@ function ShowOneSpot() {
   const businessOwner = userId === businessOwnerId;
   const reviewCount = spot?.review?.length;
   const arrayOfObjectsForReviews = Object.values(reviews);
+  const businessURL = spot.business_name;
+  const businessURLToLowerCase = businessURL.toLowerCase().replace(/\s/g, "");
   // console.log(
   //   "🚀🚀🚀🚀🚀🚀 ~ arrayOfObjectsForReviews:",
   //   arrayOfObjectsForReviews
@@ -194,7 +196,7 @@ function ShowOneSpot() {
           <div className="spot-bottom-left-child">
             <div className="show-one-spot-bottom-content">
               <div className="spot-details-top">
-                <h2 style={{ padding: "10px 0px", fontSize: "30px" }}>
+                <h2 style={{ paddingTop: "20px", fontSize: "30px" }}>
                   Reviews
                 </h2>
                 {/* <div className="reviewmodal"> */}
@@ -280,24 +282,40 @@ function ShowOneSpot() {
             </div>
           </div>
           <div className="right">
-            <h1 style={{ fontSize: "30px", fontWeight: "800" }}>
-              Get Directions
-            </h1>
-            <a
-              className="directions"
-              style={{ fontSize: "24px" }}
-              onClick={() => alert("Feature coming soon!")}>
-              <span style={{ color: "black" }}>{spot.address} </span>
-              <i
-                id="maps"
-                className="fa-solid fa-map"
-                style={{ color: "#00c413" }}></i>
-            </a>
-
-            <h1 style={{ fontSize: "24px" }}>About the Business</h1>
-            <h3 style={{ fontSize: "18px", fontWeight: "500" }}>
-              {spot.description}
-            </h3>
+            <div className="rightURL">
+              <h1>www.{businessURLToLowerCase}.com</h1>
+            </div>
+            {/* <div className="rightPhone">
+              <h1>Phone Number</h1>
+              <i class="fa-solid fa-phone-volume"></i>
+            </div> */}
+            <div className="rightAddress">
+              <h1 onClick={() => alert("Feature coming soon!")}>
+                Get Directions
+              </h1>
+              <a className="directions" style={{ fontSize: "24px" }}>
+                <span style={{ color: "black" }}>{spot.address} </span>
+                <i
+                  id="maps"
+                  className="fa-solid fa-map"
+                  style={{ color: "#00c413" }}></i>
+              </a>
+            </div>
+            <div className="rightAboutBusiness">
+              <h1 style={{ fontSize: "24px" }}>About the Business</h1>
+              <h3 style={{ fontSize: "18px", fontWeight: "500" }}>
+                {spot.description}
+              </h3>
+            </div>
+            <div className="rightMessage">
+              <h1>Message the business</h1>
+              <i class="fa-regular fa-comment-dots"></i>
+            </div>
+            <div className="rightSuggestions">
+              <button>
+                <i class="fa-solid fa-pencil"></i> Suggest an Edit
+              </button>
+            </div>
           </div>
         </div>
       </div>
