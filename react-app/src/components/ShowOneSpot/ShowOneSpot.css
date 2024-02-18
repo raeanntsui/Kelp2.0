@@ -175,7 +175,7 @@
 }
 
 .rightAddress {
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 
 .directions,
@@ -195,7 +195,7 @@
 }
 
 .suggestionsButton {
-  border: 2px solid red;
+  border: 1px solid rgba(235, 235, 235, 1);
   border-radius: 4px;
   padding: 10px;
   display: flex;
@@ -207,4 +207,12 @@
   max-width: 400px;
   font-size: 16px;
   /* margin: 10px; */
+}
+
+.suggestionsButton:hover,
+.rightURL:hover,
+.rightPhone:hover,
+.rightAddress:hover,
+.rightMessage:hover {
+  cursor: pointer;
 }

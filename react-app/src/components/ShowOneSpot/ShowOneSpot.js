@@ -283,12 +283,16 @@ function ShowOneSpot() {
           </div>
           <div className="right">
             <div className="rightURL">
-              <h1 style={{ color: "#00c413", fontSize: "16px" }}>
+              <h1
+                style={{ color: "#00c413", fontSize: "16px" }}
+                onClick={() => alert("Website link coming soon!")}>
                 www.{businessURLToLowerCase}.com
               </h1>
             </div>
             <div className="rightPhone">
-              <h1 style={{ color: "rgba(45,46,47,1)", fontSize: "16px" }}>
+              <h1
+                style={{ color: "rgba(45,46,47,1)", fontSize: "16px" }}
+                onClick={() => alert("Telephone feature coming soon!")}>
                 Phone Number TBD
               </h1>
               <i
@@ -298,7 +302,7 @@ function ShowOneSpot() {
             <div className="rightAddress">
               <h1
                 style={{ color: "#00c413", fontSize: "16px" }}
-                onClick={() => alert("Feature coming soon!")}>
+                onClick={() => alert("Maps coming soon!")}>
                 Get Directions
               </h1>
               <div className="directions">
@@ -323,7 +327,7 @@ function ShowOneSpot() {
               </h3>
             </div>
             <div
-              onClick={() => alert("Feature coming soon!")}
+              onClick={() => alert("Message feature coming soon!")}
               className="rightMessage">
               <h1 style={{ color: "#00c413", fontSize: "16px" }}>
                 Message the business
@@ -333,7 +337,9 @@ function ShowOneSpot() {
                 class="fa-regular fa-comment-dots"></i>
             </div>
             <div className="rightSuggestions">
-              <button className="suggestionsButton">
+              <button
+                onClick={() => alert("Suggestions feature coming soon!")}
+                className="suggestionsButton">
                 <i
                   style={{ color: "#00c413", margin: "0px", padding: "0px" }}
                   class="fa-solid fa-pencil"></i>{" "}
