@@ -101,7 +101,7 @@ button {
 }
 
 #kelp-logo {
-  /* border: 3px dashed red; */
+  border: 3px dashed blue;
   font-size: 30px;
   display: flex;
   align-items: center;
@@ -127,10 +127,10 @@ button {
 #top-nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   /* padding: 0 20px; */
   position: relative;
-  /* border: 5px solid pink; */
+  border: 5px solid red;
   margin-top: 25px;
   margin-bottom: 25px;
   margin-left: 10px;
@@ -226,9 +226,11 @@ button {
   /* width: 300px; */
 }
 
-.searchbar-home {
-  margin-top: 10px;
-  border: 12px solid red;
+#searchbar-home {
+  /* margin-top: 10px; */
+  min-width: 400px;
+  border: 4px solid purple;
+  display: flex;
 }
 
 .search-form {
@@ -237,11 +239,12 @@ button {
 
 .search-input {
   padding: 8px;
-  margin-bottom: 0px;
+  margin: 0px;
   border-radius: 3px;
   outline: none;
   border: none;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  min-width: 400px;
 }
 
 .search-form button {

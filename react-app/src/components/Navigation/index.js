@@ -58,9 +58,10 @@ function Navigation({ isLoaded }) {
               </div>
             </NavLink>{" "}
           </div>
-          <div classname="searchbar-home">
+          <div id="searchbar-home">
             <form onSubmit={handleSearchSubmit} className="search-form">
               <input
+                // style={{ width: "100%" }}
                 type="text"
                 value={searchInput}
                 onChange={handleSearchInputChange}
