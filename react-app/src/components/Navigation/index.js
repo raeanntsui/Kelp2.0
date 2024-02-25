@@ -67,6 +67,7 @@ function Navigation({ isLoaded }) {
                 onChange={handleSearchInputChange}
                 placeholder="Search by name, category, or price range"
                 className="search-input"
+                style={{ textAlign: "center" }}
               />
               <button type="submit">
                 <i className="fas fa-search" style={{ color: "white" }}></i>

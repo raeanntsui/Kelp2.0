@@ -101,7 +101,7 @@ button {
 }
 
 #kelp-logo {
-  border: 3px dashed blue;
+  /* border: 3px dashed blue; */
   font-size: 30px;
   display: flex;
   align-items: center;
@@ -229,7 +229,7 @@ button {
 #searchbar-home {
   /* margin-top: 10px; */
   min-width: 400px;
-  border: 4px solid purple;
+  /* border: 4px solid purple; */
   display: flex;
 }
 
