@@ -8,7 +8,6 @@ import { getAllSpotsThunk } from "../../store/spots";
 import { useHistory } from "react-router-dom";
 import "./Navigation.css";
 
-
 function Navigation({ isLoaded }) {
   const history = useHistory();
   const location = useLocation();
@@ -45,10 +44,8 @@ function Navigation({ isLoaded }) {
 
   return (
     <>
-
       <div id="upper-half-homepage">
         <div id="top-nav">
-
           <div id="kelp-logo">
             <NavLink exact to="/">
               <div className="logo-container">
@@ -70,9 +67,9 @@ function Navigation({ isLoaded }) {
                 placeholder="Search by name, category, or price range"
                 className="search-input"
               />
-
-              <button type="submit"><i className="fas fa-search" style={{ color: 'white' }}></i></button>
-
+              <button type="submit">
+                <i className="fas fa-search" style={{ color: "white" }}></i>
+              </button>
             </form>
           </div>
           <div id="homepage-buttons">

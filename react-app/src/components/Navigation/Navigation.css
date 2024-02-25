@@ -223,11 +223,12 @@ button {
 }
 
 .search-input {
-  width: 300px;
+  /* width: 300px; */
 }
 
 .searchbar-home {
   margin-top: 10px;
+  border: 12px solid red;
 }
 
 .search-form {
