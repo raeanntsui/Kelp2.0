@@ -5,7 +5,7 @@ from sqlalchemy.sql import text
 def seed_spot_images():
     spot_images = [
     SpotImage(spot_id=1, img_url="https://upload.wikimedia.org/wikipedia/commons/2/25/The_Krusty_Krab.png", preview=True),
-    SpotImage(spot_id=2, img_url="https://cdn.discordapp.com/attachments/1110721109076221993/1205648793576411247/image.png?ex=65d922f0&is=65c6adf0&hm=3fc0f3fe09ea7fd14b04f7ecf6747b74219a0b9286a6f4a784e4e87909b2cff3&", preview=True),
+    SpotImage(spot_id=2, img_url="https://i.imgur.com/WM0xm9z.jpg", preview=True),
     SpotImage(spot_id=3, img_url="https://wallpapercave.com/wp/wp10268662.png", preview=True),
     SpotImage(spot_id=4, img_url="https://m.media-amazon.com/images/M/MV5BZWIxYzVkNTMtYTBiYi00YmY4LTkwYjQtYWZmODgxMWI2NzFhXkEyXkFqcGdeQXVyMTI4NzYxNTk4._V1_.jpg", preview=True),
     SpotImage(spot_id=5, img_url="https://i.pinimg.com/originals/28/32/20/283220287e9a8aa039232ecf9eab9cf3.jpg", preview=True),
