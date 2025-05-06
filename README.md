@@ -4,7 +4,7 @@ Feel free to explore our website, Kelp, a platform designed to allow users to se
 
 **Click on the link below to visit the live site!**<br>
 [![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
-](https://kelp-sqpk.onrender.com/)
+](https://kelp2-0.onrender.com/)
 
 <!-- **Check out the developers' LinkedIn profiles:**<br>
 [![Linkedin](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/khuong-c-nguyen/) -->
